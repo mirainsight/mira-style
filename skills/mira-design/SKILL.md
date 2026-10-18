@@ -72,7 +72,7 @@ For a site or artifact Mira already made (a repo, or an artifact in her gallery)
    Use her answers in her own words: fix spelling and joins only, never rewrite.
 3. Make a sample-data copy: swap every real name, group, link and endpoint for made-up ones; keep "Mira" as is. Grep the copy for the real names before committing.
 4. Repo: `looks/<look>/` or `made-for-others/<x>/` with a README (made for, "In Mira's words" from the interview, the look's rules) and `example/`; add a row to the root README; update the tables in this skill. Commit and push.
-5. Gallery: copy the sample site beside the gallery's index.html and add an entry with live pages (phone-sized iframes, `data-steps` to show each page).
+5. Gallery: copy the sample site beside the gallery's index.html and add an entry with live pages (phone-sized iframes, `data-steps` to click, scroll or type to each page). When republishing, the main file stays the gallery's index.html; site files go in `files`.
 
 ## Response format
 
