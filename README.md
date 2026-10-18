@@ -19,6 +19,7 @@ Designs Mira made for someone else. They are not part of her own looks, and are 
 | Design | Made for | Folder |
 | --- | --- | --- |
 | **Ma's Family Table** | Her mother-in-law: the family's food preferences and dates, drawn as if by her granddaughter | [`made-for-others/family-table`](made-for-others/family-table) |
+| **NWST Health Check** (EOY Attendance Analytics) | The NarrowStreet youth leaders: a year of Saturday check-ins as a sporty, editorial season report with things to act on | [`made-for-others/nwst-health-check`](made-for-others/nwst-health-check) |
 
 ## What's in a look
 

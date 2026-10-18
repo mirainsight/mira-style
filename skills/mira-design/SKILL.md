@@ -26,6 +26,7 @@ Designs Mira made for other people are not mira-style looks. Never use them as a
 | Design | Made for | Idea |
 | --- | --- | --- |
 | Ma's Family Table (repo `mirainsight/family-table`) | Her mother-in-law: the family's food preferences and dates, for her reference | Made to look like something her granddaughter would make for her. Each face is drawn at the age Ma first knew that person (her children stay children; Mira and her sister-in-law are adults). |
+| NWST Health Check (EOY Attendance Analytics), from an artifact | The NarrowStreet youth leaders: a year of Saturday check-ins as an end-of-year report | A sporty, edgy, editorial gig-poster report: colourful, easy to read and actionable, after an earlier Streamlit version had too much in it and nobody used it. |
 
 ## Making something in a confirmed look
 
@@ -55,6 +56,23 @@ Mira wants to tinker herself before committing. Never present a finished new loo
    - Add it to the design system (or a new design system for the look) and to the Style Gallery (live pages, not redrawn mockups).
    - Propose an update to this skill's Confirmed looks table.
    - Offer to delete the temporary lab.
+
+## Adding a prebuilt design to the collection
+
+For a site or artifact Mira already made (a repo, or an artifact in her gallery):
+
+1. Find and study the original. Reuse it EXACTLY; never redraw or reinterpret it.
+2. Mini interview, one question at a time, so each entry carries its story for public sharing:
+   1. Her own look, or made for others? (If for others: who.)
+   2. What was it first made for?
+   3. The story behind the look: why this style, and any personal idea in it.
+   4. How was it received? Did anything change because of it?
+   5. Its name in the collection.
+   6. Made for others only: is a sample-data copy OK to be public?
+   Use her answers in her own words: fix spelling and joins only, never rewrite.
+3. Make a sample-data copy: swap every real name, group, link and endpoint for made-up ones; keep "Mira" as is. Grep the copy for the real names before committing.
+4. Repo: `looks/<look>/` or `made-for-others/<x>/` with a README (made for, "In Mira's words" from the interview, the look's rules) and `example/`; add a row to the root README; update the tables in this skill. Commit and push.
+5. Gallery: copy the sample site beside the gallery's index.html and add an entry with live pages (phone-sized iframes, `data-steps` to show each page).
 
 ## Response format
 

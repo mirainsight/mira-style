@@ -1,0 +1,551 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>NWST Health Check</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@400;600;800&family=DM+Mono:wght@400;500&family=Rubik+Dirt&display=swap">
+<style>
+/* Layout: gig-poster stack. Cobalt hero block, ink body, taped paper labels, one column that widens to two on desktop. Single dark look by choice. */
+:root{
+  color-scheme:dark;
+  --ink:#121016; --ink2:#1c1922; --ink3:#2a2632;
+  --cream:#f1e7cf; --cream-dim:#b9b09c;
+  --cobalt:#2450e0; --cobalt-lt:#4f7bff;
+  --pink:#ff2e88; --yellow:#e0a800; --teal:#1fb598;
+  --slab:"Alfa Slab One","Rockwell","Georgia",serif;
+  --dirt:"Rubik Dirt","Alfa Slab One","Impact",sans-serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,"Courier New",monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.45;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:100;background:var(--cobalt);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;padding:16px;cursor:pointer;transition:transform .55s cubic-bezier(.7,0,.2,1)}
+#loader.out{transform:translateY(-102%)}
+#loader .big{font-family:var(--slab);color:var(--cream);font-size:clamp(72px,27vw,230px);line-height:.86;letter-spacing:-.01em}
+#loader .strip{width:min(100%,760px);height:clamp(22px,5vw,44px);margin:6px 0;background:linear-gradient(90deg,#7b3fd1,var(--pink) 55%,#ff8a5b);position:relative;overflow:hidden}
+#loader .strip i{position:absolute;inset:0;background:var(--cobalt);transform-origin:right;transform:scaleX(1)}
+#loader .strip.b{background:linear-gradient(90deg,#ff8a5b,var(--pink) 40%,#7b3fd1)}
+#loader .cnt{margin-top:18px;color:var(--cream);text-align:center}
+#loader .cnt b{font-family:var(--dirt);font-size:34px;font-weight:400;display:block;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{background:var(--cobalt);position:relative;padding-block:28px 46px;clip-path:polygon(0 0,100% 0,100% 94%,96% 97%,91% 93%,85% 98%,78% 94%,71% 99%,63% 95%,55% 98%,47% 93%,39% 98%,31% 94%,22% 99%,14% 95%,7% 98%,0 94%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,rgba(18,16,22,.35) 1.1px,transparent 1.4px) 0 0/7px 7px;mask-image:linear-gradient(115deg,transparent 55%,#000);-webkit-mask-image:linear-gradient(115deg,transparent 55%,#000)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-family:var(--slab);font-weight:400;font-size:clamp(58px,17.5vw,190px);line-height:.84;color:var(--cream);text-wrap:balance}
+.hero h1 span{display:block}
+.hero h1 .dirt{font-family:var(--dirt);color:var(--ink)}
+.band{height:clamp(14px,3vw,26px);background:linear-gradient(90deg,#7b3fd1,var(--pink) 55%,#ff8a5b);margin:6px 0}
+.tape{display:inline-block;background:var(--cream);color:var(--ink);padding:5px 10px;transform:rotate(-1.6deg);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.tape.pk{background:var(--pink);color:var(--ink);transform:rotate(1.2deg)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
+.hero .lede{margin-top:16px;max-width:52ch;font-size:17px;color:var(--cream)}
+.burst{position:absolute;right:max(8px,4vw);top:14px;width:clamp(92px,17vw,170px);aspect-ratio:1;z-index:2;transform:rotate(9deg)}
+.burst text{font-family:var(--slab);fill:var(--ink)}
+
+.ticker{background:var(--pink);color:var(--ink);overflow:hidden;white-space:nowrap;font-family:var(--slab);font-size:15px;padding:7px 0;transform:rotate(-.6deg);margin:-14px -8px 0;position:relative;z-index:3}
+.ticker div{display:inline-block;animation:tick 38s linear infinite}
+.ticker span{margin-right:34px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ink);padding-block:12px;border-bottom:2px dashed var(--ink3)}
+.tabs .wrap{display:flex;gap:8px}
+.tab{flex:1;min-width:0;background:var(--ink2);border:2px solid var(--cream);font-family:var(--slab);font-size:clamp(13px,3.6vw,20px);padding:10px 4px;text-transform:uppercase;letter-spacing:.02em;transition:transform .15s}
+.tab:hover{transform:translateY(-2px) rotate(-1deg)}
+.tab[aria-selected="true"]{background:var(--cream);color:var(--ink);box-shadow:5px 5px 0 var(--pink)}
+
+section.panel{padding-block:30px 10px;display:flex;flex-direction:column;gap:46px}
+.panel.enter>*{animation:rise .5s both}
+.panel.enter>*:nth-child(2){animation-delay:.06s}.panel.enter>*:nth-child(3){animation-delay:.12s}.panel.enter>*:nth-child(n+4){animation-delay:.18s}
+@keyframes rise{from{transform:translateY(14px) rotate(-.4deg)}to{transform:none}}
+
+.blk{display:flex;flex-direction:column;gap:14px;min-width:0}
+.blk h2{font-family:var(--slab);font-weight:400;font-size:clamp(30px,7.5vw,56px);line-height:.95;text-transform:uppercase;text-wrap:balance}
+.blk h2 em{font-style:normal;font-family:var(--dirt);color:var(--pink)}
+.say{font-size:18px;max-width:60ch}
+.say b{background:var(--cream);color:var(--ink);padding:0 5px;font-weight:800}
+.note{color:var(--cream-dim);font-size:13.5px;max-width:68ch}
+
+/* scoreboard */
+.score{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:760px){.score{grid-template-columns:repeat(4,1fr)}}
+.sc{background:var(--ink2);border:2px solid var(--ink3);padding:14px 12px 12px;position:relative;min-width:0}
+.sc:nth-child(odd){transform:rotate(-.7deg)}.sc:nth-child(even){transform:rotate(.6deg)}
+.sc.hot{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.sc .num{font-family:var(--dirt);font-size:clamp(46px,12vw,78px);line-height:.9;font-variant-numeric:tabular-nums}
+.sc .lab{font-family:var(--slab);text-transform:uppercase;font-size:14px;margin-top:6px}
+.sc .sub{font-size:13px;opacity:.8;margin-top:2px}
+
+/* charts */
+.chart{background:var(--ink2);border:2px solid var(--ink3);padding:12px 8px 6px;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--cream-dim)}
+.chart .lbl{fill:var(--cream);font-size:12px}
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--cream);color:var(--ink);padding:6px 9px;font-size:13px;font-weight:600;box-shadow:4px 4px 0 var(--pink);max-width:230px}
+#tip small{display:block;font-family:var(--mono);font-weight:400;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+
+.seg{display:flex;gap:2px;height:38px}
+.seg i{display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:13px;color:var(--ink);min-width:0;overflow:hidden}
+.seg.sm{height:22px}.seg.sm i{font-size:11px}
+.s-reg{background:var(--cobalt-lt)}.s-irr{background:var(--yellow)}.s-fu{background:var(--pink)}.s-new{background:var(--teal)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;display:inline-block}
+.rowlab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--cream-dim)}
+
+.bars{display:flex;flex-direction:column;gap:8px}
+#kindBars .bar:nth-child(even){margin-top:-5px;margin-bottom:6px}
+.bar{display:grid;grid-template-columns:minmax(74px,26%) 1fr;gap:10px;align-items:center;font-size:14px}
+.bar .t{font-weight:600;min-width:0}
+.bar .track{position:relative;height:26px;background:var(--ink2)}
+.bar .fill{position:absolute;inset:0 auto 0 0;background:var(--cream);border-radius:0 4px 4px 0}
+.bar .fill.pk{background:var(--pink)}.bar .fill.ghost{background:var(--ink3)}
+.bar .v{position:absolute;right:6px;top:0;line-height:26px;font-family:var(--mono);font-size:12px;color:var(--cream)}
+
+.guess{background:var(--cobalt);padding:18px 14px;display:flex;flex-direction:column;gap:12px;transform:rotate(-.5deg)}
+.guess h3{font-family:var(--slab);font-weight:400;font-size:22px;line-height:1.1}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap}
+.guess .opts button{background:var(--cream);color:var(--ink);border:0;font-family:var(--dirt);font-size:28px;width:58px;height:58px;transition:transform .12s}
+.guess .opts button:hover{transform:rotate(-5deg) scale(1.06)}
+.guess .opts button.right{background:var(--pink)}.guess .opts button.wrong{opacity:.45}
+
+.two{display:grid;gap:36px}
+@media(min-width:820px){.two{grid-template-columns:1fr 1fr}}
+
+/* moves */
+.moves{display:grid;gap:12px}
+@media(min-width:820px){.moves{grid-template-columns:repeat(3,1fr)}}
+.move{background:var(--cream);color:var(--ink);padding:14px;position:relative;min-width:0}
+.move:nth-child(2){transform:rotate(.8deg)}.move:nth-child(3){transform:rotate(-.6deg)}
+.move .k{font-family:var(--dirt);font-size:44px;line-height:.9;color:var(--pink)}
+.move h3{font-family:var(--slab);font-weight:400;font-size:19px;text-transform:uppercase;line-height:1.05;margin:4px 0 6px}
+.move p{font-size:14.5px}
+
+/* cleanup */
+.clean{border:2px dashed var(--cream);padding:16px 12px;display:flex;flex-direction:column;gap:12px}
+.clean .prog{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--cream-dim)}
+.ci{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:12px 0;border-top:1px solid var(--ink3)}
+.ci input{width:22px;height:22px;accent-color:var(--pink);margin-top:3px}
+.ci .h{font-weight:800;font-size:16px}
+.ci .h b{font-family:var(--dirt);font-weight:400;color:var(--pink);font-size:22px;margin-right:6px}
+.ci .w{grid-column:2;font-size:14px;color:var(--cream-dim)}
+.ci .p{grid-column:2;background:var(--ink2);border-left:4px solid var(--cobalt-lt);padding:8px 10px;font-family:var(--mono);font-size:12.5px;line-height:1.5;display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin-top:4px}
+.ci .p span{min-width:0;user-select:all}
+.ci.done .h,.ci.done .w{text-decoration:line-through;opacity:.5}
+.copy{flex:none;background:var(--cobalt-lt);color:var(--ink);border:0;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;font-weight:500}
+.copy.ok{background:var(--teal)}
+a.btn{display:inline-block;align-self:flex-start;background:var(--pink);color:var(--ink);font-family:var(--slab);text-transform:uppercase;text-decoration:none;padding:10px 14px;box-shadow:5px 5px 0 var(--cream)}
+
+/* league */
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips .mono{color:var(--cream-dim);margin-right:2px}
+.chip{background:transparent;border:1.5px solid var(--cream-dim);padding:5px 10px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.chip[aria-pressed="true"]{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.league{display:flex;flex-direction:column;gap:6px}
+.lr{background:var(--ink2);border:2px solid var(--ink3);min-width:0}
+.lr.open{border-color:var(--cream)}
+.lr>button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:34px minmax(0,1.1fr) minmax(0,1.4fr) 58px;gap:8px;align-items:center;width:100%;padding:9px 10px}
+.lr>button:focus-visible{outline:3px solid var(--yellow)}
+.lr .rk{font-family:var(--dirt);font-size:26px;color:var(--cream-dim)}
+.lr:nth-child(-n+3) .rk{color:var(--pink)}
+.lr .nm{font-family:var(--slab);font-size:clamp(15px,4.2vw,20px);text-transform:uppercase;line-height:1;overflow-wrap:anywhere}
+.lr .nm small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--cream-dim);letter-spacing:.06em;margin-top:3px}
+.lr .mt{height:16px;background:var(--ink3);position:relative}
+.lr .mt i{position:absolute;inset:0 auto 0 0;background:var(--cream);border-radius:0 4px 4px 0}
+.lr .val{font-family:var(--mono);font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+.lr .val small{display:block;font-size:10.5px;color:var(--cream-dim)}
+.det{padding:4px 10px 14px;display:flex;flex-direction:column;gap:12px}
+.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:640px){.mini{grid-template-columns:repeat(4,1fr)}}
+.mini div{background:var(--ink);padding:8px;font-size:12.5px;color:var(--cream-dim)}
+.mini b{display:block;font-family:var(--dirt);font-weight:400;font-size:26px;color:var(--cream);line-height:1}
+.todo{display:flex;flex-direction:column;gap:6px}
+.todo .t{display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--ink);padding:7px 9px;font-size:13.5px}
+.todo .t b{color:var(--pink);font-family:var(--dirt);font-weight:400;font-size:18px;margin-right:6px}
+
+/* ministries */
+.mgrid{display:grid;gap:14px}
+@media(min-width:760px){.mgrid{grid-template-columns:1fr 1fr}}
+.mc{background:var(--ink2);border:2px solid var(--ink3);padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0;position:relative}
+.mc h3{font-family:var(--slab);font-weight:400;font-size:34px;text-transform:uppercase;line-height:.95}
+.mc .n{position:absolute;right:12px;top:10px;font-family:var(--dirt);font-size:40px;color:var(--pink);line-height:1}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;text-align:center}
+.ladder div{background:var(--ink);padding:6px 2px;font-size:11px;color:var(--cream-dim);font-family:var(--mono);text-transform:uppercase}
+.ladder b{display:block;font-family:var(--dirt);font-weight:400;font-size:22px;color:var(--cream)}
+.ladder .zero b{color:var(--pink)}
+.facts{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.flag{background:var(--pink);color:var(--ink);font-weight:800;padding:4px 8px;font-size:13.5px;align-self:flex-start;transform:rotate(-.8deg)}
+
+.boardbtn{align-self:flex-start;background:var(--pink);color:var(--ink);border:0;font-family:var(--slab);font-size:17px;text-transform:uppercase;padding:12px 16px;box-shadow:5px 5px 0 var(--cream);transform:rotate(-1deg);transition:transform .15s;text-align:left}
+.boardbtn:hover{transform:rotate(1deg) scale(1.03)}
+.ticker{cursor:pointer}
+#board{position:fixed;inset:0;z-index:80;background:rgba(18,16,22,.86);display:flex;align-items:flex-start;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px 16px;overflow-y:auto}
+.bd{background:var(--cobalt);width:min(100%,520px);padding:18px 14px 20px;display:flex;flex-direction:column;gap:12px;position:relative;animation:rise .35s both;margin-block:auto}
+.bd h2{font-family:var(--slab);font-weight:400;font-size:clamp(34px,10vw,54px);line-height:.9;text-transform:uppercase}
+.bd h2 em{font-style:normal;font-family:var(--dirt);color:var(--ink)}
+.bd .x{position:absolute;right:10px;top:10px;background:var(--ink);color:var(--cream);border:0;width:40px;height:40px;font-family:var(--slab);font-size:18px}
+.bd .chips .chip{border-color:var(--cream);color:var(--cream)}
+.bd .chips .chip[aria-pressed="true"]{color:var(--ink)}
+.bl{display:flex;flex-direction:column;gap:5px}
+.br{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--ink);padding:8px 10px;animation:slide .4s both}
+.br.gold{background:var(--cream);color:var(--ink)}
+.br .rk{font-family:var(--dirt);font-size:24px;color:var(--pink)}
+.br .nm{font-weight:800;font-size:15.5px;overflow-wrap:anywhere;line-height:1.15}
+.br .nm small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
+.br .sc2{font-family:var(--mono);font-size:13px;text-align:right}
+.br .sc2 small{display:block;font-size:10.5px;opacity:.7}
+@keyframes slide{from{transform:translateX(-18px);opacity:.3}to{transform:none;opacity:1}}
+.dotleg{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px}
+.dotleg span{display:flex;align-items:center;gap:6px}
+.dotleg i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+.vs .sc{transform:none}
+.vs .mid{font-family:var(--dirt);font-size:30px;color:var(--pink)}
+details.how{border-top:2px dashed var(--ink3);padding-block:16px 40px;color:var(--cream-dim);font-size:14px}
+details.how summary{cursor:pointer;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--cream)}
+details.how ul{padding-left:18px;max-width:72ch}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div id="loader" role="status" aria-label="Loading NWST Health Check">
+  <div class="big">NWST</div><div class="strip"><i></i></div>
+  <div class="big">NWST</div><div class="strip b"><i></i></div>
+  <div class="big">NWST</div>
+  <div class="cnt"><b id="ldn">0</b><span class="mono">check-ins counted · tap to skip</span></div>
+</div>
+<div id="tip" hidden></div>
+<div id="board" hidden role="dialog" aria-modal="true" aria-labelledby="bdh"><div class="bd">
+  <button class="x" id="bdx" type="button" aria-label="Close">✕</button>
+  <span class="tape">31 Saturdays · 24 Jan to 3 Oct</span>
+  <h2 id="bdh">Streak <em>board</em></h2>
+  <div class="chips" id="bdChips"></div>
+  <div class="bl" id="bdList"></div>
+</div></div>
+
+<header class="hero">
+  <svg class="burst" viewBox="-100 -100 200 200" aria-hidden="true"><polygon id="burstp" fill="#ff2e88" points=""/><text text-anchor="middle" y="-8" font-size="27">2026</text><text text-anchor="middle" y="20" font-size="19">SEASON</text><text text-anchor="middle" y="41" font-size="19">REPORT</text></svg>
+  <div class="wrap">
+    <h1><span>NWST</span><div class="band"></div><span class="dirt">HEALTH</span><div class="band"></div><span>CHECK</span></h1>
+    <div class="meta"><span class="tape">24 Jan → 3 Oct 2026</span><span class="tape pk">31 Saturdays of check-ins</span></div>
+    <p class="lede">Every tap-in since January, turned into a straight answer: how healthy are we, and what do we do about it?</p>
+  </div>
+</header>
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<nav class="tabs"><div class="wrap" role="tablist">
+  <button class="tab" role="tab" id="t-overall" aria-controls="p-overall" aria-selected="true">Overall</button>
+  <button class="tab" role="tab" id="t-cells" aria-controls="p-cells" aria-selected="false">Cells</button>
+  <button class="tab" role="tab" id="t-ministries" aria-controls="p-ministries" aria-selected="false">Ministries</button>
+</div></nav>
+
+<main class="wrap">
+<!-- OVERALL -->
+<section class="panel" id="p-overall" role="tabpanel" aria-labelledby="t-overall">
+  <div class="blk">
+    <div class="score" id="score"></div>
+    <button class="boardbtn" id="boardBtn" type="button"></button>
+  </div>
+
+  <div class="blk">
+    <span class="tape">The Saturday line</span>
+    <h2>Fewer of us are <em>showing up</em></h2>
+    <p class="say" id="sayLine"></p>
+    <div class="chart"><svg id="lineChart" viewBox="0 0 720 280" role="img" aria-label="People checked in each Saturday"></svg></div>
+    <div class="dotleg"><span><i style="background:var(--cream)"></i>Service week</span><span><i style="background:var(--pink)"></i>CG week</span></div>
+    <p class="note">Hover or tap the line for any Saturday. Weeks with no check-in data are skipped.</p>
+  </div>
+
+  <div class="blk">
+    <span class="tape pk">Service week vs CG week</span>
+    <h2>Same crowd, <em>either way</em></h2>
+    <p class="say" id="sayKind"></p>
+    <div class="vs" id="vs"></div>
+    <div class="rowlab"><span id="kindLab"></span></div>
+    <div class="bars" id="kindBars"></div>
+  </div>
+
+  <div class="blk">
+    <span class="tape pk">Our people</span>
+    <h2>More names. <em>Same</em> regulars.</h2>
+    <p class="say" id="sayRoll"></p>
+    <div class="rowlab"><span>21 Mar</span><span id="rollA"></span></div><div class="seg" id="segA"></div>
+    <div class="rowlab"><span>3 Oct</span><span id="rollB"></span></div><div class="seg" id="segB"></div>
+    <div class="legend">
+      <span><i class="s-reg"></i>Regular · 3+ Saturdays a month</span><span><i class="s-irr"></i>Irregular · 2 or fewer</span>
+      <span><i class="s-fu"></i>Follow up · not seen in 2 months</span><span><i class="s-new"></i>New</span>
+    </div>
+  </div>
+
+  <div class="blk">
+    <span class="tape">Newcomers</span>
+    <h2>Getting them in is easy. <em>Round two</em> is the hard part.</h2>
+    <div class="guess" id="guess">
+      <h3>Guess first: out of 10 newcomers, how many come back a second time?</h3>
+      <div class="opts"><button data-g="2">2</button><button data-g="4">4</button><button data-g="6">6</button><button data-g="8">8</button></div>
+      <p id="guessOut" class="mono">Tap a number</p>
+    </div>
+    <div class="two">
+      <div class="blk"><div class="rowlab"><span>The drop-off · sign-ups Feb to Aug</span></div><div class="bars" id="funnel"></div></div>
+      <div class="blk"><div class="rowlab"><span>Came back at least once, by sign-up month</span></div><div class="bars" id="months"></div></div>
+    </div>
+    <p class="note">January is left out: 131 forms came in that month, mostly existing people registering when check-in launched. "Still around" means 2 or more of the last 4 Saturdays.</p>
+  </div>
+
+  <div class="two">
+    <div class="blk"><span class="tape pk">How they found us</span><h2>Friends bring <em>friends</em></h2><div class="bars" id="found"></div></div>
+    <div class="blk"><span class="tape">Who we are</span><h2>How <em>old</em> we are</h2><div class="bars" id="ages"></div><p class="note" id="genderNote"></p></div>
+  </div>
+
+  <div class="blk"><span class="tape pk">Do this next</span><h2>3 <em>moves</em></h2><div class="moves" id="movesO"></div></div>
+
+  <div class="blk"><span class="tape">Clean-up crew</span><h2>Fix the <em>data</em></h2>
+    <p class="say">Everything to fix or follow up, added up across all cells and ministries. Tick these off as they get done.</p>
+    <div class="clean" id="cleanO"></div>
+  </div>
+</section>
+
+<!-- CELLS -->
+<section class="panel" id="p-cells" role="tabpanel" aria-labelledby="t-cells" hidden>
+  <div class="blk">
+    <span class="tape">The league table</span>
+    <h2>17 cells. <em>Here on Saturdays</em></h2>
+    <p class="say" id="sayCells"></p>
+    <div class="chips" id="sortChips"><span class="mono">Rank by</span></div>
+    <div class="chips" id="zoneChips"><span class="mono">Zone</span></div>
+    <div class="league" id="league"></div>
+    <p class="note">Tap a cell to open its card. Attendance rate = average Saturday headcount over the last 4 Saturdays ÷ members in that cell. Momentum compares the last 8 services with the 8 before.</p>
+  </div>
+  <div class="blk"><span class="tape pk">Do this next</span><h2>3 <em>moves</em></h2><div class="moves" id="movesC"></div></div>
+  <div class="blk"><span class="tape">Clean-up crew</span><h2>Fix the <em>cell lists</em></h2>
+    <p class="say">The totals across all 17 cells.</p>
+    <div class="clean" id="cleanC"></div>
+  </div>
+</section>
+
+<!-- MINISTRIES -->
+<section class="panel" id="p-ministries" role="tabpanel" aria-labelledby="t-ministries" hidden>
+  <div class="blk">
+    <div class="score" id="scoreM"></div>
+  </div>
+  <div class="blk">
+    <span class="tape">The four teams</span>
+    <h2>Serving keeps people <em>here</em></h2>
+    <p class="say" id="sayMin"></p>
+    <div class="mgrid" id="mgrid"></div>
+    <p class="note">Attendance rate here = how often the team's people checked in on the last 4 Saturdays. It doesn't count rehearsals or serving.</p>
+  </div>
+  <div class="two">
+    <div class="blk"><span class="tape pk">Where they come from</span><h2>Those who serve, per <em>cell</em></h2><div class="bars" id="srvCell"></div></div>
+    <div class="blk"><span class="tape">Worship breakdown</span><h2>Six <em>departments</em></h2><div class="bars" id="dept"></div><p class="note">From the ministry check-in list, so it may lag the main database.</p></div>
+  </div>
+  <div class="blk"><span class="tape pk">Do this next</span><h2>3 <em>moves</em></h2><div class="moves" id="movesM"></div></div>
+  <div class="blk"><span class="tape">Clean-up crew</span><h2>Fix the <em>team sheets</em></h2><div class="clean" id="cleanM"></div></div>
+</section>
+
+<details class="how">
+  <summary>Word guide &amp; how we counted</summary>
+  <ul>
+    <li><b>Member</b>: anyone on our active list. That is everyone marked New, Regular, Irregular or Follow Up.</li>
+    <li><b>Unique people</b>: everyone who checked in at least once this year. Of the 742, 531 are members today, 161 have since been archived (stopped coming or graduated), and 50 checked in under a name that is not in the database.</li>
+    <li><b>Regular</b>: comes 3 or more Saturdays a month. <b>Irregular</b>: 2 or fewer. <b>Follow Up</b>: not seen in 2 months.</li>
+    <li><b>Attendance rate</b>: out of everyone in the group, the share who actually turn up on a normal Saturday.</li>
+    <li><b>Momentum</b>: is the group getting bigger or smaller? Last 8 Saturdays compared with the 8 before.</li>
+    <li><b>Service week / CG week</b>: taken from the NarrowStreet calendar. Six Saturdays with no label are counted as Service.</li>
+    <li>Source: the check-in log and the master database, read on 9 Oct 2026. Latest service counted: 3 Oct 2026.</li>
+        <li>Saturday headcount = unique people checked in that day, visitors included.</li>
+    <li>"Drifting" = came to at least half of the 8 services before the last 8, then zero of the last 4.</li>
+    <li>Only totals are shown, except the streak board, which names people who earned it. Names for follow-up go to zone leaders directly.</li>
+  </ul>
+</details>
+</main>
+
+<script>
+(()=>{
+const D={"dates":["24 Jan","31 Jan","07 Feb","14 Feb","28 Feb","07 Mar","21 Mar","28 Mar","04 Apr","11 Apr","18 Apr","25 Apr","02 May","09 May","16 May","23 May","30 May","06 Jun","13 Jun","20 Jun","27 Jun","11 Jul","18 Jul","01 Aug","08 Aug","15 Aug","22 Aug","29 Aug","19 Sep","26 Sep","03 Oct"],"weekly":[288,300,271,255,264,277,272,277,397,245,239,257,270,256,252,242,217,271,296,265,263,221,250,231,232,264,221,246,226,167,218],"first8":276,"last8":226,"checkins":7845,"unique":742,"roll":{"n":583,"New":15,"Regular":158,"Irregular":244,"Follow Up":166,"archive":207},"l4any":327,"l4reg":171,"iron":39,"perfect":7,"snap":{"d":["21 Mar","28 Mar","04 Apr","11 Apr","18 Apr","25 Apr","02 May","09 May","16 May","23 May","30 May","06 Jun","13 Jun","20 Jun","27 Jun","04 Jul","11 Jul","18 Jul","25 Jul","01 Aug","08 Aug","15 Aug","22 Aug","29 Aug","05 Sep","12 Sep","19 Sep","26 Sep","03 Oct"],"reg":[160,207,199,181,168,158,190,193,182,183,175,168,168,173,171,171,162,166,166,166,166,166,165,161,161,161,159,159,159],"irr":[211,174,194,214,227,239,238,241,256,260,273,296,297,290,271,272,276,272,273,276,277,285,286,285,285,286,286,276,276],"fu":[44,42,41,34,34,37,43,38,45,46,76,67,76,80,101,102,107,116,115,116,121,124,126,130,130,131,132,118,119],"new":[80,83,122,115,116,116,80,79,57,62,36,36,41,45,46,45,47,38,38,34,32,22,20,19,19,17,24,25,25]},"mm":{"regGhost":3,"irrUp":30,"fuBack":0,"silent8":43,"newNoDate":0,"ageBad":20,"drift":26,"never":17,"fuNoShow":17,"fuOnce":107,"fuLapsed":20},"clean":{"misaligned":5,"dupActive":4,"logNotInDb":49,"notSure":0,"ncUnprocessed":7,"crPending":0,"crTotal":45},"fun":{"n":336,"v1":327,"v2":139,"v4":71,"now":30,"reg":7,"red":114},"mon":{"Jan":[137,118],"Feb":[40,29],"Mar":[50,37],"Apr":[95,34],"May":[27,13],"Jun":[94,11],"Jul":[8,4],"Aug":[27,12],"Sep":[16,9]},"found":[["Friend",239],["Kidzone",32],["Parents",25],["Family / other",19],["Main service",12],["Instagram",9]],"cells":[{"c":"Harbour","z":"Amos","n":44,"st":[1,9,19,15],"ser":[15,18,12,16,20,18,14,22,25,8,14,9,14,14,18,14,11,15,20,17,12,14,15,14,14,12,11,11,14,8,13],"l4":11.5,"l8":12.1,"p8":14.8,"lead":6,"srv":9,"h0":32,"nc":16,"ncv2":7,"act4":21,"regGhost":0,"irrUp":0,"fuBack":0,"silent8":4,"newNoDate":0,"ageBad":3,"drift":0,"never":0,"fuNoShow":0,"fuOnce":11,"fuLapsed":3,"sv":14.4,"cg":14.3},{"c":"Lantern","z":"Bella","n":35,"st":[1,17,12,5],"ser":[21,19,14,23,19,17,16,19,26,13,19,20,19,17,19,22,14,22,13,22,19,17,21,19,19,23,15,19,18,13,19],"l4":17.2,"l8":18.1,"p8":18.8,"lead":4,"srv":5,"h0":33,"nc":20,"ncv2":7,"act4":25,"regGhost":1,"irrUp":2,"fuBack":0,"silent8":2,"newNoDate":0,"ageBad":4,"drift":0,"never":0,"fuNoShow":0,"fuOnce":5,"fuLapsed":0,"sv":18.6,"cg":17.9},{"c":"Cedar","z":"Caleb","n":21,"st":[0,10,6,5],"ser":[20,16,13,11,15,10,14,12,20,10,12,10,16,15,16,13,9,9,19,8,12,10,9,14,13,15,7,10,14,11,13],"l4":12.0,"l8":12.1,"p8":11.1,"lead":4,"srv":5,"h0":25,"nc":23,"ncv2":10,"act4":16,"regGhost":0,"irrUp":1,"fuBack":0,"silent8":1,"newNoDate":0,"ageBad":1,"drift":0,"never":1,"fuNoShow":1,"fuOnce":0,"fuLapsed":1,"sv":13.1,"cg":12.4},{"c":"Compass","z":"Dara","n":32,"st":[3,7,13,9],"ser":[17,22,15,16,15,16,16,21,18,15,11,11,17,15,17,7,8,15,13,16,13,10,13,9,6,13,10,13,13,8,9],"l4":10.8,"l8":10.1,"p8":11.9,"lead":2,"srv":7,"h0":32,"nc":11,"ncv2":3,"act4":19,"regGhost":0,"irrUp":2,"fuBack":0,"silent8":1,"newNoDate":0,"ageBad":1,"drift":1,"never":1,"fuNoShow":1,"fuOnce":6,"fuLapsed":1,"sv":13.5,"cg":13.5},{"c":"Ember","z":"Bella","n":38,"st":[1,7,15,15],"ser":[13,16,17,16,17,13,18,16,19,10,15,13,18,12,19,10,5,9,6,16,13,9,9,11,18,15,13,13,14,8,14],"l4":12.2,"l8":13.2,"p8":9.6,"lead":4,"srv":4,"h0":29,"nc":10,"ncv2":4,"act4":19,"regGhost":0,"irrUp":4,"fuBack":0,"silent8":0,"newNoDate":0,"ageBad":2,"drift":2,"never":6,"fuNoShow":6,"fuOnce":6,"fuLapsed":3,"sv":13.8,"cg":12.5},{"c":"Meadow","z":"Bella","n":46,"st":[0,9,13,24],"ser":[17,22,11,16,14,18,15,18,26,17,19,16,20,16,16,15,14,14,31,13,18,13,9,16,11,19,18,18,14,8,12],"l4":13.0,"l8":14.5,"p8":15.9,"lead":4,"srv":9,"h0":33,"nc":35,"ncv2":11,"act4":19,"regGhost":0,"irrUp":3,"fuBack":0,"silent8":1,"newNoDate":0,"ageBad":1,"drift":0,"never":2,"fuNoShow":2,"fuOnce":19,"fuLapsed":2,"sv":15.1,"cg":16.0},{"c":"Summit","z":"Caleb","n":31,"st":[0,10,14,7],"ser":[18,18,15,17,14,14,15,19,22,19,9,17,14,14,14,8,9,13,15,17,18,15,14,16,13,16,8,14,9,7,13],"l4":10.8,"l8":12.0,"p8":13.6,"lead":4,"srv":8,"h0":28,"nc":19,"ncv2":9,"act4":18,"regGhost":0,"irrUp":0,"fuBack":0,"silent8":3,"newNoDate":0,"ageBad":0,"drift":2,"never":0,"fuNoShow":0,"fuOnce":3,"fuLapsed":2,"sv":14.3,"cg":14.1},{"c":"Tide","z":"Amos","n":28,"st":[3,6,15,4],"ser":[12,13,13,5,13,16,12,9,13,12,20,12,13,11,13,9,7,13,11,16,8,12,13,12,8,18,4,12,18,8,11],"l4":12.2,"l8":11.4,"p8":11.1,"lead":2,"srv":8,"h0":23,"nc":10,"ncv2":5,"act4":20,"regGhost":0,"irrUp":3,"fuBack":0,"silent8":2,"newNoDate":0,"ageBad":1,"drift":2,"never":0,"fuNoShow":0,"fuOnce":4,"fuLapsed":0,"sv":12.9,"cg":11.4},{"c":"Orchard","z":"Dara","n":40,"st":[0,11,14,15],"ser":[17,26,23,20,18,23,25,24,34,17,19,20,20,23,17,20,17,20,44,19,18,16,18,17,19,14,18,17,12,14,9],"l4":13.0,"l8":15.0,"p8":21.5,"lead":4,"srv":13,"h0":32,"nc":42,"ncv2":10,"act4":18,"regGhost":1,"irrUp":0,"fuBack":0,"silent8":2,"newNoDate":0,"ageBad":1,"drift":3,"never":0,"fuNoShow":0,"fuOnce":9,"fuLapsed":4,"sv":17.6,"cg":21.2},{"c":"Core Team","z":"Eli","n":17,"st":[0,12,5,0],"ser":[15,16,16,12,17,15,13,12,13,15,13,12,12,12,14,10,15,16,15,16,15,15,10,13,15,17,13,15,16,7,12],"l4":12.5,"l8":13.5,"p8":14.0,"lead":2,"srv":13,"h0":16,"nc":0,"ncv2":0,"act4":17,"regGhost":0,"irrUp":1,"fuBack":0,"silent8":0,"newNoDate":0,"ageBad":0,"drift":1,"never":0,"fuNoShow":0,"fuOnce":0,"fuLapsed":0,"sv":14.1,"cg":12.9},{"c":"Willow","z":"Caleb","n":43,"st":[2,9,23,9],"ser":[18,22,13,16,18,20,13,24,22,17,16,22,18,15,17,14,12,14,15,22,16,17,16,12,22,16,12,15,17,14,17],"l4":15.8,"l8":15.6,"p8":15.8,"lead":6,"srv":1,"h0":37,"nc":14,"ncv2":10,"act4":26,"regGhost":0,"irrUp":6,"fuBack":0,"silent8":5,"newNoDate":0,"ageBad":0,"drift":3,"never":2,"fuNoShow":2,"fuOnce":7,"fuLapsed":1,"sv":16.6,"cg":16.4},{"c":"Beacon","z":"Dara","n":31,"st":[0,10,12,9],"ser":[12,14,15,13,13,14,14,13,19,13,9,15,12,15,13,15,17,21,17,13,17,16,10,14,12,13,12,13,11,5,12],"l4":10.2,"l8":11.5,"p8":15.8,"lead":3,"srv":7,"h0":26,"nc":16,"ncv2":9,"act4":15,"regGhost":0,"irrUp":1,"fuBack":0,"silent8":6,"newNoDate":0,"ageBad":0,"drift":1,"never":0,"fuNoShow":0,"fuOnce":8,"fuLapsed":0,"sv":13.2,"cg":13.4},{"c":"Kindle","z":"Caleb","n":41,"st":[1,7,22,11],"ser":[21,12,19,13,15,21,18,23,20,23,11,13,14,18,20,16,17,16,15,10,15,11,17,12,17,9,15,13,17,8,11],"l4":12.2,"l8":12.8,"p8":14.6,"lead":3,"srv":6,"h0":34,"nc":15,"ncv2":10,"act4":20,"regGhost":0,"irrUp":4,"fuBack":0,"silent8":6,"newNoDate":0,"ageBad":1,"drift":3,"never":2,"fuNoShow":2,"fuOnce":6,"fuLapsed":1,"sv":13.9,"cg":16.1},{"c":"North Star","z":"Bella","n":30,"st":[0,9,11,10],"ser":[20,14,11,14,9,12,13,13,17,10,8,15,12,11,9,13,15,12,12,11,8,8,13,8,9,11,11,15,14,5,13],"l4":11.8,"l8":10.8,"p8":11.5,"lead":4,"srv":6,"h0":25,"nc":13,"ncv2":11,"act4":19,"regGhost":0,"irrUp":1,"fuBack":0,"silent8":0,"newNoDate":0,"ageBad":1,"drift":1,"never":0,"fuNoShow":0,"fuOnce":7,"fuLapsed":1,"sv":12.1,"cg":12.1},{"c":"Riverbend","z":"Amos","n":32,"st":[0,6,16,10],"ser":[16,16,13,14,18,16,13,13,16,12,13,16,13,15,13,11,17,8,5,14,12,11,11,10,9,6,17,13,8,6,9],"l4":9.0,"l8":9.8,"p8":11.1,"lead":4,"srv":2,"h0":26,"nc":15,"ncv2":7,"act4":16,"regGhost":0,"irrUp":2,"fuBack":0,"silent8":2,"newNoDate":0,"ageBad":2,"drift":3,"never":1,"fuNoShow":1,"fuOnce":8,"fuLapsed":0,"sv":12.5,"cg":12.4},{"c":"Sparrow","z":"Dara","n":32,"st":[2,7,15,8],"ser":[17,12,13,12,11,12,10,7,15,7,8,9,13,17,11,11,12,14,13,10,15,11,17,17,13,14,15,14,4,6,3],"l4":6.8,"l8":10.8,"p8":12.9,"lead":4,"srv":5,"h0":32,"nc":17,"ncv2":7,"act4":16,"regGhost":1,"irrUp":0,"fuBack":0,"silent8":3,"newNoDate":0,"ageBad":2,"drift":4,"never":0,"fuNoShow":0,"fuOnce":8,"fuLapsed":0,"sv":12.0,"cg":13.0},{"c":"Wayfarer","z":"Amos","n":42,"st":[1,12,19,10],"ser":[17,19,25,17,15,21,18,16,28,15,13,19,19,15,16,18,22,23,21,24,17,13,18,22,17,20,15,17,16,15,19],"l4":16.8,"l8":17.6,"p8":19.5,"lead":6,"srv":11,"h0":32,"nc":27,"ncv2":12,"act4":23,"regGhost":0,"irrUp":5,"fuBack":0,"silent8":4,"newNoDate":0,"ageBad":0,"drift":5,"never":2,"fuNoShow":2,"fuOnce":6,"fuLapsed":1,"sv":18.2,"cg":18.1}],"mins":[{"m":"Spark","n":13,"roles":[1,1,2,0,9],"st":[0,6,7,0],"show":62,"ghost":1,"low":3,"cg":7,"multi":7,"a18":6,"a15":0,"inactive":0,"tab":13,"all":13,"cells":10,"irrUp":1,"regGhost":0},{"m":"Welcome","n":28,"roles":[1,1,5,0,21],"st":[0,24,4,0],"show":84,"ghost":0,"low":1,"cg":13,"multi":6,"a18":8,"a15":5,"inactive":2,"tab":28,"all":30,"cells":8,"irrUp":1,"regGhost":0},{"m":"Media","n":36,"roles":[1,1,4,0,30],"st":[0,21,14,1],"show":62,"ghost":4,"low":11,"cg":11,"multi":11,"a18":13,"a15":1,"inactive":1,"tab":36,"all":37,"cells":11,"irrUp":2,"regGhost":1},{"m":"Worship","n":55,"roles":[1,0,10,0,44],"st":[0,36,18,1],"show":59,"ghost":5,"low":16,"cg":27,"multi":11,"a18":28,"a15":8,"inactive":2,"tab":55,"all":57,"cells":16,"irrUp":1,"regGhost":2}],"srv":{"n":114,"reg":158,"regServing":74,"multi":17,"cg":47,"cgAll":66,"irrUpNotServing":100,"show":64,"showNon":29},"dept":[["Spark",16],["Worship: Band",13],["Worship: Vocals",13],["Worship: Dance",11],["Worship: LCD",9],["Worship: Lights",7],["Worship: Sound",6],["Welcome",3],["Media",1]],"ages":[["12-",28],["13",63],["14",75],["15",73],["16",76],["17",101],["18",75],["19",33],["20+",39]],"gender":{"Male":289,"Female":294},"types":"CSCSSCSCSCACACACAACSCSCACSCSSCS","kind":{"svc":260,"svcNoE":251,"cg":253,"nS":17,"nC":14,"elig":403,"both":363,"sl":27,"cl":13,"onlyS":33,"onlyC":6,"Regular":[85,83],"Irregular":[41,39],"by":{"New":[33,15,15],"Regular":[86,85,158],"Irregular":[46,45,244],"Follow Up":[10,9,149]}},"board":[["Fiona Tan","Lantern",31,31],["Ruth Ong","Riverbend",31,31],["Faith Chan","Cedar",31,31],["Tabitha Tan","Summit",31,31],["Elise Wong","Core Team",31,31],["Vera Teoh","Wayfarer",31,31],["Daniel Chua","Sparrow",31,31],["Ivy Yap","Orchard",30,30],["Quinn Lim","Kindle",30,29],["Xin Yi Tan","Orchard",30,28],["Dorcas Low","Cedar",30,28],["Isaac Lau","Meadow",30,24],["Jonah Tan","Orchard",30,12],["Phoebe Ng","Ember",30,12],["Faith Ong","Core Team",30,7],["Naomi Goh","North Star",30,4],["Silas Ong","Beacon",30,1],["Fiona Wong","Harbour",30,1],["Tabitha Low","Summit",30,0],["Ivy Chan","Orchard",30,0],["Hosea Lim","Sparrow",30,0],["Elise Lau","Sparrow",29,15],["Aaron Teoh","Lantern",29,14],["Aaron Yap","Orchard",29,13],["Abigail Lim","Lantern",29,12],["Uriel Foo","Compass",29,11],["Lydia Tan","Meadow",29,9],["Ben Ng","Meadow",29,8],["Faith Wong","Beacon",29,4],["Silas Wong","Lantern",29,3],["Owen Ong","Cedar",29,3],["Bethany Teoh","Lantern",29,3],["Gideon Goh","North Star",29,1],["Kaleb Low","Core Team",29,1],["Levi Lim","North Star",29,1],["Tabitha Teoh","Tide",29,1],["Gideon Teoh","Wayfarer",29,1],["Ivy Wong","Core Team",29,0],["Dorcas Chan","Core Team",29,0]],"cu":{"sec":{"noshow":["Follow Up, no check-in all year","Never checked in during 2026. Give one last invite. If there is no reply, ask for Red so the list stays real. If they do come, check they are tapping in under the right name."],"once":["Follow Up, came once or twice","Visited early on and did not come back. One last invite, then ask for Red if there is no reply."],"lapsed":["Follow Up, used to come a lot","They came 5 or more times this year, then stopped. Nothing to change in the data. They need a personal message from someone they know."],"slip":["Missed 8 Saturdays in a row","Still counted as coming, but about a month from Follow Up. The status will change by itself. Reach out before it does."],"run":["Locked in (almost Regular)","Came 3 or more of the last 4 Saturdays. The status will move to Regular by itself if they keep it up. Tell them you noticed."],"newdate":["New, with no start date","Marked New but the start date is empty, so the system cannot tell when to move them on."],"age":["Birthday missing or wrong","Age shows as blank, 0 or impossible, which means the birthday was typed wrong (often with this year as the birth year)."],"dup":["Same name twice","This name is on the member list more than once. Keep one row and mark the other as Duplicate."],"unknown":["Marked Follow Up, but tapping in under another name","They have checked in 3 or more times under a name that is spelled differently in the database, so the system thinks they stopped coming. Fix whichever spelling is wrong and the status corrects itself."],"formgap":["Approved newcomer, missing from the list","Their newcomer form was approved for this cell, but they were never added to the member list, so nobody is following them up."],"shifted":["Newcomer form waiting for approval","They filled in the newcomer form and it has not been approved or rejected yet. Until it is, they are not on the cell list and are missing from every count."],"nevercame":["On the list, never checked in","Not marked Follow Up, but has no check-ins in 2026."],"m_gone":["Has a role, but is no longer active","Still holds a ministry role while marked Red, Graduated or archived. Clear the role so the team sheet is real."],"m_quiet":["Not seen at the last 8 Saturdays","Either they have stepped back, or they are serving without tapping in. Have the conversation, then update."],"m_fu":["Serving, but marked Follow Up","The status says we have not seen them, yet they hold a role. One of the two is wrong."],"m_dept":["Department not filled in","The Ministry Department column is empty. The suggested department comes from the ministry check-in list."]},"n":{"slip":{"cell":43},"lapsed":{"cell":20},"once":{"cell":107},"age":{"cell":20},"run":{"cell":30},"dup":{"cell":8},"noshow":{"cell":17},"m_quiet":{"ministry":8},"m_gone":{"ministry":5},"m_fu":{"ministry":2},"m_dept":{"ministry":55}}}};
+const CHATBOT="#";
+const $=s=>document.querySelector(s), RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const pct=(a,b)=>b?Math.round(100*a/b):0, sum=a=>a.reduce((x,y)=>x+y,0);
+const h=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const NS="http://www.w3.org/2000/svg";
+const sv=(tag,at,txt)=>{const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;return e};
+
+/* tooltip */
+const tip=$("#tip");
+function showTip(ev,html){tip.innerHTML=html;tip.hidden=false;const p=ev.touches?ev.touches[0]:ev;const w=tip.offsetWidth;
+  tip.style.left=Math.max(8,Math.min(innerWidth-w-8,p.clientX+12))+"px";tip.style.top=Math.max(8,p.clientY-tip.offsetHeight-12)+"px"}
+const hideTip=()=>tip.hidden=true;
+
+/* count-up */
+function countUp(root){if(RM)return;root.querySelectorAll("[data-n]").forEach(e=>{const to=+e.dataset.n,suf=e.dataset.s||"",t0=performance.now();
+  (function f(t){const k=Math.min(1,(t-t0)/900),v=Math.round(to*(1-Math.pow(1-k,3)));e.textContent=v.toLocaleString()+suf;if(k<1)requestAnimationFrame(f)})(t0)})}
+const num=(n,s="")=>`<span data-n="${n}" data-s="${s}">${n.toLocaleString()}${s}</span>`;
+
+function score(el,items){items.forEach(i=>el.append(h("div","sc"+(i.hot?" hot":""),`<div class="num">${num(i.n,i.s)}</div><div class="lab">${i.lab}</div><div class="sub">${i.sub}</div>`)))}
+function bars(el,rows,max){max=max||Math.max(...rows.map(r=>r.v));rows.forEach(r=>{const b=h("div","bar",`<div class="t">${r.t}</div><div class="track">${r.bg!=null?`<i class="fill ghost" style="width:${100*r.bg/max}%"></i>`:""}<i class="fill ${r.cls||""}" style="width:${Math.max(1,100*r.v/max)}%"></i><span class="v"${r.v/max>.72&&r.cls!=="pk"?' style="color:var(--ink)"':""}>${r.lab??r.v}</span></div>`);
+  if(r.tip){b.addEventListener("mousemove",e=>showTip(e,r.tip));b.addEventListener("mouseleave",hideTip);b.addEventListener("click",e=>showTip(e,r.tip))}el.append(b)})}
+const SEG=[["s-new","New"],["s-reg","Regular"],["s-irr","Irregular"],["s-fu","Follow up"]];
+function seg(el,vals,order=[1,2,3,0]){const t=sum(vals);order.forEach(i=>{if(!vals[i])return;const s=h("i",SEG[i][0],vals[i]/t>.06?vals[i]:"");s.style.flex=vals[i];s.title=`${SEG[i][1]}: ${vals[i]}`;
+  s.addEventListener("mousemove",e=>showTip(e,`<small>${SEG[i][1]}</small>${vals[i]} people · ${pct(vals[i],t)}%`));s.addEventListener("mouseleave",hideTip);el.append(s)})}
+function moves(el,items){items.forEach((m,i)=>{const d=h("div","move",`<div class="k">${i+1}</div><h3>${m.t}</h3><p>${m.p}</p>`);if(m.q){const b=copyBtn(m.q);b.textContent=b.dataset.l="Copy chatbot prompt";b.style.cssText="margin-top:10px;background:var(--ink);color:var(--cream);padding:8px 10px";d.append(b)}el.append(d)})}
+
+/* cleanup checklist */
+function copyBtn(text){const b=h("button","copy","Copy");b.type="button";b.addEventListener("click",e=>{e.stopPropagation();const ok=()=>{b.textContent="Copied";b.classList.add("ok");setTimeout(()=>{b.textContent=b.dataset.l||"Copy";b.classList.remove("ok")},1400)};
+  (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(ok).catch(()=>{const s=b.parentElement.querySelector("span");if(s){const r=document.createRange();r.selectNodeContents(s);const g=getSelection();g.removeAllRanges();g.addRange(r)}b.textContent="Selected"})});return b}
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||"{}");localStorage.setItem(k,JSON.stringify(v))}catch(e){return{}}}
+function clean(el,key,items){const st=store(key)||{};const prog=h("div","prog");el.append(prog);
+  const upd=()=>{const d=items.filter(i=>st[i.id]).length;prog.textContent=`${d} of ${items.length} cleared on this device`};
+  items.forEach(i=>{const row=h("div","ci"+(st[i.id]?" done":""));const cb=h("input");cb.type="checkbox";cb.id=key+"-"+i.id;cb.checked=!!st[i.id];
+    cb.addEventListener("change",()=>{st[i.id]=cb.checked;row.classList.toggle("done",cb.checked);store(key,st);upd()});
+    const hd=h("label","h",`<b>${i.n}</b>${i.t}`);hd.htmlFor=cb.id;row.append(cb,hd,h("div","w",i.w));
+    if(i.p){const p=h("div","p");p.append(h("span",null,i.p),copyBtn(i.p));row.append(p)}el.append(row)});
+  const n=h("div","prog");n.innerHTML='Leaders: the names behind each item are on the <a href="#" target="_blank" rel="noopener" style="color:var(--cream)">Clean-Up Board</a>.';el.append(n);upd()}
+
+/* ---------- OVERALL ---------- */
+const W=D.weekly,R=D.roll,F=D.fun,M=D.mm,C=D.clean,drop=pct(D.first8-D.last8,D.first8);
+$("#tick").innerHTML=Array(2).fill([`${D.checkins.toLocaleString()} check-ins`,`${D.unique} unique people checked in`,`${R.n} active members`,`${D.perfect} people have not missed a single Saturday`,`${D.iron} missed two or fewer`,`biggest Saturday: ${Math.max(...W)} on 04 Apr`,`${D.srv.n} serving in a ministry`].map(t=>`<span>★ ${t}</span>`).join("")).join("");
+score($("#score"),[
+ {n:D.last8,lab:"Show up weekly",sub:`average Saturday, last 8 services`,hot:1},
+ {n:R.n,lab:"Members",sub:`of ${D.unique} who came this year`},
+ {n:R.Regular,lab:"Regulars",sub:`${pct(R.Regular,R.n)}% of members`},
+ {n:pct(D.l4any,R.n),s:"%",lab:"Seen this month",sub:`${D.l4any} came in the last 4 Saturdays`}]);
+$("#boardBtn").innerHTML=`★ ${D.perfect} people never missed a Saturday. See who →`;
+$("#sayLine").innerHTML=`We started the year averaging <b>${D.first8}</b> a Saturday. The last 8 services averaged <b>${D.last8}</b>. That is ${drop}% fewer people showing up.`;
+(function line(){const s=$("#lineChart"),w=720,ht=280,l=38,r=14,t=26,b=30,mx=400,x=i=>l+i*(w-l-r)/(W.length-1),y=v=>t+(ht-t-b)*(1-v/mx);
+  [0,100,200,300,400].forEach(g=>{s.append(sv("line",{x1:l,x2:w-r,y1:y(g),y2:y(g),stroke:"#2a2632","stroke-width":1}),sv("text",{x:l-6,y:y(g)+4,"text-anchor":"end"},g))});
+  let lm="";D.dates.forEach((d,i)=>{const m=d.slice(3);if(m!==lm){lm=m;s.append(sv("text",{x:x(i),y:ht-8,"text-anchor":i?"middle":"start"},m.toUpperCase()))}});
+  const pts=W.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`);
+  s.append(sv("polygon",{points:`${x(0)},${y(0)} ${pts.join(" ")} ${x(W.length-1)},${y(0)}`,fill:"#f1e7cf","fill-opacity":.1}));
+  s.append(sv("polyline",{points:pts.join(" "),fill:"none",stroke:"#f1e7cf","stroke-width":2.5,"stroke-linejoin":"round"}));
+  W.forEach((v,i)=>s.append(sv("circle",{cx:x(i),cy:y(v),r:3.5,fill:D.types[i]==="C"?"#ff2e88":"#f1e7cf",stroke:"#1c1922","stroke-width":1.5})));
+  const hi=W.indexOf(Math.max(...W)),lo=W.indexOf(Math.min(...W)),last=W.length-1;
+  [[hi,`${W[hi]} · Easter weekend`,-10,"middle"],[lo,`${W[lo]} · lowest`,18,"end"],[last,`${W[last]}`,-10,"end"]].forEach(([i,txt,dy,an])=>{
+    s.append(sv("text",{x:x(i)+(an==="end"&&i===last?4:0),y:y(W[i])+dy,"text-anchor":an,class:"lbl"},txt))});
+  const cross=sv("line",{y1:t,y2:ht-b,stroke:"#b9b09c","stroke-dasharray":"3 3",visibility:"hidden"}),dot=sv("circle",{r:5,fill:"#f1e7cf",stroke:"#1c1922","stroke-width":2,visibility:"hidden"});
+  s.append(cross,dot);const hit=sv("rect",{x:l,y:t,width:w-l-r,height:ht-t-b,fill:"transparent"});s.append(hit);
+  const mv=e=>{const p=e.touches?e.touches[0]:e,bb=s.getBoundingClientRect(),px=(p.clientX-bb.left)/bb.width*w,i=Math.max(0,Math.min(W.length-1,Math.round((px-l)/((w-l-r)/(W.length-1)))));
+    cross.setAttribute("x1",x(i));cross.setAttribute("x2",x(i));dot.setAttribute("cx",x(i));dot.setAttribute("cy",y(W[i]));cross.setAttribute("visibility","visible");dot.setAttribute("visibility","visible");showTip(e,`<small>${D.dates[i]} 2026 · ${D.types[i]==="C"?"CG week":"Service week"}</small>${W[i]} checked in`)};
+  const out=()=>{cross.setAttribute("visibility","hidden");dot.setAttribute("visibility","hidden");hideTip()};
+  hit.addEventListener("mousemove",mv);hit.addEventListener("touchstart",mv,{passive:true});hit.addEventListener("touchmove",mv,{passive:true});hit.addEventListener("mouseleave",out);hit.addEventListener("touchend",out)})();
+const K=D.kind;
+$("#sayKind").innerHTML=`A normal Service Saturday pulls <b>${K.svcNoE}</b>. A CG Saturday pulls <b>${K.cg}</b>. People don't pick and choose: if they come, they come to both.`;
+$("#vs").innerHTML=`<div class="sc hot"><div class="num">${num(K.svcNoE)}</div><div class="lab">Service week</div><div class="sub">average over ${K.nS-1} Saturdays, Easter left out</div></div><div class="mid">VS</div><div class="sc"><div class="num">${num(K.cg)}</div><div class="lab">CG week</div><div class="sub">average over ${K.nC} Saturdays</div></div>`;
+$("#kindLab").textContent="How often each group shows up, by type of week";
+bars($("#kindBars"),[["Regular","Regular"],["Irregular","Irregular"],["New","New"],["Follow Up","Follow up"]].flatMap(([k,l])=>{const b=K.by[k];return[{t:l,v:b[0],lab:`Service ${b[0]}%`,tip:`<small>${l} · ${b[2]} people</small>Came to ${b[0]}% of Service weeks`},{t:"",v:b[1],cls:"pk",lab:`CG ${b[1]}%`,tip:`<small>${l} · ${b[2]} people</small>Came to ${b[1]}% of CG weeks`}]}),100);
+const S=D.snap,a0=[S.new[0],S.reg[0],S.irr[0],S.fu[0]],a1=[R.New,R.Regular,R.Irregular,R["Follow Up"]];
+seg($("#segA"),a0);seg($("#segB"),a1);$("#rollA").textContent=sum(a0)+" people";$("#rollB").textContent=sum(a1)+" people";
+$("#segA").style.width=pct(sum(a0),sum(a1))+"%";
+$("#sayRoll").innerHTML=`Since March our member list grew by <b>${sum(a1)-sum(a0)}</b> names, but Regulars went from ${a0[1]} to ${a1[1]}. The growth landed in Follow Up: <b>${a0[3]} → ${a1[3]}</b> people we have not seen in 2 months.`;
+bars($("#funnel"),[{t:"Signed up",v:F.n},{t:"Came back once",v:F.v2,lab:`${F.v2} · ${pct(F.v2,F.n)}%`},{t:"4+ visits",v:F.v4,lab:`${F.v4} · ${pct(F.v4,F.n)}%`},{t:"Still around now",v:F.now,cls:"pk",lab:`${F.now} · ${pct(F.now,F.n)}%`}]);
+bars($("#months"),Object.entries(D.mon).filter(([m])=>m!=="Jan").map(([m,[n,v]])=>({t:m,v:v,bg:n,cls:"pk",lab:`${v} of ${n}`,tip:`<small>${m} sign-ups</small>${n} new · ${v} came back (${pct(v,n)}%)`})),Math.max(...Object.values(D.mon).slice(1).map(v=>v[0])));
+const right=Math.round(10*F.v2/F.n/2)*2;
+$("#guess").addEventListener("click",e=>{const b=e.target.closest("button[data-g]");if(!b)return;$("#guess").querySelectorAll("button").forEach(x=>x.classList.add(+x.dataset.g===right?"right":"wrong"));
+  $("#guessOut").textContent=(+b.dataset.g===right?"Spot on. ":"Not quite. ")+`About ${right} in 10: ${F.v2} of ${F.n} newcomers came back a second time.`});
+const ft=sum(D.found.map(f=>f[1]));bars($("#found"),D.found.map((f,i)=>({t:f[0],v:f[1],cls:i?"":"pk",lab:pct(f[1],ft)+"%",tip:`<small>${f[0]}</small>${f[1]} of ${ft} newcomers`})));
+bars($("#ages"),D.ages.map(a=>({t:a[0].replace("12-","12 & under"),v:a[1]})));
+$("#genderNote").textContent=`${D.gender.Female} girls, ${D.gender.Male} guys. ${M.ageBad} people have a missing or wrong age and are left off this chart.`;
+const mJ=D.mon.Jun,mF=D.mon.Feb;
+moves($("#movesO"),[
+ {t:`Text the ${M.drift} who drifted`,p:`They were here most weeks mid-year and have missed the last 4 Saturdays. They are the easiest people to win back. Zone leaders have the names.`},
+ {t:"Plan the second visit",p:`February: ${mF[1]} of ${mF[0]} newcomers came back. June's big weekend: ${mJ[1]} of ${mJ[0]}. Big events need a follow-up plan before the doors open.`},
+ {t:`Catch ${M.silent8} before they slip`,p:`${M.silent8} members have missed 8 Saturdays in a row. About a month more and they move to Follow Up. On the bright side, ${M.irrUp} others came 3+ of the last 4, so tell them you noticed.`}]);
+const CUO=["noshow","once","lapsed","slip","run","nevercame","m_gone","m_fu","m_quiet","m_dept","unknown","formgap","dup","newdate","age","shifted"];
+const cuItems=kinds=>CUO.map(k=>{const c=D.cu.n[k]||{},n=kinds.reduce((a,x)=>a+(c[x]||0),0);return n?{id:k,n:n,t:D.cu.sec[k][0],w:D.cu.sec[k][1]}:null}).filter(Boolean);
+clean($("#cleanO"),"nwst-clean-all",[...cuItems(["cell","ministry","admin"]),
+ ...(C.crPending?[{id:"q",n:C.crPending,t:"Change requests still open",w:"Requests filed through the chatbot that have not been approved or rejected yet."}]:[])]);
+
+/* ---------- CELLS ---------- */
+D.cells.forEach(c=>{c.rate=pct(c.l4,c.n);c.mom=c.p8?Math.round(100*(c.l8-c.p8)/c.p8):0;c.regp=pct(c.st[1],c.n);c.per=Math.round(c.n/Math.max(1,c.lead));c.swing=c.sv?Math.round(100*(c.cg-c.sv)/c.sv):0});
+const SORTS={rate:["Attendance rate",c=>c.rate,c=>c.rate+"%","of members"],mom:["Momentum",c=>c.mom,c=>(c.mom>0?"▲ +":c.mom<0?"▼ ":"")+c.mom+"%","vs prev 8"],swing:["CG vs Service",c=>c.swing,c=>(c.swing>0?"+":"")+c.swing+"%","on CG weeks"],regp:["Regulars",c=>c.regp,c=>c.regp+"%","regular"],n:["Size",c=>c.n,c=>c.n,"members"]};
+let sortK="rate",zoneK="All",openC=null;
+const zones=["All",...new Set(D.cells.map(c=>c.z))];
+Object.entries(SORTS).forEach(([k,v])=>{const b=h("button","chip",v[0]);b.type="button";b.dataset.k=k;$("#sortChips").append(b)});
+zones.forEach(z=>{const b=h("button","chip",z);b.type="button";b.dataset.z=z;$("#zoneChips").append(b)});
+$("#sortChips").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b){sortK=b.dataset.k;league()}});
+$("#zoneChips").addEventListener("click",e=>{const b=e.target.closest("[data-z]");if(b){zoneK=b.dataset.z;league()}});
+function spark(v){const w=600,ht=70,mx=Math.max(...v,1),x=i=>4+i*(w-8)/(v.length-1),y=q=>6+(ht-12)*(1-q/mx),p=v.map((q,i)=>`${x(i).toFixed(1)},${y(q).toFixed(1)}`).join(" ");
+  return `<svg viewBox="0 0 ${w} ${ht}" preserveAspectRatio="none" style="width:100%;height:60px;display:block" role="img" aria-label="Weekly attendance since January"><polygon points="4,${ht-6} ${p} ${w-4},${ht-6}" fill="#f1e7cf" fill-opacity=".12"/><polyline points="${p}" fill="none" stroke="#f1e7cf" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="${x(v.length-1)}" cy="${y(v[v.length-1])}" r="4" fill="#ff2e88"/></svg>`}
+function cellDetail(c){const d=h("div","det");const name=c.c==="Core Team"?"Narrowstreet Core Team":c.c;
+  d.innerHTML=`<div class="rowlab"><span>Saturday headcount · Jan to Oct</span><span>service wk ${c.sv} · CG wk ${c.cg}</span></div>${spark(c.ser)}<div class="seg sm"></div>
+  <div class="mini"><div><b>1 : ${c.per}</b>leader to members (${c.lead} leaders)</div><div><b>${c.ncv2}/${c.nc}</b>newcomers who came back</div><div><b>${c.srv}</b>serving in a ministry</div><div><b>${c.drift}</b>drifting right now</div></div>`;
+  seg(d.querySelector(".seg"),c.st);
+  const T=[[c.drift,"drifting: solid before, gone 4 weeks"],[c.silent8,"missed 8 in a row, close to Follow Up"],[c.irrUp,"locked in (almost Regular): came 3+ of the last 4"],
+   [c.fuLapsed,"Follow Ups who used to come a lot"],[c.fuOnce,"Follow Ups who came once or twice"],[c.fuNoShow,"Follow Ups with no check-in this year"]].filter(t=>t[0]);
+  if(T.length){const td=h("div","todo");td.append(h("div","rowlab","<span>Who to look out for</span>"));T.forEach(t=>td.append(h("div","t",`<span><b>${t[0]}</b>${t[1]}</span>`)));d.append(td)}
+  return d}
+function league(){document.querySelectorAll("#sortChips .chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===sortK));document.querySelectorAll("#zoneChips .chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.z===zoneK));
+  const S=SORTS[sortK],list=D.cells.filter(c=>zoneK==="All"||c.z===zoneK).sort((a,b)=>S[1](b)-S[1](a)),mx=Math.max(...D.cells.map(c=>Math.abs(S[1](c))),1),el=$("#league");el.innerHTML="";
+  list.forEach((c,i)=>{const row=h("div","lr"+(openC===c.c?" open":""));const b=h("button",null,`<span class="rk">${i+1}</span><span class="nm">${c.c}<small>ZONE ${c.z.toUpperCase()} · ${c.n} MEMBERS</small></span><span class="mt"><i style="width:${Math.max(2,100*Math.abs(S[1](c))/mx)}%;${S[1](c)<0?"background:var(--pink)":""}"></i></span><span class="val">${S[2](c)}<small>${S[3]}</small></span>`);
+    b.setAttribute("aria-expanded",openC===c.c);b.addEventListener("click",()=>{openC=openC===c.c?null:c.c;league()});row.append(b);if(openC===c.c)row.append(cellDetail(c));el.append(row)})}
+league();
+const by=(f)=>[...D.cells].sort((a,b)=>f(b)-f(a)),best=by(c=>c.rate).filter(c=>c.c!=="Core Team")[0],worstM=by(c=>-c.mom)[0],bestM=by(c=>c.mom)[0],dr=by(c=>c.drift).slice(0,3),ld=by(c=>c.per).slice(0,3),nb=by(c=>c.nc>=10?c.ncv2/c.nc:0)[0];
+$("#sayCells").innerHTML=`On a normal Saturday a cell gets about <b>${pct(sum(D.cells.map(c=>c.l4)),sum(D.cells.map(c=>c.n)))}%</b> of its members showing up. ${best.c} leads at ${best.rate}%. ${bestM.c} has grown the most (${bestM.mom>0?"+":""}${bestM.mom}%), and ${worstM.c} has dropped ${Math.abs(worstM.mom)}%.`;
+moves($("#movesC"),[
+ {t:`Help ${worstM.c} first`,p:`Average Saturday headcount fell from ${worstM.p8} to ${worstM.l8}, the biggest slide of any cell. Worth a zone-leader sit-down before it sets in.`},
+ {t:"Chase drifters cell by cell",p:`${dr.map(c=>`${c.c} (${c.drift})`).join(", ")} have the most people who were solid and then vanished. Open each card to see the count.`},
+ {t:"Add leaders where it's stretched",p:`${ld.map(c=>`${c.c} has 1 leader per ${c.per}`).join(". ")}. ${nb.c} keeps ${nb.ncv2} of ${nb.nc} newcomers, so ask them what they do.`}]);
+const tot=k=>sum(D.cells.map(c=>c[k])),top=k=>by(c=>c[k]).slice(0,3).map(c=>`${c.c} ${c[k]}`).join(", ");
+clean($("#cleanC"),"nwst-clean-cells3",cuItems(["cell"]));
+
+/* ---------- MINISTRIES ---------- */
+const SV=D.srv;
+score($("#scoreM"),[
+ {n:SV.n,lab:"Serving",sub:`${pct(SV.n,R.n)}% of members, across 4 ministries`,hot:1},
+ {n:SV.show,s:"%",lab:"Here on Saturdays",sub:`those who serve. Everyone else: ${SV.showNon}%`},
+ {n:SV.multi,lab:"Double duty",sub:"serving in 2 or more ministries"},
+ {n:SV.reg-SV.regServing,lab:"Regulars on the bench",sub:`${SV.regServing} of ${SV.reg} Regulars already serve`}]);
+$("#sayMin").innerHTML=`People who serve are at service <b>${SV.show}%</b> of Saturdays. People who don't: <b>${SV.showNon}%</b>. And <b>${SV.cg} of the ${SV.n}</b> who serve are also cell leaders or core, so the same people are carrying a lot.`;
+D.mins.forEach(m=>{const mem=m.roles[3]+m.roles[4],flags=[];
+  if(!m.roles[1])flags.push("No assistant leader");if(pct(m.a18,m.n)>=45)flags.push(`${pct(m.a18,m.n)}% are 18 or older`);if(m.a15<=1)flags.push(m.a15?`Only 1 member under 16`:"Nobody under 16");if(m.show<65&&m.low>=10)flags.push(`${m.low} came once or less this month`);
+  const c=h("div","mc",`<h3>${m.m}</h3><div class="n">${m.n}</div>
+  <div class="rowlab"><span>Attendance rate, last 4 Saturdays</span><span>${m.show}%</span></div><div class="bar" style="grid-template-columns:1fr"><div class="track"><i class="fill ${m.show>=75?"":"pk"}" style="width:${m.show}%"></i></div></div>
+  <div class="ladder"><div><b>${m.roles[0]}</b>Leader</div><div class="${m.roles[1]?"":"zero"}"><b>${m.roles[1]}</b>Assistant</div><div><b>${m.roles[2]}</b>Core</div><div><b>${mem}</b>Members</div></div>
+  <div class="facts"><span>${m.cg} also lead or are core in a cell</span><span>${m.multi} serve in another ministry too</span><span>Drawn from ${m.cells} of 17 cells</span></div>${flags.map(f=>`<span class="flag">${f}</span>`).join("")}`);$("#mgrid").append(c)});
+bars($("#srvCell"),by(c=>c.srv).map(c=>({t:c.c,v:c.srv,cls:c.srv<=1?"pk":"",lab:`${c.srv} of ${c.n}`,tip:`<small>${c.c}</small>${c.srv} of ${c.n} members serve (${pct(c.srv,c.n)}%)`})));
+bars($("#dept"),D.dept.filter(d=>d[0].startsWith("Worship")).map(d=>({t:d[0].replace("Worship: ",""),v:d[1]})));
+const MM=Object.fromEntries(D.mins.map(m=>[m.m,m])),lowC=by(c=>-c.srv).filter(c=>c.srv<=1).map(c=>c.c),wo=MM.Worship;
+moves($("#movesM"),[
+ {t:`Recruit from the bench of ${SV.irrUpNotServing}`,p:`${SV.irrUpNotServing} people came 3+ of the last 4 Saturdays and serve nowhere. Start with ${lowC.join(" and ")}: big cells with only 1 person serving each.`},
+ {t:"Train the next wave now",p:`${wo.a18} of ${wo.n} in Worship are 18 or older and it has no assistant leader. Spark has nobody under 16. Pair every senior with a younger shadow this term.`},
+ {t:"Spread the load",p:`${SV.cg} people both serve and lead in a cell, and ${SV.multi} serve in two or more ministries. Before adding anything new, ask who can hand one role to someone on the bench.`}]);
+const inact=sum(D.mins.map(m=>m.inactive)),gh=sum(D.mins.map(m=>m.ghost)),iu=sum(D.mins.map(m=>m.irrUp)),rg=sum(D.mins.map(m=>m.regGhost));
+clean($("#cleanM"),"nwst-clean-min2",[...cuItems(["ministry"]),
+ {id:"mc",n:"0",t:"Ministry check-ins since 18 April",w:"Ministry check-in was last used on 18 Apr, and its name list only has 2 Welcome and 1 Media people in it. Decide: revive it with full lists, or retire it."}]);
+
+/* streak board */
+(function(){const B=$("#board"),L=$("#bdList"),N=D.dates.length,G=[["Perfect",r=>r[2]===N],["Missed 1",r=>r[2]===N-1],["Missed 2",r=>r[2]===N-2],["All",()=>true]];let g=0,last;
+  G.forEach((x,i)=>{const b=h("button","chip",`${x[0]} · ${D.board.filter(x[1]).length}`);b.type="button";b.dataset.i=i;$("#bdChips").append(b)});
+  function draw(){document.querySelectorAll("#bdChips .chip").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.i===g));L.innerHTML="";
+    D.board.filter(G[g][1]).forEach((r,i)=>{const row=h("div","br"+(r[2]===N?" gold":""),`<span class="rk">${r[2]===N?"★":i+1}</span><span class="nm"></span><span class="sc2">${r[2]}/${N}<small>${r[2]===N?"never missed":r[3]+" in a row now"}</small></span>`);
+      row.querySelector(".nm").append(document.createTextNode(r[0]),h("small",null,r[1]));row.style.animationDelay=Math.min(i,12)*45+"ms";L.append(row)})}
+  const open=()=>{last=document.activeElement;g=0;draw();B.hidden=false;$("#bdx").focus()},close=()=>{B.hidden=true;last&&last.focus&&last.focus()};
+  $("#boardBtn").addEventListener("click",open);$(".ticker").addEventListener("click",open);$("#bdx").addEventListener("click",close);
+  B.addEventListener("click",e=>{if(e.target===B)close()});addEventListener("keydown",e=>{if(e.key==="Escape"&&!B.hidden)close()});
+  $("#bdChips").addEventListener("click",e=>{const b=e.target.closest("[data-i]");if(b){g=+b.dataset.i;draw()}})})();
+
+/* tabs */
+const TABS=["overall","cells","ministries"];
+function go(t,push){if(!TABS.includes(t))t="overall";TABS.forEach(k=>{const on=k===t,p=$("#p-"+k);$("#t-"+k).setAttribute("aria-selected",on);p.hidden=!on;if(on){p.classList.remove("enter");void p.offsetWidth;p.classList.add("enter");countUp(p)}});
+  if(push){try{history.replaceState(null,"","#"+t)}catch(e){}const y=$(".tabs").getBoundingClientRect().top+scrollY;if(scrollY>y)scrollTo({top:y,behavior:RM?"auto":"smooth"})}}
+TABS.forEach(k=>$("#t-"+k).addEventListener("click",()=>go(k,true)));
+addEventListener("hashchange",()=>go(location.hash.slice(1)));
+addEventListener("scroll",hideTip,{passive:true});
+
+/* burst + loader */
+$("#burstp").setAttribute("points",Array.from({length:36},(_,i)=>{const a=i*Math.PI/18,r=i%2?74:98;return (r*Math.cos(a)).toFixed(1)+","+(r*Math.sin(a)).toFixed(1)}).join(" "));
+(function(){const L=$("#loader"),n=$("#ldn"),bars=L.querySelectorAll(".strip i");let done=false;
+  const fin=()=>{if(done)return;done=true;L.classList.add("out");setTimeout(()=>L.remove(),600);go(location.hash.slice(1)||"overall")};
+  if(RM){L.remove();go(location.hash.slice(1)||"overall");return}
+  L.addEventListener("click",fin);const t0=performance.now(),dur=1700;
+  (function f(t){if(done)return;const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);n.textContent=Math.round(D.checkins*e).toLocaleString();bars.forEach((b,i)=>b.style.transform=`scaleX(${Math.max(0,1-e*(i?1.15:1.4))})`);if(k<1)requestAnimationFrame(f);else setTimeout(fin,450)})(t0);
+  setTimeout(fin,4000)})();
+})();
+</script>
+
+</body></html>
