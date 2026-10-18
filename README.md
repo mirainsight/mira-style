@@ -12,6 +12,14 @@ Clone it, borrow a look, and make something lovely.
 
 More looks join as they are confirmed.
 
+## Made for others
+
+Designs Mira made for someone else. They are not part of her own looks, and are shared with the blessing of the people they were made for.
+
+| Design | Made for | Folder |
+| --- | --- | --- |
+| **Ma's Family Table** | Her mother-in-law: the family's food preferences and dates, drawn as if by her granddaughter | [`made-for-others/family-table`](made-for-others/family-table) |
+
 ## What's in a look
 
 ```

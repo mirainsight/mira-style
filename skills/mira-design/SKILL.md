@@ -19,7 +19,13 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 | --- | --- | --- |
 | Whimsy | Mira's 26th birthday invitation (Twenty-Six, repo `mirainsight/twenty-six`) | Default |
 
-Designs she made **for other people** (e.g. Ma's Family Table, repo `mirainsight/family-table`) are not mira-style looks. Never use them as a default or as one of her looks; they can appear in the gallery under "Made for others", and in the public repo only with that person's permission.
+## Made for others
+
+Designs Mira made for other people are not mira-style looks. Never use them as a default or as one of her looks. They live under `made-for-others/` in the repo (with sample data only) and in the gallery's "Made for others" section.
+
+| Design | Made for | Idea |
+| --- | --- | --- |
+| Ma's Family Table (repo `mirainsight/family-table`) | Her mother-in-law: the family's food preferences and dates, for her reference | Made to look like something her granddaughter would make for her. Each face is drawn at the age Ma first knew that person (her children stay children; Mira and her sister-in-law are adults). |
 
 ## Making something in a confirmed look
 
