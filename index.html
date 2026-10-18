@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>mira-style</title>
+<meta name="description" content="Mira's design styles. Each one is a real site, shown with made-up data, so you can tap through it.">
+<meta property="og:title" content="mira-style">
+<meta property="og:description" content="Mira's design styles. Each one is a real site, shown with made-up data, so you can tap through it.">
+<link rel="icon" href="looks/whimsy/example/favicon-32.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+/* Layout: a quiet gallery shell; each style is an entry with a swipeable strip of live, phone-sized pages that carry their own look */
+:root{
+  --g-bg:#f3f1ee; --g-fg:#2b2724; --g-muted:#77706a; --g-line:#dedad4; --g-dot:#c9c3bb; --g-btn:#2b2724; --g-btn-fg:#f3f1ee;
+  --g-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --crimson:#b01c30; --script:'Pinyon Script', cursive; --serif:'Cormorant Garamond', Garamond, Georgia, serif;
+}
+@media (prefers-color-scheme: dark){ :root{ --g-bg:#1b1918; --g-fg:#eeeae5; --g-muted:#a39b93; --g-line:#34302d; --g-dot:#4a4440; --g-btn:#eeeae5; --g-btn-fg:#1b1918; color-scheme:dark; } }
+*{ box-sizing:border-box; }
+body{ margin:0; background:var(--g-bg); color:var(--g-fg); font-family:var(--g-sans); }
+a{ color:inherit; }
+.wrap{ max-width:1100px; margin:0 auto; padding-block:36px 56px;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); }
+.top{ display:flex; flex-direction:column; gap:8px; margin-bottom:30px; }
+.top h1{ margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(38px,8vw,56px); letter-spacing:-.01em; line-height:1; }
+.top p{ margin:0; color:var(--g-muted); font-size:16px; line-height:1.55; max-width:60ch; }
+.top p b{ color:var(--g-fg); font-weight:600; }
+
+.style{ border-top:1px solid var(--g-line); padding-top:22px; display:flex; flex-direction:column; gap:16px; }
+.style + .style{ margin-top:34px; }
+.head{ display:flex; flex-wrap:wrap; gap:14px 28px; align-items:flex-end; justify-content:space-between; }
+.head-l{ display:flex; flex-direction:column; gap:6px; min-width:0; }
+.no{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--g-muted); }
+.name{ margin:0; font-family:var(--script); font-weight:400; font-size:clamp(44px,9vw,60px); line-height:1; color:var(--crimson); }
+.name.ft{ font-family:'Patrick Hand', cursive; font-size:clamp(36px,7vw,48px); color:#2B3A67; }
+.name.nw{ font-family:'Alfa Slab One', Rockwell, Georgia, serif; font-size:clamp(32px,7vw,46px); line-height:.95; text-transform:uppercase; color:#2450E0; }
+.name.nw small{ display:block; font-family:var(--g-sans); text-transform:none; font-size:13px; letter-spacing:.06em; color:var(--g-muted); margin-top:6px; }
+@media (prefers-color-scheme: dark){ .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
+.badge{ align-self:flex-start; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--g-line); color:var(--g-muted); }
+.use{ margin:0; font-size:15px; line-height:1.55; max-width:60ch; }
+.use b{ font-weight:600; }
+blockquote{ margin:4px 0 0; padding-left:14px; border-left:2px solid var(--g-line); font-family:var(--serif); font-style:italic; font-size:19px; line-height:1.45; max-width:58ch; }
+blockquote cite{ display:block; font-family:var(--g-sans); font-style:normal; font-size:12px; color:var(--g-muted); margin-top:4px; }
+.spec{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; font-size:13px; color:var(--g-muted); }
+.sw{ display:flex; gap:4px; }
+.sw span{ width:18px; height:18px; border-radius:50%; border:1px solid rgba(0,0,0,.12); }
+.acts{ display:flex; flex-wrap:wrap; gap:10px; }
+.btn{ display:inline-flex; align-items:center; gap:6px; padding:10px 16px; border-radius:999px; font-size:14px; font-weight:600; text-decoration:none; background:var(--g-btn); color:var(--g-btn-fg); }
+.btn.ghost{ background:transparent; color:var(--g-fg); border:1px solid var(--g-line); }
+.btn:focus-visible, .nav button:focus-visible{ outline:2px solid var(--crimson); outline-offset:3px; }
+
+.strip{ display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 2px 14px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+.strip::-webkit-scrollbar{ display:none; }
+.pg{ flex:0 0 auto; width:min(300px, 78vw); scroll-snap-align:center; display:flex; flex-direction:column; gap:8px; margin:0; }
+.cap{ font-size:12px; color:var(--g-muted); display:flex; gap:6px; }
+.cap b{ color:var(--g-fg); font-weight:600; }
+.nav{ display:flex; justify-content:center; gap:8px; align-items:center; }
+.nav button{ width:8px; height:8px; padding:0; border-radius:50%; border:0; background:var(--g-dot); cursor:pointer; }
+.nav button[aria-current="true"]{ background:var(--g-fg); width:22px; border-radius:999px; }
+.phone{ position:relative; width:100%; aspect-ratio:390/760; border-radius:22px; overflow:hidden; background:#fdf8ee;
+  box-shadow:0 1px 2px rgba(60,30,25,.1), 0 18px 40px -22px rgba(60,30,25,.45); }
+.phone iframe{ position:absolute; top:0; left:0; width:390px; height:760px; border:0; transform-origin:0 0; }
+.group{ margin:46px 0 4px; font-family:var(--serif); font-weight:500; font-size:28px; }
+.group-note{ margin:0 0 18px; color:var(--g-muted); font-size:14px; line-height:1.5; }
+footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; color:var(--g-muted); font-size:13px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>mira-style</h1>
+    <p>The design styles of Mira (mirainsight). Each one started as a real site for a real person. Here they run on <b>made-up data</b>, so you can tap through them: swipe the previews, or open the full site.</p>
+  </header>
+
+  <section class="style" aria-labelledby="s1">
+    <div class="head">
+      <div class="head-l">
+        <span class="no">Look 01 · Whimsy</span>
+        <h2 class="name" id="s1">Twenty-Six</h2>
+        <p class="use"><b>First made for</b> Mira's 26th birthday invitation: a private page for the 26 people who mean most to her, with the wishlist, agenda, guest list and thank-you letters.</p>
+      </div>
+      <span class="badge">Mira's look</span>
+    </div>
+    <div class="spec"><span class="sw"><span style="background:#b01c30"></span><span style="background:#cf6b76"></span><span style="background:#f8e6e0"></span><span style="background:#fdf8ee"></span><span style="background:#482b28"></span></span>Pinyon Script · Cormorant Garamond · La Belle Aurore · hand-drawn doodles</div>
+    <div class="acts"><a class="btn" href="looks/whimsy/example/">Open the full site ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/looks/whimsy">The look's rules</a></div>
+    <div class="strip">
+<figure class="pg" data-name="Envelope"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[]' title="Twenty-Six, Envelope" loading="lazy"></iframe></div><figcaption class="cap"><b>Envelope</b>Sealed until you tap it</figcaption></figure>
+<figure class="pg" data-name="Invitation"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300}]' title="Twenty-Six, Invitation" loading="lazy"></iframe></div><figcaption class="cap"><b>Invitation</b>The card itself</figcaption></figure>
+<figure class="pg" data-name="Wishlist"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-wishlist","wait":1100}]' title="Twenty-Six, Wishlist" loading="lazy"></iframe></div><figcaption class="cap"><b>Wishlist</b>Gifts behind a passphrase</figcaption></figure>
+<figure class="pg" data-name="Agenda"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-agenda","wait":1100}]' title="Twenty-Six, Agenda" loading="lazy"></iframe></div><figcaption class="cap"><b>Agenda</b>No timetable, just plans</figcaption></figure>
+<figure class="pg" data-name="Guest list"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-guests","wait":1100}]' title="Twenty-Six, Guest list" loading="lazy"></iframe></div><figcaption class="cap"><b>Guest list</b>Who's coming</figcaption></figure>
+<figure class="pg" data-name="Letters"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-letters","wait":1100}]' title="Twenty-Six, Letters" loading="lazy"></iframe></div><figcaption class="cap"><b>Letters</b>A thank-you for each guest</figcaption></figure>
+    </div>
+    <div class="nav" role="group" aria-label="Pages"></div>
+  </section>
+
+  <h2 class="group">Made for others</h2>
+  <p class="group-note">Designs Mira made for someone else. Not part of her own looks, and shared with the blessing of the people they were made for.</p>
+
+  <section class="style" aria-labelledby="s2">
+    <div class="head">
+      <div class="head-l">
+        <span class="no">For Ma</span>
+        <h2 class="name ft" id="s2">Ma's Family Table</h2>
+        <p class="use"><b>Made for</b> Mira's mother-in-law: one page holding the family's food preferences, allergies and dates, for her to check before cooking. Designed to look like something her granddaughter made for her. Each face shows the person at the age Ma first knew them: her children stay children, and Mira and her sister-in-law appear as adults.</p>
+      </div>
+      <span class="badge">Made for others</span>
+    </div>
+    <div class="spec"><span class="sw"><span style="background:#2B3A67"></span><span style="background:#F2A0B5"></span><span style="background:#F6C453"></span><span style="background:#8FB8E8"></span><span style="background:#4F8F6B"></span><span style="background:#F7EFDD"></span></span>Patrick Hand · Nunito · flower faces · a made-up family</div>
+    <div class="acts"><a class="btn" href="made-for-others/family-table/example/">Open the full site ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/made-for-others/family-table">The story</a></div>
+    <div class="strip">
+<figure class="pg" data-name="Who's coming"><div class="phone" style="background:#F7EFDD"><iframe src="made-for-others/family-table/example/index.html" data-steps='[{"do":"scroll","sel":"#h-who","wait":350}]' title="Ma's Family Table, Who's coming" loading="lazy"></iframe></div><figcaption class="cap"><b>Who's coming</b>Tap the faces of who's eating</figcaption></figure>
+<figure class="pg" data-name="For this meal"><div class="phone" style="background:#F7EFDD"><iframe src="made-for-others/family-table/example/index.html" data-steps='[{"do":"click","sel":"[data-act=all]","wait":400},{"do":"scroll","sel":"#h-meal","wait":350}]' title="Ma's Family Table, For this meal" loading="lazy"></iframe></div><figcaption class="cap"><b>For this meal</b>What to leave out, and favourites</figcaption></figure>
+<figure class="pg" data-name="Cooking something?"><div class="phone" style="background:#F7EFDD"><iframe src="made-for-others/family-table/example/index.html" data-steps='[{"do":"type","sel":"#q","text":"prawns","wait":400},{"do":"scroll","sel":"#h-q","wait":350}]' title="Ma's Family Table, Cooking something?" loading="lazy"></iframe></div><figcaption class="cap"><b>Cooking something?</b>Search a food across the family</figcaption></figure>
+<figure class="pg" data-name="Dates"><div class="phone" style="background:#F7EFDD"><iframe src="made-for-others/family-table/example/index.html" data-steps='[{"do":"scroll","sel":"#h-dates","wait":350}]' title="Ma's Family Table, Dates" loading="lazy"></iframe></div><figcaption class="cap"><b>Dates</b>Birthdays and family days</figcaption></figure>
+<figure class="pg" data-name="Everyone's notes"><div class="phone" style="background:#F7EFDD"><iframe src="made-for-others/family-table/example/index.html" data-steps='[{"do":"open","sel":".plain-fold","wait":400},{"do":"scroll","sel":"#h-fam","wait":350}]' title="Ma's Family Table, Everyone's notes" loading="lazy"></iframe></div><figcaption class="cap"><b>Everyone's notes</b>Each person's card</figcaption></figure>
+    </div>
+    <div class="nav" role="group" aria-label="Pages"></div>
+  </section>
+
+  <section class="style" aria-labelledby="s3">
+    <div class="head">
+      <div class="head-l">
+        <span class="no">For the NarrowStreet leaders</span>
+        <h2 class="name nw" id="s3">NWST Health Check<small>EOY Attendance Analytics</small></h2>
+        <p class="use"><b>Made for</b> the NarrowStreet leaders (our youth group): a year of Saturday check-ins as an end-of-year report.</p>
+        <blockquote>I wanted it to have a sporty, edgy, editorial report look, because I knew the youth wanted something colourful, vibrant, easy to read, and also actionable.<cite>Mira</cite></blockquote>
+      </div>
+      <span class="badge">Made for others</span>
+    </div>
+    <div class="spec"><span class="sw"><span style="background:#2450E0"></span><span style="background:#FF2E88"></span><span style="background:#FF8A5B"></span><span style="background:#7B3FD1"></span><span style="background:#F1E7CF"></span><span style="background:#121016"></span></span>Alfa Slab One · Rubik Dirt · Archivo · DM Mono · made-up cells and names</div>
+    <div class="acts"><a class="btn" href="made-for-others/nwst-health-check/example/">Open the full site ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/made-for-others/nwst-health-check">The story</a></div>
+    <div class="strip">
+<figure class="pg" data-name="Season report"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[]' title="NWST Health Check, Season report" loading="lazy"></iframe></div><figcaption class="cap"><b>Season report</b>Counts up every check-in</figcaption></figure>
+<figure class="pg" data-name="Scoreboard"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[{"do":"click","sel":"#loader","wait":300},{"do":"scroll","sel":"#score","wait":900}]' title="NWST Health Check, Scoreboard" loading="lazy"></iframe></div><figcaption class="cap"><b>Scoreboard</b>The year in four numbers</figcaption></figure>
+<figure class="pg" data-name="The Saturday line"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[{"do":"click","sel":"#loader","wait":300},{"do":"scroll","sel":"#sayLine","wait":900}]' title="NWST Health Check, The Saturday line" loading="lazy"></iframe></div><figcaption class="cap"><b>The Saturday line</b>A straight answer, then the chart</figcaption></figure>
+<figure class="pg" data-name="Guess first"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[{"do":"click","sel":"#loader","wait":300},{"do":"click","sel":"button[data-g=\"4\"]","wait":900},{"do":"scroll","sel":"#guess","wait":200}]' title="NWST Health Check, Guess first" loading="lazy"></iframe></div><figcaption class="cap"><b>Guess first</b>How many newcomers come back?</figcaption></figure>
+<figure class="pg" data-name="Streak board"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[{"do":"click","sel":"#loader","wait":300},{"do":"click","sel":"#boardBtn","wait":900}]' title="NWST Health Check, Streak board" loading="lazy"></iframe></div><figcaption class="cap"><b>Streak board</b>Who never missed a Saturday</figcaption></figure>
+<figure class="pg" data-name="Cells"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[{"do":"click","sel":"#loader","wait":300},{"do":"click","sel":"#t-cells","wait":900},{"do":"click","sel":".lr button","wait":500},{"do":"scroll","sel":"#sortChips","wait":300}]' title="NWST Health Check, Cells" loading="lazy"></iframe></div><figcaption class="cap"><b>Cells</b>The league table, one card open</figcaption></figure>
+<figure class="pg" data-name="Ministries"><div class="phone" style="background:#121016"><iframe src="made-for-others/nwst-health-check/example/index.html" data-steps='[{"do":"click","sel":"#loader","wait":300},{"do":"click","sel":"#t-ministries","wait":900},{"do":"scroll","sel":"#mgrid","wait":300}]' title="NWST Health Check, Ministries" loading="lazy"></iframe></div><figcaption class="cap"><b>Ministries</b>The four teams</figcaption></figure>
+    </div>
+    <div class="nav" role="group" aria-label="Pages"></div>
+  </section>
+
+  <footer>
+    More styles join as they are confirmed. Code is <a href="https://github.com/mirainsight/mira-style">on GitHub</a> (MIT); doodles are CC BY-NC 4.0, with credit to Mira (mirainsight).
+  </footer>
+</div>
+
+<script>
+// Show each frame at phone width, scaled to fit, and step it to its page once loaded
+function fit(){ document.querySelectorAll('.phone').forEach(p=>{ const f=p.querySelector('iframe'); f.style.transform='scale('+(p.clientWidth/390)+')'; }); }
+addEventListener('resize', fit); fit();
+document.querySelectorAll('iframe[data-steps]').forEach(f=>f.addEventListener('load', ()=>{
+  let steps=[]; try{ steps=JSON.parse(f.dataset.steps); }catch(e){}
+  let at=0;
+  steps.forEach(s=>{
+    at += s.wait||0;
+    setTimeout(()=>{ try{
+      const d=f.contentDocument, el=s.sel?d.querySelector(s.sel):null;
+      if(s.do==='click' && el){ el.hidden=false; el.click(); }
+      if(s.do==='open' && el){ el.open=true; }
+      if(s.do==='type' && el){ el.value=s.text; el.dispatchEvent(new Event('input',{bubbles:true})); }
+      if(s.do==='scroll' && el){ f.contentWindow.scrollTo(0, el.getBoundingClientRect().top + f.contentWindow.scrollY - 12); }
+    }catch(e){} }, at);
+  });
+}));
+document.querySelectorAll('.style').forEach(st => {
+  const strip = st.querySelector('.strip'), pages = [...strip.children], nav = st.querySelector('.nav');
+  pages.forEach((p, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', 'Page ' + (i + 1) + ': ' + p.dataset.name);
+    b.addEventListener('click', () => strip.scrollTo({ left: p.offsetLeft - strip.offsetLeft - (strip.clientWidth - p.offsetWidth) / 2, behavior: 'smooth' }));
+    nav.appendChild(b);
+  });
+  const dots = [...nav.children];
+  const mark = () => {
+    const mid = strip.scrollLeft + strip.clientWidth / 2;
+    let best = 0, bd = Infinity;
+    pages.forEach((p, i) => { const c = p.offsetLeft - strip.offsetLeft + p.offsetWidth / 2, dd = Math.abs(c - mid); if (dd < bd) { bd = dd; best = i; } });
+    dots.forEach((d, i) => d.setAttribute('aria-current', i === best ? 'true' : 'false'));
+  };
+  strip.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+  mark();
+});
+</script>
+</body>
+</html>
