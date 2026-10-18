@@ -1,0 +1,60 @@
+/* Sleep Tight, a mira-style look. Generated from tokens.json. */
+:root{
+  --plum: #5a2338;  /* Ink of the whole look: titles, message text, postmark, address lines, sign-off. A warm plum-brown, never black. */
+  --cream: #f0e5cc;  /* Paper. The postcard card, with paper grain over it. */
+  --olive: #3b5530;  /* Dark stripe of the frame. Also the page ground when the stripes are off. */
+  --sage: #c5cba3;  /* Light stripe of the frame, and the stamp. */
+  --mustard: #d6952c;  /* Accent: the title's pop-out shadow, and the hero star's colour family. */
+  --terracotta: #c9633f;  /* Secondary doodle warmth. Use sparingly. */
+  --butter: #e8c46a;  /* Secondary doodle warmth. */
+  --moss: #7a8f5a;  /* Secondary doodle green. */
+  --stripe-dark: var(--olive);
+  --stripe-light: var(--sage);
+  --font-title: 'Over the Rainbow', cursive;
+  --font-body: 'Newsreader', Georgia, serif;
+  --font-hand: 'Reenie Beanie', cursive;
+  --font-title-over-the-rainbow: 'Over the Rainbow', cursive;
+  --font-title-gaegu: 'Gaegu', cursive;
+  --font-title-delicious-handrawn: 'Delicious Handrawn', cursive;
+  --font-title-schoolbell: 'Schoolbell', cursive;
+  --font-title-waiting-for-the-sunrise: 'Waiting for the Sunrise', cursive;
+  --font-title-nanum-pen-script: 'Nanum Pen Script', cursive;
+  --font-title-sue-ellen-francisco: 'Sue Ellen Francisco', cursive;
+  --font-title-just-another-hand: 'Just Another Hand', cursive;
+  --font-title-reenie-beanie: 'Reenie Beanie', cursive;
+  --font-title-shantell-sans: 'Shantell Sans', cursive;
+  --font-title-itim: 'Itim', cursive;
+  --font-title-mansalva: 'Mansalva', cursive;
+  --frame-pad: 34px;
+  --card-pad-x: 22px;
+  --card-pad-top: 26px;
+  --block-gap: 18px;
+  --radius-frame: 6px;
+  --radius-card: 3px;
+}
+
+/* Title treatment: apply to the title in any variant font. */
+.title-pop{
+  font-family: var(--font-title);
+  font-weight: 700;
+  -webkit-text-stroke: 1.6px currentColor;
+  text-shadow: 3px 3px 0 var(--mustard);
+  rotate: -3deg;
+  transform-origin: 0 60%;
+}
+
+/* Font variants: size, line-height, letter-spacing per face. Set a variant by adding the class to the title. */
+.title-over-the-rainbow{ font-family: var(--font-title-over-the-rainbow); font-size: 58px; line-height: 1.1; letter-spacing: 0.03em; }
+.title-gaegu{ font-family: var(--font-title-gaegu); font-size: 67px; line-height: 1.05; letter-spacing: 0.04em; }
+.title-delicious-handrawn{ font-family: var(--font-title-delicious-handrawn); font-size: 64px; line-height: 1.0; letter-spacing: 0.03em; }
+.title-schoolbell{ font-family: var(--font-title-schoolbell); font-size: 55px; line-height: 1.1; letter-spacing: 0.06em; }
+.title-waiting-for-the-sunrise{ font-family: var(--font-title-waiting-for-the-sunrise); font-size: 58px; line-height: 1.05; letter-spacing: 0.03em; }
+.title-nanum-pen-script{ font-family: var(--font-title-nanum-pen-script); font-size: 75px; line-height: 1.0; letter-spacing: 0.04em; }
+.title-sue-ellen-francisco{ font-family: var(--font-title-sue-ellen-francisco); font-size: 87px; line-height: 0.95; letter-spacing: 0.06em; }
+.title-just-another-hand{ font-family: var(--font-title-just-another-hand); font-size: 93px; line-height: 0.95; letter-spacing: 0.06em; }
+.title-reenie-beanie{ font-family: var(--font-title-reenie-beanie); font-size: 87px; line-height: 0.95; letter-spacing: 0.04em; }
+.title-shantell-sans{ font-family: var(--font-title-shantell-sans); font-size: 49px; line-height: 1.1; letter-spacing: 0.04em; }
+.title-itim{ font-family: var(--font-title-itim); font-size: 55px; line-height: 1.1; letter-spacing: 0.04em; }
+.title-mansalva{ font-family: var(--font-title-mansalva); font-size: 55px; line-height: 1.1; letter-spacing: 0.03em; }
+
+/* Fonts: https://fonts.googleapis.com/css2?family=Over+the+Rainbow&family=Gaegu&family=Delicious+Handrawn&family=Schoolbell&family=Waiting+for+the+Sunrise&family=Nanum+Pen+Script&family=Sue+Ellen+Francisco&family=Just+Another+Hand&family=Reenie+Beanie&family=Shantell+Sans&family=Itim&family=Mansalva&family=Reenie+Beanie&family=Newsreader:ital,wght@0,400;0,700;1,400&display=swap */

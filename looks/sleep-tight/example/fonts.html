@@ -1,0 +1,95 @@
+<title>Sleep Tight, font variants</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one column of paper cards on the olive and sage stripes; each card is the same title in a different handwritten face.
+   Every variant gets the Sleep Tight title treatment (bold stroke, mustard pop-out shadow, tilt, bounce) with its own tuned size. */
+:root {
+  --plum: #5a2338; --cream: #f0e5cc; --olive: #3b5530; --sage: #c5cba3; --mustard: #d6952c;
+  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: repeating-linear-gradient(90deg, var(--olive) 0 30px, var(--sage) 30px 60px); background-attachment: fixed; color: var(--plum); font: 15px/1.45 var(--ui); }
+.wrap { max-width: 520px; margin: 0 auto; padding-block: 22px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 16px; }
+.head { background: var(--cream); border-radius: 3px; padding: 18px 20px; box-shadow: 0 10px 22px -10px rgba(0,0,0,.45); display: flex; flex-direction: column; gap: 10px; }
+.head h1 { margin: 0; font-size: 1.05rem; font-weight: 700; }
+.head p { margin: 0; font-size: .88rem; line-height: 1.5; opacity: .85; }
+label { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; opacity: .7; }
+input[type=text] { width: 100%; font: inherit; color: var(--plum); background: #fbf5e6; border: 1.5px solid color-mix(in srgb, var(--plum) 35%, transparent); border-radius: 8px; padding: 10px 12px; }
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; }
+.card { background: var(--cream); border-radius: 3px; padding: 18px 20px 14px; box-shadow: 0 10px 22px -10px rgba(0,0,0,.45); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.card:nth-child(odd) { rotate: -.6deg; } .card:nth-child(even) { rotate: .5deg; }
+.t { margin: 0; font-weight: 700; -webkit-text-stroke: 1.6px currentColor; text-shadow: 3px 3px 0 var(--mustard); rotate: -3deg; transform-origin: 0 60%; padding-top: 6px; min-width: 0; }
+.t .wd { display: inline-block; white-space: nowrap; } .t .ch { display: inline-block; }
+.meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; font-size: .78rem; margin-top: 8px; }
+.meta b { font-size: .86rem; }
+.meta span { opacity: .65; font-variant-numeric: tabular-nums; }
+.note { margin: 0; font-size: .8rem; opacity: .75; line-height: 1.4; }
+.tag { align-self: flex-start; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; background: var(--mustard); color: #fff; border-radius: 999px; padding: 2px 9px; }
+</style>
+
+<div class="wrap">
+  <div class="head">
+    <h1>Sleep Tight title variants</h1>
+    <p>The same bold, popped-out title treatment in twelve handwritten faces, each with its own tuned size, line height and spacing.</p>
+    <label for="txt">Try your own title</label>
+    <input type="text" id="txt" value="Sunday reflections">
+  </div>
+  <div id="list" style="display:contents"></div>
+</div>
+
+<script>
+// name, size px, line height, letter spacing %, note
+const V = [
+  ["Over the Rainbow", 58, 1.1, 3, "Default. Loose, airy and tall; closest to the poster's lettering."],
+  ["Gaegu", 67, 1.05, 4, "Friendly bouncy pen. The sturdiest all-rounder."],
+  ["Delicious Handrawn", 64, 1.0, 3, "The most wobble; looks hand-cut."],
+  ["Schoolbell", 55, 1.1, 6, "Rounder, chunkier marker."],
+  ["Waiting for the Sunrise", 58, 1.05, 3, "Light and airy, a little tall."],
+  ["Nanum Pen Script", 75, 1.0, 4, "Thin, quick pen strokes. Runs small, so set it larger."],
+  ["Sue Ellen Francisco", 87, 0.95, 6, "Tall and narrow; wide spacing suits it. Runs small."],
+  ["Just Another Hand", 93, 0.95, 6, "Tallest and narrowest. Runs very small, so set it much larger."],
+  ["Reenie Beanie", 87, 0.95, 4, "Scribbly. Best for short titles; runs small."],
+  ["Shantell Sans", 49, 1.1, 4, "Tidier and more legible; informal marker."],
+  ["Itim", 55, 1.1, 4, "Neat and rounded."],
+  ["Mansalva", 55, 1.1, 3, "Quick brush-pen look."]
+];
+const BOUNCE = 3;
+V.forEach(v => { const l = document.createElement('link'); l.rel = 'stylesheet';
+  l.href = 'https://fonts.googleapis.com/css2?family=' + v[0].replace(/ /g, '+') + '&display=swap'; document.head.appendChild(l); });
+
+const list = document.getElementById('list'), txt = document.getElementById('txt');
+const cards = V.map((v, i) => {
+  const c = document.createElement('article'); c.className = 'card';
+  c.innerHTML = (i === 0 ? '<span class="tag">Default</span>' : '') + '<h2 class="t"></h2>' +
+    '<div class="meta"><b></b><span></span></div><p class="note"></p>';
+  c.querySelector('b').textContent = v[0];
+  c.querySelector('span').textContent = v[1] + 'px · line ' + v[2] + ' · spacing ' + (v[3] / 100).toFixed(2) + 'em';
+  c.querySelector('.note').textContent = v[4];
+  const t = c.querySelector('.t');
+  t.style.fontFamily = `"${v[0]}", cursive`; t.style.fontSize = v[1] + 'px'; t.style.lineHeight = v[2]; t.style.letterSpacing = (v[3] / 100) + 'em';
+  list.appendChild(c); return t;
+});
+function paint() {
+  const title = txt.value.trim() || 'Sunday reflections';
+  cards.forEach((t, k) => {
+    t.textContent = ''; t.style.fontSize = V[k][1] + 'px'; t.setAttribute('aria-label', title);
+    let ci = 0;
+    title.split(/\s+/).filter(Boolean).forEach((w, wi, arr) => {
+      const ws = document.createElement('span'); ws.className = 'wd'; ws.setAttribute('aria-hidden', 'true');
+      for (const ch of w) { const s = document.createElement('span'); s.className = 'ch'; s.textContent = ch;
+        s.style.rotate = (((ci * 7) % 5) - 2) * BOUNCE * .8 + 'deg'; s.style.translate = '0 ' + ((((ci * 3) % 4) - 1.5) * BOUNCE * .7) + 'px'; ci++; ws.appendChild(s); }
+      t.appendChild(ws); if (wi < arr.length - 1) t.appendChild(document.createTextNode(' '));
+    });
+    // shrink to fit the card width, like the postcard does
+    const avail = t.clientWidth; let widest = 0; t.querySelectorAll('.wd').forEach(w => { widest = Math.max(widest, w.offsetWidth); });
+    if (avail > 0 && widest > avail) t.style.fontSize = (V[k][1] * avail / widest * 0.97) + 'px';
+  });
+}
+txt.addEventListener('input', paint);
+addEventListener('resize', paint);
+paint();
+if (document.fonts) { document.fonts.ready.then(paint); document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', paint); }
+</script>

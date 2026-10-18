@@ -9,6 +9,7 @@ Clone it, borrow a look, and make something lovely.
 | Look | First made for | Status | Folder |
 | --- | --- | --- | --- |
 | **Whimsy** | Mira's 26th birthday invitation (Twenty-Six) | Default | [`looks/whimsy`](looks/whimsy) |
+| **Sleep Tight** | Mira's Post Copier (her Telegram post page, written like a postcard) | Confirmed | [`looks/sleep-tight`](looks/sleep-tight) |
 
 More looks join as they are confirmed.
 
@@ -28,7 +29,7 @@ looks/<look>/
   README.md     the look's rules: palette, type, layout, doodles, motion, voice
   tokens.json   colours, fonts, sizes and spacing as data
   tokens.css    the same tokens as CSS variables, ready to link
-  doodles/      hand-drawn PNGs on transparent backgrounds (if the look has them)
+  doodles/      hand-drawn PNGs on transparent backgrounds (if the look has them; some looks only document where theirs come from)
   example/      a working page in the look, filled with made-up sample content
 ```
 

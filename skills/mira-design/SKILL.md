@@ -12,12 +12,21 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 - **Repo (public):** `mirainsight/mira-style`. One folder per look under `looks/<look>/` (README, tokens.json, tokens.css, doodles/, example/). Root README lists the looks. Skills under `skills/`.
 - **Design system (private, Claude Design):** "Mira Whimsy", https://claude.ai/artifact/24yqYL1TJducupa9dvPwR2 (the Whimsy look's tokens, brand book and doodles).
 - **Style gallery (private):** "Mira's Style Gallery", https://claude.ai/artifact/AQnMd8vK7H8BMm1AysnEsF. One entry per look: name, what it was first made for, swipeable live pages.
+- **Sleep Tight Lab (private, kept):** https://claude.ai/artifact/AxkBtTEbtC6UvCYoFTCQw7. The tuning lab the Sleep Tight look was worked out in. Mira keeps it so she can restyle; when she changes the look there, port the new settings to Mira's Post Copier.
 
 ## Confirmed looks
 
 | Look | First made for | Status |
 | --- | --- | --- |
 | Whimsy | Mira's 26th birthday invitation (Twenty-Six, repo `mirainsight/twenty-six`) | Default |
+| Sleep Tight | Mira's Post Copier: her Telegram post page, written like a postcard (artifact "Mira's Post Copier") | Confirmed |
+
+## Font variants
+
+A look can carry font variants: alternative faces for one role (usually the title), each with its own tuned size, line height and letter spacing, all under the look's own treatment. When Mira asks to see or offer other fonts for a look, offer that look's variants first, shown with the look's real treatment (not plain specimens), and only then look further. New faces she likes get tuned and added to the look's variant list in the repo.
+
+- **Whimsy:** alternate scripts for the headline (see its README): Delafield, Italianno, Parisienne, Ephesis, Imperial. Each needs its own size and line height.
+- **Sleep Tight:** twelve handwritten title faces, default **Over the Rainbow**. Treatment on every variant: bold (weight 700 plus a 1.6px text stroke in the ink colour), hard `3px 3px 0` mustard pop-out shadow, -3deg tilt, per-letter bounce, shrink-to-fit so no word breaks. The list with tuned sizes lives in `looks/sleep-tight/README.md`, `tokens.json` (`type.variants`) and `tokens.css`, and is shown live in `looks/sleep-tight/example/fonts.html`. For other handwritten-feel fonts, pick similar monoline pen or marker faces from Google Fonts and show them in that same treatment.
 
 ## Made for others
 
@@ -32,14 +41,14 @@ Designs Mira made for other people are not mira-style looks. Never use them as a
 
 1. Read the look's README and tokens (repo `looks/<look>/` or the design system).
 2. Reuse the look EXACTLY: tokens, fonts, doodles, paper, frame, motion, voice. When in doubt, copy the pattern straight from the look's original page (its `example/index.html`) rather than reinterpreting it. Mira rejects loose reinterpretations and invented mockups; fidelity beats invention.
-3. Doodles: use her PNGs, recolored and resized with a CSS mask (`background: <ink>; mask: url(png) center / contain no-repeat`). A subject the set doesn't cover: ask her to export a PNG. Never draw a substitute.
+3. Doodles: use her PNGs, recolored and resized with a CSS mask (`background: <ink>; mask: url(png) center / contain no-repeat`). A subject the set doesn't cover: ask her to export a PNG. Never draw a substitute. Exception: Sleep Tight's stars are full-colour art and keep their own colours (only its plain sparkles may be tinted).
 4. Never put real personal data (addresses, guest names, letters, passphrases, endpoints) into anything public. Public examples use made-up sample content.
 
 ## Design discovery (a new look, or tuning a piece)
 
 Mira wants to tinker herself before committing. Never present a finished new look as decided, and never generate a batch of looks for her to pick from.
 
-1. Talk first: what project it's for, the mood, references, any PNGs she has. One question at a time.
+1. Talk first: what project it's for, who it's for, the mood, references, any PNGs she has. One question at a time. Her best designs carry a personal idea (e.g. drawn as a granddaughter would draw it), so ask for that idea.
 2. Build a TEMPORARY lab artifact ("Whimsy Lab: <working name>" or "<Look> Lab"), showing a realistic sample of the real use case with live controls:
    - **Fonts:** switch the headline face between several candidates suited to the mood, each with its own tuned size and line height; switch body and hand faces too. She likes trying fonts.
    - **Sizing:** sliders for headline, body and doodle size.
@@ -55,7 +64,8 @@ Mira wants to tinker herself before committing. Never present a finished new loo
    - Add the look to the repo: `looks/<look>/` with README (first made for, rules), tokens.json, tokens.css, doodles, and an `example/` with sample content; add a row to the root README table. Commit and push.
    - Add it to the design system (or a new design system for the look) and to the Style Gallery (live pages, not redrawn mockups).
    - Propose an update to this skill's Confirmed looks table.
-   - Offer to delete the temporary lab.
+   - Ask whether to keep or delete the temporary lab (Mira kept the Sleep Tight Lab to restyle later).
+   - Check where the doodles came from before putting any PNG in the public repo. Her own drawings go in with the art licence; third-party art (for example Canva elements) never does: document where it came from instead, and keep it only in private artifacts.
 
 ## Adding a prebuilt design to the collection
 
