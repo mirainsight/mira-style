@@ -1,0 +1,31 @@
+/* Whimsy, a mira-style look. Generated from tokens.json. */
+:root{
+  --crimson: #b01c30;  /* Ink of the whole style: script headlines, labels, doodles, the selected tab, hearts. Text on cream and blush. */
+  --crimson-deep: #8a1224;  /* Pressed and hover states of crimson; emphasis where crimson needs more weight. */
+  --crimson-soft: #cf6b76;  /* Handwritten notes and hints (La Belle Aurore) and soft 'no' marks. About 3.4:1 on cream, so only at 16px+ handwriting, never body text. */
+  --cream: #fdf8ee;  /* Paper. The page background and the envelope letter. */
+  --blush: #f8e6e0;  /* Corner glows: radial washes at top-left and bottom-right of the paper. */
+  --ink: #6b4640;  /* Body text, italic asides and unselected tabs (at half opacity). */
+  --ink-strong: #482b28;  /* Important body text: list items, guest names, letter paragraphs, fact values. */
+  --paper-veil: rgba(255,253,248,0.78);  /* Translucent sheet behind a letter or card, letting the grain and glow show through. */
+  --rule: rgba(176,28,48,0.22);  /* Dotted dividers and row rules (1px dotted). */
+  --rule-strong: rgba(176,28,48,0.35);  /* Input underlines and stronger dotted rules. */
+  --font-script: 'Pinyon Script', cursive;
+  --font-script-delafield: 'Mrs Saint Delafield', cursive;
+  --font-script-italianno: 'Italianno', cursive;
+  --font-script-parisienne: 'Parisienne', cursive;
+  --font-script-ephesis: 'Ephesis', cursive;
+  --font-script-imperial: 'Imperial Script', cursive;
+  --font-serif: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-hand: 'La Belle Aurore', cursive;
+  --space-xs: 7px;
+  --space-sm: 11px;
+  --space-md: 17px;
+  --space-lg: 22px;
+  --space-xl: 56px;
+  --radius-sheet: 3px;
+  --radius-card: 4px;
+  --radius-pill: 999px;
+}
+
+/* Fonts: https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Mrs+Saint+Delafield&family=Italianno&family=Parisienne&family=Ephesis&family=Imperial+Script&family=La+Belle+Aurore&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap */

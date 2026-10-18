@@ -1,0 +1,1890 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mira Turns 26</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<!-- The cover's envelope, drawn heavier: the fine line work vanishes at 16px. -->
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#fdf8ee">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Mrs+Saint+Delafield&family=Italianno&family=Parisienne&family=Ephesis&family=Imperial+Script&family=La+Belle+Aurore&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crimson: #b01c30;
+    --crimson-deep: #8a1224;
+    --crimson-soft: #cf6b76;
+    --cream: #fdf8ee;
+    --blush: #f8e6e0;
+    --ink: #6b4640;
+    --ink-strong: #482b28;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Garamond, Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card{
+    --script: 'Pinyon Script', cursive;
+    --s1: clamp(46px, 10vw, 78px); --s2: clamp(30px, 6.4vw, 50px);
+    --slh: 1.06; --hungry: clamp(26px, 5.6vw, 36px);
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 34% 38% at 50% 46%, rgba(255,253,248,0.9), rgba(255,253,248,0.5) 58%, transparent 80%),
+      radial-gradient(ellipse 36% 28% at 2% 1%, var(--blush), transparent 70%),
+      radial-gradient(ellipse 36% 28% at 99% 99%, var(--blush), transparent 70%),
+      var(--cream);
+  }
+  .card.f-delafield{ --script:'Mrs Saint Delafield', cursive; --s1: clamp(58px,13vw,100px); --s2: clamp(38px,8.4vw,64px); --slh:0.92; --hungry: clamp(34px,7vw,46px); }
+  .card.f-italianno{ --script:'Italianno', cursive;          --s1: clamp(60px,13.5vw,104px); --s2: clamp(40px,8.8vw,66px); --slh:0.88; --hungry: clamp(34px,7vw,46px); }
+  .card.f-parisienne{ --script:'Parisienne', cursive;        --s1: clamp(44px,9.6vw,76px); --s2: clamp(29px,6.2vw,48px); --slh:1.04; --hungry: clamp(26px,5.4vw,34px); }
+  .card.f-ephesis{ --script:'Ephesis', cursive;              --s1: clamp(46px,10vw,78px); --s2: clamp(30px,6.4vw,50px); --slh:1.08; --hungry: clamp(27px,5.6vw,36px); }
+  .card.f-imperial{ --script:'Imperial Script', cursive;     --s1: clamp(52px,11.5vw,90px); --s2: clamp(34px,7.4vw,58px); --slh:0.98; --hungry: clamp(30px,6.2vw,40px); }
+
+  .grain{
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    opacity: 0.28; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  }
+
+  .frame-svg{ position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+  .sprite{ position: absolute; width: 0; height: 0; overflow: hidden; }
+
+  .doodles{ position: absolute; inset: 0; pointer-events: none; z-index: 2; color: var(--crimson); }
+  .dd{ position: absolute; }
+  .dd-in{ display: block; transform-origin: 50% 50%; }
+  .dd img, .dd svg{ display: block; width: 100%; height: auto; }
+
+  .wreath{ position: absolute; z-index: 2; pointer-events: none; }
+  .wreath img{ display: block; width: 100%; height: 100%; }
+
+  @keyframes twinkle{
+    0%,100%{ opacity: var(--op,0.9); }
+    50%{ opacity: calc(var(--op,0.9) * 0.35); }
+  }
+  @keyframes pop{
+    0%{ opacity: 0; scale: 0.7; }
+    62%{ opacity: 1; scale: 1.055; }
+    100%{ opacity: 1; scale: 1; }
+  }
+  @keyframes rise{
+    from{ opacity: 0; translate: 0 13px; }
+    to{ opacity: 1; translate: 0 0; }
+  }
+  @keyframes draw{
+    from{ stroke-dashoffset: 1; }
+    to{ stroke-dashoffset: 0; }
+  }
+  @keyframes sway{
+    0%,100%{ rotate: -0.55deg; }
+    50%{ rotate: 0.55deg; }
+  }
+  @keyframes bob{
+    0%,100%{ translate: 0 0; }
+    50%{ translate: 0 -7px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .dd.tw{ animation: twinkle var(--dur,5s) ease-in-out infinite var(--del,0s); }
+
+    .doodles.anim .dd-in{
+      animation: pop 0.66s cubic-bezier(0.22, 0.9, 0.28, 1.2) var(--pd, 0s) both;
+    }
+
+    .frame-svg.anim #framePath{
+      stroke-dasharray: 1;
+      animation: draw 2s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .panel.enter > *{ animation: rise 0.66s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+    .panel.enter > *:nth-child(1){ animation-delay: 0.08s; }
+    .panel.enter > *:nth-child(2){ animation-delay: 0.16s; }
+    .panel.enter > *:nth-child(3){ animation-delay: 0.24s; }
+    .panel.enter > *:nth-child(4){ animation-delay: 0.32s; }
+    .panel.enter > *:nth-child(5){ animation-delay: 0.40s; }
+    .panel.enter > *:nth-child(6){ animation-delay: 0.48s; }
+    .panel.enter > *:nth-child(7){ animation-delay: 0.56s; }
+    .panel.enter > *:nth-child(n+8){ animation-delay: 0.62s; }
+
+    .banner{ animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+    .tabs{ animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) 0.06s both; }
+
+    .banner img{ transform-origin: 50% 0; animation: sway 8s ease-in-out 1.2s infinite; }
+    .balloons img{ animation: bob 6.5s ease-in-out 1.4s infinite; }
+  }
+
+  /* ---------------- sealed envelope ---------------- */
+  .cover{
+    position: absolute; inset: 0; z-index: 5;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 20px;
+  }
+  .card.sealed .content{ visibility: hidden; }
+
+  .cover-btn{
+    position: relative; display: block;
+    width: min(250px, 54vw); padding: 0;
+    background: none; border: none; cursor: pointer;
+  }
+  .cover-btn:focus-visible{ outline: 2px solid var(--crimson); outline-offset: 12px; border-radius: 4px; }
+  .cover-env{ position: relative; z-index: 2; display: block; width: 100%; height: auto; }
+  .cover-letter{
+    position: absolute; z-index: 1;
+    left: 14%; right: 14%; top: 16%; bottom: 24%;
+    background: var(--cream);
+    border: 1px solid var(--crimson-soft);
+    opacity: 0;
+  }
+  .cover-hint{
+    margin: 0;
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 19px; color: var(--crimson-soft);
+    transform: rotate(-1.5deg);
+  }
+
+  @keyframes envIn{
+    from{ opacity: 0; scale: 0.82; translate: 0 16px; }
+    to{ opacity: 1; scale: 1; translate: 0 0; }
+  }
+  @keyframes envIdle{
+    0%,100%{ translate: 0 0; }
+    50%{ translate: 0 -7px; }
+  }
+  @keyframes envOpen{
+    0%{ scale: 1; rotate: 0deg; opacity: 1; }
+    30%{ scale: 1.09; rotate: -2.5deg; opacity: 1; }
+    100%{ scale: 1.55; rotate: 1deg; opacity: 0; }
+  }
+  @keyframes letterOut{
+    0%{ opacity: 0; translate: 0 0; scale: 0.92; }
+    28%{ opacity: 1; translate: 0 -26px; scale: 1; }
+    100%{ opacity: 0; translate: 0 -104px; scale: 1.7; }
+  }
+  @keyframes hintOut{
+    to{ opacity: 0; translate: 0 12px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .cover-btn{ animation: envIn 0.8s cubic-bezier(0.2,0.7,0.3,1) 0.45s both; }
+    .cover-env{ animation: envIdle 4.5s ease-in-out 1.4s infinite; }
+    .cover-hint{ animation: envIn 0.8s cubic-bezier(0.2,0.7,0.3,1) 0.7s both; }
+
+    .cover.opening .cover-btn{ animation: none; }
+    .cover.opening .cover-env{ animation: envOpen 0.85s cubic-bezier(0.4,0,0.3,1) both; }
+    .cover.opening .cover-letter{ animation: letterOut 0.85s cubic-bezier(0.4,0,0.3,1) both; }
+    .cover.opening .cover-hint{ animation: hintOut 0.3s ease-out both; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cover.opening{ display: none; }
+  }
+
+  /* ---------------- content ---------------- */
+  .content{
+    position: relative; z-index: 3;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 17px;
+    padding: 56px 22px 74px;
+    text-align: center;
+  }
+
+  .banner{ width: min(520px, 76vw); margin-bottom: 4px; }
+  .banner img{ display: block; width: 100%; height: auto; }
+
+  .tabs{
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0 clamp(13px, 3.4vw, 34px); margin-bottom: 2px;
+  }
+  .tab{
+    position: relative; background: none; border: none;
+    padding: 4px 2px 12px; cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5px; font-weight: 500;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--ink); opacity: 0.5;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .tab:hover{ opacity: 0.85; }
+  .tab:focus-visible{ outline: 1.5px solid var(--crimson); outline-offset: 4px; }
+  .tab[aria-selected="true"]{ opacity: 1; color: var(--crimson); }
+  .tab .underline{
+    position: absolute; left: -4px; right: -4px; bottom: 2px; height: 7px;
+    color: var(--crimson); opacity: 0; transition: opacity 0.22s ease;
+  }
+  .tab[aria-selected="true"] .underline{ opacity: 1; }
+
+  /* The "new" mark. Breathes slowly rather than blinking, so it catches the
+     eye without turning the tabs into a notification tray. */
+  .tab-new{
+    position: relative; top: -0.5em; margin-left: 3px;
+    font-size: 1.35em; font-weight: 700; letter-spacing: 0;
+    color: var(--crimson);
+  }
+  /* Unselected tabs sit at half opacity and a child cannot climb back out of
+     that, so the new tab is dimmed a little less than its neighbours. */
+  #tab-wishlist:not([aria-selected="true"]),
+  #tab-letters:not([aria-selected="true"]){ opacity: 0.72; }
+  @media (prefers-reduced-motion: no-preference){
+    .tab-new{ animation: newmark 2.8s ease-in-out infinite; }
+    @keyframes newmark{ 0%, 100%{ opacity: 1; } 50%{ opacity: 0.55; } }
+  }
+  .tab .underline svg{ width: 100%; height: 7px; display: block; }
+
+  .panel{ display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: 460px; }
+  .panel.panel-wide{ max-width: 640px; width: 100%; }
+  .card.mode-wreath .panel{ max-width: 370px; }
+
+  .panel.panel-mid{ max-width: 520px; width: 100%; }
+  .agenda-body{ width: 100%; max-width: 400px; margin: 0 auto; text-align: left; }
+
+  .facts{ margin: 0 0 24px; display: flex; flex-direction: column; gap: 13px; }
+  .facts > div{ display: flex; flex-direction: column; gap: 3px; }
+  .facts dt{
+    font-size: 10.5px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+  .facts dd{
+    margin: 0; font-style: italic; font-size: 18.5px;
+    line-height: 1.45; color: var(--ink-strong);
+  }
+
+  .musts-label{
+    margin: 0 0 11px; display: flex; align-items: center; gap: 12px;
+    font-size: 10.5px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+  .musts-label::after{
+    content: ""; flex: 1; height: 1px; background: currentColor; opacity: 0.3;
+  }
+  .musts{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .musts li{ display: flex; gap: 11px; align-items: baseline; }
+  .musts li > svg{ width: 11px; height: 10px; flex: none; color: var(--crimson); }
+  .musts li > span{ font-size: 18.5px; color: var(--ink-strong); line-height: 1.4; }
+  .musts .aside{
+    display: block; margin-top: 1px;
+    font-style: italic; font-size: 15px;
+    color: var(--ink); opacity: 0.85;
+  }
+
+  .kicker .sad{ font-size: 14px; letter-spacing: 0; margin-left: -7px; }
+
+  .quiet{
+    margin: 8px 0 0; max-width: 34ch;
+    padding-top: 13px; border-top: 1px dotted rgba(176,28,48,0.25);
+    font-style: italic; font-size: 15.5px; line-height: 1.55;
+    color: var(--ink);
+  }
+  .quiet-label{
+    display: block; margin-bottom: 5px;
+    font-style: normal; font-size: 10px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+
+  .no-plus{
+    margin: -6px 0 0; font-style: italic; font-weight: 400;
+    font-size: 19px; color: var(--crimson);
+  }
+
+  .guests{
+    list-style: none; margin: 2px 0 0; padding: 0; width: 100%;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+    gap: 0 30px;
+  }
+  .guests li{
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    padding: 6px 2px 5px;
+    border-bottom: 1px dotted rgba(176,28,48,0.22);
+  }
+  /* The panel centres its text; a name long enough to wrap would centre its
+     own lines and sit oddly against the rest of the column. */
+  .guests .gname{ font-size: 17px; color: var(--ink-strong); text-align: left; }
+  .guests li.away .gname{ font-style: italic; color: var(--ink); opacity: 0.8; }
+  .yn{
+    flex: none; width: 16px; text-align: center;
+    font-size: 11px; letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+  }
+  .yn.y{ color: var(--crimson); }
+  .yn.n{ color: var(--crimson-soft); opacity: 0.8; }
+  .yn.q{ color: var(--ink); opacity: 0.4; font-size: 13px; }
+  .yn.h{ color: var(--crimson); }
+  .yn.h svg{ width: 11px; height: 10px; display: block; margin: 0 auto; }
+  .guests li.beloved .gname{ color: var(--crimson); }
+  .guest-note{
+    margin: 6px 0 0; max-width: 42ch;
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 16px; line-height: 1.5; color: var(--crimson-soft);
+    transform: rotate(-0.6deg);
+  }
+
+  /* Letters. A name picker, then the one letter on its own sheet. */
+  .letter-pick{ width: 100%; max-width: 280px; margin: 0 auto; }
+  .letter-pick > span{ width: auto; }
+  .letter{
+    width: 100%; max-width: 440px; margin: 4px auto 0; padding: 22px 24px 20px;
+    text-align: left; background: rgba(255,253,248,0.78);
+    border: 1px solid rgba(176,28,48,0.18); border-radius: 3px;
+  }
+  .letter p{ margin: 0 0 12px; font-size: 18px; line-height: 1.55; color: var(--ink-strong); }
+  .letter p:first-child{
+    font-family: 'La Belle Aurore', cursive; font-size: 22px; color: var(--crimson);
+  }
+  .letter p:last-child{ margin-bottom: 0; }
+
+  /* Wishlist. Every line is closed by default; the detail, the claims and
+     the gifting controls all live inside the fold, so the panel reads as a
+     quiet list until someone actually asks for more. */
+  .wl-hint{
+    margin: -4px 0 2px; max-width: 42ch;
+    font-style: italic; font-size: 15.5px; line-height: 1.5;
+    color: var(--ink); opacity: 0.9;
+  }
+
+  .wl-group{ width: 100%; max-width: 480px; margin: 0 auto; }
+  .wl-head{
+    margin: 0 0 6px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
+    font-size: 10.5px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+  .wl-head span{ flex: none; }
+  .wl-head::after{ content: ""; order: 1; flex: 1 1 30px; height: 1px; background: currentColor; opacity: 0.3; }
+  .wl-head em{
+    order: 2; flex: none; margin-left: auto;
+    font-style: italic; letter-spacing: 0.14em; opacity: 0.75;
+    text-transform: none; font-size: 11px;
+  }
+
+  .wl{ list-style: none; margin: 0 0 22px; padding: 0; }
+  .wl-item{ border-bottom: 1px dotted rgba(176,28,48,0.22); }
+
+  .wl-row{
+    width: 100%; display: flex; align-items: baseline; gap: 10px;
+    background: none; border: none; padding: 9px 2px 8px;
+    font-family: 'Cormorant Garamond', serif; text-align: left;
+    color: var(--ink-strong); cursor: pointer;
+  }
+  .wl-row:focus-visible{ outline: 1.5px solid var(--crimson); outline-offset: 3px; }
+  .wl-item.flat .wl-row{ cursor: default; }
+  .wl-name{ flex: 1; font-size: 17px; line-height: 1.35; }
+  .wl-row .chev{ flex: none; width: 13px; height: 13px; color: var(--crimson); opacity: 0.55; transition: transform 0.3s ease; align-self: center; }
+  .wl-row[aria-expanded="true"] .chev{ transform: rotate(180deg); }
+  .wl-item.flat .chev{ visibility: hidden; }
+
+  .wl-mark{ flex: none; display: flex; align-items: center; gap: 5px; color: var(--crimson); }
+  .wl-mark svg{ width: 11px; height: 10px; display: block; }
+  .wl-mark .n{ font-size: 11.5px; font-variant-numeric: tabular-nums; }
+  .wl-voucher{
+    flex: none; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--crimson-soft); opacity: 0.9; align-self: center;
+  }
+
+  .wl-detail{ display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1); }
+  .wl-detail.open{ grid-template-rows: 1fr; }
+  .wl-detail > div{ overflow: hidden; }
+  .wl-body{ padding: 2px 2px 14px; text-align: left; }
+  .wl-note{
+    margin: 0; font-style: italic; font-size: 15.5px; line-height: 1.5;
+    color: var(--ink); max-width: 46ch;
+  }
+
+  .wl-claims{ list-style: none; margin: 11px 0 0; padding: 0; }
+  .wl-claims li{ display: flex; align-items: baseline; gap: 8px; padding: 3px 0; font-size: 15px; color: var(--ink-strong); }
+  .wl-claims svg{ flex: none; width: 11px; height: 10px; color: var(--crimson); }
+  .wl-claims .who{ font-style: normal; }
+  .wl-claims .said{ font-style: italic; color: var(--ink); opacity: 0.85; }
+  .wl-claims .mine .who{ color: var(--crimson); }
+
+  .wl-act{ margin-top: 11px; display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+  .wl-btn{
+    background: none; border: 1px solid rgba(176,28,48,0.35); border-radius: 999px;
+    padding: 5px 15px; cursor: pointer;
+    font-family: 'Cormorant Garamond', serif; font-size: 13px;
+    letter-spacing: 0.1em; color: var(--crimson);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .wl-btn:hover{ background: rgba(176,28,48,0.07); border-color: var(--crimson); }
+  .wl-btn:focus-visible{ outline: 1.5px solid var(--crimson); outline-offset: 3px; }
+  .wl-btn.plain{ border-color: transparent; color: var(--ink); opacity: 0.7; padding: 5px 4px; }
+  .wl-btn.plain:hover{ background: none; opacity: 1; }
+  .wl-said{
+    flex: 1; min-width: 150px; background: none;
+    border: none; border-bottom: 1px dotted rgba(176,28,48,0.35);
+    padding: 4px 2px; font-family: 'Cormorant Garamond', serif;
+    font-size: 14.5px; font-style: italic; color: var(--ink-strong);
+  }
+  .wl-said:focus{ outline: none; border-bottom-color: var(--crimson); }
+
+  .wl-problem{
+    margin: 8px 0 0; font-style: italic; font-size: 14px; color: var(--crimson);
+  }
+
+  .wl-allergy{
+    margin: 0; max-width: 40ch; padding-top: 12px;
+    border-top: 1px dotted rgba(176,28,48,0.25);
+    font-style: italic; font-size: 15.5px; color: var(--crimson);
+  }
+
+  .wl-gate{ width: 100%; max-width: 420px; margin: 4px auto 0; text-align: center; }
+  .wl-gate-btn{
+    background: none; border: none; cursor: pointer; padding: 4px;
+    font-family: 'Cormorant Garamond', serif; font-size: 10.5px;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--ink); opacity: 0.55; transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .wl-gate-btn:hover{ opacity: 1; color: var(--crimson); }
+  .wl-gate-btn:focus-visible{ outline: 1.5px solid var(--crimson); outline-offset: 4px; }
+  /* The gate itself: centred, with the list left legible but softened behind
+     it, so the passphrase is the only thing asking to be read. */
+  .wl-modal{
+    position: fixed; inset: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: center;
+    padding: 22px;
+    background: rgba(253, 248, 238, 0.6);
+    -webkit-backdrop-filter: blur(10px) saturate(1.04);
+    backdrop-filter: blur(10px) saturate(1.04);
+  }
+  .wl-modal[hidden]{ display: none; }
+  .wl-modal-card{
+    position: relative; width: min(400px, 100%);
+    max-height: 100%; overflow-y: auto; overflow-x: hidden;
+    padding: 26px 28px 24px; text-align: center;
+    background: var(--cream);
+    border: 1px solid rgba(176,28,48,0.3);
+    box-shadow: 0 20px 54px rgba(107,70,64,0.18);
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .wl-modal{ animation: gatein 0.28s ease both; }
+    .wl-modal-card{ animation: rise 0.44s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+    @keyframes gatein{ from{ opacity: 0; } to{ opacity: 1; } }
+  }
+  .wl-modal-close{
+    position: absolute; top: 6px; right: 9px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+    font-family: 'Cormorant Garamond', serif; font-size: 21px; line-height: 1;
+    color: var(--ink); opacity: 0.4;
+  }
+  .wl-modal-close:hover{ opacity: 1; color: var(--crimson); }
+  .wl-modal-close:focus-visible{ outline: 1.5px solid var(--crimson); outline-offset: 2px; }
+  .wl-modal-seal{ display: block; width: 66px; height: auto; margin: 0 auto 6px; }
+  .wl-modal-title{
+    margin: 0 0 4px; font-family: var(--script); font-weight: 400;
+    font-size: clamp(30px, 7vw, 40px); line-height: 1.04; color: var(--crimson);
+  }
+  .wl-modal-why{ margin: 0 0 14px; font-style: italic; font-size: 15px; color: var(--ink); opacity: 0.9; }
+  .wl-modal-pass{
+    margin: 0 0 18px; padding: 12px 10px;
+    border: 1px dashed rgba(176,28,48,0.38);
+    background: rgba(248,230,224,0.45);
+  }
+  .wl-modal-pass .lbl{
+    display: block; margin-bottom: 4px;
+    font-size: 9.5px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--crimson); opacity: 0.8;
+  }
+  .wl-modal-pass b{
+    font-weight: 500; font-size: 27px; letter-spacing: 0.16em;
+    color: var(--crimson);
+  }
+  /* Narrow card: a label beside its field leaves neither enough room, so
+     let them stack. */
+  @media (max-width: 430px){
+    .wl-modal .wl-f{ flex-direction: column; align-items: stretch; gap: 2px; margin-bottom: 12px; }
+    .wl-modal .wl-f > span{ width: auto; }
+    .wl-modal .wl-f input, .wl-modal .wl-f select{ width: 100%; }
+  }
+
+  /* Short screens: a landscape phone, or a browser with everything open. */
+  @media (max-height: 580px){
+    .wl-modal{ padding: 12px; }
+    .wl-modal-card{ padding: 18px 22px 16px; }
+    .wl-modal-seal{ width: 44px; margin-bottom: 2px; }
+    .wl-modal-title{ font-size: clamp(24px, 6vw, 30px); }
+    .wl-modal-why{ margin-bottom: 9px; font-size: 14px; }
+    .wl-modal-pass{ margin-bottom: 12px; padding: 8px 10px; }
+    .wl-modal-pass b{ font-size: 22px; }
+  }
+
+  .wl-f{ display: flex; align-items: baseline; gap: 10px; margin: 0 0 9px; text-align: left; }
+  .wl-f > span{
+    flex: none; width: 88px; font-size: 9.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+  .wl-f input, .wl-f select{
+    flex: 1; min-width: 0; background: none;
+    border: none; border-bottom: 1px dotted rgba(176,28,48,0.4);
+    padding: 4px 2px; font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; color: var(--ink-strong);
+  }
+  .wl-f input:focus, .wl-f select:focus{ outline: none; border-bottom-color: var(--crimson); }
+  .wl-go{
+    margin-top: 6px; background: none; border: 1px solid rgba(176,28,48,0.35);
+    border-radius: 999px; padding: 6px 22px; cursor: pointer;
+    font-family: 'Cormorant Garamond', serif; font-size: 13px;
+    letter-spacing: 0.14em; color: var(--crimson);
+  }
+  .wl-go:hover{ background: rgba(176,28,48,0.07); border-color: var(--crimson); }
+  .wl-go:disabled{ opacity: 0.45; cursor: default; }
+  .wl-go:disabled:hover{ background: none; border-color: rgba(176,28,48,0.35); }
+  .wl-msg{ margin: 9px 0 0; min-height: 1em; font-style: italic; font-size: 14px; color: var(--crimson); }
+
+  /* Stretching the key takes a second or two on a phone, and the sheet takes
+     its own. Three hearts beating in turn, rather than a spinner. */
+  .wl-wait{ display: flex; justify-content: center; gap: 8px; margin-top: 13px; color: var(--crimson); }
+  .wl-wait[hidden]{ display: none; }
+  .wl-wait svg{ width: 13px; height: 12px; display: block; opacity: 0.22; }
+  @media (prefers-reduced-motion: no-preference){
+    .wl-wait svg{ animation: beat 1.3s ease-in-out infinite; }
+    .wl-wait svg:nth-child(2){ animation-delay: 0.19s; }
+    .wl-wait svg:nth-child(3){ animation-delay: 0.38s; }
+    @keyframes beat{
+      0%, 100%{ opacity: 0.22; scale: 0.85; }
+      40%{ opacity: 1; scale: 1.15; }
+    }
+  }
+
+  .wl-signed{
+    display: flex; align-items: baseline; justify-content: center; gap: 10px;
+    font-style: italic; font-size: 14.5px; color: var(--ink); opacity: 0.85;
+  }
+  .wl-lock{
+    background: none; border: none; cursor: pointer; padding: 2px;
+    font-family: 'Cormorant Garamond', serif; font-size: 13px;
+    color: var(--crimson); text-decoration: underline; text-underline-offset: 3px;
+  }
+
+  .balloons{ width: clamp(116px, 24vw, 168px); margin-bottom: -6px; }
+  .balloons img{ display: block; width: 100%; height: auto; }
+
+  .kicker{
+    display: flex; align-items: center; gap: 13px; margin: 0;
+    font-size: 11px; letter-spacing: 0.36em;
+    text-transform: uppercase; color: var(--crimson);
+  }
+  .kicker::before, .kicker::after{
+    content: ""; width: 26px; height: 1px; background: currentColor; opacity: 0.45;
+  }
+
+  .invite-line{
+    margin: 0; font-style: italic; font-weight: 300;
+    font-size: clamp(17px, 3.6vw, 20px);
+    line-height: 1.6; color: var(--ink); max-width: 26ch; text-wrap: balance;
+  }
+  .invite-line em{ font-style: italic; font-weight: 500; color: var(--crimson); }
+
+  .headline{
+    margin: 0; font-family: var(--script); font-weight: 400;
+    color: var(--crimson); line-height: var(--slh); text-wrap: balance;
+  }
+  .headline .l1{ display: block; font-size: var(--s1); }
+  .headline .l2{ display: block; font-size: var(--s2); }
+
+  .when{ display: flex; flex-direction: column; gap: 7px; margin: 0; }
+  .when .day{ font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-strong); }
+  .when .hour{ font-style: italic; font-weight: 300; font-size: 19px; color: var(--ink); }
+
+  .venue{ display: flex; flex-direction: column; align-items: center; gap: 6px; width: min(360px, 100%); }
+  .venue-btn{
+    background: none; border: none; cursor: pointer; padding: 2px 6px 5px;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 500; font-size: clamp(23px, 5vw, 29px);
+    color: var(--crimson); border-bottom: 1px dotted var(--crimson-soft);
+    transition: color 0.2s ease;
+  }
+  .venue-btn:hover{ color: var(--crimson-deep); }
+  .venue-btn:focus-visible{ outline: 1.5px solid var(--crimson); outline-offset: 5px; }
+  .venue-btn .chev{ width: 14px; height: 14px; flex: none; transition: transform 0.3s ease; }
+  .venue-btn[aria-expanded="true"] .chev{ transform: rotate(180deg); }
+
+  .venue-hint{ font-family: 'La Belle Aurore', cursive; font-size: 15px; color: var(--crimson-soft); transform: rotate(-1deg); }
+
+  .address{ display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1); width: 100%; }
+  .address.open{ grid-template-rows: 1fr; }
+  .address > div{ overflow: hidden; }
+  .address-card{
+    margin-top: 12px; padding: 15px 20px;
+    border: 1px dashed var(--crimson-soft);
+    background: rgba(255,253,248,0.82);
+    font-size: 17px; line-height: 1.6; color: var(--ink-strong);
+  }
+  .address-card .name{
+    display: block; margin-bottom: 6px; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.24em; text-transform: uppercase; color: var(--crimson);
+  }
+  .address-card .note{
+    display: block; margin-top: 10px; padding-top: 9px;
+    border-top: 1px dotted rgba(176,28,48,0.25);
+    font-style: italic; font-size: 16px; color: var(--crimson);
+  }
+
+  .hungry{ margin: 2px 0 0; font-family: var(--script); font-size: var(--hungry); color: var(--crimson); transform: rotate(-2deg); }
+
+  .placeholder{ display: flex; flex-direction: column; align-items: center; gap: 15px; padding: 18px 0; }
+  .panel .title{ margin: 0; font-family: var(--script); font-weight: 400; font-size: var(--s2); line-height: var(--slh); color: var(--crimson); }
+  .placeholder p{ margin: 0; font-style: italic; font-weight: 300; font-size: 19px; color: var(--ink); max-width: 27ch; line-height: 1.6; }
+
+  [hidden]{ display: none !important; }
+
+  @media (max-width: 620px){
+    .content{ padding: 92px 16px 112px; gap: 15px; }
+    .panel{ max-width: 316px; }
+    .tab{ font-size: 12px; letter-spacing: 0.16em; padding-bottom: 10px; }
+    .tabs{ gap: 13px; }
+    .kicker{ font-size: 11.5px; letter-spacing: 0.28em; }
+    .kicker::before, .kicker::after{ width: 18px; }
+    .invite-line{ font-size: 18.5px; }
+    .when .day{ font-size: 13.5px; letter-spacing: 0.2em; }
+    .when .hour{ font-size: 20px; }
+    .venue-btn{ font-size: 27px; }
+    .venue-hint{ font-size: 16px; }
+    .address-card{ font-size: 18px; }
+    .address-card .note{ font-size: 17px; }
+    .quiet{ font-size: 16.5px; max-width: 30ch; }
+    .banner{ width: min(420px, 84vw); }
+    .balloons{ width: clamp(130px, 34vw, 170px); }
+    .guests .gname, .musts li > span, .facts dd{ font-size: 18.5px; }
+    .guests{ gap: 0 22px; }
+    .no-plus{ font-size: 19px; }
+    .wl-head{ letter-spacing: 0.18em; }
+    .wl-name{ font-size: 18px; }
+    .wl-note{ font-size: 16.5px; }
+    .wl-allergy{ font-size: 16.5px; }
+    .wl-f > span{ width: 74px; }
+  }
+
+  @media (max-width: 760px){
+    .content{ padding: 70px 24px 92px; }
+  }
+</style>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="f-heart" viewBox="0 0 20 18">
+      <path d="M10 17 C 1 10, 1 3, 5.5 3 C 8 3, 10 5, 10 6.6 C 10 5, 12 3, 14.5 3 C 19 3, 19 10, 10 17 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="f-dot" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="f-star" viewBox="0 0 20 20">
+      <path d="M10 1 L12.3 7.1 L18.8 7.4 L13.7 11.5 L15.5 17.8 L10 14.1 L4.5 17.8 L6.3 11.5 L1.2 7.4 L7.7 7.1 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="f-spark" viewBox="0 0 24 24">
+      <path d="M12 1 C 13 9, 15 11, 23 12 C 15 13, 13 15, 12 23 C 11 15, 9 13, 1 12 C 9 11, 11 9, 12 1 Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="card" id="card">
+  <div class="grain"></div>
+  <div class="doodles" id="doodles"></div>
+  <div class="wreath" id="wreath" hidden><img src="doodles/frame-scallop-bow.png" alt=""></div>
+  <svg class="frame-svg" id="frameSvg" preserveAspectRatio="none" aria-hidden="true">
+    <path id="framePath" fill="none" stroke="var(--crimson)" stroke-width="1.1" stroke-opacity="0.5"></path>
+  </svg>
+
+  <div class="cover" id="cover" hidden>
+    <button class="cover-btn" id="coverBtn" aria-label="Open the invitation">
+      <span class="cover-letter" aria-hidden="true"></span>
+      <img class="cover-env" src="doodles/envelope-heart.png" alt="" draggable="false">
+    </button>
+    <p class="cover-hint">tap to open</p>
+  </div>
+
+  <main class="content" id="content">
+    <div class="banner" id="bannerEl"><img src="doodles/banner-happy-birthday.png" alt="Happy Birthday"></div>
+
+    <nav class="tabs" role="tablist" aria-label="Party details" id="tabs">
+      <button class="tab" role="tab" id="tab-invite" aria-controls="panel-invite" aria-selected="true">
+        Invitation
+        <span class="underline" aria-hidden="true"><svg viewBox="0 0 100 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" preserveAspectRatio="none"><path d="M2 4.5 C 16 1, 30 6, 44 3.5 S 72 1, 98 4"/></svg></span>
+      </button>
+      <button class="tab" role="tab" id="tab-wishlist" aria-controls="panel-wishlist" aria-selected="false" aria-label="Wishlist, new">
+        Wishlist<span class="tab-new" aria-hidden="true">!</span>
+        <span class="underline" aria-hidden="true"><svg viewBox="0 0 100 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" preserveAspectRatio="none"><path d="M2 4.5 C 16 1, 30 6, 44 3.5 S 72 1, 98 4"/></svg></span>
+      </button>
+      <button class="tab" role="tab" id="tab-agenda" aria-controls="panel-agenda" aria-selected="false">
+        Agenda
+        <span class="underline" aria-hidden="true"><svg viewBox="0 0 100 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" preserveAspectRatio="none"><path d="M2 4.5 C 16 1, 30 6, 44 3.5 S 72 1, 98 4"/></svg></span>
+      </button>
+      <button class="tab" role="tab" id="tab-guests" aria-controls="panel-guests" aria-selected="false">
+        Guest List
+        <span class="underline" aria-hidden="true"><svg viewBox="0 0 100 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" preserveAspectRatio="none"><path d="M2 4.5 C 16 1, 30 6, 44 3.5 S 72 1, 98 4"/></svg></span>
+      </button>
+      <button class="tab" role="tab" id="tab-letters" aria-controls="panel-letters" aria-selected="false" aria-label="Letters, new" hidden>
+        Letters<span class="tab-new" aria-hidden="true">!</span>
+        <span class="underline" aria-hidden="true"><svg viewBox="0 0 100 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" preserveAspectRatio="none"><path d="M2 4.5 C 16 1, 30 6, 44 3.5 S 72 1, 98 4"/></svg></span>
+      </button>
+    </nav>
+
+    <section class="panel" id="panel-invite" role="tabpanel" aria-labelledby="tab-invite">
+      <div class="balloons" id="balloonsEl"><img src="doodles/balloons-26.png" alt="Twenty-six"></div>
+
+      <p class="kicker">You are invited</p>
+      <p class="invite-line">as one of the <em>26 people</em> who mean most to Mira</p>
+
+      <h1 class="headline">
+        <span class="l1">Miracle's</span>
+        <span class="l2">26th Birthday</span>
+      </h1>
+
+      <p class="when">
+        <span class="day">Sunday, the fourth of October</span>
+        <span class="hour">four o'clock in the afternoon</span>
+      </p>
+
+      <div class="venue">
+        <button class="venue-btn" id="venueToggle" aria-expanded="false" aria-controls="venueAddress">
+          The Garden Room
+          <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6 L8 10.5 L12.5 6"/></svg>
+        </button>
+        <span class="venue-hint">psst, tap the name for the address</span>
+        <div class="address" id="venueAddress">
+          <div>
+            <p class="address-card">
+              <span class="name">Where to find us</span>
+              <span id="addressLines">Shared privately with guests.</span>
+              <span class="note" id="addressNote" hidden></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="hungry">come hungry!</p>
+
+      <p class="quiet">
+        <span class="quiet-label">Just between us</span>
+        This one is private. We won't be posting about it, and please don't pass
+        the link on. That's the whole point of a top 26.
+      </p>
+    </section>
+
+    <section class="panel panel-mid" id="panel-agenda" role="tabpanel" aria-labelledby="tab-agenda" hidden>
+      <p class="kicker">No timetable, just plans</p>
+      <h2 class="title">Agenda</h2>
+
+      <div class="agenda-body">
+        <dl class="facts">
+          <div>
+            <dt>Food</dt>
+            <dd>To be confirmed. Shawarma? Fries?</dd>
+          </div>
+          <div>
+            <dt>Dress code</dt>
+            <dd>Anything you look good in :)</dd>
+          </div>
+        </dl>
+
+        <p class="musts-label">Must-dos</p>
+        <ul class="musts">
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Overcooked
+              <span class="aside" id="overcookedAside"></span>
+            </span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Coloring</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Board games?</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Codenames</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Play with the cats</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Watch wedding recap video!</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>
+            <span>Take polaroid photos together :P</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel panel-wide" id="panel-guests" role="tabpanel" aria-labelledby="tab-guests" hidden>
+      <p class="kicker">Y yes, ? still waiting, N can't make it <span class="sad">:(</span></p>
+      <h2 class="title">Guest List</h2>
+      <p class="no-plus">No +1s invited, I just want you.</p>
+
+      <ul class="guests" id="guestList"></ul>
+
+      <p class="guest-note" id="guestNote"></p>
+    </section>
+
+    <section class="panel panel-mid" id="panel-letters" role="tabpanel" aria-labelledby="tab-letters" hidden>
+      <p class="kicker">Thank you for coming</p>
+      <h2 class="title">A Letter for You</h2>
+      <p class="no-plus">One each, from Mira.</p>
+
+      <label class="wl-f letter-pick">
+        <span>You are</span>
+        <select id="letterWho"></select>
+      </label>
+
+      <div class="letter" id="letterBody" hidden></div>
+      <p class="wl-hint" id="letterNone" hidden>Yours is still being written. Check back soon.</p>
+    </section>
+
+    <section class="panel panel-wide" id="panel-wishlist" role="tabpanel" aria-labelledby="tab-wishlist" hidden>
+      <p class="kicker">Tap a line for the details</p>
+      <h2 class="title">Wishlist</h2>
+      <p class="no-plus">Only if you insist. Your being there is the gift.</p>
+
+      <p class="wl-hint" id="wlHint">
+        Friends &mdash; unlock at the foot of this list to mark what you are
+        bringing, so nobody doubles up.
+      </p>
+
+      <div class="wl-group">
+        <p class="wl-head"><span>Only you can give these</span><em>priceless</em></p>
+        <ul class="wl" id="wlMade"></ul>
+      </div>
+
+      <div class="wl-group">
+        <p class="wl-head"><span>And if you really want to spend</span><em>most wanted first</em></p>
+        <ul class="wl" id="wlBuy"></ul>
+      </div>
+
+      <p class="wl-allergy" id="wlNote"></p>
+
+      <div class="wl-gate" id="wlGate">
+        <button class="wl-gate-btn" id="wlGateBtn">Friends, unlock gifting</button>
+      </div>
+
+      <div class="wl-signed" id="wlSigned" hidden>
+        <span id="wlSignedAs"></span>
+        <button class="wl-lock" id="wlLock">lock again</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Gifting gate. Lives inside .card so it inherits the chosen script font;
+       fixed positioning keeps it clear of the card's own overflow. -->
+  <div class="wl-modal" id="wlModal" hidden>
+    <div class="wl-modal-card" role="dialog" aria-modal="true" aria-labelledby="wlModalTitle">
+      <button class="wl-modal-close" id="wlModalClose" type="button" aria-label="Not now">&times;</button>
+      <img class="wl-modal-seal" src="doodles/envelope-heart.png" alt="">
+      <h3 class="wl-modal-title" id="wlModalTitle">The wishlist</h3>
+      <p class="wl-modal-why">Friends &mdash; so nobody buys the same thing twice.</p>
+
+      <p class="wl-modal-pass" id="wlModalPass">
+        <span class="lbl">The passphrase is</span>
+        <b id="wlModalPassWord"></b>
+      </p>
+
+      <label class="wl-f">
+        <span>Passphrase</span>
+        <input type="text" id="wlPass" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+      </label>
+      <label class="wl-f">
+        <span>You are</span>
+        <select id="wlWho"></select>
+      </label>
+
+      <button class="wl-go" id="wlGo" type="button">Unlock</button>
+      <div class="wl-wait" id="wlWait" hidden aria-hidden="true">
+        <svg viewBox="0 0 20 18"><use href="#f-heart"></use></svg>
+        <svg viewBox="0 0 20 18"><use href="#f-heart"></use></svg>
+        <svg viewBox="0 0 20 18"><use href="#f-heart"></use></svg>
+      </div>
+      <p class="wl-msg" id="wlMsg" role="status"></p>
+    </div>
+  </div>
+</div>
+
+<script src="private/details.js"></script>
+<script>
+  (function(){
+    /* Private details live in private/details.js, which is not in the repo.
+       Without it the page still works, minus the address and names. */
+    (function fillPrivate(){
+      var D = window.PARTY_DETAILS;
+      if(!D) return;
+
+      if(D.address){
+        var lines = document.getElementById('addressLines');
+        lines.textContent = '';
+        D.address.lines.forEach(function(line, i){
+          if(i){ lines.appendChild(document.createElement('br')); }
+          lines.appendChild(document.createTextNode(line));
+        });
+        if(D.address.note){
+          var note = document.getElementById('addressNote');
+          note.textContent = D.address.note;
+          note.hidden = false;
+        }
+      }
+
+      if(D.overcooked){
+        document.getElementById('overcookedAside').textContent = D.overcooked;
+      }
+
+      if(D.guests && D.guests.length){
+        var ul = document.getElementById('guestList');
+        var MARK = {
+          yes:     { cls: 'y', text: 'Y' },
+          no:      { cls: 'n', text: 'N' },
+          pending: { cls: 'q', text: '?' },
+          heart:   { cls: 'h', text: '' }
+        };
+        D.guests.forEach(function(g){
+          var mark = MARK[g.status] || MARK.pending;
+          var li = document.createElement('li');
+          if(g.status === 'no'){ li.className = 'away'; }
+          if(g.status === 'heart'){ li.className = 'beloved'; }
+
+          var n = document.createElement('span');
+          n.className = 'gname';
+          n.textContent = g.name;
+
+          var yn = document.createElement('span');
+          yn.className = 'yn ' + mark.cls;
+          if(g.status === 'heart'){
+            yn.innerHTML = '<svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>';
+            yn.setAttribute('aria-label', 'always');
+          } else {
+            yn.textContent = mark.text;
+          }
+
+          li.appendChild(n);
+          li.appendChild(yn);
+          ul.appendChild(li);
+        });
+      }
+
+      if(D.guestNote){
+        document.getElementById('guestNote').textContent = D.guestNote;
+      }
+    })();
+
+    var card = document.getElementById('card');
+    var layer = document.getElementById('doodles');
+    var content = document.getElementById('content');
+    var wreathEl = document.getElementById('wreath');
+    var bannerEl = document.getElementById('bannerEl');
+    var balloonsEl = document.getElementById('balloonsEl');
+    var svg = document.getElementById('frameSvg');
+    var path = document.getElementById('framePath');
+
+    var ART = [
+      {f:'bow',              label:'Bow',            w:726, h:380, size:[96,140],  n:3},
+      {f:'cake-heart',       label:'Heart cake',     w:496, h:581, size:[104,150], n:2},
+      {f:'cake-tiered',      label:'Tiered cake',    w:563, h:688, size:[100,144], n:2},
+      {f:'cheers-filled',    label:'Cheers (solid)', w:900, h:504, size:[112,160], n:1},
+      {f:'cheers-outline',   label:'Cheers (line)',  w:683, h:652, size:[100,142], n:2},
+      {f:'envelope-heart',   label:'Envelope',       w:766, h:633, size:[92,130],  n:2},
+      {f:'martini',          label:'Martini',        w:571, h:597, size:[78,112],  n:2},
+      {f:'candle-bow',       label:'Candle',         w:247, h:732, size:[42, 62],  n:2},
+      {f:'party-hat',        label:'Party hat',      w:260, h:412, size:[58, 84],  n:2},
+      {f:'sparkles-fine',    label:'Fine sparkles',  w:407, h:357, size:[58, 88],  n:2},
+      {f:'sparkles-bold',    label:'Bold stars',     w:470, h:494, size:[62, 92],  n:2},
+      {f:'sparkles-cluster', label:'Sparkle cluster',w:453, h:568, size:[58, 86],  n:2}
+    ];
+    var FILLERS = [
+      {id:'f-heart', w:20, h:18, size:[7,15],  weight:30},
+      {id:'f-dot',   w:10, h:10, size:[4,8],   weight:34},
+      {id:'f-spark', w:24, h:24, size:[9,18],  weight:18},
+      {id:'f-star',  w:20, h:20, size:[7,13],  weight:14}
+    ];
+
+    var state = { font:'f-delafield', mode:'scatter', density:'some', size:'large',
+                  fillers:'some', shuffle:0, off:{},
+                  hero:{banner:true, balloons:true, frameline:true} };
+
+    var seed;
+    var loadSeed = Math.floor(Math.random() * 1000000000);
+    var animate = true;
+    function rnd(){ seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+    function between(a,b){ return a + rnd()*(b-a); }
+    function hits(a,b,pad){
+      return !(a.x+a.w+pad < b.x || b.x+b.w+pad < a.x || a.y+a.h+pad < b.y || b.y+b.h+pad < a.y);
+    }
+    function rectOf(el, o, pad){
+      var r = el.getBoundingClientRect();
+      return { x:r.left-o.left-pad, y:r.top-o.top-pad, w:r.width+pad*2, h:r.height+pad*2 };
+    }
+
+    function edge(len,dx,dy,r){
+      var n = Math.max(2, Math.round(len/(2*r))), rx = len/(2*n);
+      return ('a'+rx.toFixed(2)+' '+rx.toFixed(2)+' 0 0 1 '+(dx*2*rx).toFixed(2)+' '+(dy*2*rx).toFixed(2)+' ').repeat(n);
+    }
+    function buildFrame(w,h){
+      var small = w<760, m = small?11:18, r = small?7:9;
+      if(!state.hero.frameline){ path.setAttribute('d',''); return m; }
+      svg.setAttribute('viewBox','0 0 '+w+' '+h);
+      path.setAttribute('pathLength','1');
+      path.setAttribute('d','M'+m+' '+m+' '+edge(w-2*m,1,0,r)+edge(h-2*m,0,1,r)+edge(w-2*m,-1,0,r)+edge(h-2*m,0,-1,r)+'Z');
+      return m;
+    }
+
+    var COUNT = { few:0.55, some:1, many:1.6 };
+    var SIZE  = { small:0.8, medium:1.05, large:1.35 };
+    var FILL  = { none:0, few:0.28, some:0.65, lots:1.3 };
+
+    function scatter(){
+      var W = card.clientWidth, H = card.clientHeight;
+      if(!W || !H) return;
+      var m = buildFrame(W,H);
+      layer.innerHTML = '';
+      seed = loadSeed + state.shuffle * 7919;
+      layer.classList.toggle('anim', animate);
+      svg.classList.toggle('anim', animate);
+      animate = false;
+
+      var o = card.getBoundingClientRect();
+      var panel = content.querySelector('.panel:not([hidden])');
+      var avoid = [
+        rectOf(document.getElementById('tabs'), o, 18),
+        rectOf(panel, o, state.mode==='wreath' ? 46 : (W < 620 ? 11 : 24))
+      ];
+      if(state.hero.banner && !bannerEl.hidden){ avoid.push(rectOf(bannerEl, o, 16)); }
+
+      if(state.mode === 'wreath'){
+        var pr = rectOf(panel, o, 30);
+        wreathEl.hidden = false;
+        wreathEl.style.cssText = 'left:'+pr.x+'px;top:'+pr.y+'px;width:'+pr.w+'px;height:'+pr.h+'px';
+      } else {
+        wreathEl.hidden = true;
+      }
+
+      var inset = m + 8;
+      var scale = Math.min(1, Math.max(W < 560 ? 0.4 : 0.55, W/1180)) * SIZE[state.size];
+      var placed = [];
+      var bandW = Math.min(W,H) * 0.3;
+
+      function inRegion(box){
+        if(state.mode !== 'border') return true;
+        return box.x < bandW || box.y < bandW || (box.x+box.w) > W-bandW || (box.y+box.h) > H-bandW;
+      }
+
+      function tryPlace(def, filler){
+        var base = between(def.size[0], def.size[1]) * scale;
+        if(state.mode === 'sparse' && !filler){ base *= 1.3; }
+        var shrink = filler ? [1] : [1, 0.72, 0.52];
+        for(var si=0; si<shrink.length; si++){
+          if(place(def, filler, base * shrink[si])) return true;
+        }
+        return false;
+      }
+
+      function place(def, filler, sz){
+        var w = sz, h = sz*(def.h/def.w), gap = filler?3:6;
+        var bleed = filler ? 0 : w * (W < 620 ? 0.42 : 0);
+        for(var t=0; t<70; t++){
+          var box = { x: between(inset - bleed, W - inset - w + bleed),
+                      y: between(inset, H-inset-h), w:w, h:h };
+          if(!filler && !inRegion(box)) continue;
+          var ok = true, i;
+          for(i=0;i<avoid.length;i++){ if(hits(box,avoid[i],0)){ ok=false; break; } }
+          if(ok) for(i=0;i<placed.length;i++){ if(hits(box,placed[i],gap)){ ok=false; break; } }
+          if(ok && !filler){
+            var minSame = Math.min(W,H) * (t < 60 ? 0.42 : 0.2);
+            for(i=0;i<placed.length;i++){
+              if(placed[i].f !== def.f) continue;
+              var dx = (box.x+w/2) - (placed[i].x+placed[i].w/2);
+              var dy = (box.y+h/2) - (placed[i].y+placed[i].h/2);
+              if(Math.sqrt(dx*dx+dy*dy) < minSame){ ok = false; break; }
+            }
+          }
+          if(!ok) continue;
+          box.f = filler ? null : def.f;
+          placed.push(box);
+          var el = document.createElement('div');
+          el.className = 'dd';
+          var op = filler ? between(0.72,1) : between(0.8,1);
+          var flip = (!filler && rnd() < 0.4) ? ' scaleX(-1)' : '';
+          var ddx = (box.x + w/2) - W/2, ddy = (box.y + h/2) - H/2;
+          var reach = Math.sqrt(ddx*ddx + ddy*ddy) / Math.sqrt(W*W + H*H) * 2;
+          el.style.cssText = 'left:'+box.x.toFixed(1)+'px;top:'+box.y.toFixed(1)+'px;width:'+w.toFixed(1)+
+            'px;opacity:'+op.toFixed(2)+';transform:rotate('+between(-16,16).toFixed(1)+'deg)'+flip+
+            ';--pd:'+(0.14 + reach*0.62).toFixed(2)+'s';
+          if(filler && def.id !== 'f-heart' && def.id !== 'f-dot'){
+            el.classList.add('tw');
+            el.style.setProperty('--op', op.toFixed(2));
+            el.style.setProperty('--dur', between(4,8).toFixed(1)+'s');
+            el.style.setProperty('--del', between(0,4).toFixed(1)+'s');
+          }
+          el.innerHTML = '<span class="dd-in">' + (filler
+            ? '<svg viewBox="0 0 '+def.w+' '+def.h+'"><use href="#'+def.id+'"></use></svg>'
+            : '<img src="doodles/'+def.f+'.png" alt="" draggable="false">') + '</span>';
+          layer.appendChild(el);
+          return true;
+        }
+        return false;
+      }
+
+      var queue = [];
+      ART.forEach(function(def){
+        if(state.off[def.f]) return;
+        var count = Math.max(1, Math.round(def.n * COUNT[state.density]));
+        if(state.mode === 'sparse'){ count = 1; }
+        for(var i=0;i<count;i++){ queue.push(def); }
+      });
+      queue.sort(function(a,b){ return b.size[1]-a.size[1]; });
+      queue.forEach(function(def){ tryPlace(def, false); });
+
+      var area = (W*H)/1000000;
+      var total = Math.round(100 * Math.min(2.4, Math.max(0.55, area)) * FILL[state.fillers]);
+      var pool = [];
+      FILLERS.forEach(function(d){ for(var i=0;i<d.weight;i++){ pool.push(d); } });
+      for(var k=0;k<total;k++){ tryPlace(pool[Math.floor(rnd()*pool.length)], true); }
+    }
+
+    var pending;
+    function relayout(){ cancelAnimationFrame(pending); pending = requestAnimationFrame(scatter); }
+
+    function applyAll(){
+      ['f-delafield','f-italianno','f-parisienne','f-ephesis','f-imperial'].forEach(function(f){ card.classList.remove(f); });
+      if(state.font){ card.classList.add(state.font); }
+      ['scatter','border','wreath','sparse'].forEach(function(mo){ card.classList.remove('mode-'+mo); });
+      card.classList.add('mode-'+state.mode);
+      bannerEl.hidden = !state.hero.banner;
+      balloonsEl.hidden = !state.hero.balloons;
+      relayout();
+    }
+
+    function enter(panel){
+      panel.classList.remove('enter');
+      void panel.offsetWidth;
+      panel.classList.add('enter');
+    }
+
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        var shown;
+        tabs.forEach(function(t){
+          var on = t === tab;
+          t.setAttribute('aria-selected', String(on));
+          var p = document.getElementById(t.getAttribute('aria-controls'));
+          p.hidden = !on;
+          if(on){ shown = p; }
+        });
+        enter(shown);
+        animate = true;
+        relayout();
+      });
+    });
+
+    var toggle = document.getElementById('venueToggle');
+    var address = document.getElementById('venueAddress');
+    toggle.addEventListener('click', function(){
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      address.classList.toggle('open', !open);
+      setTimeout(relayout, 420);
+    });
+
+    /* Letters. One for each guest who came, kept in details.js and picked
+       by name. The tab stays hidden until there is at least one to read. */
+    (function letters(){
+      var D = window.PARTY_DETAILS || {};
+      var L = D.letters || {};
+      if(!Object.keys(L).length) return;
+
+      var whoEl = document.getElementById('letterWho');
+      var bodyEl = document.getElementById('letterBody');
+      var noneEl = document.getElementById('letterNone');
+      document.getElementById('tab-letters').hidden = false;
+
+      var blank = document.createElement('option');
+      blank.value = '';
+      blank.textContent = 'pick your name';
+      whoEl.appendChild(blank);
+      /* Everyone coming, plus anyone else who has a letter waiting. */
+      var who = (D.guests || []).filter(function(g){ return g.status === 'yes' || g.status === 'heart'; })
+        .map(function(g){ return g.name; });
+      Object.keys(L).forEach(function(n){ if(who.indexOf(n) < 0){ who.push(n); } });
+      who.sort(function(a, b){ return a.localeCompare(b); })
+        .forEach(function(n){
+          var o = document.createElement('option');
+          o.value = n;
+          o.textContent = n;
+          whoEl.appendChild(o);
+        });
+
+      whoEl.addEventListener('change', function(){
+        var paras = L[whoEl.value];
+        bodyEl.textContent = '';
+        (paras || []).forEach(function(t){
+          var p = document.createElement('p');
+          p.textContent = t;
+          bodyEl.appendChild(p);
+        });
+        bodyEl.hidden = !paras;
+        noneEl.hidden = !whoEl.value || !!paras;
+        setTimeout(relayout, 60);
+      });
+    })();
+
+    /* Sealed envelope. Set up in JS so that without scripting the
+       invitation is simply visible rather than locked behind a cover. */
+    var cover = document.getElementById('cover');
+    var coverBtn = document.getElementById('coverBtn');
+    var invitePanel = document.getElementById('panel-invite');
+    var opened = false;
+
+    card.classList.add('sealed');
+    cover.hidden = false;
+
+    function openInvite(){
+      if(opened) return;
+      opened = true;
+      cover.classList.add('opening');
+      setTimeout(function(){
+        card.classList.remove('sealed');
+        enter(invitePanel);
+        window.scrollTo(0, 0);
+      }, 400);
+      setTimeout(function(){ cover.hidden = true; }, 950);
+    }
+    coverBtn.addEventListener('click', openInvite);
+
+    /* Wishlist gifting.
+
+       Claims are sealed in the browser with a passphrase only the guests
+       have, then stored as opaque text. Whoever holds the store -- Mira
+       included -- sees ciphertext and nothing else, so the page can keep the
+       list without spoiling the birthday. Locked, the panel is just a list:
+       no hearts, no names, and nothing is even fetched. */
+    (function wishlist(){
+      var D = window.PARTY_DETAILS || {};
+      var items = D.wishlist || [];
+      if(!items.length) return;
+
+      var SALT = 'mira-twenty-six-wishlist';
+      var ITER = 600000;
+      var subtle = (window.crypto && window.crypto.subtle) || null;
+
+      /* mode: null until someone comes through the gate, then 'view' (the
+         list alone, Mira's key) or 'gift' (the list plus who is getting
+         what, the friends' key). Only 'gift' ever touches the sheet. */
+      var mode = null;
+      var key = null, me = '', claims = {}, opened = {}, busy = {}, problems = {};
+
+      var madeEl = document.getElementById('wlMade');
+      var buyEl = document.getElementById('wlBuy');
+      var gate = document.getElementById('wlGate');
+      var gateBtn = document.getElementById('wlGateBtn');
+      var modal = document.getElementById('wlModal');
+      var modalCard = modal.querySelector('.wl-modal-card');
+      var modalClose = document.getElementById('wlModalClose');
+      var passEl = document.getElementById('wlPass');
+      var whoEl = document.getElementById('wlWho');
+      var goEl = document.getElementById('wlGo');
+      var waitEl = document.getElementById('wlWait');
+      var msgEl = document.getElementById('wlMsg');
+      var signed = document.getElementById('wlSigned');
+      var signedAs = document.getElementById('wlSignedAs');
+      var lockBtn = document.getElementById('wlLock');
+      var hint = document.getElementById('wlHint');
+
+      if(D.wishlistNote){ document.getElementById('wlNote').textContent = D.wishlistNote; }
+
+      /* The passphrase is spelled out on the gate deliberately -- see
+         details.js. Never prefilled into the field: typing it is what keeps
+         unlocking a thing you choose rather than trip over. */
+      (function tellThem(){
+        var box = document.getElementById('wlModalPass');
+        if(!box) return;
+        if(!D.passphrase){
+          box.hidden = true;
+          return;
+        }
+        document.getElementById('wlModalPassWord').textContent = D.passphrase;
+      })();
+
+      /* ---- sealing ---- */
+
+      function bytesToB64(buf){
+        var b = new Uint8Array(buf), s = '';
+        for(var i = 0; i < b.length; i++){ s += String.fromCharCode(b[i]); }
+        return btoa(s);
+      }
+      function b64ToBytes(str){
+        var s = atob(str), b = new Uint8Array(s.length);
+        for(var i = 0; i < s.length; i++){ b[i] = s.charCodeAt(i); }
+        return b;
+      }
+
+      function derive(pass){
+        var enc = new TextEncoder();
+        return subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey'])
+          .then(function(base){
+            return subtle.deriveKey(
+              { name: 'PBKDF2', salt: enc.encode(SALT), iterations: ITER, hash: 'SHA-256' },
+              base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+          });
+      }
+
+      function seal(obj){
+        var iv = window.crypto.getRandomValues(new Uint8Array(12));
+        return subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, new TextEncoder().encode(JSON.stringify(obj)))
+          .then(function(ct){
+            var out = new Uint8Array(12 + ct.byteLength);
+            out.set(iv, 0);
+            out.set(new Uint8Array(ct), 12);
+            return bytesToB64(out);
+          });
+      }
+
+      /* Anything that will not open is someone else's noise: skip it. */
+      function unseal(blob, k){
+        var raw;
+        try{ raw = b64ToBytes(blob); }catch(e){ return Promise.resolve(null); }
+        if(raw.length < 13){ return Promise.resolve(null); }
+        return subtle.decrypt({ name: 'AES-GCM', iv: raw.slice(0, 12) }, k || key, raw.slice(12))
+          .then(function(pt){
+            try{ return JSON.parse(new TextDecoder().decode(pt)); }
+            catch(e){ return null; }
+          })
+          .catch(function(){ return null; });
+      }
+
+      /* ---- where the sealed rows live ---- */
+
+      function localStore(){
+        var K = 'mira26-claims';
+        function read(){
+          try{ return JSON.parse(localStorage.getItem(K) || '{}'); }catch(e){ return {}; }
+        }
+        function write(m){
+          try{ localStorage.setItem(K, JSON.stringify(m)); }catch(e){}
+        }
+        return {
+          shared: false,
+          all: function(){ return Promise.resolve(read()); },
+          put: function(k, v){ var m = read(); m[k] = v; write(m); return Promise.resolve(); },
+          del: function(k){ var m = read(); delete m[k]; write(m); return Promise.resolve(); }
+        };
+      }
+
+      function remoteStore(url){
+        /* text/plain keeps these "simple" requests, so Apps Script is never
+           asked for a CORS preflight it cannot answer. */
+        function send(body){
+          return fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(body)
+          }).then(function(r){ return r.json(); });
+        }
+        return {
+          shared: true,
+          all: function(){
+            /* Apps Script answers a GET through a redirect the browser is
+               happy to cache, which would hand back the list as it was before
+               the last claim. Bust it. */
+            var fresh = url + (url.indexOf('?') < 0 ? '?' : '&') + 't=' + Date.now();
+            return fetch(fresh, { method: 'GET', cache: 'no-store' }).then(function(r){ return r.json(); })
+              .then(function(rows){
+                var m = {};
+                (rows && rows.rows ? rows.rows : []).forEach(function(r){ m[r.k] = r.v; });
+                return m;
+              });
+          },
+          put: function(k, v){ return send({ op: 'put', k: k, v: v }); },
+          del: function(k){ return send({ op: 'del', k: k }); }
+        };
+      }
+
+      var store = D.claimsEndpoint ? remoteStore(D.claimsEndpoint) : localStore();
+
+      function slug(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+      function rowKey(id, who){ return id + '::' + slug(who); }
+
+      /* ---- drawing ---- */
+
+      var HEART = '<svg viewBox="0 0 20 18" aria-hidden="true"><use href="#f-heart"></use></svg>';
+      var CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" ' +
+                 'stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+                 '<path d="M3.5 6 L8 10.5 L12.5 6"/></svg>';
+
+      function render(){
+        madeEl.innerHTML = '';
+        buyEl.innerHTML = '';
+        items.forEach(function(it){
+          (it.group === 'made' ? madeEl : buyEl).appendChild(row(it));
+        });
+      }
+
+      function row(it){
+        var mine = claims[it.id] || [];
+        var unlocked = (mode === 'gift');
+        var canOpen = !!it.note || unlocked;
+        var isOpen = canOpen && !!opened[it.id];
+
+        var li = document.createElement('li');
+        li.className = 'wl-item' + (canOpen ? '' : ' flat');
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'wl-row';
+        btn.id = 'wl-b-' + it.id;
+        btn.setAttribute('aria-controls', 'wl-d-' + it.id);
+        btn.setAttribute('aria-expanded', String(isOpen));
+        if(!canOpen){ btn.disabled = true; }
+
+        var name = document.createElement('span');
+        name.className = 'wl-name';
+        name.textContent = it.name;
+        btn.appendChild(name);
+
+        if(it.voucher){
+          var v = document.createElement('span');
+          v.className = 'wl-voucher';
+          v.textContent = 'voucher ok';
+          btn.appendChild(v);
+        }
+
+        if(unlocked && mine.length){
+          var mark = document.createElement('span');
+          mark.className = 'wl-mark';
+          mark.innerHTML = HEART;
+          if(mine.length > 1){
+            var n = document.createElement('span');
+            n.className = 'n';
+            n.textContent = String(mine.length);
+            mark.appendChild(n);
+          }
+          mark.setAttribute('aria-label',
+            mine.length > 1 ? (mine.length + ' people are getting this') : 'someone is getting this');
+          btn.appendChild(mark);
+        }
+
+        btn.insertAdjacentHTML('beforeend', CHEV);
+
+        var det = document.createElement('div');
+        det.className = 'wl-detail' + (isOpen ? ' open' : '');
+        det.id = 'wl-d-' + it.id;
+        var inner = document.createElement('div');
+        var body = document.createElement('div');
+        body.className = 'wl-body';
+
+        if(it.note){
+          var p = document.createElement('p');
+          p.className = 'wl-note';
+          p.textContent = it.note;
+          body.appendChild(p);
+        }
+        if(unlocked){
+          body.appendChild(claimList(mine));
+          body.appendChild(actions(it, mine));
+          if(problems[it.id]){
+            var pb = document.createElement('p');
+            pb.className = 'wl-problem';
+            pb.setAttribute('role', 'status');
+            pb.textContent = problems[it.id];
+            body.appendChild(pb);
+          }
+        }
+
+        inner.appendChild(body);
+        det.appendChild(inner);
+        li.appendChild(btn);
+        li.appendChild(det);
+
+        btn.addEventListener('click', function(){
+          var was = btn.getAttribute('aria-expanded') === 'true';
+          opened[it.id] = !was;
+          btn.setAttribute('aria-expanded', String(!was));
+          det.classList.toggle('open', !was);
+          setTimeout(relayout, 400);
+        });
+
+        return li;
+      }
+
+      function claimList(list){
+        var ul = document.createElement('ul');
+        ul.className = 'wl-claims';
+        list.forEach(function(c){
+          var li = document.createElement('li');
+          if(c.who === me){ li.className = 'mine'; }
+          li.innerHTML = HEART;
+          var w = document.createElement('span');
+          w.className = 'who';
+          w.textContent = (c.who === me ? 'You' : c.who);
+          li.appendChild(w);
+          if(c.said){
+            var s = document.createElement('span');
+            s.className = 'said';
+            s.textContent = c.said;
+            li.appendChild(s);
+          }
+          ul.appendChild(li);
+        });
+        return ul;
+      }
+
+      function actions(it, list){
+        var wrap = document.createElement('div');
+        wrap.className = 'wl-act';
+        var already = list.some(function(c){ return c.who === me; });
+
+        if(already){
+          var undo = document.createElement('button');
+          undo.type = 'button';
+          undo.className = 'wl-btn plain';
+          undo.textContent = 'Actually, I am not';
+          undo.addEventListener('click', function(){ drop(it); });
+          wrap.appendChild(undo);
+        } else {
+          var said = document.createElement('input');
+          said.type = 'text';
+          said.className = 'wl-said';
+          said.placeholder = 'a note, if you like';
+          said.setAttribute('aria-label', 'A note about what you are getting');
+          var go = document.createElement('button');
+          go.type = 'button';
+          go.className = 'wl-btn';
+          go.textContent = 'I am getting this';
+          go.addEventListener('click', function(){ claim(it, said.value.trim()); });
+          said.addEventListener('keydown', function(e){
+            if(e.key === 'Enter'){ e.preventDefault(); claim(it, said.value.trim()); }
+          });
+          wrap.appendChild(said);
+          wrap.appendChild(go);
+        }
+        return wrap;
+      }
+
+      /* ---- changing things ---- */
+
+      /* The sheet is a second or two away, and waiting on it made every tap
+         feel broken. The change lands in the list straight away and the write
+         goes on behind it; if the write does not land, the change is taken
+         back and the row says so. */
+      function claim(it, said){
+        if(mode !== 'gift' || busy[it.id]) return;
+        var entry = { who: me, said: said, at: Date.now() };
+        var before = (claims[it.id] || []).slice();
+        show(it, before.concat([entry]));
+        behind(it, before, function(){
+          return seal(entry).then(function(blob){
+            return store.put(rowKey(it.id, me), blob);
+          });
+        });
+      }
+
+      function drop(it){
+        if(mode !== 'gift' || busy[it.id]) return;
+        var before = (claims[it.id] || []).slice();
+        show(it, before.filter(function(c){ return c.who !== me; }));
+        behind(it, before, function(){ return store.del(rowKey(it.id, me)); });
+      }
+
+      function show(it, list){
+        claims[it.id] = list;
+        opened[it.id] = true;
+        delete problems[it.id];
+        render();
+        setTimeout(relayout, 60);
+      }
+
+      function behind(it, before, write){
+        busy[it.id] = true;
+        write().then(function(){
+          busy[it.id] = false;
+          catchUp();
+        }).catch(function(){
+          busy[it.id] = false;
+          claims[it.id] = before;
+          problems[it.id] = 'That did not save — have another go.';
+          render();
+          setTimeout(relayout, 60);
+        });
+      }
+
+      function collect(map){
+        var next = {};
+        return Promise.all(Object.keys(map).map(function(k){
+          return unseal(map[k]).then(function(v){
+            if(!v || !v.who) return;
+            var id = k.split('::')[0];
+            (next[id] = next[id] || []).push(v);
+          });
+        })).then(function(){
+          Object.keys(next).forEach(function(id){
+            next[id].sort(function(a, b){ return (a.at || 0) - (b.at || 0); });
+          });
+          return next;
+        });
+      }
+
+      function refresh(){
+        return store.all().then(collect).then(function(next){
+          claims = next;
+          render();
+          setTimeout(relayout, 60);
+        });
+      }
+
+      /* Pick up anyone else's claims once our own write has landed, but only
+         redraw if something actually moved: a list that rearranges itself
+         under the cursor is its own kind of jank. */
+      function catchUp(){
+        store.all().then(collect).then(function(next){
+          if(shapeOf(next) === shapeOf(claims)) return;
+          claims = next;
+          render();
+          setTimeout(relayout, 60);
+        }).catch(function(){});
+      }
+
+      function shapeOf(c){
+        return Object.keys(c).sort().map(function(id){
+          return id + ':' + c[id].map(function(x){
+            return x.who + '/' + (x.said || '');
+          }).sort().join(',');
+        }).join('|');
+      }
+
+      /* ---- the gate ---- */
+
+      function say(t){ msgEl.textContent = t || ''; }
+
+      function working(on){
+        waitEl.hidden = !on;
+        goEl.disabled = !!on;
+      }
+
+      function names(){
+        return (D.guests || []).map(function(g){ return g.name; })
+          .sort(function(a, b){ return a.localeCompare(b); });
+      }
+
+      (function fillWho(){
+        var blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = 'pick your name';
+        whoEl.appendChild(blank);
+        names().forEach(function(n){
+          var o = document.createElement('option');
+          o.value = n;
+          o.textContent = n;
+          whoEl.appendChild(o);
+        });
+      })();
+
+      function showSigned(){
+        /* The foot of the list: an invitation to step up to gifting while
+           only the list is showing, or who you are once you have. */
+        gate.hidden = (mode !== 'view');
+        hint.hidden = (mode !== 'view');
+        signed.hidden = (mode !== 'gift');
+        if(mode === 'gift'){
+          signedAs.textContent = store.shared
+            ? ('Unlocked as ' + me + '.')
+            : ('Unlocked as ' + me + '. Not shared yet — these stay on this device.');
+        }
+      }
+
+      function unlock(pass, who){
+        if(!subtle){
+          say('This browser will not do the encryption. Try Chrome or Safari over https.');
+          return Promise.resolve(false);
+        }
+        say('Unlocking…');
+        working(true);
+        return derive(pass).then(function(k){
+          if(!D.claimsCheck) return k;
+          return unseal(D.claimsCheck, k).then(function(v){
+            if(!v || v.ok !== true){ throw new Error('wrong'); }
+            return k;
+          });
+        }).then(function(k){
+          key = k;
+          me = who;
+          mode = 'gift';
+          remember('gift', who, pass);
+          /* Stretching the key and waking the sheet together take a few
+             seconds, so keep saying something until the list is actually in. */
+          say('Fetching what everyone has claimed…');
+          return refresh().then(function(){
+            working(false);
+            say('');
+            closeGate(true);
+            showSigned();
+            return true;
+          });
+        }).catch(function(){
+          working(false);
+          key = null;
+          mode = null;
+          say('That passphrase is not right.');
+          return false;
+        });
+      }
+
+      function remember(m, who, pass){
+        try{
+          sessionStorage.setItem('wl-mode', m);
+          sessionStorage.setItem('wl-who', who || '');
+          sessionStorage.setItem('wl-pass', pass || '');
+        }catch(e){}
+      }
+
+      function enterView(){
+        mode = 'view';
+        key = null;
+        me = '';
+        claims = {};
+        remember('view', '', '');
+        say('');
+        closeGate(true);
+        showSigned();
+        render();
+        setTimeout(relayout, 60);
+      }
+
+      function lock(){
+        mode = null;
+        key = null;
+        me = '';
+        claims = {};
+        opened = {};
+        try{
+          sessionStorage.removeItem('wl-mode');
+          sessionStorage.removeItem('wl-who');
+          sessionStorage.removeItem('wl-pass');
+        }catch(e){}
+        passEl.value = '';
+        showSigned();
+        render();
+        openGate();
+        setTimeout(relayout, 60);
+      }
+
+      function openGate(){
+        say('');
+        modal.hidden = false;
+        setTimeout(function(){ passEl.focus(); }, 60);
+      }
+
+      /* Silent closes follow a successful passphrase or a move to another
+         tab. A plain close is someone backing out of the gate with no key,
+         and there is nothing behind it for them, so send them back to the
+         invitation rather than leaving a blurred page. */
+      function closeGate(silent){
+        if(modal.hidden) return;
+        modal.hidden = true;
+        say('');
+        if(!silent && mode === null){
+          document.getElementById('tab-invite').click();
+        }
+      }
+
+      function gateIfNeeded(){
+        if(mode === null){ openGate(); }
+        else { closeGate(true); }
+      }
+
+      gateBtn.addEventListener('click', openGate);
+      modalClose.addEventListener('click', function(){ closeGate(); });
+
+      /* Clicking the softened backdrop dismisses; clicking the card does not. */
+      modal.addEventListener('click', function(e){
+        if(e.target === modal){ closeGate(); }
+      });
+
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && !modal.hidden){ closeGate(); }
+      });
+
+      /* The gate is the way in to the tab, not a footnote on it. */
+      tabs.forEach(function(t){
+        t.addEventListener('click', function(){
+          if(t.id === 'tab-wishlist'){ gateIfNeeded(); }
+          else { closeGate(true); }
+        });
+      });
+
+      /* Keep tabbing inside the gate while it is up. */
+      modalCard.addEventListener('keydown', function(e){
+        if(e.key !== 'Tab') return;
+        var able = modalCard.querySelectorAll('button, input, select');
+        if(!able.length) return;
+        var first = able[0], last = able[able.length - 1];
+        if(e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if(!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      function same(a, b){
+        return !!a && !!b && String(a).toLowerCase() === String(b).toLowerCase();
+      }
+
+      goEl.addEventListener('click', function(){
+        var pass = passEl.value.trim();
+        var who = whoEl.value;
+        if(!pass){ say('Passphrase first.'); return; }
+
+        /* Mira's key: the list on its own. No name needed, nothing fetched. */
+        if(same(pass, D.viewPassphrase)){ enterView(); return; }
+
+        if(!who){ say('Pick your name so everyone knows who has what.'); return; }
+        unlock(pass, who);
+      });
+
+      passEl.addEventListener('keydown', function(e){
+        if(e.key === 'Enter'){ e.preventDefault(); goEl.click(); }
+      });
+
+      lockBtn.addEventListener('click', lock);
+
+      render();
+      showSigned();
+
+      /* Back within the same tab session: pick up where they left off, so the
+         gate does not ask again on every tab switch. */
+      (function resume(){
+        var m, who, pass;
+        try{
+          m = sessionStorage.getItem('wl-mode');
+          who = sessionStorage.getItem('wl-who');
+          pass = sessionStorage.getItem('wl-pass');
+        }catch(e){}
+        if(m === 'view'){
+          mode = 'view';
+          showSigned();
+          render();
+        } else if(m === 'gift' && who && pass && subtle){
+          whoEl.value = who;
+          unlock(pass, who);
+        }
+      })();
+    })();
+
+    applyAll();
+    if(window.ResizeObserver){ new ResizeObserver(relayout).observe(card); }
+    else { window.addEventListener('resize', relayout); }
+    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(relayout); }
+    window.addEventListener('load', relayout);
+  })();
+</script>
