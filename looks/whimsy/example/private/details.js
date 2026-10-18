@@ -20,7 +20,7 @@ window.PARTY_DETAILS = {
     { name: "Hannah",  status: "yes" },
     { name: "Isaac",   status: "yes" },
     { name: "Jade",    status: "pending" },
-    { name: "Someone special", status: "heart" }
+    { name: "Shaun", status: "heart" }
   ],
 
   guestNote: "Clara and Grace are overseas this year. Wanted them here all the same.",
