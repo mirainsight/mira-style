@@ -4,6 +4,11 @@ A cozy nursery-print postcard: olive and sage stripes frame a cream card, a smil
 
 **First made for:** Mira's Post Copier, the page she writes her Telegram channel posts in. A post is written like a message on the back of a postcard, titled in big hand lettering, and the copy button is the "send". [`example/`](example) is that page with made-up sample content. It started from a "Sleep tight" star poster (olive stripes, mustard star, plum lettering).
 
+## In Mira's words
+
+**Why this look?**
+I wanted it to be a postcard as a time capsule to myself: a thought and reflection shared in the present, for the future me. I liked the vibrancy of this style, and wanted to explore a bright dreamer look.
+
 ## Files
 
 - `tokens.css` / `tokens.json`: colours, fonts, sizes, spacing, radii and the title font variants.
