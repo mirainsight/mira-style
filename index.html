@@ -8,7 +8,7 @@
 <meta property="og:title" content="mira-style">
 <meta property="og:description" content="Mira's design styles. Each one is a real site, shown with made-up data, so you can tap through it.">
 <link rel="icon" href="looks/whimsy/example/favicon-32.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,800;1,6..72,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
 <style>
 /* Layout: a quiet gallery shell; each style is an entry with a swipeable strip of live, phone-sized pages that carry their own look */
 :root{
@@ -36,7 +36,9 @@ a{ color:inherit; }
 .name.ft{ font-family:'Patrick Hand', cursive; font-size:clamp(36px,7vw,48px); color:#2B3A67; }
 .name.nw{ font-family:'Alfa Slab One', Rockwell, Georgia, serif; font-size:clamp(32px,7vw,46px); line-height:.95; text-transform:uppercase; color:#2450E0; }
 .name.nw small{ display:block; font-family:var(--g-sans); text-transform:none; font-size:13px; letter-spacing:.06em; color:var(--g-muted); margin-top:6px; }
-@media (prefers-color-scheme: dark){ .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
+.name.gr{ font-family:'Newsreader', Georgia, serif; font-weight:800; font-size:clamp(34px,7vw,46px); line-height:1; text-transform:lowercase; letter-spacing:-.02em; color:#c4683f; text-shadow:6px 0 6px rgba(196,104,63,.35), 12px 0 10px rgba(196,104,63,.18); }
+.name.gr small{ display:block; font-family:var(--g-sans); text-transform:none; font-weight:400; text-shadow:none; font-size:13px; letter-spacing:.06em; color:var(--g-muted); margin-top:8px; }
+@media (prefers-color-scheme: dark){ .name.gr{ color:#ea8a6b; } .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
 .badge{ align-self:flex-start; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--g-line); color:var(--g-muted); }
 .use{ margin:0; font-size:15px; line-height:1.55; max-width:60ch; }
 .use b{ font-weight:600; }
@@ -91,6 +93,28 @@ footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; c
 <figure class="pg" data-name="Agenda"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-agenda","wait":1100}]' title="Twenty-Six, Agenda" loading="lazy"></iframe></div><figcaption class="cap"><b>Agenda</b>No timetable, just plans</figcaption></figure>
 <figure class="pg" data-name="Guest list"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-guests","wait":1100}]' title="Twenty-Six, Guest list" loading="lazy"></iframe></div><figcaption class="cap"><b>Guest list</b>Who's coming</figcaption></figure>
 <figure class="pg" data-name="Letters"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-letters","wait":1100}]' title="Twenty-Six, Letters" loading="lazy"></iframe></div><figcaption class="cap"><b>Letters</b>A thank-you for each guest</figcaption></figure>
+    </div>
+    <div class="nav" role="group" aria-label="Pages"></div>
+  </section>
+
+  <section class="style" aria-labelledby="s4">
+    <div class="head">
+      <div class="head-l">
+        <span class="no">Look 03 · Grunge</span>
+        <h2 class="name gr" id="s4">I Bleed Red<small>True Humanity</small></h2>
+        <p class="use"><b>First made for</b> Mira's Instagram reflection carousels, styled slide by slide in the Grunge Lab and exported as PNGs.</p>
+        <blockquote>This is the style of my humanity: dark, blurry, but also bleeding warm.<cite>Mira</cite></blockquote>
+      </div>
+      <span class="badge">Mira's look</span>
+    </div>
+    <div class="spec"><span class="sw"><span style="background:#100a08"></span><span style="background:#ec681c"></span><span style="background:#f4a443"></span><span style="background:#5d592b"></span><span style="background:#ea8a6b"></span></span>Newsreader · Jost · Archivo Black · grain, smear and strike through · Mira's own photos</div>
+    <div class="acts"><a class="btn" href="looks/grunge/example/">Open the lab ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/looks/grunge">The look's rules</a></div>
+    <div class="strip">
+<figure class="pg" data-name="Cover"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500}]' title="I Bleed Red, Cover" loading="lazy"></iframe></div><figcaption class="cap"><b>Cover</b>A struck-through line, smeared and repeated</figcaption></figure>
+<figure class="pg" data-name="Corners"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500},{"do":"click","sel":"#thumbs .thumb:nth-child(3)","wait":500}]' title="I Bleed Red, Corners" loading="lazy"></iframe></div><figcaption class="cap"><b>Corners</b>Lines thrown to the edges</figcaption></figure>
+<figure class="pg" data-name="Whisper"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500},{"do":"click","sel":"#thumbs .thumb:nth-child(6)","wait":500}]' title="I Bleed Red, Whisper" loading="lazy"></iframe></div><figcaption class="cap"><b>Whisper</b>Small and quiet, like a breath</figcaption></figure>
+<figure class="pg" data-name="Ghost"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500},{"do":"click","sel":"#thumbs .thumb:nth-child(7)","wait":500}]' title="I Bleed Red, Ghost" loading="lazy"></iframe></div><figcaption class="cap"><b>Ghost</b>An ink overlay on a glow</figcaption></figure>
+<figure class="pg" data-name="Organize"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[]' title="I Bleed Red, Organize" loading="lazy"></iframe></div><figcaption class="cap"><b>Organize</b>Sort the text into pages first</figcaption></figure>
     </div>
     <div class="nav" role="group" aria-label="Pages"></div>
   </section>

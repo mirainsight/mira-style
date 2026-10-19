@@ -389,9 +389,9 @@ const DEF_SLIDES=[
 const OBJD={t:'',r:'s',st:0,it:0,hl:0,hc:'',tc:'',c2:'',ox:0,oy:0,sz:100,wt:'auto',fn:'auto',cs:'auto',al:'auto',sk:'normal',bl:'auto',dx:0,dy:0};
 let OID=0;
 const mkObj=o=>({...OBJD,...o,id:'o'+(++OID)});
-function baseState(){return {ver:5,bg:'glow',pal:'night',ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,selObj:null}}
+function baseState(){return {ver:5,bg:'photo',pal:'night',ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,selObj:null}}
 /* the older (v4) shape: a source text plus per-slide "picks" */
-function defaultsOld(){return {src:DEFAULT_SRC,bg:'glow',pal:'night',ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,
+function defaultsOld(){return {src:DEFAULT_SRC,bg:'photo',pal:'night',ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,
  slides:DEF_SLIDES.map((s,i)=>({...SD,...s,pick:DEF_PICKS[i].map(p=>({...p}))}))}}
 function normalizeOld(s){const base=defaultsOld();const o=Object.assign(defaultsOld(),s);
  o.slides=(s.slides&&s.slides.length?s.slides:base.slides).map((x,i)=>({...SD,...(base.slides[i]||{}),...x,pick:(x.pick||(base.slides[i]||{}).pick||[]).map(p=>({...p}))}));
