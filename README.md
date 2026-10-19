@@ -31,7 +31,7 @@ looks/<look>/
   tokens.json   colours, fonts, sizes and spacing as data
   tokens.css    the same tokens as CSS variables, ready to link
   doodles/      hand-drawn PNGs on transparent backgrounds (if the look has them; some looks only document where theirs come from)
-  backgrounds/  background images (Grunge; documented, not bundled yet)
+  backgrounds/  background images (Grunge), under the art licence
   example/      a working page in the look, filled with made-up sample content
 ```
 
@@ -59,4 +59,4 @@ looks/<look>/
 ## License
 
 - Code (HTML, CSS, JS, tokens): [MIT](LICENSE).
-- Doodles and illustrations (every PNG under `doodles/`): [CC BY-NC 4.0](LICENSE-ART.md). Use them with credit to Mira (mirainsight), not for commercial use.
+- Doodles, illustrations and photos (every PNG under `doodles/`, every JPG under `backgrounds/`): [CC BY-NC 4.0](LICENSE-ART.md). Use them with credit to Mira (mirainsight), not for commercial use.

@@ -7,7 +7,7 @@ Grainy, smeared Instagram carousel slides: subdued colours that sit inside the b
 ## Files
 
 - `tokens.css` / `tokens.json`: palettes, faces (with their tuned size factors), layouts, effects and the look's rules.
-- `backgrounds/`: the photo backgrounds. See [`backgrounds/README.md`](backgrounds/README.md): the photos are not bundled here yet.
+- `backgrounds/`: Mira's own photo backgrounds (CC BY-NC 4.0). See [`backgrounds/README.md`](backgrounds/README.md).
 - `example/index.html`: the full Grunge Lab (Organize and Style tabs, drag to place, PNG and zip export).
 - `example/fonts/`: woff2 files for every face and weight, used to embed fonts in exported PNGs. All are open-licence (SIL OFL) Google Fonts.
 
