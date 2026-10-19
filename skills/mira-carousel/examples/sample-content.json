@@ -1,0 +1,30 @@
+{
+ "id": "sample-rest",
+ "title": "Slow Road",
+ "pages": [
+  {"layout": "echo", "objs": [
+   {"t": "I am tired.", "r": "h", "st": 1},
+   {"t": "No, I need to rest.", "r": "s"},
+   {"t": "Some days the slow road is the right one.", "r": "s"}]},
+  {"layout": "corners", "objs": [
+   {"t": "Made a list of everything I carry.", "r": "s"},
+   {"t": "Deadlines, favours, promises, plans.", "r": "s"},
+   {"t": "None of it was mine to hold alone.", "r": "h"}]},
+  {"layout": "echo", "es": "heavy", "objs": [
+   {"t": "Maybe I can put some down.", "r": "h"},
+   {"t": "Maybe I can ask for help.", "r": "h"},
+   {"t": "Maybe that is enough for today.", "r": "h"}]},
+  {"layout": "whisper", "objs": [
+   {"t": "The honest truth?", "r": "s"},
+   {"t": "Rest scares me, but", "r": "s"},
+   {"t": "it is where I hear myself ==again==.", "r": "h", "sz": 160}]},
+  {"layout": "echo", "em": "overlay", "es": "clear", "bg": "pathf", "objs": [
+   {"t": "I worry I will fall behind, but", "r": "s"},
+   {"t": "slow is still moving.", "r": "h"}]},
+  {"layout": "whisper", "objs": [
+   {"t": "I am tired.", "r": "h", "sz": 200},
+   {"t": "No, I need to rest.", "r": "s", "st": 1},
+   {"t": "Some days the slow road is the right one.", "r": "s"}]}
+ ],
+ "spare": []
+}

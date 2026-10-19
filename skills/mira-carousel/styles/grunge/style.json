@@ -1,0 +1,547 @@
+{
+ "name": "Grunge",
+ "look": "looks/grunge",
+ "about": "Dark, blurry, but also bleeding warm: grainy smeared slides, subdued colours inside the background, unexpected fonts and placement.",
+ "googleFonts": "https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bevan&family=Barlow+Condensed:ital,wght@0,200;0,500;0,600;0,700;1,700&family=Jost:wght@200;400;700;800&family=Archivo+Black&family=Fredoka:wght@300;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,800;1,6..72,400&family=Gaegu:wght@300;400;700&family=Covered+By+Your+Grace&family=Delicious+Handrawn&display=swap",
+ "fonts": {
+  "gloock": {
+   "n": "Gloock",
+   "f": "'Gloock', Georgia, serif",
+   "w": 400,
+   "wb": 400,
+   "k": 1,
+   "lh": 1.02,
+   "ls": "-0.01em"
+  },
+  "instrument": {
+   "n": "Instrument Serif",
+   "f": "'Instrument Serif', Georgia, serif",
+   "w": 400,
+   "wb": 400,
+   "k": 1.14,
+   "lh": 1,
+   "ls": "-0.01em"
+  },
+  "fraunces": {
+   "n": "Fraunces",
+   "f": "'Fraunces', Georgia, serif",
+   "w": 800,
+   "wb": 600,
+   "k": 0.96,
+   "lh": 1.04,
+   "ls": "-0.01em"
+  },
+  "baskerville": {
+   "n": "Libre Baskerville",
+   "f": "'Libre Baskerville', Georgia, serif",
+   "w": 700,
+   "wb": 400,
+   "k": 0.86,
+   "lh": 1.04,
+   "ls": "-0.02em"
+  },
+  "bevan": {
+   "n": "Bevan",
+   "f": "'Bevan', Georgia, serif",
+   "w": 400,
+   "wb": 400,
+   "k": 0.8,
+   "lh": 1.04,
+   "ls": "0"
+  },
+  "barlow": {
+   "n": "Barlow Condensed",
+   "f": "'Barlow Condensed', 'Arial Narrow', sans-serif",
+   "w": 700,
+   "wb": 600,
+   "k": 1.12,
+   "lh": 0.93,
+   "ls": "0"
+  },
+  "jost": {
+   "n": "Jost",
+   "f": "'Jost', Futura, sans-serif",
+   "w": 800,
+   "wb": 700,
+   "k": 0.96,
+   "lh": 0.96,
+   "ls": "-0.01em"
+  },
+  "archivo": {
+   "n": "Archivo Black",
+   "f": "'Archivo Black', Helvetica, sans-serif",
+   "w": 400,
+   "wb": 400,
+   "k": 0.88,
+   "lh": 1,
+   "ls": "-0.02em"
+  },
+  "fredoka": {
+   "n": "Fredoka",
+   "f": "'Fredoka', sans-serif",
+   "w": 700,
+   "wb": 600,
+   "k": 1,
+   "lh": 0.96,
+   "ls": "0"
+  },
+  "newsreader": {
+   "n": "Newsreader",
+   "f": "'Newsreader', Georgia, serif",
+   "w": 400,
+   "wb": 400,
+   "k": 1,
+   "lh": 1.08,
+   "ls": "-0.02em"
+  },
+  "gaegu": {
+   "n": "Gaegu (handwritten)",
+   "f": "'Gaegu', 'Comic Sans MS', cursive",
+   "w": 700,
+   "wb": 400,
+   "k": 1.18,
+   "lh": 1.05,
+   "ls": "0.01em"
+  },
+  "scrawl": {
+   "n": "Brush scrawl (Covered By Your Grace)",
+   "f": "'Covered By Your Grace', 'Brush Script MT', cursive",
+   "w": 400,
+   "wb": 400,
+   "k": 1.3,
+   "lh": 1.05,
+   "ls": "0"
+  },
+  "marker": {
+   "n": "Hand marker (Delicious Handrawn)",
+   "f": "'Delicious Handrawn', 'Comic Sans MS', cursive",
+   "w": 400,
+   "wb": 400,
+   "k": 1.12,
+   "lh": 1.05,
+   "ls": "0.01em"
+  }
+ },
+ "fontFiles": [
+  [
+   "Gloock",
+   400,
+   "normal",
+   "fonts/gloock-400-normal.woff2"
+  ],
+  [
+   "Instrument Serif",
+   400,
+   "normal",
+   "fonts/instrument-serif-400-normal.woff2"
+  ],
+  [
+   "Instrument Serif",
+   400,
+   "italic",
+   "fonts/instrument-serif-400-italic.woff2"
+  ],
+  [
+   "Fraunces",
+   200,
+   "normal",
+   "fonts/fraunces-200-normal.woff2"
+  ],
+  [
+   "Fraunces",
+   400,
+   "normal",
+   "fonts/fraunces-400-normal.woff2"
+  ],
+  [
+   "Fraunces",
+   600,
+   "normal",
+   "fonts/fraunces-600-normal.woff2"
+  ],
+  [
+   "Fraunces",
+   700,
+   "normal",
+   "fonts/fraunces-700-normal.woff2"
+  ],
+  [
+   "Fraunces",
+   800,
+   "normal",
+   "fonts/fraunces-800-normal.woff2"
+  ],
+  [
+   "Fraunces",
+   400,
+   "italic",
+   "fonts/fraunces-400-italic.woff2"
+  ],
+  [
+   "Fraunces",
+   700,
+   "italic",
+   "fonts/fraunces-700-italic.woff2"
+  ],
+  [
+   "Libre Baskerville",
+   400,
+   "normal",
+   "fonts/libre-baskerville-400-normal.woff2"
+  ],
+  [
+   "Libre Baskerville",
+   700,
+   "normal",
+   "fonts/libre-baskerville-700-normal.woff2"
+  ],
+  [
+   "Libre Baskerville",
+   400,
+   "italic",
+   "fonts/libre-baskerville-400-italic.woff2"
+  ],
+  [
+   "Bevan",
+   400,
+   "normal",
+   "fonts/bevan-400-normal.woff2"
+  ],
+  [
+   "Barlow Condensed",
+   200,
+   "normal",
+   "fonts/barlow-condensed-200-normal.woff2"
+  ],
+  [
+   "Barlow Condensed",
+   500,
+   "normal",
+   "fonts/barlow-condensed-500-normal.woff2"
+  ],
+  [
+   "Barlow Condensed",
+   600,
+   "normal",
+   "fonts/barlow-condensed-600-normal.woff2"
+  ],
+  [
+   "Barlow Condensed",
+   700,
+   "normal",
+   "fonts/barlow-condensed-700-normal.woff2"
+  ],
+  [
+   "Barlow Condensed",
+   700,
+   "italic",
+   "fonts/barlow-condensed-700-italic.woff2"
+  ],
+  [
+   "Jost",
+   200,
+   "normal",
+   "fonts/jost-200-normal.woff2"
+  ],
+  [
+   "Jost",
+   400,
+   "normal",
+   "fonts/jost-400-normal.woff2"
+  ],
+  [
+   "Jost",
+   700,
+   "normal",
+   "fonts/jost-700-normal.woff2"
+  ],
+  [
+   "Jost",
+   800,
+   "normal",
+   "fonts/jost-800-normal.woff2"
+  ],
+  [
+   "Archivo Black",
+   400,
+   "normal",
+   "fonts/archivo-black-400-normal.woff2"
+  ],
+  [
+   "Fredoka",
+   300,
+   "normal",
+   "fonts/fredoka-300-normal.woff2"
+  ],
+  [
+   "Fredoka",
+   600,
+   "normal",
+   "fonts/fredoka-600-normal.woff2"
+  ],
+  [
+   "Fredoka",
+   700,
+   "normal",
+   "fonts/fredoka-700-normal.woff2"
+  ],
+  [
+   "Newsreader",
+   200,
+   "normal",
+   "fonts/newsreader-200-normal.woff2"
+  ],
+  [
+   "Newsreader",
+   400,
+   "normal",
+   "fonts/newsreader-400-normal.woff2"
+  ],
+  [
+   "Newsreader",
+   800,
+   "normal",
+   "fonts/newsreader-800-normal.woff2"
+  ],
+  [
+   "Newsreader",
+   400,
+   "italic",
+   "fonts/newsreader-400-italic.woff2"
+  ],
+  [
+   "Gaegu",
+   300,
+   "normal",
+   "fonts/gaegu-300-normal.woff2"
+  ],
+  [
+   "Gaegu",
+   400,
+   "normal",
+   "fonts/gaegu-400-normal.woff2"
+  ],
+  [
+   "Gaegu",
+   700,
+   "normal",
+   "fonts/gaegu-700-normal.woff2"
+  ],
+  [
+   "Covered By Your Grace",
+   400,
+   "normal",
+   "fonts/covered-by-your-grace-400-normal.woff2"
+  ],
+  [
+   "Delicious Handrawn",
+   400,
+   "normal",
+   "fonts/delicious-handrawn-400-normal.woff2"
+  ]
+ ],
+ "palettes": {
+  "night": {
+   "n": "Night",
+   "base": "#100a08",
+   "glows": [
+    "#ec681c",
+    "#f4a443",
+    "#5d592b"
+   ],
+   "ink": "#ea8a6b",
+   "ink2": "#ea8a6b"
+  },
+  "moon": {
+   "n": "Moon",
+   "base": "#2a1d2e",
+   "glows": [
+    "#e8773a",
+    "#4b3c66",
+    "#2f8a88",
+    "#f1a55a"
+   ],
+   "ink": "#f7ebe1",
+   "ink2": "#ffd0b4"
+  },
+  "ember": {
+   "n": "Ember",
+   "base": "#3e0f10",
+   "glows": [
+    "#f0ad24",
+    "#d8471c",
+    "#8b1c14",
+    "#5c1515"
+   ],
+   "ink": "#f6ebe0",
+   "ink2": "#f2b490"
+  },
+  "olive": {
+   "n": "Olive",
+   "base": "#38382a",
+   "glows": [
+    "#d6651b",
+    "#c4561a",
+    "#4b4a30"
+   ],
+   "ink": "#f3d8a4",
+   "ink2": "#f3d8a4"
+  },
+  "street": {
+   "n": "Street",
+   "base": "#38251a",
+   "glows": [
+    "#b9763f",
+    "#7a4826",
+    "#e2a862",
+    "#c0402a",
+    "#d9d6c8"
+   ],
+   "ink": "#dfe0d6",
+   "ink2": "#dfe0d6"
+  },
+  "rust": {
+   "n": "Rust",
+   "base": "#e07a4e",
+   "glows": [
+    "#ea8d5d",
+    "#d2683e",
+    "#f19d6e"
+   ],
+   "ink": "#1d1613",
+   "ink2": "#2e1a14"
+  },
+  "mustard": {
+   "n": "Mustard",
+   "base": "#e8a82c",
+   "glows": [
+    "#f2bf47",
+    "#de8c20",
+    "#e5791d"
+   ],
+   "ink": "#5a2027",
+   "ink2": "#5a2027"
+  },
+  "signal": {
+   "n": "Signal",
+   "base": "#bc1f1d",
+   "glows": [
+    "#c72b25",
+    "#a9191a"
+   ],
+   "ink": "#130a0a",
+   "ink2": "#130a0a"
+  }
+ },
+ "backgrounds": {
+  "photo": {
+   "label": "Your photo",
+   "type": "strip",
+   "file": "backgrounds/moon.jpg"
+  },
+  "path": {
+   "label": "Path (soft)",
+   "type": "image",
+   "file": "backgrounds/wind2-soft.jpg"
+  },
+  "pathf": {
+   "label": "Path (faint)",
+   "type": "image",
+   "file": "backgrounds/wind2-faint.jpg"
+  },
+  "hand": {
+   "label": "Hand (soft)",
+   "type": "image",
+   "file": "backgrounds/hand-soft.jpg"
+  },
+  "handf": {
+   "label": "Hand (faint)",
+   "type": "image",
+   "file": "backgrounds/hand-faint.jpg"
+  },
+  "glow": {
+   "label": "Glow",
+   "type": "glow"
+  },
+  "streak": {
+   "label": "Streaks",
+   "type": "streak"
+  },
+  "paper": {
+   "label": "Paper",
+   "type": "paper"
+  },
+  "flat": {
+   "label": "Flat",
+   "type": "flat"
+  }
+ },
+ "layouts": {},
+ "pageDefaults": {
+  "echo": {
+   "font": "newsreader",
+   "tt": "lowercase"
+  },
+  "whisper": {
+   "font": "newsreader",
+   "tt": "lowercase"
+  }
+ },
+ "strikeHero": {
+  "wt": "800",
+  "al": "center"
+ },
+ "defaults": {
+  "bg": "photo",
+  "pal": "night",
+  "grain": 32,
+  "blur": 12,
+  "body": 100,
+  "dust": false,
+  "tilt": 0,
+  "layout": "echo"
+ },
+ "effects": {
+  "grain": {
+   "on": true,
+   "freq": 0.85,
+   "octaves": 3
+  },
+  "dust": {
+   "on": true
+  },
+  "blur": {
+   "modes": [
+    "smear",
+    "soft"
+   ]
+  },
+  "strike": {
+   "path": "M0 60 C 25 50, 60 56, 100 40"
+  }
+ },
+ "rules": {
+  "maxLayouts": 3,
+  "preferLayouts": [
+   "echo",
+   "whisper",
+   "corners",
+   "aside",
+   "stack"
+  ],
+  "harderToRead": [
+   "arc",
+   "split",
+   "fill"
+  ],
+  "notes": [
+   "At most 3 layouts per set, chosen to match the content.",
+   "No tilt unless asked.",
+   "Say 'strike through', never 'struck'."
+  ]
+ },
+ "assets": {
+  "fonts/": "looks/grunge/example/fonts/",
+  "backgrounds/": "looks/grunge/backgrounds/"
+ }
+}
