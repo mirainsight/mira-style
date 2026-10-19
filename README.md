@@ -10,6 +10,7 @@ Clone it, borrow a look, and make something lovely.
 | --- | --- | --- | --- |
 | **Whimsy** | Mira's 26th birthday invitation (Twenty-Six) | Default | [`looks/whimsy`](looks/whimsy) |
 | **Sleep Tight** | Mira's Post Copier (her Telegram post page, written like a postcard) | Confirmed | [`looks/sleep-tight`](looks/sleep-tight) |
+| **Grunge** | Mira's Instagram reflection carousels, styled and exported in the Grunge Lab | Confirmed | [`looks/grunge`](looks/grunge) |
 
 More looks join as they are confirmed.
 
@@ -30,6 +31,7 @@ looks/<look>/
   tokens.json   colours, fonts, sizes and spacing as data
   tokens.css    the same tokens as CSS variables, ready to link
   doodles/      hand-drawn PNGs on transparent backgrounds (if the look has them; some looks only document where theirs come from)
+  backgrounds/  background images (Grunge; documented, not bundled yet)
   example/      a working page in the look, filled with made-up sample content
 ```
 
