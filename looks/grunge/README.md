@@ -1,8 +1,21 @@
-# Grunge
+# I Bleed Red / True Humanity (Grunge)
 
 Grainy, smeared Instagram carousel slides: subdued colours that sit inside the background, unexpected font choices and text placement, and some text blurred or repeated until it reads like a feeling more than a sentence. Quiet and a little raw.
 
 **First made for:** Mira's Instagram reflection carousels, styled in the **Grunge Lab**, a workbench where she sorts her text into pages, styles each piece and exports the slides as PNGs. [`example/`](example) is that lab, filled with made-up sample content.
+
+
+## In Mira's words
+
+**Why this look?**
+I had a song in my heart, "Deep End of Your Heart" by Joel Houston, and it kept replaying. And the visual I saw was something dark, but warm. Something matte, but also soft edges.
+
+And I knew I wanted to write from my recent wrestling between who I am and who I thought I should be. This is the style of my humanity: dark, blurry, but also bleeding warm.
+
+**How was it received?**
+I posted it on Instagram! I'm yet to see what or how others receive from it. But for me, it's my first published piece of writing since 2022!!
+
+I loved my writing, and I read this and am super proud. I hope it can inspire others.
 
 ## Files
 

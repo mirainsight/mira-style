@@ -21,7 +21,7 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 | --- | --- | --- |
 | Whimsy | Mira's 26th birthday invitation (Twenty-Six, repo `mirainsight/twenty-six`) | Default |
 | Sleep Tight | Mira's Post Copier: her Telegram post page, written like a postcard (artifact "Mira's Post Copier") | Confirmed |
-| Grunge | Mira's Instagram reflection carousels, made in the Grunge Lab (1080x1350 slides, PNG export) | Confirmed |
+| I Bleed Red / True Humanity (Grunge) | Mira's Instagram reflection carousels, made in the Grunge Lab (1080x1350 slides, PNG export) | Confirmed |
 
 ## Font variants
 

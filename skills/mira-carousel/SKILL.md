@@ -89,7 +89,7 @@ New packs come from a confirmed mira-style look, worked out with Mira the mira-d
 
 | Pack | From look | Feel |
 | --- | --- | --- |
-| `grunge` | `looks/grunge` | Dark, blurry, but also bleeding warm. Grain, smear, strike through, Mira's glowing photo backgrounds, Night palette |
+| `grunge` (I Bleed Red / True Humanity) | `looks/grunge` | Dark, blurry, but also bleeding warm. Grain, smear, strike through, Mira's glowing photo backgrounds, Night palette |
 
 ## Mira's preferences
 

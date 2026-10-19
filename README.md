@@ -10,7 +10,7 @@ Clone it, borrow a look, and make something lovely.
 | --- | --- | --- | --- |
 | **Whimsy** | Mira's 26th birthday invitation (Twenty-Six) | Default | [`looks/whimsy`](looks/whimsy) |
 | **Sleep Tight** | Mira's Post Copier (her Telegram post page, written like a postcard) | Confirmed | [`looks/sleep-tight`](looks/sleep-tight) |
-| **Grunge** | Mira's Instagram reflection carousels, styled and exported in the Grunge Lab | Confirmed | [`looks/grunge`](looks/grunge) |
+| **I Bleed Red / True Humanity** (Grunge) | Mira's Instagram reflection carousels, styled and exported in the Grunge Lab | Confirmed | [`looks/grunge`](looks/grunge) |
 
 More looks join as they are confirmed.
 
