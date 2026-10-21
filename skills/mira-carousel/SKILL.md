@@ -11,7 +11,7 @@ The lab's functionality is fixed. A style pack swaps only the look of the **slid
 
 ## The lab (same for every carousel)
 
-- **Organize tab:** one card per page; each line is an object (drag, merge, split, highlight words, spare-text tray).
+- **Organize tab:** one card per page; each line is an object (drag, merge, split, highlight words, spare-text tray). No how-to paragraph at the top, just "+ Add page".
 - **Style tab:** slide preview, thumbnails, PNG / zip download, and one panel with a scope switch at the top: **Selected text · This slide · All slides**. Every scope shows the same sections in the same order with the same options (Mira asked for this: never move a control or drop an option between scopes):
   1. **Text:** text on this page (tap to pick), "This text is Big/Small" or "Which text: All / Big lines / Small text", Font, Weight, Size, Case, Alignment, Italic / Strike through / Highlight, Strike line, Blur, Text and Highlight colour, Echo ghost, Position, Reset style (Copy-style buttons only in Selected text).
   2. **Page:** Layout, Background, Echo style and strength, Tilt (this page, or every page in All slides).
@@ -114,5 +114,6 @@ New packs come from a confirmed mira-style look, worked out with Mira the mira-d
 
 - Less overwhelm: minimal controls at once, short chat. She often reads on mobile.
 - Controls stay in the same place with the same options at every scope (text, slide, all slides).
+- No instruction paragraphs in the lab (she removed the Organize tab's how-to text); buttons explain themselves with short hover hints.
 - Say "strike through", never "struck".
 - Her real reflection text never goes into the public repo; examples use made-up text.

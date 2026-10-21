@@ -109,7 +109,7 @@ fieldset.ctl:disabled{opacity:.4}
 .selbox.soft{border-width:3px;border-color:rgba(226,131,74,.75)}
 
 /* ---------- Organize tab ---------- */
-.orgbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:0 0 14px}
+.orgbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:flex-end;margin:0 0 14px}
 .orgbar .note{flex:1 1 300px}
 .slc{background:var(--panel);border:1px solid var(--line);margin:0 0 12px;display:grid;grid-template-columns:104px minmax(0,1fr);gap:0 16px;padding:12px}
 @media (max-width:640px){.slc{grid-template-columns:72px minmax(0,1fr);gap:0 10px}}
@@ -402,7 +402,6 @@ button.ib:hover{color:var(--d-pink);border-color:var(--d-line)}
   <!-- ===== ORGANIZE ===== -->
   <section id="tab-org">
     <div class="orgbar">
-      <p class="note">One card per page. Each line inside is an object you can style on its own. Drag the handle (⠿) to reorder or move it to another page, or use the arrows. Merge joins an object with the one below it; Split cuts at your cursor. To highlight just some words, select them in the text box and press Highlight words (they show as ==like this==).</p>
       <button class="btn" id="orgadd" type="button">+ Add page</button>
     </div>
     <details class="tray" id="tray" open>
