@@ -8,7 +8,7 @@
 <meta property="og:title" content="mira-style">
 <meta property="og:description" content="Mira's design styles. Each one is a real site, shown with made-up data, so you can tap through it.">
 <link rel="icon" href="looks/whimsy/example/favicon-32.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,800;1,6..72,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Over+the+Rainbow&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,800;1,6..72,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
 <style>
 /* Layout: a quiet gallery shell; each style is an entry with a swipeable strip of live, phone-sized pages that carry their own look */
 :root{
@@ -36,9 +36,10 @@ a{ color:inherit; }
 .name.ft{ font-family:'Patrick Hand', cursive; font-size:clamp(36px,7vw,48px); color:#2B3A67; }
 .name.nw{ font-family:'Alfa Slab One', Rockwell, Georgia, serif; font-size:clamp(32px,7vw,46px); line-height:.95; text-transform:uppercase; color:#2450E0; }
 .name.nw small{ display:block; font-family:var(--g-sans); text-transform:none; font-size:13px; letter-spacing:.06em; color:var(--g-muted); margin-top:6px; }
+.name.st{ font-family:'Over the Rainbow', cursive; font-weight:700; font-size:clamp(40px,8vw,54px); color:#5a2338; text-shadow:3px 3px 0 #d6952c; transform:rotate(-2deg); transform-origin:left center; padding-bottom:4px; }
 .name.gr{ font-family:'Newsreader', Georgia, serif; font-weight:800; font-size:clamp(34px,7vw,46px); line-height:1; text-transform:lowercase; letter-spacing:-.02em; color:#c4683f; text-shadow:6px 0 6px rgba(196,104,63,.35), 12px 0 10px rgba(196,104,63,.18); }
 .name.gr small{ display:block; font-family:var(--g-sans); text-transform:none; font-weight:400; text-shadow:none; font-size:13px; letter-spacing:.06em; color:var(--g-muted); margin-top:8px; }
-@media (prefers-color-scheme: dark){ .name.gr{ color:#ea8a6b; } .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
+@media (prefers-color-scheme: dark){ .name.gr{ color:#ea8a6b; } .name.st{ color:#e9b8c6; } .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
 .badge{ align-self:flex-start; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--g-line); color:var(--g-muted); }
 .use{ margin:0; font-size:15px; line-height:1.55; max-width:60ch; }
 .use b{ font-weight:600; }
@@ -93,6 +94,25 @@ footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; c
 <figure class="pg" data-name="Agenda"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-agenda","wait":1100}]' title="Twenty-Six, Agenda" loading="lazy"></iframe></div><figcaption class="cap"><b>Agenda</b>No timetable, just plans</figcaption></figure>
 <figure class="pg" data-name="Guest list"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-guests","wait":1100}]' title="Twenty-Six, Guest list" loading="lazy"></iframe></div><figcaption class="cap"><b>Guest list</b>Who's coming</figcaption></figure>
 <figure class="pg" data-name="Letters"><div class="phone"><iframe src="looks/whimsy/example/index.html" data-steps='[{"do":"click","sel":"#coverBtn","wait":300},{"do":"click","sel":"#tab-letters","wait":1100}]' title="Twenty-Six, Letters" loading="lazy"></iframe></div><figcaption class="cap"><b>Letters</b>A thank-you for each guest</figcaption></figure>
+    </div>
+    <div class="nav" role="group" aria-label="Pages"></div>
+  </section>
+
+  <section class="style" aria-labelledby="s5">
+    <div class="head">
+      <div class="head-l">
+        <span class="no">Look 02 · Sleep Tight</span>
+        <h2 class="name st" id="s5">Sleep Tight</h2>
+        <p class="use"><b>First made for</b> Mira's Post Copier, the page she writes her Telegram channel posts in. A post is written like a message on the back of a postcard, and the copy button is the "send".</p>
+        <blockquote>I wanted it to be a postcard as a time capsule to myself: a thought and reflection shared in the present, for the future me.<cite>Mira</cite></blockquote>
+      </div>
+      <span class="badge">Mira's look</span>
+    </div>
+    <div class="spec"><span class="sw"><span style="background:#5a2338"></span><span style="background:#f0e5cc"></span><span style="background:#3b5530"></span><span style="background:#c5cba3"></span><span style="background:#d6952c"></span></span>Over the Rainbow · Newsreader · Reenie Beanie · striped frame, stamp and postmark</div>
+    <div class="acts"><a class="btn" href="looks/sleep-tight/example/">Open the post page ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/looks/sleep-tight">The look's rules</a></div>
+    <div class="strip">
+<figure class="pg" data-name="Postcard"><div class="phone" style="background:#3b5530"><iframe src="looks/sleep-tight/example/index.html" data-steps='[]' title="Sleep Tight, Postcard" loading="lazy"></iframe></div><figcaption class="cap"><b>Postcard</b>Write a post, copy it for Telegram</figcaption></figure>
+<figure class="pg" data-name="Fonts"><div class="phone" style="background:#3b5530"><iframe src="looks/sleep-tight/example/fonts.html" data-steps='[]' title="Sleep Tight, Fonts" loading="lazy"></iframe></div><figcaption class="cap"><b>Fonts</b>Twelve handwritten title faces</figcaption></figure>
     </div>
     <div class="nav" role="group" aria-label="Pages"></div>
   </section>

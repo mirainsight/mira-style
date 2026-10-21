@@ -49,7 +49,7 @@ I loved my writing, and I read this and am super proud. I hope it can inspire ot
 
 ## Backgrounds
 
-Chosen for the whole carousel, and overridable per slide.
+Chosen for the whole carousel, and overridable per slide. The default is **Hand (soft)**.
 
 - **Generated:** Glow (big soft palette blobs), Streaks (horizontal bands blurred sideways), Paper (one huge soft blob), Flat (base colour).
 - **Photos:** Your photo (a tall photo that drifts up a little on each slide, so the set reads as one strip, under a dark shade), Path (soft/faint) and Hand (soft/faint): blurred, glowing orange shapes on a deep red-brown.

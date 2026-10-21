@@ -492,7 +492,7 @@
   "al": "center"
  },
  "defaults": {
-  "bg": "photo",
+  "bg": "hand",
   "pal": "night",
   "grain": 32,
   "blur": 12,
