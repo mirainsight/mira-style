@@ -3,7 +3,14 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link id="gf" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bevan&family=Barlow+Condensed:ital,wght@0,200;0,500;0,600;0,700;1,700&family=Jost:wght@200;400;700;800&family=Archivo+Black&family=Fredoka:wght@300;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,800;1,6..72,400&family=Gaegu:wght@300;400;700&family=Covered+By+Your+Grace&family=Delicious+Handrawn&display=swap">
+<link id="gf" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&amp;family=Instrument+Serif:ital@0;1&amp;family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Bevan&amp;family=Barlow+Condensed:ital,wght@0,200;0,500;0,600;0,700;1,700&amp;family=Jost:wght@200;400;700;800&amp;family=Archivo+Black&amp;family=Fredoka:wght@300;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,800;1,6..72,400&amp;family=Gaegu:wght@300;400;700&amp;family=Covered+By+Your+Grace&amp;family=Delicious+Handrawn&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&amp;family=Nunito:wght@500;600;700;800&amp;family=Fredoka:wght@500;600;700&amp;family=Gaegu:wght@400;700&amp;family=Archivo+Black&amp;family=Gloock&amp;family=Delicious+Handrawn&amp;family=Covered+By+Your+Grace&amp;display=swap">
+<script>
+/* lab look (chrome only): saved per device */
+(function(){var L={mode:'dark'};try{Object.assign(L,JSON.parse(localStorage.getItem('miraLab.look')||'{}'))}catch(e){}
+ var r=document.documentElement;if(L.mode==='light'||L.mode==='dark')r.setAttribute('data-theme',L.mode);
+ if(L.deco===false)r.setAttribute('data-deco','off');if(L.win===false)r.setAttribute('data-win','off')})();
+</script>
 <style>
 /* Lab chrome: a dark workbench. Organize tab = pages and their text objects; Style tab = live preview + per-object controls. */
 :root{
@@ -80,6 +87,27 @@ textarea{min-height:70px;font-family:ui-monospace,Menlo,monospace;font-size:12px
 .stage [data-oid],.stage [data-oid] *{touch-action:none;cursor:grab}
 .stage.dragging,.stage.dragging *{cursor:grabbing!important}
 
+/* ---------- Style tab: one panel, three scopes ---------- */
+.scopes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--panel);margin:-4px 0 0}
+.scope{font:inherit;font-size:15px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--muted);border:0;border-right:1px solid var(--line);padding:11px 4px;cursor:pointer;line-height:1.1}
+.scope:last-child{border-right:0}
+.scope[aria-selected="true"]{background:var(--fg);color:var(--bg);font-weight:600}
+.scopehint{margin:-6px 0 0;font-size:15px;line-height:1.35;color:var(--fg);border-left:2px solid var(--accent);padding-left:10px}
+div.f{display:flex;flex-direction:column;gap:5px;min-width:0}
+.lab{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+fieldset.ctl{border:0;padding:0;margin:0;min-width:0;display:flex;flex-direction:column;gap:14px}
+fieldset.ctl:disabled{opacity:.4}
+.chip[aria-pressed="mixed"]{border-style:dashed;border-color:var(--fg)}
+.mx{color:var(--accent);font-size:11px;letter-spacing:.1em}
+.srcd > summary h2{justify-content:flex-start;align-items:baseline}
+.srcd > summary h2::before{content:'\25B8';margin-right:8px;color:var(--fg)}
+.srcd[open] > summary h2::before{content:'\25BE'}
+.srcd > summary h2 span{margin-left:auto}
+.sub summary{cursor:pointer;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sub[open]{display:flex;flex-direction:column;gap:12px}
+.orow2.tgt{border-style:dashed;border-color:var(--accent)}
+.selbox.soft{border-width:3px;border-color:rgba(226,131,74,.75)}
+
 /* ---------- Organize tab ---------- */
 .orgbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:0 0 14px}
 .orgbar .note{flex:1 1 300px}
@@ -115,7 +143,7 @@ textarea{min-height:70px;font-family:ui-monospace,Menlo,monospace;font-size:12px
 /* ---------- the slide itself (1080 x 1350, scaled to fit) ---------- */
 .slide{position:absolute;left:0;top:0;width:1080px;height:1350px;transform-origin:0 0;overflow:hidden;--fit:1}
 .bgl{position:absolute;inset:0;overflow:hidden}
-.photo{position:absolute;left:0;width:1080px;height:1928px;background:url(../backgrounds/moon.jpg) center/100% 100% no-repeat}
+.photo{position:absolute;left:0;width:1080px;height:1928px;background-position:center;background-size:100% 100%;background-repeat:no-repeat}
 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,14,24,.12),rgba(24,14,24,.32) 50%,rgba(16,10,14,.55))}
 .blob{position:absolute;border-radius:50%}
 .streaks{position:absolute;inset:-60px;filter:url(#hstreak)}
@@ -181,17 +209,194 @@ textarea{min-height:70px;font-family:ui-monospace,Menlo,monospace;font-size:12px
 .arcsvg .ax{text-decoration:line-through}
 @media (prefers-reduced-motion:no-preference){.thumb{transition:border-color .15s}}
 </style>
+<style id="diary">
+/* ===== Lab chrome: scrapbook diary (grid notebook, washi tape, gingham patches, highlighter, doodles). Slides are untouched. ===== */
+:root{--d-paper:#f6f1ec;--d-card:#fffdf9;--d-frame:#ffffff;--d-ink:#2b2730;--d-muted:#7b6f78;--d-line:#e6dbd4;
+ --d-pink:#d9488b;--d-pinks:#f9d6e4;--d-pgrid:rgba(217,72,139,.16);--d-patch:#f4a3c3;--d-blue:#cfe5fb;--d-blueh:#2f86e0;
+ --d-rule:#d6e4f1;--d-margin:#f2a2bf;--d-note:#fff1bd;--d-grid:rgba(70,90,120,.10);--d-green:#a6d8b6;--d-denim:#9db9e3;
+ --d-shadow:rgba(70,40,55,.20);--d-win:rgba(80,64,52,.07);--d-onpatch:#2b2730;--d-gw:rgba(255,255,255,.45);--d-stitch:rgba(255,255,255,.95);
+ color-scheme:light;
+ --d-head:'Fredoka','Poppins',system-ui,sans-serif;--d-headw:700;--d-hand:'Gaegu','Comic Sans MS',cursive;--d-handw:700;--d-body:'Nunito','Poppins',system-ui,sans-serif;
+ --bg:var(--d-paper);--panel:var(--d-card);--line:var(--d-line);--fg:var(--d-ink);--muted:var(--d-muted);--accent:var(--d-pink);--ui:var(--d-body);--display:var(--d-head);
+ --ging-pink:repeating-linear-gradient(0deg,var(--d-gw) 0 5px,transparent 5px 10px),repeating-linear-gradient(90deg,var(--d-gw) 0 5px,transparent 5px 10px),var(--d-patch);
+ --ging-green:repeating-linear-gradient(0deg,var(--d-gw) 0 5px,transparent 5px 10px),repeating-linear-gradient(90deg,var(--d-gw) 0 5px,transparent 5px 10px),var(--d-green);
+ --tape-blue:repeating-linear-gradient(45deg,var(--d-gw) 0 4px,transparent 4px 9px),var(--d-denim);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--d-paper:#1c1920;--d-card:#26222c;--d-frame:#332e39;--d-ink:#f5eee9;--d-muted:#b9adb7;--d-line:#403847;
+ --d-pink:#ff8cbc;--d-pinks:#3d2633;--d-pgrid:rgba(255,140,188,.14);--d-patch:#c95b8a;--d-blue:#27405e;--d-blueh:#6cb4ff;
+ --d-rule:#323c4a;--d-margin:#7a3a58;--d-note:#38321f;--d-grid:rgba(255,255,255,.055);--d-green:#4f8a64;--d-denim:#4c6a98;
+ --d-shadow:rgba(0,0,0,.55);--d-win:rgba(170,190,255,.035);--d-onpatch:#fff7fb;--d-gw:rgba(255,255,255,.16);--d-stitch:rgba(255,255,255,.75);
+ color-scheme:dark;}}
+:root[data-theme="dark"]{--d-paper:#1c1920;--d-card:#26222c;--d-frame:#332e39;--d-ink:#f5eee9;--d-muted:#b9adb7;--d-line:#403847;
+ --d-pink:#ff8cbc;--d-pinks:#3d2633;--d-pgrid:rgba(255,140,188,.14);--d-patch:#c95b8a;--d-blue:#27405e;--d-blueh:#6cb4ff;
+ --d-rule:#323c4a;--d-margin:#7a3a58;--d-note:#38321f;--d-grid:rgba(255,255,255,.055);--d-green:#4f8a64;--d-denim:#4c6a98;
+ --d-shadow:rgba(0,0,0,.55);--d-win:rgba(170,190,255,.035);--d-onpatch:#fff7fb;--d-gw:rgba(255,255,255,.16);--d-stitch:rgba(255,255,255,.75);
+ color-scheme:dark;}
+html,body{background-color:var(--d-paper);color:var(--d-ink)}
+body{font-family:var(--d-body);font-size:16px;
+ background-image:linear-gradient(var(--d-grid) 1px,transparent 1px),linear-gradient(90deg,var(--d-grid) 1px,transparent 1px);background-size:24px 24px;background-attachment:fixed}
+/* window light falling across the desk */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+ background:repeating-linear-gradient(118deg,transparent 0 70px,var(--d-win) 70px 150px,transparent 150px 178px);
+ -webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 72%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 72%)}
+:root[data-win="off"] body::after{display:none}
+.wrap{position:relative;z-index:1}
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="hstreak" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="150 4"/></filter></svg>
+/* header: pink hand label, highlighted title like a text selection, washi-tape tabs */
+header{position:relative;align-items:flex-end;gap:12px 20px;margin-bottom:26px}
+.brand{position:relative;display:flex;flex-direction:column;gap:4px;min-width:0}
+.kicker{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:23px;color:var(--d-pink);line-height:1}
+h1{font-family:var(--d-head);font-style:normal;font-weight:var(--d-headw);font-size:clamp(30px,7vw,44px);letter-spacing:-.02em;line-height:1.08;color:var(--d-ink);align-self:flex-start}
+.hlbox,.shead b{position:relative;display:inline-block;background:var(--d-blue);padding:0 .14em;box-shadow:inset 2px 0 0 var(--d-blueh),inset -2px 0 0 var(--d-blueh)}
+.hlbox::before,.hlbox::after,.shead b::before,.shead b::after{content:'';position:absolute;width:9px;height:9px;border-radius:50%;background:var(--d-blueh)}
+.hlbox::before,.shead b::before{left:-3.5px;bottom:-5px}
+.hlbox::after,.shead b::after{right:-3.5px;top:-5px}
+.shead b::before,.shead b::after{width:7px;height:7px}
+header p{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:19px;color:var(--d-muted);margin-top:4px}
+.tabs{gap:12px;align-items:center;margin-left:auto}
+.tab{font-family:var(--d-head);font-weight:700;font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--d-ink);border:0;border-bottom:0;padding:9px 20px;
+ background:var(--tape-blue);opacity:.85;transform:rotate(-2deg);clip-path:polygon(0 0,100% 0,97% 22%,100% 44%,97% 66%,100% 88%,98% 100%,0 100%,3% 78%,0 56%,3% 34%,0 12%)}
+.tab+.tab{transform:rotate(1.6deg)}
+.tab[aria-selected="true"]{background:var(--ging-pink);color:var(--d-onpatch);opacity:1}
+.dd{position:absolute;pointer-events:none;fill:none;stroke:var(--d-ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.75}
+.dd.pk{stroke:var(--d-pink);opacity:.9}
+.dd.fill{fill:var(--d-patch);stroke:none;opacity:.9}
+.brand .dd-a{width:30px;height:30px;right:-38px;top:6px}
+.brand .dd-b{width:16px;height:16px;right:-52px;top:-6px}
+header{overflow-x:clip}
+@media (max-width:640px){.brand .dd-a{right:2px;top:-2px}.brand .dd-b{right:34px;top:-12px}}
+.margins{position:absolute;inset:0;pointer-events:none;display:none}
+@media (min-width:1380px){.margins{display:block}}
+:root[data-deco="off"] .dd,:root[data-deco="off"] .margins,:root[data-deco="off"] .halftone,:root[data-deco="off"] .stagewrap::before,:root[data-deco="off"] .stagewrap::after,:root[data-deco="off"] .slc::before,:root[data-deco="off"] .panel::before{display:none}
+
+/* the slide preview: a photo taped into the diary, with a halftone print behind it */
+.stagecol{overflow-x:clip}
+.stagebox{position:relative;max-width:560px;margin:12px auto 0}
+.stagewrap{position:relative;z-index:1;padding:10px;background:var(--d-frame);box-shadow:0 22px 40px -22px var(--d-shadow),0 1px 0 var(--d-line)}
+.stagewrap::before,.stagewrap::after{content:'';position:absolute;top:2px;width:96px;height:26px;z-index:3;clip-path:polygon(0 0,100% 0,97% 22%,100% 44%,97% 66%,100% 88%,98% 100%,0 100%,3% 78%,0 56%,3% 34%,0 12%)}
+.stagewrap::before{left:-26px;transform:rotate(-36deg);background:var(--ging-pink)}
+.stagewrap::after{right:-26px;transform:rotate(36deg);background:var(--tape-blue);opacity:.9}
+.stage{box-shadow:none;max-width:none}
+.halftone{position:absolute;inset:34px -18px -18px 34px;z-index:0;background-image:radial-gradient(var(--d-patch) 32%,transparent 36%);background-size:9px 9px;
+ -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);opacity:.8}
+.thumbs{padding:8px 2px 10px;gap:10px}
+.thumb{border:3px solid var(--d-frame);border-radius:2px;box-shadow:0 4px 10px -4px var(--d-shadow)}
+.thumb.on{border-color:var(--d-patch);transform:translateY(-3px)}
+.tnum{font-family:var(--d-body);font-weight:800}
+.selbox{border-color:var(--d-blueh)}
+.selbox.soft{border-color:color-mix(in srgb,var(--d-blueh) 70%,transparent)}
+
+/* panel: a notebook page with a strip of tape */
+.panel{background:var(--d-card);border:0;border-radius:6px;box-shadow:0 1px 0 var(--d-line),0 18px 36px -22px var(--d-shadow);position:relative;padding-top:24px}
+.panel::before{content:'';position:absolute;top:-13px;left:50%;width:128px;height:28px;transform:translateX(-50%) rotate(-2.5deg);background:var(--ging-green);clip-path:polygon(0 0,100% 0,97% 22%,100% 44%,97% 66%,100% 88%,98% 100%,0 100%,3% 78%,0 56%,3% 34%,0 12%);opacity:.92}
+.scopes{border:0;background:var(--d-card);gap:6px;padding:6px 0}
+.scope{font-family:var(--d-head);font-weight:700;font-size:14px;text-transform:none;letter-spacing:0;color:var(--d-ink);background:var(--d-paper);
+ border:1.5px solid var(--d-line);border-radius:14px;outline:1.5px dashed transparent;outline-offset:-5px;padding:10px 4px}
+.scope:last-child{border-right:1.5px solid var(--d-line)}
+.scope[aria-selected="true"]{background:var(--ging-pink);color:var(--d-onpatch);border-color:transparent;outline-color:var(--d-stitch);font-weight:800;box-shadow:0 2px 0 var(--d-shadow)}
+.scopehint{background:var(--d-note);border-left:0;border-radius:3px;padding:8px 12px;margin:0;font-size:15px;color:var(--d-ink)}
+.sec h2{font-family:var(--d-head);font-weight:var(--d-headw);font-size:19px;letter-spacing:-.01em;text-transform:none;color:var(--d-ink)}
+.sec h2 span{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:18px;color:var(--d-pink);letter-spacing:0;text-transform:none}
+.srcd > summary h2::before{color:var(--d-pink)}
+label.f,.lab{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:18px;letter-spacing:0;text-transform:none;color:var(--d-muted)}
+label.f.check{color:var(--d-ink)}
+select{font-family:var(--d-body);font-weight:600;font-size:15px;background:var(--d-paper);color:var(--d-ink);border:1.5px solid var(--d-line);border-radius:12px;padding:7px 10px}
+textarea{background:var(--d-paper);color:var(--d-ink);border:1.5px solid var(--d-line);border-radius:10px}
+input[type=range]{accent-color:var(--d-pink)}
+input[type=color]{border-radius:10px;border:1.5px solid var(--d-line);background:var(--d-paper)}
+input[type=checkbox]{accent-color:var(--d-pink);width:18px;height:18px}
+
+/* chips and buttons: felt patches with stitching */
+.chip,.mini{font-family:var(--d-body);font-weight:700;font-size:14px;letter-spacing:0;text-transform:none;color:var(--d-ink);background:var(--d-card);
+ border:1.5px solid var(--d-line);border-radius:999px;padding:5px 13px;outline:1.5px dashed transparent;outline-offset:-5px}
+.chip:hover,.mini:hover{border-color:var(--d-patch)}
+.chip[aria-pressed="true"],.mini[aria-pressed="true"]{background:var(--ging-pink);color:var(--d-onpatch);border-color:transparent;outline-color:var(--d-stitch);box-shadow:0 2px 0 var(--d-shadow)}
+.chip[aria-pressed="mixed"]{border-style:dashed;border-color:var(--d-pink);background:var(--d-pinks)}
+.chip small{font-family:var(--d-hand);font-size:13px;text-transform:none;letter-spacing:0;opacity:.75}
+.btn{font-family:var(--d-head);font-weight:700;font-size:15px;color:var(--d-onpatch);background:var(--ging-pink);border:0;border-radius:14px;padding:9px 16px;
+ outline:1.5px dashed var(--d-stitch);outline-offset:-5px;box-shadow:0 2px 0 var(--d-shadow)}
+.btn.ghost{background:var(--d-card);color:var(--d-ink);border:1.5px solid var(--d-line);outline-color:var(--d-line);font-weight:600;box-shadow:none}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.5}
+.all{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:17px;letter-spacing:0;text-transform:none;color:var(--d-pink)}
+.note{font-family:var(--d-body);color:var(--d-muted)}
+.count{border-left:3px solid var(--d-patch);font-family:var(--d-body);color:var(--d-muted)}
+.count b{color:var(--d-ink)}
+.mx{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:15px;letter-spacing:0;color:var(--d-pink)}
+.sub summary{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:17px;text-transform:none;letter-spacing:0;color:var(--d-muted)}
+.swb{border:1.5px solid var(--d-line);border-radius:12px;overflow:hidden;color:var(--d-ink);font-family:var(--d-body);font-weight:700;background:var(--d-card)}
+.swb[aria-pressed="true"]{outline:2px dashed var(--d-pink);outline-offset:2px;border-color:var(--d-pink)}
+.orow2{background:var(--d-paper);border:1.5px solid var(--d-line);border-radius:10px;box-shadow:inset 4px 0 0 var(--d-margin)}
+.orow2 span{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:18px}
+.orow2 i{font-family:var(--d-body);font-size:11px;font-weight:700;color:var(--d-muted)}
+.orow2[aria-pressed="true"]{background:var(--d-blue);border-color:var(--d-blueh)}
+.orow2.tgt{border-color:var(--d-pink)}
+
+/* organize: taped pages, ripped pink grid paper for spare text, lined diary slips for each piece of text */
+.orgbar .note{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:19px;line-height:1.25}
+.tray{position:relative;border:0;border-radius:2px;padding:14px 14px 22px;background-color:var(--d-pinks);
+ background-image:linear-gradient(var(--d-pgrid) 1px,transparent 1px),linear-gradient(90deg,var(--d-pgrid) 1px,transparent 1px);background-size:18px 18px;
+ -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 9px) no-repeat,url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='10' viewBox='0 0 40 10'><path d='M0 0H40V3L37 7L33 4L29 9L25 5L21 8L17 3L13 7L9 4L5 9L2 5L0 7Z' fill='black'/></svg>") bottom left/40px 10px repeat-x;
+ mask:linear-gradient(#000,#000) top/100% calc(100% - 9px) no-repeat,url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='10' viewBox='0 0 40 10'><path d='M0 0H40V3L37 7L33 4L29 9L25 5L21 8L17 3L13 7L9 4L5 9L2 5L0 7Z' fill='black'/></svg>") bottom left/40px 10px repeat-x}
+.tray summary{font-family:var(--d-head);font-weight:var(--d-headw);font-size:17px;letter-spacing:0;text-transform:none;color:var(--d-ink)}
+.slc{position:relative;background:var(--d-card);border:0;border-radius:4px;box-shadow:0 1px 0 var(--d-line),0 14px 26px -20px var(--d-shadow);margin-bottom:22px}
+.slc::before{content:'';position:absolute;top:-9px;left:22px;width:74px;height:20px;transform:rotate(-4deg);background:var(--tape-blue);clip-path:polygon(0 0,100% 0,97% 22%,100% 44%,97% 66%,100% 88%,98% 100%,0 100%,3% 78%,0 56%,3% 34%,0 12%);opacity:.9;pointer-events:none;z-index:2}
+.slc:nth-child(3n+2)::before{left:auto;right:28px;transform:rotate(3deg);background:var(--ging-pink)}
+.slc:nth-child(3n)::before{background:var(--ging-green)}
+.sprev{border:3px solid var(--d-frame);box-shadow:0 4px 10px -4px var(--d-shadow)}
+.shead b{font-family:var(--d-head);font-style:normal;font-weight:var(--d-headw);font-size:18px;color:var(--d-ink);margin-right:4px}
+.badge{border:0;border-radius:999px;background:var(--d-note);color:var(--d-ink);font-family:var(--d-hand);font-weight:var(--d-handw);font-size:15px;letter-spacing:0;text-transform:none;padding:1px 9px}
+.dz{border:2px dashed var(--d-line);border-radius:12px;padding:6px}
+.dz:empty::before{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:17px}
+.oc{background-color:var(--d-paper);background-image:linear-gradient(90deg,transparent 30px,var(--d-margin) 30px 31.5px,transparent 31.5px);border:1.5px solid var(--d-line);border-radius:8px;gap:12px}
+.otext{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:20px;line-height:26px;color:var(--d-ink);padding:0 4px;border-radius:0;
+ background:repeating-linear-gradient(transparent 0 25px,var(--d-rule) 25px 26px);background-attachment:local}
+.otext:focus{border-color:var(--d-blueh);background-color:var(--d-card)}
+.grip{color:var(--d-pink)}
+.fmt{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:15px;letter-spacing:0;text-transform:none}
+button.ib{font-family:var(--d-hand);font-weight:var(--d-handw);font-size:16px;letter-spacing:0;color:var(--d-muted);border-radius:8px}
+button.ib:hover{color:var(--d-pink);border-color:var(--d-line)}
+.oc.ib,.slc.ib{box-shadow:0 -3px 0 var(--d-pink)}
+.oc.ia,.slc.ia{box-shadow:0 3px 0 var(--d-pink)}
+
+/* the lab-look tuner */
+.looktuner{position:relative}
+.looktuner > summary{list-style:none;cursor:pointer;font-family:var(--d-hand);font-weight:var(--d-handw);font-size:18px;color:var(--d-pink);padding:4px 2px}
+.looktuner > summary::-webkit-details-marker{display:none}
+.lookpop{position:absolute;right:0;top:calc(100% + 8px);z-index:30;width:min(300px,calc(100vw - 32px));background:var(--d-card);border-radius:8px;padding:16px;
+ display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 0 var(--d-line),0 24px 44px -20px var(--d-shadow)}
+.lookpop h3{margin:0;font-family:var(--d-head);font-weight:var(--d-headw);font-size:17px}
+@media (max-width:640px){.looktuner{order:-1;margin-left:auto}.lookpop{right:0}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="hstreak" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="150 4"/></filter><filter id="wave" x="-15%" y="-40%" width="130%" height="180%"><feTurbulence type="fractalNoise" baseFrequency="0.0018 0.007" numOctaves="2" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="95" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="5 2.6"/></filter></svg>
 
 <div class="wrap">
+  <div class="margins" aria-hidden="true"><svg class="dd " viewBox="0 0 24 24" aria-hidden="true" style="width:34px;height:34px;left:-74px;top:120px"><path d="M12 2C12 8 16 12 22 12C16 12 12 16 12 22C12 16 8 12 2 12C8 12 12 8 12 2Z"/></svg><svg class="dd pk" viewBox="0 0 24 24" aria-hidden="true" style="width:28px;height:28px;left:-60px;top:330px"><path d="M12 20.5C5.5 15 2.5 11 4.2 7.6C5.9 4.3 10 4.8 12 8C14 4.8 18.1 4.3 19.8 7.6C21.5 11 18.5 15 12 20.5Z"/></svg><svg class="dd fill" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;left:-82px;top:520px"><path d="M12 2.5L14.6 9H21.5L16 13.3L18 20.5L12 16.2L6 20.5L8 13.3L2.5 9H9.4Z"/></svg><svg class="dd " viewBox="0 0 24 24" aria-hidden="true" style="width:34px;height:34px;left:-70px;top:760px"><circle cx="12" cy="5.5" r="3.6"/><circle cx="18.2" cy="10" r="3.6"/><circle cx="15.8" cy="17.3" r="3.6"/><circle cx="8.2" cy="17.3" r="3.6"/><circle cx="5.8" cy="10" r="3.6"/><circle cx="12" cy="12" r="2"/></svg><svg class="dd pk" viewBox="0 0 24 24" aria-hidden="true" style="width:26px;height:26px;right:-64px;top:180px"><path d="M12 2V6M12 18V22M2 12H6M18 12H22M5 5L7.5 7.5M16.5 16.5L19 19M19 5L16.5 7.5M7.5 16.5L5 19"/></svg><svg class="dd " viewBox="0 0 24 24" aria-hidden="true" style="width:26px;height:26px;right:-70px;top:420px"><path d="M12 20.5C5.5 15 2.5 11 4.2 7.6C5.9 4.3 10 4.8 12 8C14 4.8 18.1 4.3 19.8 7.6C21.5 11 18.5 15 12 20.5Z"/></svg><svg class="dd " viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;right:-56px;top:610px"><path d="M12 2C12 8 16 12 22 12C16 12 12 16 12 22C12 16 8 12 2 12C8 12 12 8 12 2Z"/></svg><svg class="dd fill" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;right:-78px;top:860px"><path d="M12 20.5C5.5 15 2.5 11 4.2 7.6C5.9 4.3 10 4.8 12 8C14 4.8 18.1 4.3 19.8 7.6C21.5 11 18.5 15 12 20.5Z"/></svg></div>
   <header>
-    <h1>Grunge Lab</h1>
-    <p>Sort your text into pages, then style each piece.</p>
+    <div class="brand">
+      <span class="kicker">Carousel lab:</span>
+      <h1 id="labtitle" class="hlbox">Carousel Lab</h1>
+      <svg class="dd dd-a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C12 8 16 12 22 12C16 12 12 16 12 22C12 16 8 12 2 12C8 12 12 8 12 2Z"/></svg><svg class="dd dd-b pk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2V6M12 18V22M2 12H6M18 12H22M5 5L7.5 7.5M16.5 16.5L19 19M19 5L16.5 7.5M7.5 16.5L5 19"/></svg>
+      <p><span id="labstyle"></span> · Sort your text into pages, then style each piece.</p>
+    </div>
     <nav class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" id="tabb-org" type="button" role="tab" aria-selected="true">Organize</button>
       <button class="tab" id="tabb-style" type="button" role="tab" aria-selected="false">Style</button>
     </nav>
+    <details class="looktuner" id="looktuner">
+      <summary>✎ lab look</summary>
+      <div class="lookpop">
+        <h3>Lab look</h3>
+        <p class="note">Only changes this workbench, never your slides.</p>
+        <div class="f"><span class="lab">Mode</span><div class="chips" id="lkmode" role="group" aria-label="Mode"><button class="chip" type="button" data-v="auto">Auto</button><button class="chip" type="button" data-v="light">Light</button><button class="chip" type="button" data-v="dark">Dark</button></div></div>
+        <label class="f" for="lkhead">Heading font<select id="lkhead"><option value="poppins">Poppins</option><option value="fredoka">Fredoka</option><option value="archivo">Archivo Black</option><option value="gloock">Gloock</option></select></label>
+        <label class="f" for="lkhand">Handwriting<select id="lkhand"><option value="gaegu">Gaegu</option><option value="marker">Delicious Handrawn</option><option value="scrawl">Covered By Your Grace</option></select></label>
+        <label class="f check" for="lkdeco"><input type="checkbox" id="lkdeco"> Tape, stickers and doodles</label>
+        <label class="f check" for="lkwin"><input type="checkbox" id="lkwin"> Window light</label>
+        <div class="btns"><button class="btn ghost" id="lkcopy" type="button">Copy look settings</button></div>
+      </div>
+    </details>
   </header>
 
   <!-- ===== ORGANIZE ===== -->
@@ -212,91 +417,90 @@ textarea{min-height:70px;font-family:ui-monospace,Menlo,monospace;font-size:12px
   <section id="tab-style" hidden>
   <div class="grid">
     <div class="stagecol">
-      <div class="stage" id="stage" aria-label="Selected slide preview"></div>
+      <div class="stagebox"><div class="halftone" aria-hidden="true"></div><div class="stagewrap">
+        <div class="stage" id="stage" aria-label="Selected slide preview"></div>
+      </div></div>
       <div class="thumbs" id="thumbs" role="tablist" aria-label="Slides"></div>
       <div class="dlrow"><button class="btn" id="dl1" type="button">Download this slide</button><button class="btn ghost" id="dlall" type="button">Download all (zip)</button><span class="note" id="dlmsg" role="status"></span></div>
     </div>
     <div class="panel">
-      <div class="sec">
-        <h2>Objects on this page <span id="slname2"></span></h2>
-        <div class="objlist" id="objlist"></div>
-        <p class="note" id="objnote">Tap an object here, or on the slide, then style it below. Add, merge, split and move text on the Organize tab.</p>
+      <div class="scopes" role="tablist" aria-label="What your changes apply to">
+        <button class="scope" type="button" role="tab" data-s="obj">Selected text</button>
+        <button class="scope" type="button" role="tab" data-s="slide">This slide</button>
+        <button class="scope" type="button" role="tab" data-s="all">All slides</button>
       </div>
-      <div class="sec" id="objed">
-        <h2>Selected object</h2>
-        <div class="chips" id="orole" role="group" aria-label="Role"><button class="chip" type="button" data-v="s">Small</button><button class="chip" type="button" data-v="h">Big</button></div>
-        <div class="row2">
-          <label class="f check" for="ost"><input type="checkbox" id="ost"> Strike through</label>
-          <label class="f check" for="oit"><input type="checkbox" id="oit"> Italic</label>
-        </div>
-        <label class="f check" for="ohl"><input type="checkbox" id="ohl"> Highlight (inverted colours)</label>
-        <div class="row2"><label class="f" for="otc">Text colour<input type="color" id="otc"></label><button class="all" id="otauto" type="button">Back to slide colour</button></div>
-        <div class="sec" id="o2ink">
-          <div class="row2"><label class="f" for="oc2">Second ink colour<input type="color" id="oc2"></label><button class="all" id="o2reset" type="button">Reset second ink</button></div>
-          <label class="f" for="oox"><span class="lt"><span>Second ink offset across</span><span id="ooxv"></span></span><input type="range" id="oox" min="-120" max="120" step="1"></label>
-          <label class="f" for="ooy"><span class="lt"><span>Second ink offset up / down</span><span id="ooyv"></span></span><input type="range" id="ooy" min="-120" max="120" step="1"></label>
-        </div>
-        <p class="note" id="o2note">The second ink shows on a big line when this page's layout is Echo with "Ink overlay" (set under This page).</p>
-        <div class="row2" id="ohlrow"><label class="f" for="ohc">Highlight colour<input type="color" id="ohc"></label><button class="all" id="ohauto" type="button">Back to automatic</button></div>
-        <label class="f" for="osz"><span class="lt"><span>Size</span><span id="oszv"></span></span><input type="range" id="osz" min="40" max="300" step="1"></label>
-        <button class="all" id="oszall" type="button">Apply size to whole slide</button>
-        <div class="row2">
-          <label class="f" for="owt">Weight<select id="owt"><option value="auto">Slide default</option><option value="200">Thin</option><option value="400">Regular</option><option value="600">Semibold</option><option value="800">Bold</option></select></label>
-          <label class="f" for="ofn">Font<select id="ofn"></select></label>
-        </div>
-        <div class="row2">
-          <label class="f" for="ocs">Case<select id="ocs"><option value="auto">Slide default</option><option value="none">As written</option><option value="lowercase">lowercase</option><option value="uppercase">UPPERCASE</option></select></label>
-          <label class="f" for="osk">Strike line<select id="osk"><option value="thin">Thin</option><option value="normal">Normal</option><option value="thick">Thick</option></select></label>
-        </div>
-        <label class="f">Placement</label>
-        <div class="chips" id="oal" role="group" aria-label="Alignment"><button class="chip" type="button" data-v="auto">Layout</button><button class="chip" type="button" data-v="left">Left</button><button class="chip" type="button" data-v="center">Center</button><button class="chip" type="button" data-v="right">Right</button></div>
-        <p class="note">Or drag the text on the slide to place it anywhere.</p>
-        <div class="row2"><label class="f check" for="osnap"><input type="checkbox" id="osnap" checked> Snap to guides</label><button class="all" id="opos" type="button">Reset position</button></div>
-        <label class="f" for="obl">Blur<select id="obl"><option value="auto">Slide default</option><option value="none">None</option><option value="smear">Smear</option><option value="soft">Soft</option></select></label>
-        <div class="btns"><button class="btn ghost" id="orst" type="button">Reset this object</button><button class="btn ghost" id="oslide" type="button">Apply style to whole slide</button><button class="btn ghost" id="oall" type="button">Copy style to all</button></div>
-      </div>
+      <p class="scopehint" id="scopehint" role="status"></p>
+
       <details class="sec srcd" open>
-        <summary><h2>This page <span id="slname"></span></h2></summary>
-        <p class="count" id="count"></p>
-        <div class="chips" id="moves" role="group" aria-label="Placement"></div>
-        <button class="all" id="moveall" type="button">Use this layout on all slides</button>
-        <div class="row2" id="echorow">
-          <label class="f" for="emode">Echo<select id="emode"><option value="rows">Repeated rows</option><option value="overlay">Ink overlay</option></select></label>
-          <label class="f" for="estr">Echo strength<select id="estr"><option value="heavy">Heavy</option><option value="medium">Medium</option><option value="clear">Clear</option></select></label>
-        </div>
-        <label class="f" for="tilt">Tilt<input type="range" id="tilt" min="0" max="6" step="0.1"></label>
-        <div class="f"><span class="lt"><span>Background for this page</span><button class="all" id="bgall" type="button">To all</button></span></div>
-        <div class="chips" id="pbgs" role="group" aria-label="Background for this page"></div>
-        <div class="row2">
-          <label class="f" for="font">Font<select id="font"></select></label>
-          <label class="f" for="case">Case<select id="case"><option value="auto">Move default</option><option value="none">As written</option><option value="lowercase">lowercase</option><option value="uppercase">UPPERCASE</option></select></label>
-        </div>
-        <label class="f" for="hero">Big line size<input type="range" id="hero" min="50" max="150" step="1"></label>
-        <div class="row2">
-          <label class="f" for="blurt">Blur<select id="blurt"><option value="none">None</option><option value="hero">Big line</option><option value="body">Small text</option><option value="all">Everything</option></select></label>
-          <label class="f" for="blurs">Blur style<select id="blurs"><option value="smear">Smear</option><option value="soft">Soft</option></select></label>
+        <summary><h2>1 · Text</h2></summary>
+        <div class="objlist" id="objlist" aria-label="Text on this page"></div>
+        <div class="f"><span class="lab" id="wholab">Which text</span><div class="chips" id="who" role="group" aria-label="Which text"></div></div>
+        <fieldset class="ctl" id="tctl">
+          <div class="row2">
+            <label class="f" for="tfn">Font<select id="tfn"></select></label>
+            <label class="f" for="twt">Weight<select id="twt"><option value="auto">Layout default</option><option value="200">Thin</option><option value="400">Regular</option><option value="600">Semibold</option><option value="800">Bold</option></select></label>
+          </div>
+          <label class="f" for="tsz"><span class="lt"><span>Size</span><span id="tszv"></span></span><input type="range" id="tsz" min="40" max="300" step="1"></label>
+          <div class="row2">
+            <label class="f" for="tcs">Case<select id="tcs"><option value="auto">Layout default</option><option value="none">As written</option><option value="lowercase">lowercase</option><option value="uppercase">UPPERCASE</option></select></label>
+            <label class="f" for="tal">Alignment<select id="tal"><option value="auto">Layout default</option><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></label>
+          </div>
+          <div class="f"><span class="lab">Style</span><div class="chips"><button class="chip" type="button" id="tit">Italic</button><button class="chip" type="button" id="tst">Strike through</button><button class="chip" type="button" id="thl">Highlight</button></div></div>
+          <div class="row2">
+            <label class="f" for="tsk">Strike line<select id="tsk"><option value="thin">Thin</option><option value="normal">Normal</option><option value="thick">Thick</option></select></label>
+            <label class="f" for="tbl">Blur<select id="tbl"><option value="auto">Layout default</option><option value="none">None</option><option value="smear">Smear</option><option value="soft">Soft</option><option value="wave">Wave (liquid)</option></select></label>
+          </div>
+          <div class="row2">
+            <div class="f"><span class="lt"><span class="lab">Text colour</span><span class="mx" id="ttcm"></span></span><input type="color" id="ttc" aria-label="Text colour"><button class="all" id="ttcd" type="button">Back to default</button></div>
+            <div class="f"><span class="lt"><span class="lab">Highlight colour</span><span class="mx" id="thcm"></span></span><input type="color" id="thc" aria-label="Highlight colour"><button class="all" id="thcd" type="button">Back to automatic</button></div>
+          </div>
+          <details class="sub">
+            <summary>Echo ghost (Echo layout with Ink overlay)</summary>
+            <div class="f"><span class="lt"><span class="lab">Ghost colour</span><span class="mx" id="tc2m"></span></span><input type="color" id="tc2" aria-label="Ghost colour"><button class="all" id="tc2d" type="button">Back to default</button></div>
+            <label class="f" for="tox"><span class="lt"><span>Offset across</span><span id="toxv"></span></span><input type="range" id="tox" min="-120" max="120" step="1"></label>
+            <label class="f" for="toy"><span class="lt"><span>Offset up / down</span><span id="toyv"></span></span><input type="range" id="toy" min="-120" max="120" step="1"></label>
+          </details>
+          <div class="f"><span class="lab">Position</span><p class="note">Drag text on the slide to move it.</p>
+            <div class="row2"><label class="f check" for="osnap"><input type="checkbox" id="osnap" checked> Snap to guides</label><button class="all" id="tpos" type="button">Reset position</button></div></div>
+          <div class="btns"><button class="btn ghost" id="trst" type="button">Reset style</button></div>
+          <div class="btns" id="tcopy"><button class="btn ghost" id="tcps" type="button">Copy to this slide</button><button class="btn ghost" id="tcpa" type="button">Copy to all slides</button></div>
+        </fieldset>
+      </details>
+
+      <details class="sec srcd" open>
+        <summary><h2>2 · Page <span id="pagewho"></span></h2></summary>
+        <div class="sec" id="pctl">
+          <div class="f"><span class="lab">Layout</span><div class="chips" id="moves" role="group" aria-label="Layout"></div></div>
+          <p class="count" id="count"></p>
+          <div class="f"><span class="lab">Background</span><div class="chips" id="pbgs" role="group" aria-label="Background"></div></div>
+          <div class="row2">
+            <label class="f" for="emode">Echo style<select id="emode"><option value="rows">Repeated rows</option><option value="overlay">Ink overlay</option></select></label>
+            <label class="f" for="estr">Echo strength<select id="estr"><option value="heavy">Heavy</option><option value="medium">Medium</option><option value="clear">Clear</option></select></label>
+          </div>
+          <p class="note">Echo settings only show on pages with the Echo layout.</p>
+          <label class="f" for="tilt"><span class="lt"><span>Tilt</span><span id="tiltv"></span></span><input type="range" id="tilt" min="0" max="6" step="0.1"></label>
         </div>
       </details>
+
       <details class="sec srcd">
-        <summary><h2>Whole carousel <span>tap to open</span></h2></summary>
-        <div class="chips" id="bgs" role="group" aria-label="Background"></div>
-        <div class="sw" id="pals" role="group" aria-label="Colour"></div>
+        <summary><h2>3 · Colours and texture <span>always all slides</span></h2></summary>
+        <div class="sw" id="pals" role="group" aria-label="Colour palette"></div>
         <div class="row2">
           <label class="f" for="ink">Ink<input type="color" id="ink"></label>
           <label class="f" for="ink2">Side ink<input type="color" id="ink2"></label>
         </div>
         <label class="f" for="grain">Grain<input type="range" id="grain" min="0" max="100" step="1"></label>
-        <label class="f" for="blur">Blur amount<input type="range" id="blur" min="0" max="40" step="1"></label>
-        <label class="f" for="body">Small text size<input type="range" id="body" min="70" max="140" step="1"></label>
+        <label class="f" for="blur">Blur strength<input type="range" id="blur" min="0" max="40" step="1"></label>
         <label class="f check" for="dust"><input type="checkbox" id="dust"> Dust and fibres</label>
         <div class="btns"><button class="btn ghost" id="shuffle" type="button">Shuffle</button><button class="btn ghost" id="reset" type="button">Reset everything</button></div>
       </details>
-      <div class="sec">
-        <h2>Settings</h2>
+
+      <details class="sec srcd">
+        <summary><h2>Settings <span>copy / paste</span></h2></summary>
         <div class="btns"><button class="btn" id="copy" type="button">Copy settings</button><button class="btn ghost" id="apply" type="button">Apply pasted</button></div>
         <textarea id="settxt" aria-label="Settings text" placeholder="Paste settings here, then tap Apply pasted"></textarea>
-        <p class="note">Ready? Use Download under the preview to save each slide as a 1080×1350 PNG.</p>
-      </div>
+      </details>
+      <p class="note">Ready? Use Download under the preview to save each slide as a 1080×1350 PNG.</p>
     </div>
   </div>
   </section>
@@ -305,53 +509,16 @@ textarea{min-height:70px;font-family:ui-monospace,Menlo,monospace;font-size:12px
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
 /* ---------------- source text and the first arrangement ---------------- */
-const DEFAULT_SRC=`I am tired. No, I need to rest.
-
-Made a list of everything I carry. Deadlines, favours, promises, plans. None of it was mine to hold alone.
-
-I keep saying yes to the meeting, to the late reply, | but never to the quiet.
-
-Maybe I can put some down.
-Maybe I can ask for help.
-Maybe that is enough for today.
-
-The honest truth? Rest scares me, but | it is where I hear myself again.
-
-I get restless when it is quiet, but | I can learn to sit with it.
-
-I worry I will fall behind, but | slow is still moving.
-
-Some days the slow road is the right one.`;
+/* ===== injected by scripts/build.py: the style pack and this carousel's content ===== */
+const STYLE={"name": "Grunge", "look": "looks/grunge", "about": "Dark, blurry, but also bleeding warm: grainy smeared slides, subdued colours inside the background, unexpected fonts and placement.", "googleFonts": "https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Bevan&family=Barlow+Condensed:ital,wght@0,200;0,500;0,600;0,700;1,700&family=Jost:wght@200;400;700;800&family=Archivo+Black&family=Fredoka:wght@300;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,800;1,6..72,400&family=Gaegu:wght@300;400;700&family=Covered+By+Your+Grace&family=Delicious+Handrawn&display=swap", "fonts": {"gloock": {"n": "Gloock", "f": "'Gloock', Georgia, serif", "w": 400, "wb": 400, "k": 1, "lh": 1.02, "ls": "-0.01em"}, "instrument": {"n": "Instrument Serif", "f": "'Instrument Serif', Georgia, serif", "w": 400, "wb": 400, "k": 1.14, "lh": 1, "ls": "-0.01em"}, "fraunces": {"n": "Fraunces", "f": "'Fraunces', Georgia, serif", "w": 800, "wb": 600, "k": 0.96, "lh": 1.04, "ls": "-0.01em"}, "baskerville": {"n": "Libre Baskerville", "f": "'Libre Baskerville', Georgia, serif", "w": 700, "wb": 400, "k": 0.86, "lh": 1.04, "ls": "-0.02em"}, "bevan": {"n": "Bevan", "f": "'Bevan', Georgia, serif", "w": 400, "wb": 400, "k": 0.8, "lh": 1.04, "ls": "0"}, "barlow": {"n": "Barlow Condensed", "f": "'Barlow Condensed', 'Arial Narrow', sans-serif", "w": 700, "wb": 600, "k": 1.12, "lh": 0.93, "ls": "0"}, "jost": {"n": "Jost", "f": "'Jost', Futura, sans-serif", "w": 800, "wb": 700, "k": 0.96, "lh": 0.96, "ls": "-0.01em"}, "archivo": {"n": "Archivo Black", "f": "'Archivo Black', Helvetica, sans-serif", "w": 400, "wb": 400, "k": 0.88, "lh": 1, "ls": "-0.02em"}, "fredoka": {"n": "Fredoka", "f": "'Fredoka', sans-serif", "w": 700, "wb": 600, "k": 1, "lh": 0.96, "ls": "0"}, "newsreader": {"n": "Newsreader", "f": "'Newsreader', Georgia, serif", "w": 400, "wb": 400, "k": 1, "lh": 1.08, "ls": "-0.02em"}, "gaegu": {"n": "Gaegu (handwritten)", "f": "'Gaegu', 'Comic Sans MS', cursive", "w": 700, "wb": 400, "k": 1.18, "lh": 1.05, "ls": "0.01em"}, "scrawl": {"n": "Brush scrawl (Covered By Your Grace)", "f": "'Covered By Your Grace', 'Brush Script MT', cursive", "w": 400, "wb": 400, "k": 1.3, "lh": 1.05, "ls": "0"}, "marker": {"n": "Hand marker (Delicious Handrawn)", "f": "'Delicious Handrawn', 'Comic Sans MS', cursive", "w": 400, "wb": 400, "k": 1.12, "lh": 1.05, "ls": "0.01em"}}, "fontFiles": [["Gloock", 400, "normal", "fonts/gloock-400-normal.woff2"], ["Instrument Serif", 400, "normal", "fonts/instrument-serif-400-normal.woff2"], ["Instrument Serif", 400, "italic", "fonts/instrument-serif-400-italic.woff2"], ["Fraunces", 200, "normal", "fonts/fraunces-200-normal.woff2"], ["Fraunces", 400, "normal", "fonts/fraunces-400-normal.woff2"], ["Fraunces", 600, "normal", "fonts/fraunces-600-normal.woff2"], ["Fraunces", 700, "normal", "fonts/fraunces-700-normal.woff2"], ["Fraunces", 800, "normal", "fonts/fraunces-800-normal.woff2"], ["Fraunces", 400, "italic", "fonts/fraunces-400-italic.woff2"], ["Fraunces", 700, "italic", "fonts/fraunces-700-italic.woff2"], ["Libre Baskerville", 400, "normal", "fonts/libre-baskerville-400-normal.woff2"], ["Libre Baskerville", 700, "normal", "fonts/libre-baskerville-700-normal.woff2"], ["Libre Baskerville", 400, "italic", "fonts/libre-baskerville-400-italic.woff2"], ["Bevan", 400, "normal", "fonts/bevan-400-normal.woff2"], ["Barlow Condensed", 200, "normal", "fonts/barlow-condensed-200-normal.woff2"], ["Barlow Condensed", 500, "normal", "fonts/barlow-condensed-500-normal.woff2"], ["Barlow Condensed", 600, "normal", "fonts/barlow-condensed-600-normal.woff2"], ["Barlow Condensed", 700, "normal", "fonts/barlow-condensed-700-normal.woff2"], ["Barlow Condensed", 700, "italic", "fonts/barlow-condensed-700-italic.woff2"], ["Jost", 200, "normal", "fonts/jost-200-normal.woff2"], ["Jost", 400, "normal", "fonts/jost-400-normal.woff2"], ["Jost", 700, "normal", "fonts/jost-700-normal.woff2"], ["Jost", 800, "normal", "fonts/jost-800-normal.woff2"], ["Archivo Black", 400, "normal", "fonts/archivo-black-400-normal.woff2"], ["Fredoka", 300, "normal", "fonts/fredoka-300-normal.woff2"], ["Fredoka", 600, "normal", "fonts/fredoka-600-normal.woff2"], ["Fredoka", 700, "normal", "fonts/fredoka-700-normal.woff2"], ["Newsreader", 200, "normal", "fonts/newsreader-200-normal.woff2"], ["Newsreader", 400, "normal", "fonts/newsreader-400-normal.woff2"], ["Newsreader", 800, "normal", "fonts/newsreader-800-normal.woff2"], ["Newsreader", 400, "italic", "fonts/newsreader-400-italic.woff2"], ["Gaegu", 300, "normal", "fonts/gaegu-300-normal.woff2"], ["Gaegu", 400, "normal", "fonts/gaegu-400-normal.woff2"], ["Gaegu", 700, "normal", "fonts/gaegu-700-normal.woff2"], ["Covered By Your Grace", 400, "normal", "fonts/covered-by-your-grace-400-normal.woff2"], ["Delicious Handrawn", 400, "normal", "fonts/delicious-handrawn-400-normal.woff2"]], "palettes": {"night": {"n": "Night", "base": "#100a08", "glows": ["#ec681c", "#f4a443", "#5d592b"], "ink": "#ea8a6b", "ink2": "#ea8a6b"}, "moon": {"n": "Moon", "base": "#2a1d2e", "glows": ["#e8773a", "#4b3c66", "#2f8a88", "#f1a55a"], "ink": "#f7ebe1", "ink2": "#ffd0b4"}, "ember": {"n": "Ember", "base": "#3e0f10", "glows": ["#f0ad24", "#d8471c", "#8b1c14", "#5c1515"], "ink": "#f6ebe0", "ink2": "#f2b490"}, "olive": {"n": "Olive", "base": "#38382a", "glows": ["#d6651b", "#c4561a", "#4b4a30"], "ink": "#f3d8a4", "ink2": "#f3d8a4"}, "street": {"n": "Street", "base": "#38251a", "glows": ["#b9763f", "#7a4826", "#e2a862", "#c0402a", "#d9d6c8"], "ink": "#dfe0d6", "ink2": "#dfe0d6"}, "rust": {"n": "Rust", "base": "#e07a4e", "glows": ["#ea8d5d", "#d2683e", "#f19d6e"], "ink": "#1d1613", "ink2": "#2e1a14"}, "mustard": {"n": "Mustard", "base": "#e8a82c", "glows": ["#f2bf47", "#de8c20", "#e5791d"], "ink": "#5a2027", "ink2": "#5a2027"}, "signal": {"n": "Signal", "base": "#bc1f1d", "glows": ["#c72b25", "#a9191a"], "ink": "#130a0a", "ink2": "#130a0a"}}, "backgrounds": {"photo": {"label": "Your photo", "type": "strip", "file": "../backgrounds/moon.jpg"}, "path": {"label": "Path (soft)", "type": "image", "file": "../backgrounds/wind2-soft.jpg"}, "pathf": {"label": "Path (faint)", "type": "image", "file": "../backgrounds/wind2-faint.jpg"}, "hand": {"label": "Hand (soft)", "type": "image", "file": "../backgrounds/hand-soft.jpg"}, "handf": {"label": "Hand (faint)", "type": "image", "file": "../backgrounds/hand-faint.jpg"}, "glow": {"label": "Glow", "type": "glow"}, "streak": {"label": "Streaks", "type": "streak"}, "paper": {"label": "Paper", "type": "paper"}, "flat": {"label": "Flat", "type": "flat"}}, "layouts": {}, "pageDefaults": {"echo": {"font": "newsreader", "tt": "lowercase"}, "whisper": {"font": "newsreader", "tt": "lowercase"}}, "strikeHero": {"wt": "800", "al": "center"}, "defaults": {"bg": "hand", "pal": "night", "grain": 32, "blur": 12, "body": 100, "dust": false, "tilt": 0, "layout": "echo"}, "effects": {"grain": {"on": true, "freq": 0.85, "octaves": 3}, "dust": {"on": true}, "blur": {"modes": ["smear", "soft"]}, "strike": {"path": "M0 60 C 25 50, 60 56, 100 40"}}, "rules": {"maxLayouts": 3, "preferLayouts": ["echo", "whisper", "corners", "aside", "stack"], "harderToRead": ["arc", "split", "fill"], "notes": ["At most 3 layouts per set, chosen to match the content.", "No tilt unless asked.", "Say 'strike through', never 'struck'."]}, "assets": {"fonts/": "looks/grunge/example/fonts/", "backgrounds/": "looks/grunge/backgrounds/"}};
+const CONTENT={"id": "grunge-example", "title": "Grunge Lab", "pages": [{"layout": "echo", "objs": [{"t": "I am tired.", "r": "h", "st": 1}, {"t": "No, I need to rest.", "r": "s"}, {"t": "Some days the slow road is the right one.", "r": "s"}]}, {"layout": "corners", "objs": [{"t": "Made a list of everything I carry.", "r": "s"}, {"t": "Deadlines, favours, promises, plans.", "r": "s"}, {"t": "None of it was mine to hold alone.", "r": "h"}]}, {"layout": "echo", "es": "heavy", "objs": [{"t": "Maybe I can put some down.", "r": "h"}, {"t": "Maybe I can ask for help.", "r": "h"}, {"t": "Maybe that is enough for today.", "r": "h"}]}, {"layout": "whisper", "objs": [{"t": "The honest truth?", "r": "s"}, {"t": "Rest scares me, but", "r": "s"}, {"t": "it is where I hear myself ==again==.", "r": "h", "sz": 160}]}, {"layout": "echo", "em": "overlay", "es": "clear", "bg": "pathf", "objs": [{"t": "I worry I will fall behind, but", "r": "s"}, {"t": "slow is still moving.", "r": "h"}]}, {"layout": "whisper", "objs": [{"t": "I am tired.", "r": "h", "sz": 200}, {"t": "No, I need to rest.", "r": "s", "st": 1}, {"t": "Some days the slow road is the right one.", "r": "s"}]}], "spare": [], "state": {"ver": 5, "bg": "hand", "pal": "night", "ink": null, "ink2": null, "grain": 32, "blur": 12, "body": 100, "dust": false, "seed": 7, "sel": 0, "selObj": null, "slides": [{"bgk": "", "move": "echo", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 2, "em": "rows", "es": "medium", "objs": [{"t": "I am tired.", "r": "h", "st": 1, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "800", "fn": "auto", "cs": "auto", "al": "center", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o1"}, {"t": "No, I need to rest.", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o2"}, {"t": "Some days the slow road is the right one.", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o3"}]}, {"bgk": "", "move": "whisper", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "rows", "es": "medium", "objs": [{"t": "I am tired.", "r": "h", "st": 1, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 90, "wt": "800", "fn": "auto", "cs": "auto", "al": "center", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o4"}, {"t": "No, I need to rest.", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o5"}]}, {"bgk": "", "move": "corners", "font": "auto", "tt": "auto", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "rows", "es": "medium", "objs": [{"t": "Made a list of everything I carry. Deadlines, favours, promises, plans.", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o6"}, {"t": "None of it was mine to hold alone.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o7"}]}, {"bgk": "", "move": "corners", "font": "auto", "tt": "auto", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "rows", "es": "medium", "objs": [{"t": "I keep saying yes to the meeting, to the late reply,", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o8"}, {"t": "but never to the quiet.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o9"}]}, {"bgk": "", "move": "echo", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "rows", "es": "heavy", "objs": [{"t": "Maybe I can put some down.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o10"}, {"t": "Maybe I can ask for help.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o11"}, {"t": "Maybe that is enough for today.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o12"}]}, {"bgk": "", "move": "whisper", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "rows", "es": "medium", "objs": [{"t": "The honest truth? Rest scares me, but", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o13"}, {"t": "it is where I hear myself again.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o14"}]}, {"bgk": "", "move": "echo", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "overlay", "es": "clear", "objs": [{"t": "I get restless when it is quiet, but", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o15"}, {"t": "I can learn to sit with it.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o16"}]}, {"bgk": "", "move": "echo", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "overlay", "es": "clear", "objs": [{"t": "I worry I will fall behind, but", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o17"}, {"t": "slow is still moving.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o18"}]}, {"bgk": "", "move": "whisper", "font": "newsreader", "tt": "lowercase", "hero": 100, "blur": "none", "bs": "smear", "tilt": 0, "em": "rows", "es": "medium", "objs": [{"t": "I am tired.", "r": "h", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o19"}, {"t": "No, I need to rest.", "r": "s", "st": 1, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o20"}, {"t": "Some days the slow road is the right one.", "r": "s", "st": 0, "it": 0, "hl": 0, "hc": "", "tc": "", "c2": "", "ox": 0, "oy": 0, "sz": 100, "wt": "auto", "fn": "auto", "cs": "auto", "al": "auto", "sk": "normal", "bl": "auto", "dx": 0, "dy": 0, "id": "o21"}]}], "tray": [], "fx": []}};
+const EFF=STYLE.effects||{};
+const DEFAULT_SRC='';
 const P_=(r,t)=>({j:-1,t,r});
-/* made-up sample content for the public example */
-const DEF_PICKS=[
- [{...P_('h','I am tired.'),st:1},P_('s','No, I need to rest.'),P_('s','Some days the slow road is the right one.')],
- [{...P_('h','I am tired.'),st:1},P_('s','No, I need to rest.')],
- [P_('s','Made a list of everything I carry.'),P_('s','Deadlines, favours, promises, plans.'),P_('h','None of it was mine to hold alone.')],
- [P_('s','I keep saying yes to the meeting, to the late reply,'),P_('h','but never to the quiet.')],
- [P_('h','Maybe I can put some down.'),P_('h','Maybe I can ask for help.'),P_('h','Maybe that is enough for today.')],
- [P_('s','The honest truth?'),P_('s','Rest scares me, but'),P_('h','it is where I hear myself again.')],
- [P_('s','I get restless when it is quiet, but'),P_('h','I can learn to sit with it.')],
- [P_('s','I worry I will fall behind, but'),P_('h','slow is still moving.')],
- [P_('h','I am tired.'),P_('x','No, I need to rest.'),P_('s','Some days the slow road is the right one.')],
-];
+const DEF_PICKS=[];
 function chunks(src){const out=[];src.split('\n').forEach((line,li)=>{line.split('|').forEach(seg=>{seg.split(/(?<=[.?!…])\s+/).forEach(t=>{t=t.trim();if(t)out.push({t,line:li})})})});return out}
 const slName=i=>i===0?'Cover':String(i);
-const FONTS={
- gloock:{n:'Gloock',f:"'Gloock',Georgia,serif",w:400,wb:400,k:1,lh:1.02,ls:'-0.01em'},
- instrument:{n:'Instrument Serif',f:"'Instrument Serif',Georgia,serif",w:400,wb:400,k:1.14,lh:1,ls:'-0.01em'},
- fraunces:{n:'Fraunces',f:"'Fraunces',Georgia,serif",w:800,wb:600,k:.96,lh:1.04,ls:'-0.01em'},
- baskerville:{n:'Libre Baskerville',f:"'Libre Baskerville',Georgia,serif",w:700,wb:400,k:.86,lh:1.04,ls:'-0.02em'},
- bevan:{n:'Bevan',f:"'Bevan',Georgia,serif",w:400,wb:400,k:.8,lh:1.04,ls:'0'},
- barlow:{n:'Barlow Condensed',f:"'Barlow Condensed','Arial Narrow',sans-serif",w:700,wb:600,k:1.12,lh:.93,ls:'0'},
- jost:{n:'Jost',f:"'Jost',Futura,sans-serif",w:800,wb:700,k:.96,lh:.96,ls:'-0.01em'},
- archivo:{n:'Archivo Black',f:"'Archivo Black',Helvetica,sans-serif",w:400,wb:400,k:.88,lh:1,ls:'-0.02em'},
- fredoka:{n:'Fredoka',f:"'Fredoka',sans-serif",w:700,wb:600,k:1,lh:.96,ls:'0'},
- newsreader:{n:'Newsreader',f:"'Newsreader',Georgia,serif",w:400,wb:400,k:1,lh:1.08,ls:'-0.02em'},
- gaegu:{n:'Gaegu (handwritten)',f:"'Gaegu','Comic Sans MS',cursive",w:700,wb:400,k:1.18,lh:1.05,ls:'0.01em'},
- scrawl:{n:'Brush scrawl (Covered By Your Grace)',f:"'Covered By Your Grace','Brush Script MT',cursive",w:400,wb:400,k:1.3,lh:1.05,ls:'0'},
- marker:{n:'Hand marker (Delicious Handrawn)',f:"'Delicious Handrawn','Comic Sans MS',cursive",w:400,wb:400,k:1.12,lh:1.05,ls:'0.01em'},
-};
+const FONTS=STYLE.fonts;
 const MOVES={
  whisper:{n:'Whisper',font:'gloock',tt:'lowercase',hs:0},
  split:{n:'Split',font:'barlow',tt:'uppercase',hs:170,short:1},
@@ -362,40 +529,22 @@ const MOVES={
  stack:{n:'Stack',font:'baskerville',tt:'none',hs:190},
  fill:{n:'Fill',font:'fredoka',tt:'uppercase',hs:160,short:1},
 };
-const PALS={
- moon:{n:'Moon',base:'#2a1d2e',glows:['#e8773a','#4b3c66','#2f8a88','#f1a55a'],ink:'#f7ebe1',ink2:'#ffd0b4'},
- ember:{n:'Ember',base:'#3e0f10',glows:['#f0ad24','#d8471c','#8b1c14','#5c1515'],ink:'#f6ebe0',ink2:'#f2b490'},
- night:{n:'Night',base:'#100a08',glows:['#ec681c','#f4a443','#5d592b'],ink:'#ea8a6b',ink2:'#ea8a6b'},
- olive:{n:'Olive',base:'#38382a',glows:['#d6651b','#c4561a','#4b4a30'],ink:'#f3d8a4',ink2:'#f3d8a4'},
- street:{n:'Street',base:'#38251a',glows:['#b9763f','#7a4826','#e2a862','#c0402a','#d9d6c8'],ink:'#dfe0d6',ink2:'#dfe0d6'},
- rust:{n:'Rust',base:'#e07a4e',glows:['#ea8d5d','#d2683e','#f19d6e'],ink:'#1d1613',ink2:'#2e1a14'},
- mustard:{n:'Mustard',base:'#e8a82c',glows:['#f2bf47','#de8c20','#e5791d'],ink:'#5a2027',ink2:'#5a2027'},
- signal:{n:'Signal',base:'#bc1f1d',glows:['#c72b25','#a9191a'],ink:'#130a0a',ink2:'#130a0a'},
-};
-const BGS={photo:'Your photo',path:'Path (soft)',pathf:'Path (faint)',hand:'Hand (soft)',handf:'Hand (faint)',glow:'Glow',streak:'Streaks',paper:'Paper',flat:'Flat'};
+Object.entries(STYLE.layouts||{}).forEach(([k,v])=>{if(MOVES[k])Object.assign(MOVES[k],v)});
+const PALS=STYLE.palettes;
+const BGS=Object.fromEntries(Object.entries(STYLE.backgrounds).map(([k,b])=>[k,b.label]));
 /* Rules of the look: at most 3 layouts per set, chosen to match the content; no tilt unless asked. */
 const SD={bgk:'',move:'echo',font:'auto',tt:'auto',hero:100,blur:'none',bs:'smear',tilt:0,em:'rows',es:'medium'};
 const NEWS={font:'newsreader',tt:'lowercase'};
-const DEF_SLIDES=[
- {move:'echo',...NEWS,tilt:2},
- {move:'whisper',...NEWS},
- {move:'corners'},
- {move:'corners'},
- {move:'echo',...NEWS,es:'heavy'},
- {move:'whisper',...NEWS},
- {move:'echo',...NEWS,em:'overlay',es:'clear'},
- {move:'echo',...NEWS,em:'overlay',es:'clear'},
- {move:'whisper',...NEWS},
-];
+const DEF_SLIDES=[];
 
 /* ---------------- state ---------------- */
 /* An "object" is one block of text on a page, with its own formatting. */
 const OBJD={t:'',r:'s',st:0,it:0,hl:0,hc:'',tc:'',c2:'',ox:0,oy:0,sz:100,wt:'auto',fn:'auto',cs:'auto',al:'auto',sk:'normal',bl:'auto',dx:0,dy:0};
 let OID=0;
 const mkObj=o=>({...OBJD,...o,id:'o'+(++OID)});
-function baseState(){return {ver:5,bg:'hand',pal:'night',ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,selObj:null}}
+function baseState(){const d=Object.assign({bg:'glow',pal:Object.keys(STYLE.palettes)[0],grain:32,blur:12,body:100,dust:false},STYLE.defaults||{});return {ver:5,bg:d.bg,pal:d.pal,ink:null,ink2:null,grain:d.grain,blur:d.blur,body:d.body,dust:!!d.dust,seed:7,sel:0,selObj:null}}
 /* the older (v4) shape: a source text plus per-slide "picks" */
-function defaultsOld(){return {src:DEFAULT_SRC,bg:'hand',pal:'night',ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,
+function defaultsOld(){return {src:DEFAULT_SRC,bg:baseState().bg,pal:baseState().pal,ink:null,ink2:null,grain:32,blur:12,body:100,dust:false,seed:7,sel:0,
  slides:DEF_SLIDES.map((s,i)=>({...SD,...s,pick:DEF_PICKS[i].map(p=>({...p}))}))}}
 function normalizeOld(s){const base=defaultsOld();const o=Object.assign(defaultsOld(),s);
  o.slides=(s.slides&&s.slides.length?s.slides:base.slides).map((x,i)=>({...SD,...(base.slides[i]||{}),...x,pick:(x.pick||(base.slides[i]||{}).pick||[]).map(p=>({...p}))}));
@@ -430,18 +579,26 @@ function loadAny(s){
  if(s&&s.slides&&s.slides.length&&s.slides.some(x=>x.pick))return migrate(normalizeOld(s));
  return null}
 let S=null;
-try{S=loadAny(JSON.parse(localStorage.getItem('miraStyle.grunge.v6')||'null'))}catch(e){}
-if(!S){S=migrate(defaultsOld());const h=S.slides[1].objs.find(o=>o.st);if(h)h.sz=90}
-/* one-time: Hand (soft) becomes the background for anyone with a saved copy (2026-10-21) */
-try{if(!localStorage.getItem('miraStyle.grunge.bgHand1')){S.bg='hand';S.slides.forEach(x=>{x.bgk=''});localStorage.setItem('miraStyle.grunge.bgHand1','1')}}catch(e){}
-function save(){try{localStorage.setItem('miraStyle.grunge.v6',JSON.stringify(S))}catch(e){}}
+try{S=loadAny(JSON.parse(localStorage.getItem('miraCarousel.'+(CONTENT.id||'carousel')+'.v5')||'null'))}catch(e){}
+/* first arrangement: built from CONTENT.pages (layout, font, case, background per page; objects with role and formatting) */
+function fromContent(){const o={...baseState(),fx:[],tray:[]},PD=STYLE.pageDefaults||{},dl=(STYLE.defaults||{}).layout||'whisper';
+ const pages=(CONTENT.pages&&CONTENT.pages.length)?CONTENT.pages:[{objs:[{t:'Write your first line here',r:'h'}]}];
+ o.slides=pages.map(p=>{const mv=MOVES[p.layout]?p.layout:dl;const s={...SD,tilt:(STYLE.defaults||{}).tilt||0,...(PD[mv]||{}),move:mv};
+  ['font','tt','hero','blur','bs','tilt','em','es','bgk'].forEach(k=>{if(p[k]!==undefined)s[k]=p[k]});if(p.bg!==undefined)s.bgk=p.bg;
+  s.objs=(p.objs||[]).map(x=>{const b={...x,r:x.r==='h'?'h':'s',st:x.st?1:0};if(b.r==='h'&&b.st)Object.assign(b,STYLE.strikeHero||{},x);if(b.wt!==undefined)b.wt=String(b.wt);return mkObj(b)});return s});
+ o.tray=(CONTENT.spare||[]).map(t=>mkObj({t}));return o}
+/* optional saved arrangement (content.json "state": settings copied from the lab): the starting point on any device and after Reset everything */
+const DEFAULT_STATE=CONTENT.state||null;
+function startState(){return loadAny(JSON.parse(JSON.stringify(DEFAULT_STATE)))||fromContent()}
+if(!S)S=startState();
+function save(){try{localStorage.setItem('miraCarousel.'+(CONTENT.id||'carousel')+'.v5',JSON.stringify(S))}catch(e){}}
 function lum(h){const n=parseInt(h.slice(1),16);return(.299*(n>>16&255)+.587*(n>>8&255)+.114*(n&255))/255}
 
 /* ---------------- helpers ---------------- */
 const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function lines(t,max){const w=t.split(' ');const out=[];let cur='';for(const x of w){if(cur&&(cur+' '+x).replace(/==/g,'').length>max){out.push(cur);cur=x}else cur=cur?cur+' '+x:x}if(cur)out.push(cur);return out}
-const STRIKE='<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 25 50, 60 56, 100 40"/></svg>';
+const STRIKE=`<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="${(EFF.strike&&EFF.strike.path)||'M0 60 C 25 50, 60 56, 100 40'}"/></svg>`;
 const SKW={thin:3,normal:6,thick:12};
 /* highlight: automatic = block in the text's colour, text in the slide's base colour. A chosen colour (b.hc) fills the block and the text
    switches to whichever of the base/ink colours contrasts better with it. */
@@ -500,22 +657,23 @@ const MV={
 const ARC='M 250 150 C 130 430, 270 580, 530 560 C 820 540, 910 760, 870 960 C 840 1090, 760 1130, 640 1100';
 let UID=0;
 
-const NOISE="url(\"data:image/svg+xml;utf8,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>")+"\")";
+const NOISE="url(\"data:image/svg+xml;utf8,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='"+((EFF.grain&&EFF.grain.freq)||.85)+"' numOctaves='"+((EFF.grain&&EFF.grain.octaves)||3)+"' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>")+"\")";
 let DUST='';
 function makeDust(){const c=document.createElement('canvas');c.width=540;c.height=675;const x=c.getContext('2d');const r=rng(99);
  for(let i=0;i<1300;i++){const d=r()<.7;x.fillStyle=d?`rgba(25,12,6,${.25+r()*.45})`:`rgba(255,244,228,${.2+r()*.4})`;x.beginPath();x.arc(r()*540,r()*675,.3+r()*1.2,0,7);x.fill()}
  for(let i=0;i<46;i++){x.strokeStyle=r()<.6?`rgba(30,15,8,${.18+r()*.2})`:`rgba(255,240,220,${.18+r()*.2})`;x.lineWidth=.4+r()*.5;const a=r()*540,b=r()*675,l=8+r()*34,t=r()*6.3;x.beginPath();x.moveTo(a,b);x.quadraticCurveTo(a+Math.cos(t+1)*l*.6,b+Math.sin(t+1)*l*.6,a+Math.cos(t)*l,b+Math.sin(t)*l);x.stroke()}
  try{DUST='url('+c.toDataURL()+')'}catch(e){DUST=''}}
 
-const IMGBG={path:'../backgrounds/wind2-soft.jpg',pathf:'../backgrounds/wind2-faint.jpg',hand:'../backgrounds/hand-soft.jpg',handf:'../backgrounds/hand-faint.jpg'};
+const BGDEF=STYLE.backgrounds,BGFILES=Object.values(BGDEF).map(b=>b.file).filter(Boolean);
 function bgLayer(i,P){
  const L=document.createElement('div');L.className='bgl';L.style.background=P.base;const r=rng(S.seed*977+i*131);const BG=(S.slides[i]&&S.slides[i].bgk)||S.bg;
- if(BG==='photo'){L.innerHTML=`<div class="photo" style="top:${-340-i*24}px"></div><div class="shade"></div>`}
- else if(IMGBG[BG]){L.innerHTML=`<div style="position:absolute;inset:0;background:url(${IMGBG[BG]}) center/cover no-repeat"></div>`}
- else if(BG==='glow'){let h='';for(let j=0;j<5;j++){const s=520+r()*640,c=P.glows[(j+i)%P.glows.length];
+ const BD=BGDEF[BG]||{type:'flat'},TY=BD.type;
+ if(TY==='strip'){L.innerHTML=`<div class="photo" style="top:${-340-i*24}px;background-image:url(${BD.file})"></div>${BD.shade===false?'':'<div class="shade"></div>'}`}
+ else if(TY==='image'){L.innerHTML=`<div style="position:absolute;inset:0;background:url(${BD.file}) center/cover no-repeat"></div>`}
+ else if(TY==='glow'){let h='';for(let j=0;j<5;j++){const s=520+r()*640,c=P.glows[(j+i)%P.glows.length];
    h+=`<div class="blob" style="width:${s}px;height:${s}px;left:${-280+r()*1100}px;top:${-280+r()*1400}px;background:radial-gradient(circle,${c} 0%,${c}cc 30%,transparent 68%)"></div>`}L.innerHTML=h}
- else if(BG==='streak'){let h='';for(let j=0;j<18;j++){const c=P.glows[Math.floor(r()*P.glows.length)];h+=`<i style="top:${r()*1450}px;height:${24+r()*220}px;background:${c};opacity:${.45+r()*.55}"></i>`}L.innerHTML=`<div class="streaks">${h}</div>`}
- else if(BG==='paper'){const c=P.glows[0];L.innerHTML=`<div class="blob" style="width:1500px;height:1500px;left:${-500+r()*400}px;top:${-400+r()*600}px;background:radial-gradient(circle,${c}aa,transparent 65%)"></div>`}
+ else if(TY==='streak'){let h='';for(let j=0;j<18;j++){const c=P.glows[Math.floor(r()*P.glows.length)];h+=`<i style="top:${r()*1450}px;height:${24+r()*220}px;background:${c};opacity:${.45+r()*.55}"></i>`}L.innerHTML=`<div class="streaks">${h}</div>`}
+ else if(TY==='paper'){const c=P.glows[0];L.innerHTML=`<div class="blob" style="width:1500px;height:1500px;left:${-500+r()*400}px;top:${-400+r()*600}px;background:radial-gradient(circle,${c}aa,transparent 65%)"></div>`}
  return L}
 
 function buildSlide(i){
@@ -532,8 +690,8 @@ function buildSlide(i){
  ct.style.setProperty('--sm',(46*S.body/100*F.k)+'px');ct.style.setProperty('--hs',(M.hs*ss.hero/100*F.k)+'px');ct.style.setProperty('--hk',ss.hero/100);
  ct.innerHTML=empty?'<p class="b" style="opacity:.6">no text on this page yet</p>':MV[ss.move](B,ss);d.appendChild(ct);
  if(ss.move==='corners'&&!empty)d.insertAdjacentHTML('beforeend',`<div class="meta">${i===0?'000':String(i).padStart(3,'0')}</div>`);
- if(S.dust&&DUST){const u=document.createElement('div');u.className='dust';u.style.backgroundImage=DUST;d.appendChild(u)}
- const g=document.createElement('div');g.className='grain';g.style.backgroundImage=NOISE;g.style.opacity=(S.grain/100*.95).toFixed(2);d.appendChild(g);
+ if(EFF.dust!==false&&!(EFF.dust&&EFF.dust.on===false)&&S.dust&&DUST){const u=document.createElement('div');u.className='dust';u.style.backgroundImage=DUST;d.appendChild(u)}
+ if(!(EFF.grain&&EFF.grain.on===false)){const g=document.createElement('div');g.className='grain';g.style.backgroundImage=NOISE;g.style.opacity=(S.grain/100*.95).toFixed(2);d.appendChild(g)}
  return d}
 
 function smear(a){const s=[];for(let k=1;k<=4;k++){const dx=(a*k/4).toFixed(1),bl=(a/4+1).toFixed(1),al=Math.round(58-k*11);
@@ -564,7 +722,7 @@ function post(sl){
   sl.querySelectorAll(sel).forEach(e=>{if(ss.bs==='soft')e.style.filter=`blur(${(S.blur/4).toFixed(1)}px)`;else e.style.textShadow=smear(S.blur*1.4)});
   const at=sl.querySelector('.arcsvg text');if(at&&ss.blur!=='body')at.style.filter=`blur(${(S.blur/4).toFixed(1)}px)`}
  /* per-object blur wins over the slide default */
- sl.querySelectorAll('[data-bl]').forEach(e=>{const m=e.dataset.bl;e.style.textShadow=m==='smear'?smear(S.blur*1.4):'none';e.style.filter=m==='soft'?`blur(${(S.blur/4).toFixed(1)}px)`:'none'});
+ sl.querySelectorAll('[data-bl]').forEach(e=>{const m=e.dataset.bl;e.style.textShadow=m==='smear'?smear(S.blur*1.4):'none';e.style.filter=m==='soft'?`blur(${(S.blur/4).toFixed(1)}px)`:m==='wave'?'url(#wave)':'none'});
  if(ss.tilt>0){const r=rng(S.seed*31+i*7);sl.querySelectorAll('.ct > *, .ct .hero > *').forEach(e=>{e.style.rotate=((r()*2-1)*ss.tilt).toFixed(2)+'deg'})}
 }
 
@@ -580,10 +738,12 @@ function unionBox(el,sr,k){let l=1e9,t=1e9,r=-1e9,b=-1e9;
  [el,...el.querySelectorAll('*')].forEach(n=>{if(n.closest('.ghost'))return;const q=n.getBoundingClientRect();if(!q.width&&!q.height)return;
   l=Math.min(l,q.left);t=Math.min(t,q.top);r=Math.max(r,q.right);b=Math.max(b,q.bottom)});
  if(l>r)return {l:0,t:0,r:0,b:0};return {l:(l-sr.left)/k,t:(t-sr.top)/k,r:(r-sr.left)/k,b:(b-sr.top)/k}}
-function markSel(){stage.querySelectorAll('.selbox').forEach(e=>e.remove());if(!S.selObj)return;
- const sl=stage.querySelector('.slide');if(!sl)return;const el=sl.querySelector(`[data-oid="${S.selObj}"]`);if(!el)return;
- const sr=sl.getBoundingClientRect(),b=unionBox(el,sr,sr.width/1080/1),d=document.createElement('div');d.className='selbox';
- d.style.cssText=`left:${b.l-10}px;top:${b.t-10}px;width:${b.r-b.l+20}px;height:${b.b-b.t+20}px`;sl.appendChild(d)}
+function markSel(){stage.querySelectorAll('.selbox').forEach(e=>e.remove());
+ const sl=stage.querySelector('.slide');if(!sl)return;
+ const ids=SCOPE==='obj'?(S.selObj?[S.selObj]:[]):targets().map(o=>o.id);
+ const sr=sl.getBoundingClientRect(),k=sr.width/1080;
+ ids.forEach(id=>{const el=sl.querySelector(`[data-oid="${id}"]`);if(!el)return;const bx=unionBox(el,sr,k),d=document.createElement('div');d.className='selbox'+(SCOPE==='obj'?'':' soft');
+  d.style.cssText=`left:${bx.l-10}px;top:${bx.t-10}px;width:${bx.r-bx.l+20}px;height:${bx.b-bx.t+20}px`;sl.appendChild(d)})}
 function renderAll(){
  const sx=thumbs.scrollLeft;thumbs.innerHTML='';
  S.slides.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='thumb'+(i===S.sel?' on':'');b.setAttribute('role','tab');b.setAttribute('aria-selected',i===S.sel);b.setAttribute('aria-label','Slide '+slName(i));
@@ -627,75 +787,79 @@ function endDrag(){if(!drag)return;const moved=drag.moved;drag=null;stage.classL
  if(moved){save();renderAll();syncUI()}}
 stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);
 new ResizeObserver(()=>{const sl=stage.querySelector('.slide');if(sl&&stage.clientWidth)scaleTo(sl,stage.clientWidth)}).observe(stage);
-stage.addEventListener('click',e=>{const el=e.target.closest('[data-oid]');if(!el)return;S.selObj=el.dataset.oid;save();syncUI();markSel()});
+stage.addEventListener('click',e=>{const el=e.target.closest('[data-oid]');if(!el)return;S.selObj=el.dataset.oid;save();if(SCOPE!=='obj')setScope('obj');else{syncUI();markSel()}});
 let TAB='org',raf=0;
 function rerender(){save();cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{if(TAB==='org')orgPreviews();else renderAll()})}
 
-/* ---------------- Style tab: controls ---------------- */
-function chips(el,obj,get,set){el.innerHTML='';Object.entries(obj).forEach(([k,v])=>{const b=document.createElement('button');b.type='button';b.className='chip';b.innerHTML=typeof v==='string'?v:v.n+(v.short?'<small>short lines</small>':'');b.dataset.k=k;b.onclick=()=>{set(k);syncUI();rerender()};el.appendChild(b)});el._get=get}
-chips($('moves'),MOVES,()=>S.slides[S.sel].move,k=>{S.slides[S.sel].move=k});
-chips($('bgs'),BGS,()=>S.bg,k=>{S.bg=k});
-chips($('pbgs'),{'':'Same as carousel',...BGS},()=>S.slides[S.sel].bgk||'',k=>{S.slides[S.sel].bgk=k});
-$('bgall').onclick=e=>applyAll('bgk',e.currentTarget,'To all');
-Object.entries(PALS).forEach(([k,p])=>{const b=document.createElement('button');b.type='button';b.className='swb';b.dataset.k=k;
- b.innerHTML=`<i style="background:linear-gradient(135deg,${p.base} 0 40%,${p.glows[0]} 40% 75%,${p.ink} 75%)"></i><span>${p.n}</span>`;
+/* ---------------- style pack: names, rules, effects shown ---------------- */
+const MAXL=(STYLE.rules&&STYLE.rules.maxLayouts)||3;
+const SLUG=String(CONTENT.title||'carousel').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'carousel';
+$('labtitle').textContent=CONTENT.title||'Carousel Lab';$('labstyle').textContent=(STYLE.name||'')+' style';
+/* ---------------- Style tab: one set of controls, three scopes ----------------
+   Selected text / This slide / All slides show the same sections in the same order.
+   Text settings write to every targeted text object; page settings to the targeted page(s); colours and texture are always carousel-wide. */
+let SCOPE='obj',WHO='all';
+try{const v=localStorage.getItem('miraCarousel.scope');if(['obj','slide','all'].includes(v))SCOPE=v}catch(e){}
+if(EFF.grain&&EFF.grain.on===false)$('grain').closest('label').hidden=true;
+if(EFF.dust&&EFF.dust.on===false)$('dust').closest('label').hidden=true;
+if(!(EFF.wave&&EFF.wave.on))$('tbl').querySelectorAll('option[value=wave]').forEach(o=>o.remove());
+{const bm=(EFF.blur&&EFF.blur.modes)||['smear','soft'];$('tbl').querySelectorAll('option').forEach(op=>{if(['smear','soft'].includes(op.value)&&!bm.includes(op.value))op.remove()})}
+$('tfn').innerHTML='<option value="auto">Layout default</option>'+Object.entries(FONTS).map(([k,f])=>`<option value="${k}">${f.n}</option>`).join('');
+/* every select gets a hidden "Mixed" entry, shown when the targets disagree */
+document.querySelectorAll('#tctl select,#pctl select').forEach(x=>x.insertAdjacentHTML('beforeend','<option value="__m" disabled hidden>Mixed</option>'));
+
+function targets(){if(SCOPE==='obj'){const o=OBJ();return o?[o]:[]}
+ const pool=SCOPE==='slide'?cur().objs:S.slides.flatMap(x=>x.objs);return WHO==='all'?pool:pool.filter(o=>o.r===WHO)}
+function pages(){return SCOPE==='all'?S.slides:[cur()]}
+function agg(list,f){if(!list.length)return {v:undefined,m:false,set:new Set()};const set=new Set(list.map(x=>String(f(x))));return {v:f(list[0]),m:set.size>1,set}}
+function setT(k,v,live){targets().forEach(o=>o[k]=v);if(!live)syncUI();rerender()}
+function setP(k,v){pages().forEach(x=>x[k]=v);syncUI();rerender()}
+function setScope(v){SCOPE=v;try{localStorage.setItem('miraCarousel.scope',v)}catch(e){}syncUI();markSel()}
+document.querySelectorAll('.scope').forEach(b=>b.onclick=()=>setScope(b.dataset.s));
+function flash(b,txt,back){b.textContent=txt;setTimeout(()=>b.textContent=back,1400)}
+
+/* 1 · Text */
+const TSEL={tfn:'fn',twt:'wt',tcs:'cs',tal:'al',tsk:'sk',tbl:'bl'};
+Object.entries(TSEL).forEach(([id,k])=>$(id).onchange=e=>setT(k,e.target.value));
+const TTOG={tit:'it',tst:'st',thl:'hl'};
+Object.entries(TTOG).forEach(([id,k])=>$(id).onclick=()=>{const t=targets();if(!t.length)return;setT(k,t.every(o=>o[k])?0:1)});
+$('tsz').oninput=e=>{setT('sz',+e.target.value,1);$('tszv').textContent=e.target.value+'%'};
+$('tsz').onchange=()=>syncUI();
+[['tox','ox'],['toy','oy']].forEach(([id,k])=>{$(id).oninput=e=>{setT(k,+e.target.value,1);$(id+'v').textContent=e.target.value};$(id).onchange=()=>syncUI()});
+const TCOL={ttc:'tc',thc:'hc',tc2:'c2'};
+Object.entries(TCOL).forEach(([id,k])=>{$(id).oninput=e=>setT(k,e.target.value,1);$(id).onchange=()=>syncUI();$(id+'d').onclick=()=>setT(k,'')});
+$('tpos').onclick=e=>{targets().forEach(o=>{o.dx=0;o.dy=0});rerender();flash(e.currentTarget,'Done','Reset position')};
+$('osnap').onchange=e=>{SNAP=e.target.checked};
+$('trst').onclick=e=>{targets().forEach(o=>Object.assign(o,{...OBJD,id:o.id,t:o.t,r:o.r,st:o.st,dx:o.dx,dy:o.dy}));syncUI();rerender();flash(e.currentTarget,'Reset','Reset style')};
+const CF=['sz','wt','fn','cs','al','sk','bl','it','hl','hc','tc','c2','ox','oy'];
+function copyTo(list,b){const o=OBJ();if(!o)return;const back=b.textContent;list.filter(x=>x.r===o.r&&x!==o).forEach(x=>CF.forEach(k=>x[k]=o[k]));syncUI();rerender();flash(b,'Copied',back)}
+$('tcps').onclick=e=>copyTo(cur().objs,e.currentTarget);
+$('tcpa').onclick=e=>copyTo(S.slides.flatMap(x=>x.objs),e.currentTarget);
+$('who').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ if(SCOPE==='obj'){const o=OBJ();if(!o)return;o.r=b.dataset.v;syncUI();rerender()}
+ else{WHO=b.dataset.v;syncUI();markSel()}};
+$('objlist').onclick=e=>{const b=e.target.closest('button[data-id]');if(!b)return;S.selObj=b.dataset.id;save();setScope('obj')};
+
+/* 2 · Page */
+function chipset(el,obj){el.innerHTML=Object.entries(obj).map(([k,v])=>`<button class="chip" type="button" data-k="${k}">${typeof v==='string'?esc(v):v.n+(v.short?'<small>short lines</small>':'')}</button>`).join('')}
+chipset($('moves'),MOVES);chipset($('pbgs'),BGS);
+$('moves').onclick=e=>{const b=e.target.closest('button');if(b)setP('move',b.dataset.k)};
+$('pbgs').onclick=e=>{const b=e.target.closest('button');if(b)setP('bgk',b.dataset.k)};
+$('emode').onchange=e=>setP('em',e.target.value);
+$('estr').onchange=e=>setP('es',e.target.value);
+$('tilt').oninput=e=>{pages().forEach(x=>x.tilt=+e.target.value);$('tiltv').textContent=e.target.value;rerender()};
+$('tilt').onchange=()=>syncUI();
+
+/* 3 · Colours and texture (always the whole carousel) */
+Object.entries(PALS).forEach(([k,pp])=>{const b=document.createElement('button');b.type='button';b.className='swb';b.dataset.k=k;
+ b.innerHTML=`<i style="background:linear-gradient(135deg,${pp.base} 0 40%,${pp.glows[0]} 40% 75%,${pp.ink} 75%)"></i><span>${pp.n}</span>`;
  b.onclick=()=>{S.pal=k;S.ink=null;S.ink2=null;syncUI();rerender()};$('pals').appendChild(b)});
-$('font').innerHTML='<option value="auto">Move default</option>'+Object.entries(FONTS).map(([k,f])=>`<option value="${k}">${f.n}</option>`).join('');
-$('ofn').innerHTML='<option value="auto">Slide font</option>'+Object.entries(FONTS).map(([k,f])=>`<option value="${k}">${f.n}</option>`).join('');
-$('font').onchange=e=>{cur().font=e.target.value;rerender()};
-$('case').onchange=e=>{cur().tt=e.target.value;rerender()};
-$('hero').oninput=e=>{cur().hero=+e.target.value;rerender()};
-$('blurt').onchange=e=>{cur().blur=e.target.value;rerender()};
-$('blurs').onchange=e=>{cur().bs=e.target.value;rerender()};
 $('ink').oninput=e=>{S.ink=e.target.value;rerender()};
 $('ink2').oninput=e=>{S.ink2=e.target.value;rerender()};
-['grain','blur','body'].forEach(k=>$(k).oninput=e=>{S[k]=+e.target.value;rerender()});
-$('tilt').oninput=e=>{cur().tilt=+e.target.value;rerender()};
-$('emode').onchange=e=>{cur().em=e.target.value;rerender()};
-$('estr').onchange=e=>{cur().es=e.target.value;rerender()};
+['grain','blur'].forEach(k=>$(k).oninput=e=>{S[k]=+e.target.value;rerender()});
 $('dust').onchange=e=>{S.dust=e.target.checked;rerender()};
 $('shuffle').onclick=()=>{S.seed=Math.floor(Math.random()*9999);rerender()};
-$('reset').onclick=()=>{if(!confirm('Reset every page and all formatting back to the start?'))return;S=migrate(defaultsOld());ensureSel();syncUI();renderOrg();rerender()};
-/* "To all": copy this slide's value of a setting onto every slide */
-function applyAll(k,b,label){const v=cur()[k];S.slides.forEach(s=>s[k]=v);syncUI();rerender();b.textContent='Applied';setTimeout(()=>b.textContent=label,1400)}
-Object.entries({font:'font',case:'tt',hero:'hero',blurt:'blur',blurs:'bs',tilt:'tilt',emode:'em',estr:'es'}).forEach(([id,k])=>{
- const l=document.querySelector(`label[for="${id}"]`),t=l.firstChild,sp=document.createElement('span'),b=document.createElement('button');
- sp.className='lt';sp.textContent=t.textContent;b.type='button';b.className='all';b.textContent='To all';b.setAttribute('aria-label',`Apply ${t.textContent.toLowerCase()} to all slides`);
- b.onclick=e=>{e.preventDefault();applyAll(k,b,'To all')};sp.appendChild(b);l.replaceChild(sp,t)});
-$('moveall').onclick=e=>applyAll('move',e.currentTarget,'Use this layout on all slides');
-
-/* selected-object controls */
-function setO(k,v){const o=OBJ();if(!o)return;o[k]=v;rerender()}
-$('orole').onclick=e=>{const b=e.target.closest('button');if(!b)return;setO('r',b.dataset.v);syncUI()};
-$('oal').onclick=e=>{const b=e.target.closest('button');if(!b)return;setO('al',b.dataset.v);syncUI()};
-$('ost').onchange=e=>{setO('st',e.target.checked?1:0);syncUI()};
-$('oit').onchange=e=>{setO('it',e.target.checked?1:0);syncUI()};
-$('ohl').onchange=e=>{setO('hl',e.target.checked?1:0);syncUI()};
-$('oc2').oninput=e=>setO('c2',e.target.value);
-$('oox').oninput=e=>{setO('ox',+e.target.value);$('ooxv').textContent=e.target.value};
-$('ooy').oninput=e=>{setO('oy',+e.target.value);$('ooyv').textContent=e.target.value};
-$('o2reset').onclick=()=>{const o=OBJ();if(!o)return;o.c2='';o.ox=0;o.oy=0;syncUI();rerender()};
-$('otc').oninput=e=>{setO('tc',e.target.value);$('otauto').hidden=false};
-$('otauto').onclick=()=>{setO('tc','');syncUI()};
-$('ohc').oninput=e=>{setO('hc',e.target.value);$('ohauto').hidden=false};
-$('ohauto').onclick=()=>{setO('hc','');syncUI()};
-$('osz').oninput=e=>{setO('sz',+e.target.value);$('oszv').textContent=e.target.value+'%'};
-$('owt').onchange=e=>setO('wt',e.target.value);
-$('ofn').onchange=e=>setO('fn',e.target.value);
-$('ocs').onchange=e=>setO('cs',e.target.value);
-$('osk').onchange=e=>setO('sk',e.target.value);
-$('obl').onchange=e=>setO('bl',e.target.value);
-$('osnap').onchange=e=>{SNAP=e.target.checked};
-$('opos').onclick=()=>{const o=OBJ();if(!o)return;o.dx=0;o.dy=0;rerender()};
-$('orst').onclick=()=>{const o=OBJ();if(!o)return;Object.assign(o,{...OBJD,t:o.t,r:o.r,st:o.st});syncUI();rerender()};
-$('oall').onclick=e=>{const o=OBJ();if(!o)return;const F=['sz','wt','fn','cs','al','sk','bl','it','hl','hc','tc','c2','ox','oy'];
- S.slides.forEach(s=>s.objs.forEach(x=>{if(x.r===o.r)F.forEach(k=>x[k]=o[k])}));rerender();const b=e.currentTarget;b.textContent='Copied';setTimeout(()=>syncUI(),1400)};
-/* whole slide: size only, or the full style, onto every object on this page */
-function flash(b,txt,back){b.textContent=txt;setTimeout(()=>b.textContent=back,1400)}
-$('oszall').onclick=e=>{const o=OBJ();if(!o)return;cur().objs.forEach(x=>x.sz=o.sz);syncUI();rerender();flash(e.currentTarget,'Applied','Apply size to whole slide')};
-$('oslide').onclick=e=>{const o=OBJ();if(!o)return;const F=['sz','wt','fn','cs','al','sk','bl','it','hl','hc','tc','c2','ox','oy'];
- cur().objs.forEach(x=>F.forEach(k=>x[k]=o[k]));syncUI();rerender();flash(e.currentTarget,'Applied','Apply style to whole slide')};
-$('objlist').onclick=e=>{const b=e.target.closest('button[data-id]');if(!b)return;S.selObj=b.dataset.id;save();syncUI();markSel()};
+$('reset').onclick=()=>{if(!confirm('Reset every page and all formatting back to the start?'))return;S=startState();ensureSel();syncUI();renderOrg();rerender()};
 const fsum=o=>[o.r==='h'?'Big':'Small',o.st?'strike through':'',o.it?'italic':'',o.hl?'highlight':'',o.sz!==100?o.sz+'%':'',o.wt!=='auto'?(({200:'thin',400:'regular',600:'semibold',800:'bold'})[o.wt]||o.wt):''].filter(Boolean).join(' · ');
 
 $('copy').onclick=()=>{const t=JSON.stringify(S);$('settxt').value=t;const done=()=>{$('copy').textContent='Copied';setTimeout(()=>$('copy').textContent='Copy settings',1600)};
@@ -704,27 +868,38 @@ $('apply').onclick=()=>{try{const n=loadAny(JSON.parse($('settxt').value));if(!n
 
 function syncUI(){
  ensureSel();
- [$('moves'),$('bgs'),$('pbgs')].forEach(el=>el.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===el._get())));
+ const ss=cur(),P=PALS[S.pal],o=OBJ(),T=targets(),pn=S.sel===0?'the cover':'page '+S.sel,WL={all:'all text',h:'big lines',s:'small text'}[WHO];
+ document.querySelectorAll('.scope').forEach(b=>b.setAttribute('aria-selected',b.dataset.s===SCOPE));
+ const short=t=>{t=plain(t);return t.length>56?t.slice(0,56)+'…':t};
+ $('scopehint').textContent=SCOPE==='obj'?(o?'Changing this text only: “'+short(o.t)+'”':'No text on this page yet. Add some on the Organize tab.'):
+  SCOPE==='slide'?`Changing ${WL} on ${pn}.`:`Changing ${WL} on all ${S.slides.length} pages.`;
+ const ids=new Set(T.map(x=>x.id));
+ $('objlist').innerHTML=ss.objs.map(x=>`<button type="button" class="orow2${SCOPE!=='obj'&&ids.has(x.id)?' tgt':''}" data-id="${x.id}" aria-pressed="${SCOPE==='obj'&&x.id===S.selObj}"><span>${esc(plain(x.t))}</span><i>${esc(fsum(x))}</i></button>`).join('')||'<p class="note">No text on this page.</p>';
+ $('wholab').textContent=SCOPE==='obj'?'This text is':'Which text';
+ $('who').innerHTML=(SCOPE==='obj'?[['h','Big'],['s','Small']]:[['all','All text'],['h','Big lines'],['s','Small text']]).map(([v,n])=>`<button class="chip" type="button" data-v="${v}" aria-pressed="${SCOPE==='obj'?!!(o&&o.r===v):WHO===v}">${n}</button>`).join('');
+ $('tctl').disabled=!T.length;
+ const ag=k=>agg(T,x=>x[k]);
+ Object.entries(TSEL).forEach(([id,k])=>{const a=ag(k);if(!T.length){$(id).selectedIndex=0;return}$(id).value=a.m?'__m':String(a.v)});
+ Object.entries(TTOG).forEach(([id,k])=>{const a=agg(T,x=>x[k]?1:0);$(id).setAttribute('aria-pressed',a.m?'mixed':String(a.v===1))});
+ const sz=ag('sz');$('tsz').value=sz.v||100;$('tszv').textContent=sz.m?'Mixed':(sz.v||100)+'%';
+ [['tox','ox'],['toy','oy']].forEach(([id,k])=>{const a=ag(k);$(id).value=a.v||0;$(id+'v').textContent=a.m?'Mixed':(a.v||0)});
+ const ink=S.ink||P.ink,ink2=S.ink2||P.ink2;
+ [['ttc','tc',ink,'Default'],['thc','hc',ink,'Automatic'],['tc2','c2',ink2,'Default']].forEach(([id,k,d,dn])=>{const a=ag(k);
+  $(id).value=HEX.test(a.v||'')?a.v:d;$(id+'m').textContent=a.m?'Mixed':(a.v?'':dn);$(id+'d').hidden=!a.m&&!a.v});
+ $('tcopy').hidden=SCOPE!=='obj'||!o;
+ if(o){const r=o.r==='h'?'big lines':'small text';$('tcps').textContent='Copy style to '+r+' on this slide';$('tcpa').textContent='Copy style to '+r+' on all slides'}
+ /* page */
+ $('pagewho').textContent=SCOPE==='all'?'all pages':(S.sel===0?'Cover':'Page '+S.sel);
+ const PG=pages(),pa=f=>agg(PG,f);
+ const press=(el,a)=>el.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',a.m?(a.set.has(b.dataset.k)?'mixed':'false'):String(b.dataset.k===String(a.v))));
+ press($('moves'),pa(x=>x.move));press($('pbgs'),pa(x=>x.bgk||S.bg));
+ [['emode','em'],['estr','es']].forEach(([id,k])=>{const a=pa(x=>x[k]);$(id).value=a.m?'__m':a.v});
+ const tl=pa(x=>x.tilt||0);$('tilt').value=tl.v||0;$('tiltv').textContent=tl.m?'Mixed':(tl.v||0);
+ const used=[...new Set(S.slides.map(x=>x.move))],over=used.length>MAXL,c=$('count');
+ c.className='count'+(over?' over':'');c.innerHTML=`Layouts in this set: <b>${used.map(m=>MOVES[m].n).join(' · ')}</b> (${used.length} of ${MAXL})${over?'. Use '+MAXL+' at most.':''}`;
+ /* colours and texture */
  $('pals').querySelectorAll('.swb').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===S.pal));
- const ss=cur(),P=PALS[S.pal];$('slname').textContent=$('slname2').textContent=S.sel===0?'Cover':'Page '+S.sel;
- $('font').value=ss.font;$('case').value=ss.tt;$('hero').value=ss.hero;$('blurt').value=ss.blur;$('blurs').value=ss.bs;
- $('ink').value=S.ink||P.ink;$('ink2').value=S.ink2||P.ink2;['grain','blur','body'].forEach(k=>$(k).value=S[k]);$('dust').checked=S.dust;
- $('tilt').value=ss.tilt;$('emode').value=ss.em;$('estr').value=ss.es;$('echorow').hidden=ss.move!=='echo';
- const used=[...new Set(S.slides.map(s=>s.move))],over=used.length>3,c=$('count');
- c.className='count'+(over?' over':'');c.innerHTML=`Layouts in this set: <b>${used.map(m=>MOVES[m].n).join(' · ')}</b> (${used.length} of 3)${over?'. Use 3 at most.':''}`;
- /* objects on this page */
- $('objlist').innerHTML=ss.objs.map(o=>`<button type="button" class="orow2" data-id="${o.id}" aria-pressed="${o.id===S.selObj}"><span>${esc(plain(o.t))}</span><i>${esc(fsum(o))}</i></button>`).join('');
- $('objnote').hidden=false;
- const o=OBJ();$('objed').hidden=!o;
- if(o){
-  $('orole').querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===o.r));
-  $('oal').querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===o.al));
-  $('ost').checked=!!o.st;$('oit').checked=!!o.it;const has2=ss.move==='echo'&&ss.em==='overlay'&&o.r==='h';$('o2ink').hidden=!has2;$('o2note').hidden=has2;
-  $('oc2').value=HEX.test(o.c2||'')?o.c2:(S.ink2||PALS[S.pal].ink2);$('oox').value=o.ox||0;$('ooxv').textContent=o.ox||0;$('ooy').value=o.oy||0;$('ooyv').textContent=o.oy||0;
-  $('otc').value=HEX.test(o.tc||'')?o.tc:(S.ink||PALS[S.pal].ink);$('otauto').hidden=!o.tc;$('ohl').checked=!!o.hl;$('ohlrow').hidden=!o.hl;$('ohc').value=HEX.test(o.hc||'')?o.hc:(S.ink||PALS[S.pal].ink);$('ohauto').hidden=!o.hc;$('osz').value=o.sz;$('oszv').textContent=o.sz+'%';
-  $('owt').value=String(o.wt);$('ofn').value=o.fn;$('ocs').value=o.cs;$('osk').value=o.sk;$('obl').value=o.bl;
-  $('oall').textContent=`Copy style to all ${o.r==='h'?'big':'small'} objects`;
- }
+ $('ink').value=ink;$('ink2').value=ink2;['grain','blur'].forEach(k=>$(k).value=S[k]);$('dust').checked=S.dust;
 }
 
 /* ---------------- Organize tab ---------------- */
@@ -754,7 +929,7 @@ function renderOrg(){
 function autosize(ta){ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'}
 function orgPreviews(){document.querySelectorAll('.sprev').forEach(el=>{const i=+el.dataset.si;if(!S.slides[i])return;el.innerHTML='';const sl=buildSlide(i);sl.dataset.i=i;el.appendChild(sl);scaleTo(sl,el.clientWidth||100);post(sl)})}
 function commit(){save();renderOrg()}
-function goStyle(si,oid){S.sel=si;if(oid)S.selObj=oid;setTab('style')}
+function goStyle(si,oid){S.sel=si;if(oid){S.selObj=oid;SCOPE='obj'}setTab('style')}
 function newSlide(){return {...SD,move:'echo',font:'newsreader',tt:'lowercase',objs:[]}}
 function moveObj(id,k,idx){const f=find(id);if(!f)return;f.l.splice(f.ix,1);const d=LIST(k);d.splice(Math.max(0,Math.min(idx,d.length)),0,f.o)}
 function moveSlide(from,to){const selSl=S.slides[S.sel];const s=S.slides.splice(from,1)[0];if(to>from)to--;S.slides.splice(Math.max(0,to),0,s);S.sel=Math.max(0,S.slides.indexOf(selSl))}
@@ -824,7 +999,7 @@ org.addEventListener('dragend',()=>{DR=null;clearIns();org.querySelectorAll('.dr
 
 /* ---------------- export: one 1080x1350 PNG per slide ----------------
    The slide is drawn again at full size, wrapped in an SVG with the fonts and photos embedded as data, then painted to a canvas. */
-const FONTMAN=[["Gloock", 400, "normal", "fonts/gloock-400-normal.woff2"], ["Instrument Serif", 400, "normal", "fonts/instrument-serif-400-normal.woff2"], ["Instrument Serif", 400, "italic", "fonts/instrument-serif-400-italic.woff2"], ["Fraunces", 200, "normal", "fonts/fraunces-200-normal.woff2"], ["Fraunces", 400, "normal", "fonts/fraunces-400-normal.woff2"], ["Fraunces", 600, "normal", "fonts/fraunces-600-normal.woff2"], ["Fraunces", 700, "normal", "fonts/fraunces-700-normal.woff2"], ["Fraunces", 800, "normal", "fonts/fraunces-800-normal.woff2"], ["Fraunces", 400, "italic", "fonts/fraunces-400-italic.woff2"], ["Fraunces", 700, "italic", "fonts/fraunces-700-italic.woff2"], ["Libre Baskerville", 400, "normal", "fonts/libre-baskerville-400-normal.woff2"], ["Libre Baskerville", 700, "normal", "fonts/libre-baskerville-700-normal.woff2"], ["Libre Baskerville", 400, "italic", "fonts/libre-baskerville-400-italic.woff2"], ["Bevan", 400, "normal", "fonts/bevan-400-normal.woff2"], ["Barlow Condensed", 200, "normal", "fonts/barlow-condensed-200-normal.woff2"], ["Barlow Condensed", 500, "normal", "fonts/barlow-condensed-500-normal.woff2"], ["Barlow Condensed", 600, "normal", "fonts/barlow-condensed-600-normal.woff2"], ["Barlow Condensed", 700, "normal", "fonts/barlow-condensed-700-normal.woff2"], ["Barlow Condensed", 700, "italic", "fonts/barlow-condensed-700-italic.woff2"], ["Jost", 200, "normal", "fonts/jost-200-normal.woff2"], ["Jost", 400, "normal", "fonts/jost-400-normal.woff2"], ["Jost", 700, "normal", "fonts/jost-700-normal.woff2"], ["Jost", 800, "normal", "fonts/jost-800-normal.woff2"], ["Archivo Black", 400, "normal", "fonts/archivo-black-400-normal.woff2"], ["Fredoka", 300, "normal", "fonts/fredoka-300-normal.woff2"], ["Fredoka", 600, "normal", "fonts/fredoka-600-normal.woff2"], ["Fredoka", 700, "normal", "fonts/fredoka-700-normal.woff2"], ["Newsreader", 200, "normal", "fonts/newsreader-200-normal.woff2"], ["Newsreader", 400, "normal", "fonts/newsreader-400-normal.woff2"], ["Newsreader", 800, "normal", "fonts/newsreader-800-normal.woff2"], ["Newsreader", 400, "italic", "fonts/newsreader-400-italic.woff2"], ["Gaegu", 300, "normal", "fonts/gaegu-300-normal.woff2"], ["Gaegu", 400, "normal", "fonts/gaegu-400-normal.woff2"], ["Gaegu", 700, "normal", "fonts/gaegu-700-normal.woff2"], ["Covered By Your Grace", 400, "normal", "fonts/covered-by-your-grace-400-normal.woff2"], ["Delicious Handrawn", 400, "normal", "fonts/delicious-handrawn-400-normal.woff2"]];
+const FONTMAN=STYLE.fontFiles||[];
 const EMB={};
 function blobB64(b){return new Promise((res,rej)=>{const f=new FileReader();f.onload=()=>res(f.result);f.onerror=rej;f.readAsDataURL(b)})}
 async function embed(u){if(EMB[u])return EMB[u];const r=await fetch(u);if(!r.ok)throw new Error('missing '+u);return EMB[u]=await blobB64(await r.blob())}
@@ -838,10 +1013,10 @@ async function slidePng(i){
   const sl=buildSlide(i);sl.dataset.i=i;sl.style.transform='none';host.appendChild(sl);post(sl);
   let html=new XMLSerializer().serializeToString(sl);
   let css=[...document.querySelectorAll('style')].map(s=>s.textContent).join('\n');
-  for(const f of ['../backgrounds/moon.jpg','../backgrounds/wind2-soft.jpg','../backgrounds/wind2-faint.jpg','../backgrounds/hand-soft.jpg','../backgrounds/hand-faint.jpg']){
+  for(const f of BGFILES){
    if(html.includes(f)||css.includes('url('+f+')')){let d;try{d=await embed(f)}catch(e){continue}html=html.split('url('+f+')').join('url('+d+')');css=css.split('url('+f+')').join('url('+d+')')}}
   const faces=await fontFaces(sl);
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350"><style><![CDATA['+faces+'\n'+css+']]></style><foreignObject x="0" y="0" width="1080" height="1350"><div xmlns="http://www.w3.org/1999/xhtml" style="position:relative;width:1080px;height:1350px;overflow:hidden"><svg width="0" height="0" style="position:absolute"><filter id="hstreak" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="150 4"/></filter></svg>'+html+'</div></foreignObject></svg>';
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350"><defs><filter id="hstreak" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="150 4"/></filter><filter id="wave" x="-15%" y="-40%" width="130%" height="180%"><feTurbulence type="fractalNoise" baseFrequency="0.0018 0.007" numOctaves="2" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="95" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="5 2.6"/></filter></defs><style><![CDATA['+faces+'\n'+css+']]></style><foreignObject x="0" y="0" width="1080" height="1350"><div xmlns="http://www.w3.org/1999/xhtml" style="position:relative;width:1080px;height:1350px;overflow:hidden"><svg width="0" height="0" style="position:absolute"><filter id="hstreak" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="150 4"/></filter><filter id="wave" x="-15%" y="-40%" width="130%" height="180%"><feTurbulence type="fractalNoise" baseFrequency="0.0018 0.007" numOctaves="2" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="95" xChannelSelector="R" yChannelSelector="G" result="d"/><feGaussianBlur in="d" stdDeviation="5 2.6"/></filter></svg>'+html+'</div></foreignObject></svg>';
   const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
   const img=new Image();await new Promise((res,rej)=>{img.onload=res;img.onerror=()=>rej(new Error('draw failed'));img.src=url});
   const cv=document.createElement('canvas');cv.width=1080;cv.height=1350;const cx=cv.getContext('2d');
@@ -864,7 +1039,7 @@ async function exportSlides(list){if(DLBUSY)return;DLBUSY=true;const msg=$('dlms
   if(list.length>1&&window.JSZip){const zip=new JSZip();
    for(let k=0;k<list.length;k++){const i=list[k];msg.textContent='Making slide '+(i+1)+' of '+S.slides.length+'…';zip.file(pngName(i),await slidePng(i))}
    msg.textContent='Packing them into one file…';const zb=await zip.generateAsync({type:'blob'});
-   msg.textContent='Approve the save for the zip.';if(await saveRetry('grunge-slides.zip',zb,msg))msg.textContent='Saved one zip with all '+list.length+' slides.';return}
+   msg.textContent='Approve the save for the zip.';if(await saveRetry(SLUG+'-slides.zip',zb,msg))msg.textContent='Saved one zip with all '+list.length+' slides.';return}
   for(let k=0;k<list.length;k++){const i=list[k];msg.textContent=list.length>1?'Making slide '+(i+1)+' of '+S.slides.length+'…':'Making the PNG…';
    const blob=await slidePng(i);msg.textContent='Approve the save for slide '+(i+1)+'.';
    if(!(await saveRetry(pngName(i),blob,msg)))return;if(k<list.length-1)await waitMs(1500)}
@@ -880,6 +1055,29 @@ function setTab(t){TAB=t;$('tab-org').hidden=t!=='org';$('tab-style').hidden=t!=
  if(t==='org'){renderOrg()}else{ensureSel();syncUI();renderAll()}
  window.scrollTo(0,0)}
 $('tabb-org').onclick=()=>setTab('org');$('tabb-style').onclick=()=>setTab('style');
+
+/* ---------------- lab look (chrome only, saved per device) ---------------- */
+const LKH={poppins:["'Poppins','Fredoka',system-ui,sans-serif",800],fredoka:["'Fredoka',system-ui,sans-serif",700],archivo:["'Archivo Black',system-ui,sans-serif",400],gloock:["'Gloock',Georgia,serif",400]};
+const LKW={gaegu:["'Gaegu','Comic Sans MS',cursive",700],marker:["'Delicious Handrawn','Comic Sans MS',cursive",400],scrawl:["'Covered By Your Grace','Comic Sans MS',cursive",400]};
+let LOOK={mode:'dark',head:'fredoka',hand:'gaegu',deco:true,win:true};
+try{Object.assign(LOOK,JSON.parse(localStorage.getItem('miraLab.look')||'{}'))}catch(e){}
+function applyLook(){const r=document.documentElement;
+ if(LOOK.mode==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',LOOK.mode);
+ if(LOOK.deco)r.removeAttribute('data-deco');else r.setAttribute('data-deco','off');
+ if(LOOK.win)r.removeAttribute('data-win');else r.setAttribute('data-win','off');
+ const h=LKH[LOOK.head]||LKH.poppins,w=LKW[LOOK.hand]||LKW.gaegu;
+ r.style.setProperty('--d-head',h[0]);r.style.setProperty('--d-headw',h[1]);r.style.setProperty('--d-hand',w[0]);r.style.setProperty('--d-handw',w[1]);
+ $('lkmode').querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===LOOK.mode));
+ $('lkhead').value=LOOK.head;$('lkhand').value=LOOK.hand;$('lkdeco').checked=LOOK.deco;$('lkwin').checked=LOOK.win;
+ try{localStorage.setItem('miraLab.look',JSON.stringify(LOOK))}catch(e){}}
+$('lkmode').onclick=e=>{const b=e.target.closest('button');if(!b)return;LOOK.mode=b.dataset.v;applyLook()};
+$('lkhead').onchange=e=>{LOOK.head=e.target.value;applyLook();rerender()};
+$('lkhand').onchange=e=>{LOOK.hand=e.target.value;applyLook();rerender()};
+$('lkdeco').onchange=e=>{LOOK.deco=e.target.checked;applyLook()};
+$('lkwin').onchange=e=>{LOOK.win=e.target.checked;applyLook()};
+$('lkcopy').onclick=e=>{const t=JSON.stringify(LOOK),b=e.currentTarget;try{navigator.clipboard.writeText(t).then(()=>flash(b,'Copied','Copy look settings'),()=>flash(b,t,'Copy look settings'))}catch(x){flash(b,t,'Copy look settings')}};
+document.addEventListener('click',e=>{const d=$('looktuner');if(d.open&&!d.contains(e.target))d.open=false});
+applyLook();
 makeDust();setTab('org');
 if(document.fonts){document.fonts.ready.then(()=>{TAB==='org'?orgPreviews():renderAll()});document.fonts.onloadingdone=()=>rerender()}
 </script>

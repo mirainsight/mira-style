@@ -56,7 +56,7 @@ looks/<look>/
 
 [`skills/mira-design`](skills/mira-design) is a Claude skill describing how Mira's designs are made: reuse a confirmed look exactly, and explore new ones in a tunable "lab" page before committing. Add it to Claude to design in mira-style.
 
-[`skills/mira-carousel`](skills/mira-carousel) builds Instagram carousels: a full carousel lab (arrange, style, drag to place, export PNGs) filled with your text, in a swappable style pack (backgrounds, palettes, fonts, effects). Grunge is the first pack.
+[`skills/mira-carousel`](skills/mira-carousel) builds Instagram carousels: a full carousel lab (arrange, style, drag to place, export PNGs) filled with your text, in a swappable style pack (backgrounds, palettes, fonts, effects). Grunge is the first pack. Styling works at three scopes with the same controls in the same place (selected text, this slide, all slides), and the lab itself is a scrapbook diary in dark or light. Try it: [`looks/grunge/example`](looks/grunge/example).
 
 ## License
 
