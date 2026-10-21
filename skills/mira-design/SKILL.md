@@ -23,6 +23,14 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 | Sleep Tight | Mira's Post Copier: her Telegram post page, written like a postcard (artifact "Mira's Post Copier") | Confirmed |
 | I Bleed Red / True Humanity (Grunge) | Mira's Instagram reflection carousels, made in the Grunge Lab (1080x1350 slides, PNG export) | Confirmed |
 
+## In progress
+
+| Look (working name) | Used for | Status |
+| --- | --- | --- |
+| Diary (scrapbook) | The chrome of every mira-carousel lab (workbench only, never the slides) | In use as the lab default; not confirmed as a look yet |
+
+**Diary:** a teenage girl's scrapbook diary, from Mira's Canva-style reference boards ("Search: Patch sticker / Window shadow / Halftone / Ripped paper / Doodle"). Grid notebook paper; pink handwritten labels (like the boards' pink "Search:"); headings inside a light-blue text-selection box with blue handles; washi-tape tabs; pink gingham felt-patch buttons with dashed stitching; photos taped into a frame over a pink halftone print; ripped pink grid paper; ruled diary slips with a pink margin line; yellow sticky notes; window-light shadows across the page. Light and dark ("night diary": plum-black paper, brighter pink). Her chosen defaults: dark, Fredoka headings, Gaegu handwriting, Nunito for UI text, tape and doodles on, window light on. Source of truth: `skills/mira-carousel/engine/lab.html` (`<style id="diary">`, `--d-*` tokens). To confirm it as a look: mini interview (the personal idea behind it), her own doodle and sticker PNGs to replace the CSS/SVG placeholder doodles (the reference boards' art is Canva's and never goes in the repo), then `looks/diary/` the usual way.
+
 ## Font variants
 
 A look can carry font variants: alternative faces for one role (usually the title), each with its own tuned size, line height and letter spacing, all under the look's own treatment. When Mira asks to see or offer other fonts for a look, offer that look's variants first, shown with the look's real treatment (not plain specimens), and only then look further. New faces she likes get tuned and added to the look's variant list in the repo.
