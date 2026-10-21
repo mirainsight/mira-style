@@ -317,6 +317,8 @@ Maybe that is enough for today.
 
 The honest truth? Rest scares me, but | it is where I hear myself again.
 
+I get restless when it is quiet, but | I can learn to sit with it.
+
 I worry I will fall behind, but | slow is still moving.
 
 Some days the slow road is the right one.`;
@@ -329,6 +331,7 @@ const DEF_PICKS=[
  [P_('s','I keep saying yes to the meeting, to the late reply,'),P_('h','but never to the quiet.')],
  [P_('h','Maybe I can put some down.'),P_('h','Maybe I can ask for help.'),P_('h','Maybe that is enough for today.')],
  [P_('s','The honest truth?'),P_('s','Rest scares me, but'),P_('h','it is where I hear myself again.')],
+ [P_('s','I get restless when it is quiet, but'),P_('h','I can learn to sit with it.')],
  [P_('s','I worry I will fall behind, but'),P_('h','slow is still moving.')],
  [P_('h','I am tired.'),P_('x','No, I need to rest.'),P_('s','Some days the slow road is the right one.')],
 ];
@@ -375,11 +378,12 @@ const SD={bgk:'',move:'echo',font:'auto',tt:'auto',hero:100,blur:'none',bs:'smea
 const NEWS={font:'newsreader',tt:'lowercase'};
 const DEF_SLIDES=[
  {move:'echo',...NEWS,tilt:2},
- {move:'echo',...NEWS,tilt:2},
+ {move:'whisper',...NEWS},
  {move:'corners'},
  {move:'corners'},
  {move:'echo',...NEWS,es:'heavy'},
  {move:'whisper',...NEWS},
+ {move:'echo',...NEWS,em:'overlay',es:'clear'},
  {move:'echo',...NEWS,em:'overlay',es:'clear'},
  {move:'whisper',...NEWS},
 ];
@@ -426,11 +430,11 @@ function loadAny(s){
  if(s&&s.slides&&s.slides.length&&s.slides.some(x=>x.pick))return migrate(normalizeOld(s));
  return null}
 let S=null;
-try{S=loadAny(JSON.parse(localStorage.getItem('miraStyle.grunge.v5')||'null'))}catch(e){}
-if(!S)S=migrate(defaultsOld());
+try{S=loadAny(JSON.parse(localStorage.getItem('miraStyle.grunge.v6')||'null'))}catch(e){}
+if(!S){S=migrate(defaultsOld());const h=S.slides[1].objs.find(o=>o.st);if(h)h.sz=90}
 /* one-time: Hand (soft) becomes the background for anyone with a saved copy (2026-10-21) */
 try{if(!localStorage.getItem('miraStyle.grunge.bgHand1')){S.bg='hand';S.slides.forEach(x=>{x.bgk=''});localStorage.setItem('miraStyle.grunge.bgHand1','1')}}catch(e){}
-function save(){try{localStorage.setItem('miraStyle.grunge.v5',JSON.stringify(S))}catch(e){}}
+function save(){try{localStorage.setItem('miraStyle.grunge.v6',JSON.stringify(S))}catch(e){}}
 function lum(h){const n=parseInt(h.slice(1),16);return(.299*(n>>16&255)+.587*(n>>8&255)+.114*(n&255))/255}
 
 /* ---------------- helpers ---------------- */
