@@ -428,6 +428,8 @@ function loadAny(s){
 let S=null;
 try{S=loadAny(JSON.parse(localStorage.getItem('miraStyle.grunge.v5')||'null'))}catch(e){}
 if(!S)S=migrate(defaultsOld());
+/* one-time: Hand (soft) becomes the background for anyone with a saved copy (2026-10-21) */
+try{if(!localStorage.getItem('miraStyle.grunge.bgHand1')){S.bg='hand';S.slides.forEach(x=>{x.bgk=''});localStorage.setItem('miraStyle.grunge.bgHand1','1')}}catch(e){}
 function save(){try{localStorage.setItem('miraStyle.grunge.v5',JSON.stringify(S))}catch(e){}}
 function lum(h){const n=parseInt(h.slice(1),16);return(.299*(n>>16&255)+.587*(n>>8&255)+.114*(n&255))/255}
 
