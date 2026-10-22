@@ -117,3 +117,4 @@ New packs come from a confirmed mira-style look, worked out with Mira the mira-d
 - No instruction paragraphs in the lab (she removed the Organize tab's how-to text); buttons explain themselves with short hover hints.
 - Say "strike through", never "struck".
 - Her real reflection text never goes into the public repo; examples use made-up text.
+- Repo changes go straight to `main` (no branches or pull requests).

@@ -9,7 +9,7 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 
 ## Where things live
 
-- **Repo (public):** `mirainsight/mira-style`. One folder per look under `looks/<look>/` (README, tokens.json, tokens.css, doodles/, example/). Root README lists the looks. Skills under `skills/`.
+- **Repo (public):** `mirainsight/mira-style`. One folder per look under `looks/<look>/` (README, tokens.json, tokens.css, doodles/, example/). Root README lists the looks. Skills under `skills/`. **Push changes straight to `main`** (Mira's standing instruction: no branches or pull requests); GitHub Pages serves the site from main and takes a few minutes to update.
 - **Design system (private, Claude Design):** "Mira Whimsy", https://claude.ai/artifact/24yqYL1TJducupa9dvPwR2 (the Whimsy look's tokens, brand book and doodles).
 - **Style gallery (private):** "Mira's Style Gallery", https://claude.ai/artifact/AQnMd8vK7H8BMm1AysnEsF. One entry per look: name, what it was first made for, swipeable live pages.
 - **Sleep Tight Lab (private, kept):** https://claude.ai/artifact/AxkBtTEbtC6UvCYoFTCQw7. The tuning lab the Sleep Tight look was worked out in. Mira keeps it so she can restyle; when she changes the look there, port the new settings to Mira's Post Copier.
