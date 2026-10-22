@@ -21,7 +21,7 @@ I loved my writing, and I read this and am super proud. I hope it can inspire ot
 
 - `tokens.css` / `tokens.json`: palettes, faces (with their tuned size factors), layouts, effects and the look's rules.
 - `backgrounds/`: Mira's own photo backgrounds (CC BY-NC 4.0). See [`backgrounds/README.md`](backgrounds/README.md).
-- `example/index.html`: the full Grunge Lab (Organize and Style tabs, drag to place, PNG and zip export).
+- `example/index.html`: the full Grunge Lab (Organize and Style tabs, drag to place, PNG and zip export), built from the [mira-carousel](../../skills/mira-carousel) engine with the `grunge` pack and this sample arrangement.
 - `example/fonts/`: woff2 files for every face and weight, used to embed fonts in exported PNGs. All are open-licence (SIL OFL) Google Fonts.
 
 ## Rules
@@ -95,4 +95,6 @@ Every block of text is an object with its own: Small/Big role, strike through (t
 
 ## The lab
 
-`example/index.html` is the whole workbench. **Organize:** one card per page, text objects you can drag between pages, merge, split, copy, and a spare-text tray. **Style:** the live slide, the selected object's controls, then This page (layout, background, echo, tilt, face, case, blur) and Whole carousel (background, palette, inks, grain, blur, small-text size, dust, shuffle). Copy settings / Apply settings move a whole set as text. Work is kept in the browser. **Download this slide** saves a 1080 x 1350 PNG; **Download all** saves one zip.
+`example/index.html` is the whole workbench. **Organize:** one card per page, text objects you can drag between pages, merge, split, copy, and a spare-text tray. **Style:** the live slide and one panel with a switch at the top, **Selected text · This slide · All slides**; every choice shows the same sections in the same place (Text: face, weight, size, case, alignment, italic, strike through, highlight, blur, colours, position; Page: layout, background, echo, tilt; Colours and texture: palette, inks, grain, blur strength, dust, shuffle). Values that differ show "Mixed". Copy settings / Apply settings move a whole set as text.
+
+The workbench itself wears a scrapbook-diary skin (grid paper, washi tape, gingham patches), in dark or light; **✎ lab look** changes it per device and never touches the slides. Work is kept in the browser. **Download this slide** saves a 1080 x 1350 PNG; **Download all** saves one zip.
