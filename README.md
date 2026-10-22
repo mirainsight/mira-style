@@ -11,6 +11,7 @@ Clone it, borrow a look, and make something lovely.
 | **Whimsy** | Mira's 26th birthday invitation (Twenty-Six) | Default | [`looks/whimsy`](looks/whimsy) |
 | **Sleep Tight** | Mira's Post Copier (her Telegram post page, written like a postcard) | Confirmed | [`looks/sleep-tight`](looks/sleep-tight) |
 | **I Bleed Red / True Humanity** (Grunge) | Mira's Instagram reflection carousels (sample slides in [`example/`](looks/grunge/example)) | Confirmed | [`looks/grunge`](looks/grunge) |
+| **Graph Paper** | Mira's tuition topic lists (every 9709 Pure 1 circle question, sorted by idea) | Confirmed | [`looks/graph-paper`](looks/graph-paper) |
 
 More looks join as they are confirmed.
 

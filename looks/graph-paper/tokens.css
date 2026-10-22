@@ -1,0 +1,35 @@
+/* Graph Paper, a mira-style look. Generated from tokens.json. Day on :root, Night by system setting or data-theme="dark". */
+:root{
+  --bg: #f7f8fa;  /* Page ground, and the header's paper under the grid. */
+  --surface: #ffffff;  /* Table sheets, controls, the theme toggle. */
+  --fg: #1a2233;  /* Headings and body text. */
+  --muted: #5b6577;  /* Leads, section subtitles, column labels, footer. */
+  --line: #dde2ea;  /* Hairline borders and row rules. */
+  --grid: #e8ecf3;  /* The 22px exam-paper grid behind the header only. */
+  --accent: #1f4fa3;  /* Ink blue, like an exam pen: eyebrow, links, selected chip, focus ring. */
+  --accent-soft: #e5ecf8;  /* Quiet accent fills. */
+  --star: #b4650a;  /* Highlighter amber: 'start here' tags and the callout's edge. Use sparingly. */
+  --star-soft: #fbefdf;  /* Callout and tag fill. */
+  --display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+  --grid-size: 22px;
+  --column: 920px;
+  --radius-sheet: 6px;
+  --radius-chip: 999px;
+  --radius-tag: 4px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3; --line: #2a3242;
+    --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42; --star: #f0b465; --star-soft: #33281a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3; --line: #2a3242;
+  --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42; --star: #f0b465; --star-soft: #33281a;
+  color-scheme: dark;
+}
+
+/* Fonts: https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap */

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graph Paper · sample topic list</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; idea filter chips, then one table per idea. The header sits on faint exam-paper grid. */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --fg: #1a2233;
+  --muted: #5b6577;
+  --line: #dde2ea;
+  --grid: #e8ecf3;
+  --accent: #1f4fa3;
+  --accent-soft: #e5ecf8;
+  --star: #b4650a;
+  --star-soft: #fbefdf;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3;
+    --line: #2a3242; --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42;
+    --star: #f0b465; --star-soft: #33281a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3;
+  --line: #2a3242; --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42;
+  --star: #f0b465; --star-soft: #33281a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--body); }
+.wrap { max-width: 920px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 56px; }
+header {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-bottom: 1px solid var(--line);
+}
+header .wrap { padding-block: 40px 28px; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 600 clamp(30px, 6vw, 44px)/1.1 var(--display); margin: 10px 0 12px; text-wrap: balance; }
+.lede { max-width: 62ch; color: var(--muted); margin: 0; }
+.theorems { margin: 22px 0 0; max-width: 560px; }
+.theorems img { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+.note { margin-top: 28px; background: var(--star-soft); border-left: 3px solid var(--star); padding: 12px 14px; border-radius: 0 6px 6px 0; max-width: 70ch; font-size: 14px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 26px 0 8px; }
+.chip { font: 500 13px/1 var(--body); border: 1px solid var(--line); background: var(--surface); color: var(--fg); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.chip:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#q { flex: 1 1 220px; min-width: 0; font: 14px var(--body); padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg); }
+.count { font: 12px var(--mono); color: var(--muted); margin: 4px 0 0; }
+section { margin-top: 34px; }
+h2 { font: 600 23px/1.2 var(--display); margin: 0 0 4px; text-wrap: balance; }
+.sub { color: var(--muted); margin: 0 0 12px; max-width: 68ch; font-size: 14px; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 9px 12px; border-bottom: 1px solid var(--line); }
+td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+tr:first-child td { border-top: 0; }
+td.code { font: 13px var(--mono); white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.go { text-align: right; white-space: nowrap; }
+a.open { color: var(--accent); font-weight: 500; text-decoration: none; }
+a.open:hover { text-decoration: underline; }
+.tag { display: inline-block; font: 500 11px/1 var(--mono); background: var(--star-soft); color: var(--star); padding: 3px 6px; border-radius: 4px; margin-left: 6px; vertical-align: 1px; }
+.tip { margin-top: 10px; font-size: 13.5px; color: var(--muted); max-width: 70ch; }
+.tip b { color: var(--fg); font-weight: 600; }
+footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+.theme { position: fixed; z-index: 5; top: calc(12px + env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); font: 500 12px/1 var(--body); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px; cursor: pointer; }
+.theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 560px) {
+  thead { display: none; }
+  tr { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 10px 12px; border-top: 1px solid var(--line); }
+  tr:first-child { border-top: 0; }
+  td { border: 0; padding: 0; }
+  td.desc { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+
+<button class="theme" id="theme" type="button" aria-label="Switch light or dark mode">Dark</button>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Cambridge A Level · 9709 Pure 1 · 2020 – Jun 2026</div>
+    <h1>Circle past-paper questions, sorted by idea</h1>
+    <p class="lede">All 43 circle questions from Paper 1 since circles joined the syllabus in 2020, sorted by the property each one tests. Each link opens the question on exam-mate, and the Answer tab there has the mark scheme.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="note"><b>Where to start:</b> the question in the screenshot is <b>9709/11/O/N/22 Q11</b>. Part (c) is the only Paper 1 question since 2020 that needs "angle at centre = 2 × angle at circumference". The other circle facts above come up far more often.</div>
+
+  <div class="controls" role="group" aria-label="Filter by idea">
+    <button class="chip" id="f-all" data-f="all" aria-pressed="true">All</button>
+    <button class="chip" id="f-1" data-f="1" aria-pressed="false">Angles</button>
+    <button class="chip" id="f-2" data-f="2" aria-pressed="false">Tangent from a point</button>
+    <button class="chip" id="f-3" data-f="3" aria-pressed="false">Discriminant</button>
+    <button class="chip" id="f-4" data-f="4" aria-pressed="false">Tangent ⟂ radius</button>
+    <button class="chip" id="f-5" data-f="5" aria-pressed="false">Perpendicular bisector</button>
+    <button class="chip" id="f-6" data-f="6" aria-pressed="false">Warm-ups</button>
+    <input id="q" type="search" placeholder="Search, e.g. 2024, tangent, diameter" aria-label="Search questions">
+  </div>
+  <p class="count" id="count"></p>
+
+  <div id="list"></div>
+
+  <footer>Codes: M/J = May/June, O/N = Oct/Nov, F/M = Feb/March. The links need an exam-mate login, and questions from 2020 onwards need a subscription.</footer>
+</main>
+
+<script>
+const SECTIONS = {
+  1: { t: "Angles with three points on a circle", s: "A right angle at one point means the other two are the ends of a diameter. Some questions also use the angle at the centre.",
+       tip: "<b>Teaching order:</b> 13/M/J/21 Q10 (most guided), then 12/O/N/23 Q11, 13/O/N/22 Q11 and 13/M/J/25 Q9. Then do the angle-at-centre questions, 12/M/J/25 Q8 and 12/O/N/21 Q12(b). Finish with 11/O/N/22 Q11(c)." },
+  2: { t: "Tangent from an outside point (discriminant = 0)", s: "Substitute the line into the circle and set b² − 4ac = 0. This is the same method as Q13(a)." },
+  3: { t: "Discriminant > 0 or < 0", s: "Same algebra as for a tangent, but the line cuts the circle twice or misses it.",
+       tip: "<b>Pair these with Q13(a)</b> to cover all three cases: = 0, > 0 and < 0." },
+  4: { t: "Tangent ⟂ radius", s: "Tangent at a given point, and where two tangents meet." },
+  5: { t: "Perpendicular bisector of a chord", s: "The centre lies on the perpendicular bisector of any chord." },
+  6: { t: "Diameters, chords and intersections", s: "Warm-ups and mixed questions." }
+};
+// [section, paper, what it tests, exam-mate id, star]
+const Q = [
+  [1,"9709/11/O/N/22 Q11","The screenshot question. Tangents from A(0, 10), then angle BDC: angle at circumference = ½ angle at centre",134675,1],
+  [1,"9709/13/M/J/21 Q10","A, B, C on circle: show ∠ABC = 90°, so AC is a diameter, which gives the centre; tangent at E",105279,1],
+  [1,"9709/12/O/N/23 Q11","AB ⟂ BC, find p; circle through A, B, C (AC is the diameter); tangent at C",162851,0],
+  [1,"9709/13/O/N/22 Q11","AC ⟂ BC, find p; circle through A, B, C (AB is the diameter)",134697,0],
+  [1,"9709/13/M/J/25 Q9","∠PRQ = 90°, find k; circle through P, Q, R; tangent at R",196355,0],
+  [1,"9709/12/O/N/21 Q12","(b) Equilateral triangle PQR inscribed in the circle: each side subtends 120° at the centre",119436,0],
+  [1,"9709/12/M/J/25 Q8","Chord AB, angle ACB at the centre in radians, larger segment area",196343,0],
+  [1,"9709/15/M/J/26 Q11","Tangents meet circle at A, B; shaded segment area (needs angle at centre)",235696,0],
+  [1,"9709/13/O/N/20 Q11","Tangents from T: show the angle between a tangent and CT is 45°; chord of contact AB",96120,0],
+  [2,"9709/11/M/J/24 Q10","Tangent y = mx + c through (0, −9): two values of m and the touching points",171645,1],
+  [2,"9709/13/O/N/21 Q9","(b) Tangent through (10, 0) with gradient m: two values of m",119453,0],
+  [2,"9709/12/M/J/24 Q7","Tangent y = 2a − x: two values of a; diameter ⟂ tangent",171653,0],
+  [2,"9709/13/M/J/26 Q11","Two tangents y = −3x + c: show c² − 8c − 84 = 0; area PQRS",235678,0],
+  [2,"9709/13/O/N/25 Q8","Two tangents with gradient −½: x-coordinates of the touching points",216552,0],
+  [2,"9709/11/O/N/23 Q11","Parallel tangents with gradient 1: line AB (diameter ⟂ tangents), A in surd form",162819,0],
+  [2,"9709/12/O/N/20 Q9","Show DC is a tangent; (c) the other tangent from D",96107,0],
+  [3,"9709/11/M/J/22 Q9","(b) Values of k for which y = kx − 5 meets the circle at two distinct points (> 0)",129645,1],
+  [3,"9709/15/M/J/25 Q10","(b) x + 3y = k does not meet the circle (< 0); (a) tangent at a point",196379,1],
+  [4,"9709/11/M/J/20 Q10","Circle with diameter AB; tangent at B; reflect the circle in the tangent",74287,0],
+  [4,"9709/12/M/J/20 Q11","Tangent at P; Q with PQ ∥ x-axis; tangents meet at T",74299,0],
+  [4,"9709/11/O/N/20 Q9","Two circles; tangent at B meets the second circle at C and D",96095,0],
+  [4,"9709/11/M/J/21 Q10","Tangents at the x-axis intercepts: where they meet",105256,0],
+  [4,"9709/12/M/J/21 Q7","Show l is the tangent at A; the other circle with the same tangent at A",105264,0],
+  [4,"9709/12/M/J/22 Q8","Find a and b from two points on the circle; tangent at A",129654,0],
+  [4,"9709/11/M/J/23 Q12","Tangent at A; second circle centred where the tangent meets the y-axis",151471,0],
+  [4,"9709/13/M/J/24 Q8","Tangents at the y-axis intercepts meet at P",171664,0],
+  [4,"9709/12/O/N/24 Q8","Tangent at A given: normal through the centre, find p and q",177252,0],
+  [4,"9709/11/M/J/25 Q8","Tangents at P and Q on x = −2: triangle area (8 marks)",196298,0],
+  [4,"9709/12/F/M/25 Q6","Circle position from distances to the axes; tangent at the furthest point",194756,0],
+  [4,"9709/12/O/N/25 Q7","Diameter PQ; tangent at Q; where the tangents at Q and R meet",216541,0],
+  [4,"9709/11/M/J/26 Q11","Tangents at two given points: exact area OPQR (9 marks)",235651,0],
+  [5,"9709/13/M/J/20 Q10","Perpendicular bisector of AB, then the centre on a given line",74309,0],
+  [5,"9709/13/O/N/24 Q10","Radius 10 through A and B: centre on the bisector, two circles",177274,0],
+  [5,"9709/12/O/N/22 Q1","Perpendicular bisector of AB; circle centre A through B (warm-up)",134676,0],
+  [6,"9709/13/M/J/23 Q5","Line meets the circle at A and B; circle with diameter AB",151487,0],
+  [6,"9709/13/O/N/23 Q2","y-axis intercepts A and B; circle with diameter AB",162867,0],
+  [6,"9709/12/M/J/26 Q8","Diameter endpoints, then the circle; exact chord length PQ",235659,0],
+  [6,"9709/12/F/M/26 Q6","Centre and radius; exact chord length AB",232556,0],
+  [6,"9709/11/O/N/25 Q10","Line–circle intersection; area of triangle ABC (C = centre)",216533,0],
+  [6,"9709/13/M/J/22 Q7","Line from the centre meets the circle at P",129664,0],
+  [6,"9709/15/O/N/25 Q1","Equation from centre and radius; point on the circle",216556,0],
+  [6,"9709/11/O/N/24 Q6","Two circles: distance between centres, greatest and least PQ",177199,0],
+  [6,"9709/13/O/N/22 Q5","Circle to ellipse by a translation and a stretch (links to transformations)",134691,0]
+];
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+let filter = "all", term = "";
+
+function render() {
+  const t = term.trim().toLowerCase();
+  let shown = 0, html = "";
+  for (const k of Object.keys(SECTIONS)) {
+    if (filter !== "all" && filter !== k) continue;
+    const rows = Q.filter(r => String(r[0]) === k && (!t || (r[1] + " " + r[2]).toLowerCase().includes(t)));
+    if (!rows.length) continue;
+    shown += rows.length;
+    const S = SECTIONS[k];
+    html += `<section><h2>${S.t}</h2><p class="sub">${S.s}</p><div class="tbl"><table>
+      <thead><tr><th>Paper</th><th>What it tests</th><th></th></tr></thead><tbody>` +
+      rows.map(r => `<tr><td class="code">${r[1]}${r[4] ? '<span class="tag">start here</span>' : ""}</td>
+        <td class="desc">${esc(r[2])}</td>
+        <td class="go"><a class="open" href="https://www.exam-mate.com/question/${r[3]}" target="_blank" rel="noopener">Open ↗</a></td></tr>`).join("") +
+      `</tbody></table></div>${S.tip && !t ? `<p class="tip">${S.tip}</p>` : ""}</section>`;
+  }
+  document.getElementById("list").innerHTML = html || `<p class="sub" style="margin-top:24px">No questions match "${esc(term)}". Try a year or a word like "tangent".</p>`;
+  document.getElementById("count").textContent = `${shown} of ${Q.length} questions`;
+}
+
+document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+  filter = b.dataset.f;
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c === b)));
+  render();
+}));
+document.getElementById("q").addEventListener("input", e => { term = e.target.value; render(); });
+render();
+
+const root = document.documentElement, btn = document.getElementById("theme");
+const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+const label = () => { btn.textContent = isDark() ? "Light" : "Dark"; };
+try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
+if (location.hash === "#night") root.dataset.theme = "dark";  /* gallery preview, not saved */
+btn.addEventListener("click", () => {
+  root.dataset.theme = isDark() ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  label();
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", label);
+label();
+</script>
+
+</body>
+</html>

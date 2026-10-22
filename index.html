@@ -8,7 +8,7 @@
 <meta property="og:title" content="mira-style">
 <meta property="og:description" content="Mira's design styles. Each one is a real site, shown with made-up data, so you can tap through it.">
 <link rel="icon" href="looks/whimsy/example/favicon-32.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Over+the+Rainbow&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,800;1,6..72,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pinyon+Script&family=Alfa+Slab+One&family=Over+the+Rainbow&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,800;1,6..72,400&family=Newsreader:opsz,wght@6..72,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
 <style>
 /* Layout: a quiet gallery shell; each style is an entry with a swipeable strip of live, phone-sized pages that carry their own look */
 :root{
@@ -39,7 +39,8 @@ a{ color:inherit; }
 .name.st{ font-family:'Over the Rainbow', cursive; font-weight:700; font-size:clamp(40px,8vw,54px); color:#5a2338; text-shadow:3px 3px 0 #d6952c; transform:rotate(-2deg); transform-origin:left center; padding-bottom:4px; }
 .name.gr{ font-family:'Newsreader', Georgia, serif; font-weight:800; font-size:clamp(34px,7vw,46px); line-height:1; text-transform:lowercase; letter-spacing:-.02em; color:#c4683f; text-shadow:6px 0 6px rgba(196,104,63,.35), 12px 0 10px rgba(196,104,63,.18); }
 .name.gr small{ display:block; font-family:var(--g-sans); text-transform:none; font-weight:400; text-shadow:none; font-size:13px; letter-spacing:.06em; color:var(--g-muted); margin-top:8px; }
-@media (prefers-color-scheme: dark){ .name.gr{ color:#ea8a6b; } .name.st{ color:#e9b8c6; } .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
+.name.gp{ font-family:'Newsreader', Georgia, serif; font-weight:600; font-size:clamp(34px,7vw,46px); line-height:1.05; color:#1f4fa3; }
+@media (prefers-color-scheme: dark){ .name.gr{ color:#ea8a6b; } .name.gp{ color:#8fb0ee; } .name.st{ color:#e9b8c6; } .name.ft{ color:#9fb3ea; } .name.nw{ color:#7b9bff; } .name{ color:#e0707f; } }
 .badge{ align-self:flex-start; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; border:1px solid var(--g-line); color:var(--g-muted); }
 .use{ margin:0; font-size:15px; line-height:1.55; max-width:60ch; }
 .use b{ font-weight:600; }
@@ -137,6 +138,26 @@ footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; c
 <figure class="pg" data-name="Smear"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-05.jpg" alt="Sample page: maybe i can put some down, heavily smeared" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Smear</b>Blurred until it reads like a feeling</figcaption></figure>
 <figure class="pg" data-name="Whisper"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-06.jpg" alt="Sample page: the honest truth? rest scares me" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Whisper</b>Small and quiet, like a breath</figcaption></figure>
 <figure class="pg" data-name="Ghost"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-07.jpg" alt="Sample page: i can learn to sit with it, with a ghost overlay" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Ghost</b>An ink overlay on a glow</figcaption></figure>
+    </div>
+    <div class="nav" role="group" aria-label="Pages"></div>
+  </section>
+
+  <section class="style" aria-labelledby="s6">
+    <div class="head">
+      <div class="head-l">
+        <span class="no">Look 04 · Graph Paper</span>
+        <h2 class="name gp" id="s6">Graph Paper</h2>
+        <p class="use"><b>First made for</b> Mira's tuition topic lists: every Cambridge 9709 Pure 1 circle question since 2020, sorted by the idea each one tests, with a link to each question.</p>
+        <blockquote>I wanted it clean and easy for students to scan, like a proper exam reference sheet, nothing distracting.<cite>Mira</cite></blockquote>
+      </div>
+      <span class="badge">Mira's look</span>
+    </div>
+    <div class="spec"><span class="sw"><span style="background:#f7f8fa"></span><span style="background:#1a2233"></span><span style="background:#1f4fa3"></span><span style="background:#b4650a"></span><span style="background:#11151d"></span></span>Newsreader · IBM Plex Sans · IBM Plex Mono · exam-paper grid · day and night</div>
+    <div class="acts"><a class="btn" href="looks/graph-paper/example/">Open the topic list ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/looks/graph-paper">The look's rules</a></div>
+    <div class="strip">
+<figure class="pg" data-name="Topic list"><div class="phone" style="background:#f7f8fa"><iframe src="looks/graph-paper/example/index.html" data-steps='[]' title="Graph Paper, Topic list" loading="lazy"></iframe></div><figcaption class="cap"><b>Topic list</b>Every question, grouped by idea</figcaption></figure>
+<figure class="pg" data-name="Filtered"><div class="phone" style="background:#f7f8fa"><iframe src="looks/graph-paper/example/index.html" data-steps='[{"do":"click","sel":"#f-1","wait":400}]' title="Graph Paper, Filtered" loading="lazy"></iframe></div><figcaption class="cap"><b>Filtered</b>One idea at a time</figcaption></figure>
+<figure class="pg" data-name="Night"><div class="phone" style="background:#11151d"><iframe src="looks/graph-paper/example/index.html#night" data-steps='[]' title="Graph Paper, Night" loading="lazy"></iframe></div><figcaption class="cap"><b>Night</b>The same sheet after dark</figcaption></figure>
     </div>
     <div class="nav" role="group" aria-label="Pages"></div>
   </section>
