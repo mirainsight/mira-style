@@ -64,6 +64,8 @@ blockquote cite{ display:block; font-family:var(--g-sans); font-style:normal; fo
 .phone{ position:relative; width:100%; aspect-ratio:390/760; border-radius:22px; overflow:hidden; background:#fdf8ee;
   box-shadow:0 1px 2px rgba(60,30,25,.1), 0 18px 40px -22px rgba(60,30,25,.45); }
 .phone iframe{ position:absolute; top:0; left:0; width:390px; height:760px; border:0; transform-origin:0 0; }
+.phone.slide{ aspect-ratio:4/5; border-radius:6px; }
+.phone img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 .group{ margin:46px 0 4px; font-family:var(--serif); font-weight:500; font-size:28px; }
 .group-note{ margin:0 0 18px; color:var(--g-muted); font-size:14px; line-height:1.5; }
 footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; color:var(--g-muted); font-size:13px; line-height:1.6; }
@@ -128,13 +130,13 @@ footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; c
       <span class="badge">Mira's look</span>
     </div>
     <div class="spec"><span class="sw"><span style="background:#100a08"></span><span style="background:#ec681c"></span><span style="background:#f4a443"></span><span style="background:#5d592b"></span><span style="background:#ea8a6b"></span></span>Newsreader · Jost · Archivo Black · grain, smear and strike through · Mira's own photos</div>
-    <div class="acts"><a class="btn" href="looks/grunge/example/">Open the lab ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/looks/grunge">The look's rules</a></div>
+    <div class="acts"><a class="btn" href="looks/grunge/example/">See the slides ↗</a><a class="btn ghost" href="https://github.com/mirainsight/mira-style/tree/main/looks/grunge">The look's rules</a></div>
     <div class="strip">
-<figure class="pg" data-name="Cover"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500}]' title="I Bleed Red, Cover" loading="lazy"></iframe></div><figcaption class="cap"><b>Cover</b>A struck-through line, smeared and repeated</figcaption></figure>
-<figure class="pg" data-name="Corners"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500},{"do":"click","sel":"#thumbs .thumb:nth-child(3)","wait":500}]' title="I Bleed Red, Corners" loading="lazy"></iframe></div><figcaption class="cap"><b>Corners</b>Lines thrown to the edges</figcaption></figure>
-<figure class="pg" data-name="Whisper"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500},{"do":"click","sel":"#thumbs .thumb:nth-child(6)","wait":500}]' title="I Bleed Red, Whisper" loading="lazy"></iframe></div><figcaption class="cap"><b>Whisper</b>Small and quiet, like a breath</figcaption></figure>
-<figure class="pg" data-name="Ghost"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[{"do":"click","sel":"#tabb-style","wait":500},{"do":"click","sel":"#thumbs .thumb:nth-child(7)","wait":500}]' title="I Bleed Red, Ghost" loading="lazy"></iframe></div><figcaption class="cap"><b>Ghost</b>An ink overlay on a glow</figcaption></figure>
-<figure class="pg" data-name="Organize"><div class="phone" style="background:#14100e"><iframe src="looks/grunge/example/index.html" data-steps='[]' title="I Bleed Red, Organize" loading="lazy"></iframe></div><figcaption class="cap"><b>Organize</b>Sort the text into pages first</figcaption></figure>
+<figure class="pg" data-name="Cover"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-01.jpg" alt="Sample cover: i am tired, struck through, repeated and smeared" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Cover</b>A struck-through line, smeared and repeated</figcaption></figure>
+<figure class="pg" data-name="Corners"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-03.jpg" alt="Sample page: none of it was mine to hold alone, in big caps bottom right" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Corners</b>Lines thrown to the edges</figcaption></figure>
+<figure class="pg" data-name="Smear"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-05.jpg" alt="Sample page: maybe i can put some down, heavily smeared" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Smear</b>Blurred until it reads like a feeling</figcaption></figure>
+<figure class="pg" data-name="Whisper"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-06.jpg" alt="Sample page: the honest truth? rest scares me" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Whisper</b>Small and quiet, like a breath</figcaption></figure>
+<figure class="pg" data-name="Ghost"><div class="phone slide" style="background:#14100e"><img src="looks/grunge/example/slides/slide-07.jpg" alt="Sample page: i can learn to sit with it, with a ghost overlay" loading="lazy" width="1080" height="1350"></div><figcaption class="cap"><b>Ghost</b>An ink overlay on a glow</figcaption></figure>
     </div>
     <div class="nav" role="group" aria-label="Pages"></div>
   </section>
@@ -194,7 +196,7 @@ footer{ border-top:1px solid var(--g-line); margin-top:40px; padding-top:18px; c
 
 <script>
 // Show each frame at phone width, scaled to fit, and step it to its page once loaded
-function fit(){ document.querySelectorAll('.phone').forEach(p=>{ const f=p.querySelector('iframe'); f.style.transform='scale('+(p.clientWidth/390)+')'; }); }
+function fit(){ document.querySelectorAll('.phone').forEach(p=>{ const f=p.querySelector('iframe'); if(!f) return; f.style.transform='scale('+(p.clientWidth/390)+')'; }); }
 addEventListener('resize', fit); fit();
 document.querySelectorAll('iframe[data-steps]').forEach(f=>f.addEventListener('load', ()=>{
   let steps=[]; try{ steps=JSON.parse(f.dataset.steps); }catch(e){}

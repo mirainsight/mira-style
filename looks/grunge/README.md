@@ -2,7 +2,9 @@
 
 Grainy, smeared Instagram carousel slides: subdued colours that sit inside the background, unexpected font choices and text placement, and some text blurred or repeated until it reads like a feeling more than a sentence. Quiet and a little raw.
 
-**First made for:** Mira's Instagram reflection carousels, styled in the **Grunge Lab**, a workbench where she sorts her text into pages, styles each piece and exports the slides as PNGs. [`example/`](example) is that lab, filled with made-up sample content.
+**First made for:** Mira's Instagram reflection carousels, styled in the **Grunge Lab**, a workbench where she sorts her text into pages, styles each piece and exports the slides as PNGs. [`example/`](example) shows a finished sample carousel (made-up text) as images.
+
+The look's options (palettes, the font options with their tuning, backgrounds, effects) live in Mira's private Claude Design system **I Bleed Red**. Carousels are made with the [mira-carousel](../../skills/mira-carousel) skill and its `grunge` pack.
 
 
 ## In Mira's words
@@ -21,8 +23,8 @@ I loved my writing, and I read this and am super proud. I hope it can inspire ot
 
 - `tokens.css` / `tokens.json`: palettes, faces (with their tuned size factors), layouts, effects and the look's rules.
 - `backgrounds/`: Mira's own photo backgrounds (CC BY-NC 4.0). See [`backgrounds/README.md`](backgrounds/README.md).
-- `example/index.html`: the full Grunge Lab (Organize and Style tabs, drag to place, PNG and zip export), built from the [mira-carousel](../../skills/mira-carousel) engine with the `grunge` pack and this sample arrangement.
-- `example/fonts/`: woff2 files for every face and weight, used to embed fonts in exported PNGs. All are open-licence (SIL OFL) Google Fonts.
+- `example/index.html` and `example/slides/`: the sample carousel, nine 1080 x 1350 slides exported from the lab (made-up text).
+- `example/fonts/`: woff2 files for every face and weight; the mira-carousel `grunge` pack embeds them in exported PNGs. All are open-licence (SIL OFL) Google Fonts.
 
 ## Rules
 
@@ -93,8 +95,6 @@ Weights: Thin 200, Regular 400, Semibold 600, Bold 800. Thin only shows in faces
 
 Every block of text is an object with its own: Small/Big role, strike through (thin, normal, thick hand-drawn line), italic, text colour, highlight (a block in the text colour with the text knocked out, or a chosen colour), size (40 to 300%), weight, face, case, alignment, blur, and a free position you drag on the slide with snapping guides. Wrap words in `==` to highlight just those words.
 
-## The lab
+## Making carousels
 
-`example/index.html` is the whole workbench. **Organize:** one card per page, text objects you can drag between pages, merge, split, copy, and a spare-text tray. **Style:** the live slide and one panel with a switch at the top, **Selected text · This slide · All slides**; every choice shows the same sections in the same place (Text: face, weight, size, case, alignment, italic, strike through, highlight, blur, colours, position; Page: layout, background, echo, tilt; Colours and texture: palette, inks, grain, blur strength, dust, shuffle). Values that differ show "Mixed". Copy settings / Apply settings move a whole set as text.
-
-The workbench itself wears a scrapbook-diary skin (grid paper, washi tape, gingham patches), in dark or light; **✎ lab look** changes it per device and never touches the slides. Work is kept in the browser. **Download this slide** saves a 1080 x 1350 PNG; **Download all** saves one zip.
+Carousels in this look are made in the carousel lab from the [mira-carousel](../../skills/mira-carousel) skill (pack `grunge`): Organize your text into pages, style each piece at three scopes (selected text, this slide, all slides), and download the slides as PNGs. The public collection shows only the finished slides.

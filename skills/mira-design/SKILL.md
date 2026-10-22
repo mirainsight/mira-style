@@ -13,7 +13,8 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 - **Design system (private, Claude Design):** "Mira Whimsy", https://claude.ai/artifact/24yqYL1TJducupa9dvPwR2 (the Whimsy look's tokens, brand book and doodles).
 - **Style gallery (private):** "Mira's Style Gallery", https://claude.ai/artifact/AQnMd8vK7H8BMm1AysnEsF. One entry per look: name, what it was first made for, swipeable live pages.
 - **Sleep Tight Lab (private, kept):** https://claude.ai/artifact/AxkBtTEbtC6UvCYoFTCQw7. The tuning lab the Sleep Tight look was worked out in. Mira keeps it so she can restyle; when she changes the look there, port the new settings to Mira's Post Copier.
-- **Grunge Lab (private, kept):** https://claude.ai/code/artifact/e260d5bb-b02e-487a-b40a-43c8ae0c832b. Mira's working carousel tool (her real reflection text lives there, never in the repo). The public copy with sample content is `looks/grunge/example/`. Look rules: at most 3 layouts per set, matched to the content; no tilt by default; Arc, Split and Fill are harder to read.
+- **Grunge Lab (private, kept):** https://claude.ai/code/artifact/e260d5bb-b02e-487a-b40a-43c8ae0c832b. Mira's original carousel tool (her real reflection text lives there, never in the repo). New carousels: the mira-carousel skill. Look rules: at most 3 layouts per set, matched to the content; no tilt by default; Arc, Split and Fill are harder to read.
+- **I Bleed Red design system (private, Claude Design):** https://claude.ai/artifact/AdqNZ6wQtaXrTPhPapWr1D. The Grunge look's options: palettes (one theme each, Night first), every font option with its tuning (size factor k, line height, spacing, weights), Mira's photo backgrounds, effects, layouts, rules, a signature-slide preview and the sample slides. Mira wants the look's tunable options here, and only finished slide images in the public collection (`looks/grunge/example/`: no lab there).
 
 ## Confirmed looks
 
