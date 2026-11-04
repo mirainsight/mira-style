@@ -75,7 +75,7 @@ def main():
     open(os.path.join(a.out, "index.html"), "w", encoding="utf8").write(page)
 
     # copy only the files the pack references
-    needed = [f[3] for f in style.get("fontFiles", [])] + [b["file"] for b in style["backgrounds"].values() if b.get("file")]
+    needed = [f[3] for f in style.get("fontFiles", [])] + [b["file"] for b in style["backgrounds"].values() if b.get("file")] + list(style.get("files", []))
     files, missing = {}, []
     for rel in needed:
         src = None

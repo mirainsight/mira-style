@@ -68,6 +68,18 @@ Optional `"state"`: the full settings text copied from a lab (`{"ver":5, ... "sl
 Page fields (all optional but `objs`): `layout` (whisper, echo, corners, aside, stack, split, fill, arc), `bg` (a background key from the pack), `font` (a font key), `tt` (`none`, `lowercase`, `uppercase`), `tilt`, `em` (`rows` or `overlay`) and `es` (`clear`, `medium`, `heavy`) for Echo, `blur` (`none`, `hero`, `body`, `all`) and `bs` (`smear`, `soft`).
 Object fields: `t` text (`==words==` highlights just those words), `r` (`h` Big, `s` Small), `st` strike through, `it` italic, `hl` highlight, `sz` size 40 to 300, `wt` weight (200, 400, 600, 800), `fn` font key, `al` (left, center, right). A Big line with strike through also gets the pack's `strikeHero` defaults (Grunge: bold, centred).
 
+## Slides (16:9) and pictures
+
+A pack can set `"canvas": {"w": 1920, "h": 1080}` for PowerPoint-style slides instead of 4:5 posts. The lab, thumbnails, export and full screen button all follow the canvas. A **Full screen** button sits next to Download; Esc exits, left and right arrows change page.
+
+A pack with `art` entries that carry `pics` gets a **Pictures** section, which sits **first**, above Text (Pictures 1 · Text 2 · Page 3 · Colours and texture 4). Without pictures the lab keeps its usual order.
+
+- **Pictures:** each item is `{id, name, step, x, y, s, files: {<set>: {cut, ink}}, mode: {<set>: "cut"|"ink"}, label?}` (x, y = centre in slide pixels, s = longer side). `sets` names the picture sets (for example a = Photos, b = Engravings). List every image in the pack's `files` so build.py copies it (`assets` maps `pics/` to a folder). `cut` is the picture with its white paper removed; `ink` is white strokes with alpha from darkness, tinted with the palette ink.
+- **Effects, all pictures or one:** the chip row at the top of the section is **All pictures · Eye · Brain …**. Set the picture set, Look, Opacity, Blur, Motion blur (streak) and Motion direction, Grunge, Grain and Glow once for all pictures, or pick one picture and give it its own. Changing a value under **All pictures** applies to every picture and clears their own values for that setting. Changing it under one picture marks it "own". **Use the all-pictures effects** drops a picture's own values. **Fade earlier pictures** is always for all.
+- **Place by hand:** drag a picture on the slide (this also selects it), or use Across, Down and Size. Hide and Reset are per picture. Positions and effects apply to every page of the carousel.
+- **Reveal steps:** a page's `art` and `step` choose how much of the drawing and how many pictures show, so a full slide can be broken apart into pages later. Build the single full slide first (`step: 99`) and add the build-up pages only when she asks.
+- Picture files are Mira's own or stock she supplied: keep them, and any private drawing, out of the public repo.
+
 ## Style packs
 
 `style.json` holds only what changes between styles:
