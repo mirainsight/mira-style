@@ -1,0 +1,42 @@
+/* Rosé Ledger, a mira-style look. Generated from tokens.json. Day on :root, Night by system setting or data-theme="dark". */
+:root{
+  --page: #ECE5D7;  /* Ground behind the app. */
+  --paper: #F6F1E6;  /* App background, under the ledger rules. */
+  --sheet: #FFFDF8;  /* Cards: the paper sheets everything sits on. */
+  --rule: #ECE5D6;  /* The 44px ledger lines behind the scrolling screen. */
+  --ink: #2B1A24;  /* Wine-black ink for headlines, text and filled pills. */
+  --ink-2: color-mix(in srgb, var(--ink) 78%, #FFFDF8);
+  --muted: color-mix(in srgb, var(--ink) 50%, #F6F1E6);
+  --line: #E4DCCB;  /* Hairlines, row rules, dotted leaders. */
+  --track: #EEE7D9;  /* Empty bar track, segmented controls. */
+  --accent: #9B2C4B;  /* Raspberry burgundy (Mira). */
+  --shaun: #3E64A8;  /* Denim blue (partner). */
+  --sun: #F3B94D;  /* Marigold pop: sticker, highlights. Sparingly. */
+  --good: #4E8A6B; --warn: #E39A1F; --bad: #D2452C;
+  --tA: #6FA88C; --tB: #E07A8F; --tC: #F2C14E; --tD: #6F8FD8;  /* sage, rose, butter, cornflower */
+  --mint: color-mix(in srgb, var(--tA) 24%, var(--sheet)); --mint-ink: color-mix(in srgb, var(--tA) 62%, var(--ink));
+  --coral: color-mix(in srgb, var(--tB) 24%, var(--sheet)); --coral-ink: color-mix(in srgb, var(--tB) 62%, var(--ink));
+  --butter: color-mix(in srgb, var(--tC) 30%, var(--sheet)); --butter-ink: color-mix(in srgb, var(--tC) 45%, var(--ink));
+  --lav: color-mix(in srgb, var(--tD) 24%, var(--sheet)); --lav-ink: color-mix(in srgb, var(--tD) 62%, var(--ink));
+  --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;  /* weight 800, tracking -0.035em */
+  --body: 'Hanken Grotesk', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;  /* figures and eyebrows */
+  --radius-card: 22px; --radius-tile: 16px; --radius-pill: 999px;
+  --rule-size: 44px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --page: #0E0C0D; --paper: #171415; --sheet: #201B1D; --rule: #211C1E;
+    --ink: #F1EAE4; --ink-2: #CFC6C2; --muted: #9A9093; --line: #352D30; --track: #2C2528;
+    --accent: #E07A97; --shaun: #8DB0EE; --sun: #F5C66A; --good: #7CC4A0; --warn: #F2B64A; --bad: #F07A5E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --page: #0E0C0D; --paper: #171415; --sheet: #201B1D; --rule: #211C1E;
+  --ink: #F1EAE4; --ink-2: #CFC6C2; --muted: #9A9093; --line: #352D30; --track: #2C2528;
+  --accent: #E07A97; --shaun: #8DB0EE; --sun: #F5C66A; --good: #7CC4A0; --warn: #F2B64A; --bad: #F07A5E;
+  color-scheme: dark;
+}
+
+/* Fonts: https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..900&family=Hanken+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..700&display=swap */
