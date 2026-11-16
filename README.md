@@ -13,6 +13,7 @@ Clone it, borrow a look, and make something lovely.
 | **I Bleed Red / True Humanity** (Grunge) | Mira's Instagram reflection carousels (sample slides in [`example/`](looks/grunge/example)) | Confirmed | [`looks/grunge`](looks/grunge) |
 | **Graph Paper** | Mira's tuition topic lists (every 9709 Pure 1 circle question, sorted by idea) | Confirmed | [`looks/graph-paper`](looks/graph-paper) |
 | **Rosé Ledger** | Duit Duo, a shared budget app prototype for Mira and her husband (sample data in [`example/`](looks/rose-ledger/example)) | Confirmed | [`looks/rose-ledger`](looks/rose-ledger) |
+| **Meadow** | Sparrow, Mira's food-awareness app (a wind-blown meadow photo, the fields God clothes) | Confirmed | [`looks/meadow`](looks/meadow) |
 
 More looks join as they are confirmed.
 
@@ -33,7 +34,7 @@ looks/<look>/
   tokens.json   colours, fonts, sizes and spacing as data
   tokens.css    the same tokens as CSS variables, ready to link
   doodles/      hand-drawn PNGs on transparent backgrounds (if the look has them; some looks only document where theirs come from)
-  backgrounds/  background images (Grunge), under the art licence
+  backgrounds/  background images (Grunge, Meadow), under the art licence
   example/      a working page in the look, filled with made-up sample content
 ```
 

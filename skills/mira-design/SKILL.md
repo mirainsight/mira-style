@@ -25,6 +25,7 @@ How Mira's designs are made. Her styles live in a collection called **mira-style
 | I Bleed Red / True Humanity (Grunge) | Mira's Instagram reflection carousels, made in the Grunge Lab (1080x1350 slides, PNG export) | Confirmed |
 | Graph Paper | Mira's tuition topic lists: every 9709 Pure 1 circle question, sorted by idea (artifact "9709 Circle Questions", built by the `tuition-pyp-topic` skill) | Confirmed |
 | Rosé Ledger | Duit Duo, the shared budget app prototype for Mira and her husband (artifact "Duit Duo"): ledger paper, Fraunces 800 numbers, JetBrains Mono figures, pastel tiles, marigold sticker; raspberry burgundy for Mira, denim for her husband. The public example calls him "Sam" | Confirmed |
+| Meadow | Sparrow, Mira's food-awareness app (artifact "Sparrow"): her wind-blown meadow photo full bleed (the fields God clothes, where the sparrow is fed, Matt 6), cream words straight on the photo with no highlight, Pinyon Script name, EB Garamond, Bodoni figures in a row of three, linen sheet rising over the photo, sage accents, serif-caps button | Confirmed |
 
 ## In progress
 
