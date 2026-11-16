@@ -10,6 +10,9 @@
   --accent-soft: #e5ecf8;  /* Quiet accent fills. */
   --star: #b4650a;  /* Highlighter amber: 'start here' tags and the callout's edge. Use sparingly. */
   --star-soft: #fbefdf;  /* Callout and tag fill. */
+  --marker: #ffd36e;  /* Highlighter stroke for the hardest pick. */
+  --mk-warm: #b8edc6;  /* Highlighter stroke for a warm-up pick. */
+  --mk-med: #bcd8ff;  /* Highlighter stroke for a medium pick. */
   --display: 'Newsreader', Georgia, 'Times New Roman', serif;
   --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
@@ -23,12 +26,14 @@
   :root:not([data-theme="light"]){
     --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3; --line: #2a3242;
     --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42; --star: #f0b465; --star-soft: #33281a;
+    --marker: #7a5210; --mk-warm: #1d5a30; --mk-med: #1f4778;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"]{
   --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3; --line: #2a3242;
   --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42; --star: #f0b465; --star-soft: #33281a;
+  --marker: #7a5210; --mk-warm: #1d5a30; --mk-med: #1f4778;
   color-scheme: dark;
 }
 

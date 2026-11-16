@@ -21,6 +21,7 @@
   --accent-soft: #e5ecf8;
   --star: #b4650a;
   --star-soft: #fbefdf;
+  --marker: #ffd36e; --mk-warm: #b8edc6; --mk-med: #bcd8ff;
   --display: "Newsreader", Georgia, "Times New Roman", serif;
   --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
@@ -29,13 +30,13 @@
   :root:not([data-theme="light"]) {
     --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3;
     --line: #2a3242; --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42;
-    --star: #f0b465; --star-soft: #33281a; color-scheme: dark;
+    --star: #f0b465; --star-soft: #33281a; --marker: #7a5210; --mk-warm: #1d5a30; --mk-med: #1f4778; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #11151d; --surface: #181e29; --fg: #e4e8ef; --muted: #98a2b3;
   --line: #2a3242; --grid: #1a212d; --accent: #8fb0ee; --accent-soft: #1f2b42;
-  --star: #f0b465; --star-soft: #33281a; color-scheme: dark;
+  --star: #f0b465; --star-soft: #33281a; --marker: #7a5210; --mk-warm: #1d5a30; --mk-med: #1f4778; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--body); }
@@ -72,6 +73,10 @@ td.go { text-align: right; white-space: nowrap; }
 a.open { color: var(--accent); font-weight: 500; text-decoration: none; }
 a.open:hover { text-decoration: underline; }
 .tag { display: inline-block; font: 500 11px/1 var(--mono); background: var(--star-soft); color: var(--star); padding: 3px 6px; border-radius: 4px; margin-left: 6px; vertical-align: 1px; }
+tr.done td.code, tr.done td.desc { text-decoration: line-through; color: var(--muted); }
+tr.pick td.desc { font-weight: 600; }
+.mark { position: relative; z-index: 1; }
+.tag.pick { background: var(--mk); color: var(--fg); }
 .tip { margin-top: 10px; font-size: 13.5px; color: var(--muted); max-width: 70ch; }
 .tip b { color: var(--fg); font-weight: 600; }
 footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
@@ -117,6 +122,7 @@ footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
   <footer>Codes: M/J = May/June, O/N = Oct/Nov, F/M = Feb/March. The links need an exam-mate login, and questions from 2020 onwards need a subscription.</footer>
 </main>
 
+<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
 <script>
 const SECTIONS = {
   1: { t: "Angles with three points on a circle", s: "A right angle at one point means the other two are the ends of a diameter. Some questions also use the angle at the centre.",
@@ -175,6 +181,29 @@ const Q = [
   [6,"9709/13/O/N/22 Q5","Circle to ellipse by a translation and a stretch (links to transformations)",134691,0]
 ];
 
+// exam-mate ids of questions already done
+const DONE = new Set([134675,171645,119453,171653,235678,129645,196379,74287,177274,177199]);
+// The assigned set, in order: exam-mate id -> [tag, marker colour token]
+const PICKS = { 162867: ["① warm-up", "--mk-warm"], 171664: ["② medium", "--mk-med"], 196298: ["③ medium", "--mk-med"], 235651: ["④ hardest", "--marker"] };
+
+// Hand-drawn markers on the picked questions (rough-notation, as in Magic UI's Highlighter).
+// Animate on first load only; redrawn after each filter, search or theme change.
+// Waits for the web fonts so the markers match the final text width.
+let markers = [], markerAnimated = false, fontsReady = false;
+function drawMarker() {
+  markers.forEach(m => m.remove());
+  markers = [];
+  if (!fontsReady || !window.RoughNotation) return;
+  const css = getComputedStyle(document.documentElement);
+  markers = [...document.querySelectorAll(".mark")].map(el => RoughNotation.annotate(el, {
+    type: "highlight", multiline: true, iterations: 2, padding: 2,
+    color: css.getPropertyValue(el.dataset.mk).trim(),
+    animate: !markerAnimated, animationDuration: 900
+  }));
+  if (markers.length) RoughNotation.annotationGroup(markers).show();
+  markerAnimated = true;
+}
+
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
 let filter = "all", term = "";
 
@@ -189,13 +218,14 @@ function render() {
     const S = SECTIONS[k];
     html += `<section><h2>${S.t}</h2><p class="sub">${S.s}</p><div class="tbl"><table>
       <thead><tr><th>Paper</th><th>What it tests</th><th></th></tr></thead><tbody>` +
-      rows.map(r => `<tr><td class="code">${r[1]}${r[4] ? '<span class="tag">start here</span>' : ""}</td>
-        <td class="desc">${esc(r[2])}</td>
-        <td class="go"><a class="open" href="https://www.exam-mate.com/question/${r[3]}" target="_blank" rel="noopener">Open ↗</a></td></tr>`).join("") +
+      rows.map(r => { const p = !DONE.has(r[3]) && PICKS[r[3]]; return `<tr${DONE.has(r[3]) ? ' class="done"' : p ? ` class="pick" style="--mk: var(${p[1]})"` : ""}><td class="code">${r[1]}${r[4] ? '<span class="tag">start here</span>' : ""}${p ? `<span class="tag pick">${p[0]}</span>` : ""}</td>
+        <td class="desc">${p ? `<span class="mark" data-mk="${p[1]}">${esc(r[2])}</span>` : esc(r[2])}</td>
+        <td class="go"><a class="open" href="https://www.exam-mate.com/question/${r[3]}" target="_blank" rel="noopener">Open ↗</a></td></tr>`; }).join("") +
       `</tbody></table></div>${S.tip && !t ? `<p class="tip">${S.tip}</p>` : ""}</section>`;
   }
   document.getElementById("list").innerHTML = html || `<p class="sub" style="margin-top:24px">No questions match "${esc(term)}". Try a year or a word like "tangent".</p>`;
-  document.getElementById("count").textContent = `${shown} of ${Q.length} questions`;
+  document.getElementById("count").textContent = `${shown} of ${Q.length} questions${DONE.size ? ` · ${DONE.size} done` : ""}`;
+  drawMarker();
 }
 
 document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
@@ -215,9 +245,11 @@ btn.addEventListener("click", () => {
   root.dataset.theme = isDark() ? "light" : "dark";
   try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
   label();
+  drawMarker();
 });
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", label);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { label(); drawMarker(); });
 label();
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { fontsReady = true; drawMarker(); });
 </script>
 
 </body>
